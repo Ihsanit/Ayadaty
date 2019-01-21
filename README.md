@@ -12,3 +12,14 @@ Ayadaty.com is a cloud-based platform for medical services, connect the service 
 2) Basic functions available for service consumers:
   - Management of requestes: view status of requests, cancel requests, edit requests, reply on requests.
   - Management of profile: contact information, delete the account.
+
+#Syntax of naming files in the project:
+	#file_name# = #category#
+	#------------------------
+	file_v.php 	= view
+	file_c.php 	= controller 
+	file_m.php 	= model
+	file_h.php 	= helper
+	file_l.php 	= libray
+
+
