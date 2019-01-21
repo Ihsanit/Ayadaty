@@ -21,4 +21,4 @@ Ayadaty.com is a cloud-based platform for medical services, connect the service 
 	file_m.php 	= model
 	file_h.php 	= helper
 	file_l.php 	= libray
-
+#I am in progress of rebuilding all things from scrach as your request
