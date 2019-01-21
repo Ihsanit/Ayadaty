@@ -15,11 +15,10 @@ Ayadaty.com is a cloud-based platform for medical services, connect the service 
 
 #Syntax of naming files in the project:
 	#file_name# = #category#
-	#------------------------
+	------------------------
 	file_v.php 	= view
-	file_c.php 	= controller 
+	file_c.php 	= controller
 	file_m.php 	= model
 	file_h.php 	= helper
 	file_l.php 	= libray
-
 
