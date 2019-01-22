@@ -9,8 +9,8 @@ class Home_c extends CI_Controller
 
 	public function index()
 	{
-		$this->load->view('template_views/header');
-		$this->load->view('template_views/footer');
+		$this->load->view('template/header');
+		$this->load->view('template/footer');
 	}//end index function
 
 

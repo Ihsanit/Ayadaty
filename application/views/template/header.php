@@ -12,6 +12,9 @@
 		</title>  
 	</head>	
 	<body>
+	<!--
+		The content of the page will not repeated on all pages,
+		so it's not correct to add this content in the header template
 		<nav>
 			<a href="#">Dashboard</a>		
 			<a href="<?php echo base_url();?>home_controllers/home_c/index">Ayadaty</a>
