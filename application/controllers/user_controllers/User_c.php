@@ -11,9 +11,9 @@ class User_c extends CI_Controller
 
 	public function show_general_views()
 	{
-		$this->load->view('template/header');
+		$this->load->view('templates/header');
 		$this->load->view('user_views/signup_v');
-		$this->load->view('template/footer');
+		$this->load->view('templates/footer');
 	}//end show_general_views() method
 
 	public function signup()
