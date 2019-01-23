@@ -1,19 +1,33 @@
-		<footer>		
-		<div>
-			<ul>
+		<footer >		
+		
+			<ul class="social-icons">
 				<li>
-					<a href="#">f</a>
+					<a href="#"><i class="fab fa-facebook-f"></i></a>
 				</li>
 				<li>
-					<a href="#">t</a>
+					<a href="#"><i class="fab fa-twitter"></i></a>
 				</li>
 				<li>
-					<a href="#">l</a>
+					<a href="#"><i class="fab fa-linkedin-in"></i></a>
 				</li>	
-			</ul>	
-		</div>		
-		<em>&copy;all Copyrights Reserved for Ayadaty 2019</em>
+			</ul>		
+		
+		<div class="rights">	
+			<em>&copy; Copyrights Reserved for Ayadaty 2019</em>
+		</div>
+		<div class="develop-team">
 		<a href="mailto:talent@ihsanit.com">Developed by: Ihsan IT</a>
+		</div>
 		</footer>
+		<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
 	</body>
 </html>

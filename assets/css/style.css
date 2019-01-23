@@ -1,0 +1,386 @@
+/*CSS codes of Medical Web Application*/
+/*
+suggession colors:
+--------------------
+main1:#fff;
+main2:#13BFB1;
+other:#545454;#93CAC4
+;
+*/
+body
+{
+  font: Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin:0;
+}
+/*------------------------------------*\
+    nav
+\*------------------------------------*/
+ul
+{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.nav
+{
+    list-style-type:none;   
+    padding:0;
+    font-weight: bold;
+    margin-bottom: 10px;
+    float: left;
+    width: 100%;
+    background-color:#13BFB1; 
+    min-height: 50px;
+        margin-bottom: 0px;
+   /* position: relative;
+    z-index: 5;*/
+
+}
+.nav li {
+    float: left;
+    margin-right: 5px;
+    position: relative;
+    height: 35px;
+    line-height: 40px;
+    min-width: 110px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif;
+
+}
+a
+{
+  display: block;
+  text-decoration: none;  
+}
+.nav a, .login-menu a
+{
+    padding: 5px;
+    color: #fff;
+    background-color: #13BFB1;
+}
+.nav a:hover
+{
+    color: #fff;
+    background-color: #08a999;
+    text-decoration: none;
+}
+/*---------------------------------*\
+        dropdown
+\*---------------------------------*/
+#logo {
+    display: block;
+    padding: 0 30px;
+    float: left;
+    font-size:20px;
+    line-height: 50px;
+}
+.toggle,
+[id^=drop] {
+    display: none;
+}
+.nav ul
+{
+    background-color: #fff;
+    background: rgba(255,255,255,0);
+    list-style-type:none;
+    position: absolute;
+    left: -9999px; /*more accessible than display: none;*/
+}
+.nav ul li
+{
+    padding-top: 1px;
+    float: none;
+}
+.nav ul a
+{
+    white-space: nowrap;
+    height: 40px;
+    line-height: 40px;
+}
+.nav li:hover ul
+{
+    left: 0; /* Bring back on-screen when needed */
+}
+.nav li:hover a
+{
+    background-color: #08a999;
+    text-decoration: underlin;
+}
+.nav li:hover ul a
+{
+    text-decoration: none;
+}
+.nav li:hover ul li a:hover
+{
+    background-color: #fff;
+    color: #08a999;
+}
+/*-------------------------------*\
+        media queries
+\*-------------------------------*/
+@media all and(max width: 768px)
+{
+    #logo{
+        display: block;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        float: none;
+    }
+    /* Hide the navigation menu by default */
+    /* Also hide the  */
+    .toggle + a,
+    .menu {
+        display: none;
+    }
+    /* Stylinf the toggle lable */
+    .toggle {
+        display: block;
+        background-color: #254441;
+        padding:14px 20px;  
+        color:#FFF;
+        font-size:17px;
+        text-decoration:none;
+        border:none;
+    }
+
+    .toggle:hover {
+        background-color: #000000;
+    }
+    /* Display Dropdown when clicked on Parent Lable */
+    [id^=drop]:checked + ul {
+        display: block;
+    }
+
+    /* Change menu item's width to 100% */
+    nav ul li {
+        display: block;
+        width: 100%;
+        }
+
+}
+
+@media all and (max-width : 330px) {
+
+    nav ul li {
+        display:block;
+        width: 94%;
+    }
+
+}
+/*---------------------------------*\
+Login-signup-logout menu
+\*---------------------------------*/
+.login-menu {  
+    text-align: center;
+    text-transform: capitalize;
+    font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif;
+    font-size: small;
+
+}
+.login-menu a
+{
+    color: #13BFB1;
+    background-color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+    float: right;
+}
+/*----------------------------*\
+footer
+\*-----------------------------*/
+
+footer 
+{
+    clear: both;
+    background-color: #545454;
+    height: 50px;
+    color: #fff;
+    font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif;
+}
+.social-icons
+{
+    max-width: 10%;
+}
+.social-icons li
+{
+    padding-top: 15px;
+    float: left;
+    margin-right: 5px;
+    position: relative;
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif;
+}
+footer a
+{
+    color: #13BFB1
+}
+.rights {
+    clear: both;
+    padding: 15px 0px 0px 431px;
+    max-width: 50%;
+    display: inline-block;
+
+}
+.develop-team
+{
+    float: right;
+    padding-top: 15px;
+}
+/*------------------------*\
+banner
+\*------------------------*/
+.baner {
+    /* Sizing */
+    width: 100%;
+    height: 100%;
+    
+    /* Flexbox stuff */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    /* Text styles */
+    text-align: center;
+}
+.baner h1 {
+    /* Text styles */
+    font-size: 5em;
+    
+    /* Margins */
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.baner .btn {
+    display: block;
+    width: 200px;
+    padding: 0.5em;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+    border-radius: 8px;
+    background-color: #13BFB1;
+    height: 23px;
+    line-height: 23px;
+}
+
+.baner {
+    /* Sizing */
+    width: 100vw;
+    height: 100vh;
+    
+    /* Flexbox stuff */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Text styles */
+    text-align: center;
+    
+    /* Background styles */
+/*    background-image:  url(https://codetheweb.blog/assets/img/posts/full-image-hero/image.jpg);
+*/    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/*services in home*/
+.desc
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        margin-top: 20px;
+}
+.line {
+    width: 86px;
+    height: 2px;
+    display: block;
+    background-color: #13BFB1;
+}
+.serv-outer {
+    width: 20%;
+    height: 200px;
+    margin: 5px 15px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #13bfb1;
+    float: left;
+}
+.serv-inner
+{
+    width: auto;
+    height: auto;
+}
+.serv-img{
+    font-weight: bolder;
+}
+.serv-content
+{
+    color: #333;
+    font-family: serif;
+    text-align: center;
+    font-size: 1em;
+}
+.search-container {
+    background-color: #13bfb1;
+    height: 77px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+        border-radius: 5px;
+        margin-top: 50px;
+}
+.search-container form
+{
+    width:fit-content;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 0px 0px 0px 15px;
+
+
+}
+.search-container input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    width: 400px;
+    height: 27px;
+
+}
+
+
+.search-container button {
+  
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  color: #13bfb1;
+  height: 39px;
+}
+
+.search-container button:hover {
+  background: #ccc;
+}
+
