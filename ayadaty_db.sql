@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2019 at 05:37 PM
+-- Generation Time: Jan 24, 2019 at 09:56 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -136,6 +136,16 @@ CREATE TABLE `patient` (
   `p_birth_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `patient`
+--
+
+INSERT INTO `patient` (`p_id`, `p_name`, `p_email`, `p_phone`, `p_address`, `p_gender`, `p_birth_date`) VALUES
+(1, 'ali', 'ali@gmail.com', 777777777, 'Sana\'a', 1, NULL),
+(2, 'Rbab', 'rrr@gmail.com', 2147483647, 'Sana\'a', 1, NULL),
+(3, 'yttttt', 'tttt@jkjj.ljlkjl', 98897008, 'Sana\'a', 1, NULL),
+(4, 'Mohammed', 'mohammed@gmail.com', 85858585, 'Sana\'a', 1, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -240,7 +250,9 @@ INSERT INTO `user` (`u_id`, `u_username`, `u_password`, `u_email`, `u_registered
 (7, 'Rabab', 'c20ad4d76fe97759aa27a0c99bff6710', 'rabab.shaalan@gmail.com', '2019-01-12 14:03:39'),
 (8, 'Rabab', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'rabab.shaalan@gmail.com', '2019-01-12 14:05:33'),
 (9, 'Rabab', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'rabab.shaalan@gmail.com', '2019-01-12 14:10:05'),
-(10, 'Aisha', 'a381bedb5d4478053eb04be35f8798dd', 'aisha@gmail.com', '2019-01-12 16:18:31');
+(10, 'Aisha', 'a381bedb5d4478053eb04be35f8798dd', 'aisha@gmail.com', '2019-01-12 16:18:31'),
+(11, 'Rana', '90a1e95dba0d3d9c11e3f220cc4f7879', 'rana@gmail.com', '2019-01-24 13:45:26'),
+(12, 'rawan', '3ba482ecb56ba605fb5dee188f44cfdd', 'rawan@gmail.com', '2019-01-24 18:17:21');
 
 -- --------------------------------------------------------
 
@@ -366,7 +378,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `p_id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `p_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `service`
@@ -378,7 +390,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `visit`

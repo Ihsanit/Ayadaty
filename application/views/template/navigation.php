@@ -1,15 +1,14 @@
-		<header>
 		<nav>
 			<div class="login-menu">			
-				<a href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
-				<a href="<?php echo base_url();?>user_controllers/user_c/signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+				<a onclick="document.getElementById('id01').style.display='block'" style="cursor:pointer;"><i class="fas fa-sign-in-alt"></i> Login</a>
+				<a href="<?php echo base_url();?>user_c/signup"><i class="fas fa-user-plus"></i> Sign Up</a>
 				<a href="#">Log out</a>
 			</div> 
 			<label for="drop" class="toggle">Menu</label>
 			<input type="checkbox" id="drop"/>
 			<ul class="nav menu">
 				<li>
-			        <a href="#" class="active"><i class="fa fa-fw fa-home"></i>Home</a>
+			        <a href="<?php echo base_url();?>home_c/index" class="active"><i class="fa fa-fw fa-home"></i>Home</a>
 			    </li>
 			    <li>
 			        <a href="#">About</a>
@@ -49,10 +48,20 @@
 			    </li>
 			    <li style="margin-left:380px">
 			    
-			    	<a href="<?php echo base_url();?>home_c" class="btn " >Book Appointment</a>
+			    	<a href="<?php echo base_url();?>patient_c/book_appointment" class="btn " >Book Appointment</a>
 			    	
 			    </li>
 			    
 			</ul>			
 		</nav>
-		</header>
+		<?php
+		$included_login=APPPATH.'/views/user_views/login_v.php';
+		include($included_login);
+		?>
+		<?php 
+		if($this->session->flashdata('user_signedup')):?>
+			<p class="alert alert-success"><?php echo $this->session->flashdata('user_signedup');?></p>
+		<?php endif;?>
+		<?php if($this->session->flashdata('user_loggedin')):?>
+			<p class="alert alert-success"><?php echo $this->session->flashdata('user_loggedin');?></p>
+		<?php endif;?>

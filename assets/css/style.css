@@ -7,6 +7,9 @@ main2:#13BFB1;
 other:#545454;#93CAC4
 ;
 */
+* {
+    box-sizing: border-box;
+}
 body
 {
   font: Helvetica, Arial, sans-serif;
@@ -362,7 +365,7 @@ banner
     font-size: 17px;
     border: none;
     width: 400px;
-    height: 27px;
+    height: 31px;
 
 }
 
@@ -377,10 +380,213 @@ banner
   border: none;
   cursor: pointer;
   color: #13bfb1;
-  height: 39px;
+  width: fit-content;
 }
 
 .search-container button:hover {
   background: #ccc;
 }
+/*-------------------------------------------*\
+        Style of login page
+\*-------------------------------------------*/
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email]
+{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
+/* Set a style for all buttons */
+button 
+{
+  background-color: #13BFB1;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.forgget-psw {
+  float: right;
+  padding-top: 16px;
+
+}
+span.forgget-psw a
+{
+    color:#13bfb1;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.forgget-psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+/*------------------------------------------*\
+Book appointment
+\*------------------------------------------*/
+.book-container input[type=text],.book-container input[type=password], .book-container input[type=email], .book-container select, .book-container textarea, .book-container [type=date], .book-container [type=number]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #13BFB1;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.book-container label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.book-container input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.book-container input[type=submit]:hover {
+  opacity: 0.8;
+}
+
+.book-container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.book-container .col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+.book-container .col-25-lbls {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+  padding-left: 5%;
+}
+
+.book-container .col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.book-container .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.book-container .btn
+{
+    width: 50%;
+}
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .book-container .col-25, .book-container .col-75, .book-container input[type=submit], .book-container .btn{
+    width: 100%;
+    margin-top: 0;
+  }
+  .book-container .col-25-lbls {
+    padding-left: 0;
+  }
+}
