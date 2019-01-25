@@ -58,6 +58,12 @@ class User_c extends CI_Controller
 
 	}//end login function
 
+	public function training()
+	{
+		$this->user_m->training();
+
+	}
+
 
 }//end Home_c class
 ?>

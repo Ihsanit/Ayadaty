@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2019 at 09:56 PM
+-- Generation Time: Jan 25, 2019 at 10:02 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -252,7 +252,33 @@ INSERT INTO `user` (`u_id`, `u_username`, `u_password`, `u_email`, `u_registered
 (9, 'Rabab', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'rabab.shaalan@gmail.com', '2019-01-12 14:10:05'),
 (10, 'Aisha', 'a381bedb5d4478053eb04be35f8798dd', 'aisha@gmail.com', '2019-01-12 16:18:31'),
 (11, 'Rana', '90a1e95dba0d3d9c11e3f220cc4f7879', 'rana@gmail.com', '2019-01-24 13:45:26'),
-(12, 'rawan', '3ba482ecb56ba605fb5dee188f44cfdd', 'rawan@gmail.com', '2019-01-24 18:17:21');
+(12, 'rawan', '3ba482ecb56ba605fb5dee188f44cfdd', 'rawan@gmail.com', '2019-01-24 18:17:21'),
+(13, 'Jehan', '123    ', 'jehan@gmail.com', '2019-01-25 17:13:31'),
+(14, 'Raja', '123', 'raja@gmail.com', '2019-01-25 17:18:39'),
+(15, 'Raja', '123', 'raja@gmail.com', '2019-01-25 17:18:40'),
+(16, 'Roqia', '123', 'roqia@gmail.com', '2019-01-25 19:01:15'),
+(17, 'Enas', '123', 'enas@gmail.com', '2019-01-25 19:03:06'),
+(18, 'Enas', '123', 'enas@gmail.com', '2019-01-25 19:03:17'),
+(19, 'Nawal', '123', 'enas@gmail.com', '2019-01-25 19:04:14'),
+(21, 'Rania', '123', 'rania@gmail.com', '2019-01-25 19:11:43'),
+(22, 'Ali', 'ali', 'ali@gmail.com', '2019-01-25 20:13:35'),
+(23, 'Ammar', 'ammar', 'ammar@gmail.com', '2019-01-25 20:13:35'),
+(24, 'Ali', 'ali', 'ali@gmail.com', '2019-01-25 20:15:00'),
+(25, 'Ammar', 'ammar', 'ammar@gmail.com', '2019-01-25 20:15:00'),
+(26, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:36'),
+(27, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:37'),
+(28, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:37'),
+(29, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:38'),
+(30, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:38'),
+(31, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:39'),
+(32, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:41'),
+(33, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:42'),
+(34, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:32:10'),
+(35, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:32:11'),
+(36, 'Ahmed111', '123', 'ahmed1@gmail.com', '2019-01-25 20:33:00'),
+(38, 'Mohammed', '123', 'mohammed@gmail.com', '2019-01-25 20:40:02'),
+(39, 'Manar', '12352', 'manar@gmail.com', '2019-01-25 20:40:02'),
+(40, 'Ibrahim', '144423', 'ibrahim@gmail.com', '2019-01-25 20:40:02');
 
 -- --------------------------------------------------------
 
@@ -390,7 +416,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `visit`
