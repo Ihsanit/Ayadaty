@@ -1,310 +1,242 @@
-/*CSS codes of Medical Web Application*/
-/*
-suggession colors:
---------------------
-main1:#fff;
-main2:#13BFB1;
-other:#545454;#93CAC4
-;
-*/
-* {
-    box-sizing: border-box;
+
+a{
+	color:red;
 }
+@media (min-width: 992px)
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: .5rem;
+    padding-left: 1rem;
+}
+.doctor-box-1 {
+    position: relative;
+    margin: 20px 0px;
+}
+.doctor-box-1 .img-responsive{
+    max-width: 100%;
+}
+.container-fluid-1{
+    margin: 
+}
+
+.doctor-box-1 .doctor-details {
+    position: absolute;
+    top: 80%;
+    text-align: center;
+    width: 100%;
+    background-color: #007bff;
+    padding: 10px 0px;
+    border: 5px solid #f7f7f7;
+    transition: 350ms ease all;
+}
+.doctor-box-1 .doctor-profile {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding: 32px 0px;
+    top: 100%;
+    /*visibility: hidden;
+    opacity: 0;
+    -webkit-transition: 350ms ease all;
+    transition: 350ms ease all;*/
+}
+.doctor-contact {
+    background-color: #007bff;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.contact-list {
+    list-style: none;
+    padding: 0px;
+    font-size: 16px;
+}
+.contact-list li {
+    padding-bottom: 8px;
+    overflow: hidden;
+}
+.doctor-img {
+    max-height: 70%;
+    width: 100%; 
+}
+
+
+/********home style*****/
+.back-img{    
+    width: 100%;
+     height: 100%;
+     background-size: cover;
+}
+.doctor-font{
+color: #FFF;
+}
+.jumbotron {
+    position: relative;
+    padding: 100px 0px;
+    margin: 0px;
+    background-size: cover;
+    background-position: center center;
+}
+.container1{
+    padding-right: 0; 
+     padding-left: 0; 
+     max-width:100%;}
+
+     
+.jumbotron h1 {
+    font-size: 56px;
+    padding-top: 100px;
+    color:#000;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+.jumbotron1{
+ border-radius:unset; 
+}
+.slider-box-appointment {
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #007bff;
+    padding: 40px 21px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+    margin: 20px 0px;
+}
+.slider-box-appointment .header .heading {
+    margin-bottom: 0px;
+    color: #fff;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;    
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Volkhov', serif;
+    color: #1a1a1a;
+    text-transform: capitalize;
+    margin-top: 0em;
+    margin-bottom: 0.8em;
+    line-height: 1.2;
+}
+hr.hr-2 {
+    border-bottom: 2px solid #fff;
+    width: 50px;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px solid #d5d5d5;
+    position: relative;
+    margin: 25px auto;
+}
+.book-input{
+    font-size: 0.8rem;
+}
+.home-services {
+    padding-bottom: 60px;
+    padding-top: 60px;
+    background-color: #303b41;
+}
+.inverse {
+    color: #fff;
+}
+.department-list {
+    list-style: none;
+    padding: 0px;
+    /*margin-left: 2%;*/
+}
+.department-list li {
+    margin: 20px 0px;
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.department-list li > a {
+    display: block;
+}
+a {
+    color: #007bff;
+}
+.department-list li .list-icon {
+    color: #fff;
+    background-color: #007bff;
+}
+.department-list li .list-icon, .department-list li .list-text {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px 15px;
+}
+.department-list li .list-icon em {
+    font-size: 40px !important;
+}
+.home-call{
+    position: relative;
+    padding-bottom: 60px;
+    padding-top: 60px;
+}
+.home-call .right i, .home-call .right .call-us {
+    display: table-cell;
+    vertical-align: middle;
+}
+@media only screen and (min-width: 768px)
+.home-call .right, .home-call .left {
+    text-align: left;
+}
+@media only screen and (min-width: 768px)
+.home-call .right, .home-call .left {
+    text-align: left;
+}
+@media only screen and (min-width: 768px)
+.home-call .right i, .home-call .right .call-us {
+    display: table-cell;
+    vertical-align: middle;
+}
+.home-call .right .call-us {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 34px;
+}
+.font20 {
+    font-size: 20px;
+}
+
+.input-fields{
+    border: 1.3px solid #007bff
+}
+ .modal-header, h4, .close {
+    background-color: #007bff;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
+ .nav-admin li a{
+    color:#fff;
+  }
+  /*---------------------------------*\
+            My styles
+  \*---------------------------------*/
 body
 {
-  font: Helvetica, Arial, sans-serif;
-  padding: 0;
-  margin:0;
+    font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif!important;
 }
-/*------------------------------------*\
-    nav
-\*------------------------------------*/
-ul
+nav a:hover
 {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-.nav
-{
-    list-style-type:none;   
-    padding:0;
-    font-weight: bold;
-    margin-bottom: 10px;
-    float: left;
-    width: 100%;
-    background-color:#13BFB1; 
-    min-height: 50px;
-        margin-bottom: 0px;
-   /* position: relative;
-    z-index: 5;*/
-
-}
-.nav li {
-    float: left;
-    margin-right: 5px;
-    position: relative;
-    height: 35px;
-    line-height: 40px;
-    min-width: 110px;
-    text-align: center;
-    font-weight: bold;
-    text-transform: capitalize;
-    font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif;
-
-}
-a
-{
-  display: block;
-  text-decoration: none;  
-}
-.nav a, .login-menu a
-{
-    padding: 5px;
-    color: #fff;
-    background-color: #13BFB1;
-}
-.nav a:hover
-{
-    color: #fff;
-    background-color: #08a999;
+    color: #545454!important;
     text-decoration: none;
 }
-/*---------------------------------*\
-        dropdown
-\*---------------------------------*/
-#logo {
-    display: block;
-    padding: 0 30px;
-    float: left;
-    font-size:20px;
-    line-height: 50px;
-}
-.toggle,
-[id^=drop] {
-    display: none;
-}
-.nav ul
-{
-    background-color: #fff;
-    background: rgba(255,255,255,0);
-    list-style-type:none;
-    position: absolute;
-    left: -9999px; /*more accessible than display: none;*/
-}
-.nav ul li
-{
-    padding-top: 1px;
-    float: none;
-}
-.nav ul a
-{
-    white-space: nowrap;
-    height: 40px;
-    line-height: 40px;
-}
-.nav li:hover ul
-{
-    left: 0; /* Bring back on-screen when needed */
-}
-.nav li:hover a
-{
-    background-color: #08a999;
-    text-decoration: underlin;
-}
-.nav li:hover ul a
-{
-    text-decoration: none;
-}
-.nav li:hover ul li a:hover
-{
-    background-color: #fff;
-    color: #08a999;
-}
-/*-------------------------------*\
-        media queries
-\*-------------------------------*/
-@media all and(max width: 768px)
-{
-    #logo{
-        display: block;
-        padding: 0;
-        width: 100%;
-        text-align: center;
-        float: none;
-    }
-    /* Hide the navigation menu by default */
-    /* Also hide the  */
-    .toggle + a,
-    .menu {
-        display: none;
-    }
-    /* Stylinf the toggle lable */
-    .toggle {
-        display: block;
-        background-color: #254441;
-        padding:14px 20px;  
-        color:#FFF;
-        font-size:17px;
-        text-decoration:none;
-        border:none;
-    }
-
-    .toggle:hover {
-        background-color: #000000;
-    }
-    /* Display Dropdown when clicked on Parent Lable */
-    [id^=drop]:checked + ul {
-        display: block;
-    }
-
-    /* Change menu item's width to 100% */
-    nav ul li {
-        display: block;
-        width: 100%;
-        }
-
-}
-
-@media all and (max-width : 330px) {
-
-    nav ul li {
-        display:block;
-        width: 94%;
-    }
-
-}
-/*---------------------------------*\
-Login-signup-logout menu
-\*---------------------------------*/
-.login-menu {  
-    text-align: center;
-    text-transform: capitalize;
-    font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif;
-    font-size: small;
-
-}
-.login-menu a
-{
-    color: #13BFB1;
-    background-color: #fff;
-    text-decoration: none;
-    margin-left: 10px;
-    float: right;
-}
-/*----------------------------*\
-footer
-\*-----------------------------*/
-
-footer 
-{
-    clear: both;
-    background-color: #545454;
-    height: 50px;
-    color: #fff;
-    font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif;
-}
-.social-icons
-{
-    max-width: 10%;
-}
-.social-icons li
-{
-    padding-top: 15px;
-    float: left;
-    margin-right: 5px;
-    position: relative;
-    min-width: 20px;
-    text-align: center;
-    font-weight: bold;
-    font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif;
-}
-footer a
-{
-    color: #13BFB1
-}
-.rights {
-    clear: both;
-    padding: 15px 0px 0px 431px;
-    max-width: 50%;
-    display: inline-block;
-
-}
-.develop-team
-{
-    float: right;
-    padding-top: 15px;
-}
-/*------------------------*\
-banner
-\*------------------------*/
-.baner {
-    /* Sizing */
-    width: 100%;
-    height: 100%;
-    
-    /* Flexbox stuff */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-    /* Text styles */
-    text-align: center;
-}
-.baner h1 {
-    /* Text styles */
+.banner h1 {
     font-size: 5em;
-    
-    /* Margins */
     margin-top: 0;
     margin-bottom: 0.5em;
 }
-
-.baner .btn {
-    display: block;
-    width: 200px;
-    padding: 0.5em;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5em;
-    border-radius: 8px;
-    background-color: #13BFB1;
-    height: 23px;
-    line-height: 23px;
-}
-
-.baner {
-    /* Sizing */
-    width: 100vw;
-    height: 100vh;
-    
-    /* Flexbox stuff */
+.desc {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    /* Text styles */
-    text-align: center;
-    
-    /* Background styles */
-/*    background-image:  url(https://codetheweb.blog/assets/img/posts/full-image-hero/image.jpg);
-*/    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-/*services in home*/
-.desc
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-        margin-top: 20px;
+    margin-top: 20px;
 }
 .line {
     width: 86px;
@@ -312,281 +244,44 @@ banner
     display: block;
     background-color: #13BFB1;
 }
-.serv-outer {
-    width: 20%;
-    height: 200px;
-    margin: 5px 15px;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #13bfb1;
-    float: left;
-}
-.serv-inner
+.my-color
 {
-    width: auto;
-    height: auto;
-}
-.serv-img{
-    font-weight: bolder;
-}
-.serv-content
-{
-    color: #333;
-    font-family: serif;
-    text-align: center;
-    font-size: 1em;
+background-color:#13BFB1!important;
 }
 .search-container {
     background-color: #13bfb1;
     height: 77px;
-    width: fit-content;
+    max-width: 60%;
     display: flex;
     align-items: center;
     text-align: center;
     margin: auto;
-        border-radius: 5px;
-        margin-top: 50px;
+    border-radius: 5px;
+    /* margin-top: 50px; */
 }
-.search-container form
+.search-container input[type=search]
 {
-    width:fit-content;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    padding: 0px 0px 0px 15px;
-
-
+    width: 90%;
 }
-.search-container input[type=text] {
-    padding: 6px;
-    margin-top: 8px;
-    font-size: 17px;
-    border: none;
-    width: 400px;
-    height: 31px;
-
-}
-
-
-.search-container button {
+@media screen and (max-width: 1000px) {
   
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-  color: #13bfb1;
-  width: fit-content;
+    .search-container {
+    max-width: 100%;
+        height: fit-content;
 }
-
-.search-container button:hover {
-  background: #ccc;
-}
-/*-------------------------------------------*\
-        Style of login page
-\*-------------------------------------------*/
-/* Full-width input fields */
-input[type=text], input[type=password], input[type=email]
+.search-container input[type=search], .search-container button[type=submit]
 {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-/* Set a style for all buttons */
-button 
-{
-  background-color: #13BFB1;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  width: 100%;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
-
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
-
-.container {
-  padding: 16px;
-}
-
-span.forgget-psw {
-  float: right;
-  padding-top: 16px;
-
-}
-span.forgget-psw a
-{
-    color:#13bfb1;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 40%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
-
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.forgget-psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-/*------------------------------------------*\
-Book appointment
-\*------------------------------------------*/
-.book-container input[type=text],.book-container input[type=password], .book-container input[type=email], .book-container select, .book-container textarea, .book-container [type=date], .book-container [type=number]{
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #13BFB1;
-  border-radius: 4px;
-  resize: vertical;
-}
-
-.book-container label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-
-.book-container input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-}
-
-.book-container input[type=submit]:hover {
-  opacity: 0.8;
-}
-
-.book-container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-
-.book-container .col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-.book-container .col-25-lbls {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-  padding-left: 5%;
-}
-
-.book-container .col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-
-/* Clear floats after the columns */
-.book-container .row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.book-container .btn
-{
-    width: 50%;
-}
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .book-container .col-25, .book-container .col-75, .book-container input[type=submit], .book-container .btn{
     width: 100%;
-    margin-top: 0;
-  }
-  .book-container .col-25-lbls {
-    padding-left: 0;
-  }
+    display: block;
+    margin-bottom: 5px;
+
 }
+
+
+}
+a:link
+{
+    color: #13bfb1!important;
+}
+
+

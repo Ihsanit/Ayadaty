@@ -1,0 +1,80 @@
+<select name="speciality" class="form-control">
+<option value="">Speciality</option>
+<option value="cardiology">Cardiology</option>
+<option value="dentistry">Dentistry</option>
+<option value="dermatology">Dermatology</option>
+<option value="dietetics">Dietetics</option>
+<option value="endocrinology">Endocrinology</option>
+<option value="endodontics">Endodontics</option>
+<option value="ent">ENT</option>
+<option value="family-medicine">Family Medicine</option>
+<option value="gastroenterology">Gastroenterology</option>
+<option value="general-medicine">General Medicine</option>
+<option value="surgery">General Surgery</option>
+<option value="gynecology">Gynaecologist / Obstetrics</option>
+<option value="internal-medicine">Internal Medicine</option>
+<option value="microbiology">Microbiology</option>
+<option value="nephrology">Nephrology</option>
+<option value="neurology">Neurology</option>
+<option value="ophthalmology">Ophthalmology</option>
+<option value="orthodontist">Orthodontist</option>
+<option value="orthopaedic-surgery">Orthopaedic Surgery</option>
+<option value="orthopaedics">Orthopaedics</option>
+<option value="paediatric-dentist">Paediatric Dentist</option>
+<option value="pediatrics">Paediatrics</option>
+<option value="pathology">Pathology</option>
+<option value="periodontistry-implantology">Periodontistry &amp; Implantology</option>
+<option value="physiotherapy">Physiotherapy</option>
+<option value="psychiatry">Psychiatry</option>
+<option value="pulmonology">Pulmonology</option>
+<option value="radiology">Radiology</option>
+<option value="rheumatology">Rheumatology</option>
+<option value="urology">Urology</option>
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="slider-box col-lg-3 col-md-4 col-sm-4 col-ms-6">
+						
+							<div class="slick-inner padding-bottom">
+								
+									<div class="details-block margin-bottom">
+										<div class="img-tag">
+                                            <a target="_blank" href="/doctors/dr-aanchal-singh-36597">
+                                                <img src="https://cf-cdn.nmc.ae/Uploads/DoctorsPhoto/Thumb1/36597DoctorImage4653.png" class="img-responsive" alt="doctor-img">
+                                            </a>
+                                        </div>
+										<div class="dr-details">
+											<div class="min-sp coln" style="height: 150px;">
+												<h4>
+                                                    <a target="_blank" href="/doctors/dr-aanchal-singh-36597">
+                                                        Dr. Aanchal Singh
+                                                    </a>
+                                                </h4>
+												<span>
+                                                    <a target="_blank" href="/doctors/dr-aanchal-singh-36597">
+                                                        General Practitioner
+                                                    </a>
+                                                </span>
+												<div class="location">
+													<div><ul><li class="display-ib"><a class="text-primary" target="_blank" href="/hospitals/dubai/nmc-specialty-hospital-al-nahda-14">NMC Specialty Hospital, Al Nahda, Dubai</a></li></ul></div>
+													<span>Critical Care And I.C.U</span>
+												</div>
+											</div>
+											<a href="/schedule-an-appointment?doctorid=36597" class="btn btn-primary btn-sm btn-block">Make an Appointment</a>
+										</div>
+									</div>
+								
+							</div>
+						
+					</div>

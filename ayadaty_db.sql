@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2019 at 10:02 PM
+-- Generation Time: Jan 28, 2019 at 08:59 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -233,6 +233,7 @@ CREATE TABLE `user` (
   `u_username` varchar(50) NOT NULL,
   `u_password` varchar(50) NOT NULL,
   `u_email` varchar(50) NOT NULL,
+  `u_privilage` int(2) DEFAULT NULL,
   `u_registered_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -240,45 +241,44 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`u_id`, `u_username`, `u_password`, `u_email`, `u_registered_date`) VALUES
-(1, 'Rabab', '202cb962ac59075b964b07152d234b70', 'rabab.shaalan@gmail.com', '2019-01-12 13:34:37'),
-(2, 'Rabab', '202cb962ac59075b964b07152d234b70', 'rabab.shaalan@gmail.com', '2019-01-12 13:57:30'),
-(3, 'Rabab', '202cb962ac59075b964b07152d234b70', 'rabab.shaalan@gmail.com', '2019-01-12 13:57:58'),
-(4, 'Rabab', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'rabab.shaalan@gmail.com', '2019-01-12 13:59:41'),
-(5, 'Rabab', 'c20ad4d76fe97759aa27a0c99bff6710', 'rabab.shaalan@gmail.com', '2019-01-12 14:00:19'),
-(6, 'Rabab', '6512bd43d9caa6e02c990b0a82652dca', 'rabab.shaalan@gmail.com', '2019-01-12 14:02:20'),
-(7, 'Rabab', 'c20ad4d76fe97759aa27a0c99bff6710', 'rabab.shaalan@gmail.com', '2019-01-12 14:03:39'),
-(8, 'Rabab', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'rabab.shaalan@gmail.com', '2019-01-12 14:05:33'),
-(9, 'Rabab', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'rabab.shaalan@gmail.com', '2019-01-12 14:10:05'),
-(10, 'Aisha', 'a381bedb5d4478053eb04be35f8798dd', 'aisha@gmail.com', '2019-01-12 16:18:31'),
-(11, 'Rana', '90a1e95dba0d3d9c11e3f220cc4f7879', 'rana@gmail.com', '2019-01-24 13:45:26'),
-(12, 'rawan', '3ba482ecb56ba605fb5dee188f44cfdd', 'rawan@gmail.com', '2019-01-24 18:17:21'),
-(13, 'Jehan', '123    ', 'jehan@gmail.com', '2019-01-25 17:13:31'),
-(14, 'Raja', '123', 'raja@gmail.com', '2019-01-25 17:18:39'),
-(15, 'Raja', '123', 'raja@gmail.com', '2019-01-25 17:18:40'),
-(16, 'Roqia', '123', 'roqia@gmail.com', '2019-01-25 19:01:15'),
-(17, 'Enas', '123', 'enas@gmail.com', '2019-01-25 19:03:06'),
-(18, 'Enas', '123', 'enas@gmail.com', '2019-01-25 19:03:17'),
-(19, 'Nawal', '123', 'enas@gmail.com', '2019-01-25 19:04:14'),
-(21, 'Rania', '123', 'rania@gmail.com', '2019-01-25 19:11:43'),
-(22, 'Ali', 'ali', 'ali@gmail.com', '2019-01-25 20:13:35'),
-(23, 'Ammar', 'ammar', 'ammar@gmail.com', '2019-01-25 20:13:35'),
-(24, 'Ali', 'ali', 'ali@gmail.com', '2019-01-25 20:15:00'),
-(25, 'Ammar', 'ammar', 'ammar@gmail.com', '2019-01-25 20:15:00'),
-(26, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:36'),
-(27, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:37'),
-(28, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:37'),
-(29, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:38'),
-(30, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:38'),
-(31, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:39'),
-(32, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:41'),
-(33, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:30:42'),
-(34, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:32:10'),
-(35, 'Ahmed', '123', 'ahmed@gmail.com', '2019-01-25 20:32:11'),
-(36, 'Ahmed111', '123', 'ahmed1@gmail.com', '2019-01-25 20:33:00'),
-(38, 'Mohammed', '123', 'mohammed@gmail.com', '2019-01-25 20:40:02'),
-(39, 'Manar', '12352', 'manar@gmail.com', '2019-01-25 20:40:02'),
-(40, 'Ibrahim', '144423', 'ibrahim@gmail.com', '2019-01-25 20:40:02');
+INSERT INTO `user` (`u_id`, `u_username`, `u_password`, `u_email`, `u_privilage`, `u_registered_date`) VALUES
+(2, 'Rabab', '202cb962ac59075b964b07152d234b70', 'rabab.shaalan@gmail.com', NULL, '2019-01-12 13:57:30'),
+(3, 'Rabab', '202cb962ac59075b964b07152d234b70', 'rabab.shaalan@gmail.com', NULL, '2019-01-12 13:57:58'),
+(4, 'Rabab', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'rabab.shaalan@gmail.com', NULL, '2019-01-12 13:59:41'),
+(5, 'Rabab', 'c20ad4d76fe97759aa27a0c99bff6710', 'rabab.shaalan@gmail.com', NULL, '2019-01-12 14:00:19'),
+(6, 'Rabab', '6512bd43d9caa6e02c990b0a82652dca', 'rabab.shaalan@gmail.com', NULL, '2019-01-12 14:02:20'),
+(7, 'Rabab', 'c20ad4d76fe97759aa27a0c99bff6710', 'rabab.shaalan@gmail.com', NULL, '2019-01-12 14:03:39'),
+(8, 'Rabab', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'rabab.shaalan@gmail.com', NULL, '2019-01-12 14:05:33'),
+(9, 'Rabab', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'rabab.shaalan@gmail.com', NULL, '2019-01-12 14:10:05'),
+(10, 'Aisha', 'a381bedb5d4478053eb04be35f8798dd', 'aisha@gmail.com', 1, '2019-01-12 16:18:31'),
+(11, 'Rana', '90a1e95dba0d3d9c11e3f220cc4f7879', 'rana@gmail.com', NULL, '2019-01-24 13:45:26'),
+(12, 'rawan', '3ba482ecb56ba605fb5dee188f44cfdd', 'rawan@gmail.com', NULL, '2019-01-24 18:17:21'),
+(13, 'Jehan', '123    ', 'jehan@gmail.com', NULL, '2019-01-25 17:13:31'),
+(14, 'Raja', '123', 'raja@gmail.com', NULL, '2019-01-25 17:18:39'),
+(15, 'Raja', '123', 'raja@gmail.com', NULL, '2019-01-25 17:18:40'),
+(16, 'Roqia', '123', 'roqia@gmail.com', NULL, '2019-01-25 19:01:15'),
+(17, 'Enas', '123', 'enas@gmail.com', NULL, '2019-01-25 19:03:06'),
+(18, 'Enas', '123', 'enas@gmail.com', NULL, '2019-01-25 19:03:17'),
+(19, 'Nawal', '123', 'enas@gmail.com', NULL, '2019-01-25 19:04:14'),
+(21, 'Rania', '123', 'rania@gmail.com', NULL, '2019-01-25 19:11:43'),
+(22, 'Ali', 'ali', 'ali@gmail.com', NULL, '2019-01-25 20:13:35'),
+(23, 'Ammar', 'ammar', 'ammar@gmail.com', NULL, '2019-01-25 20:13:35'),
+(24, 'Ali', 'ali', 'ali@gmail.com', NULL, '2019-01-25 20:15:00'),
+(25, 'Ammar', 'ammar', 'ammar@gmail.com', NULL, '2019-01-25 20:15:00'),
+(26, 'Ahmed', '123', 'ahmed@gmail.com', NULL, '2019-01-25 20:30:36'),
+(27, 'Ahmed', '123', 'ahmed@gmail.com', NULL, '2019-01-25 20:30:37'),
+(28, 'Ahmed', '123', 'ahmed@gmail.com', NULL, '2019-01-25 20:30:37'),
+(29, 'Ahmed', '123', 'ahmed@gmail.com', NULL, '2019-01-25 20:30:38'),
+(30, 'Ahmed', '123', 'ahmed@gmail.com', NULL, '2019-01-25 20:30:38'),
+(31, 'Ahmed', '123', 'ahmed@gmail.com', NULL, '2019-01-25 20:30:39'),
+(32, 'Ahmed', '123', 'ahmed@gmail.com', NULL, '2019-01-25 20:30:41'),
+(33, 'Ahmed', '123', 'ahmed@gmail.com', NULL, '2019-01-25 20:30:42'),
+(34, 'Ahmed', '123', 'ahmed@gmail.com', NULL, '2019-01-25 20:32:10'),
+(35, 'Ahmed', '123', 'ahmed@gmail.com', NULL, '2019-01-25 20:32:11'),
+(36, 'Ahmed111', '123', 'ahmed1@gmail.com', NULL, '2019-01-25 20:33:00'),
+(38, 'Mohammed', '123', 'mohammed@gmail.com', NULL, '2019-01-25 20:40:02'),
+(39, 'Manar', '12352', 'manar@gmail.com', NULL, '2019-01-25 20:40:02'),
+(40, 'Ibrahim', '144423', 'ibrahim@gmail.com', NULL, '2019-01-25 20:40:02');
 
 -- --------------------------------------------------------
 
