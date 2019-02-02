@@ -9,7 +9,6 @@ $route['login']='user_c/login';
 //A URL with "booking" in the first segment will be remapped to the "patient_c" controller and book_appointment method.
 $route['booking'] = 'patient_c/book_appointment';
 
-<<<<<<< HEAD
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -70,9 +69,6 @@ $route['services']='services_c';
 $route['default_controller'] = 'home_c/show_page';
 $route['(:any)']='home_c/show_page/$1';//URI specified
 
-=======
-$route['default_controller'] = 'home_c';
->>>>>>> a524b0b4914f0237a19039780383b3c85dce7329
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
