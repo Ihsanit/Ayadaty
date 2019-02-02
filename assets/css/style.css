@@ -1,0 +1,39 @@
+/**-------------------------navbar style-----------------------*/
+body
+{
+	font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif;
+}
+.navbar
+{
+	background-color: #13bfb1!important;
+	 border-bottom:#545454 2px solid;
+	opacity: 0.9;
+}
+nav ul li a:link
+{
+	color: #fff!important;
+}
+nav ul li a:hover
+{
+	color: #545454!important;
+}
+.nav-item-link a:link
+{
+	color: #545454!important;
+}
+.nav-item-link a:hover
+{
+	color: #13bfb1!important;
+	background-color: #fff;
+}
+.dropdown-menu 
+{
+    top: 112%;
+}
+/**-------------------------jumbotron style-----------------------*/
+.container-fluid
+{
+	padding-right: 0px;padding-left: 0px;
+    margin-top: 58px;
+}
+
