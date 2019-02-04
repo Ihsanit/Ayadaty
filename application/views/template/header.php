@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 	<meta charset='utf-8'>
 	<meta name='viewport' content="width=device-width, initial-scale=1">
 	<title>Ayadaty</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap/css/bootstrap_rtl.css">
 	<!-- Fontawesome Style -->
 	<link rel="stylesheet" href="<?php  echo base_url();?>assets/css/fontawesome/css/all.min.css">
 	<!-- My Style -->
