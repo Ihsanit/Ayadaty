@@ -1,33 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<section class="search-banner bg-danger text-white py-5" id="search-banner" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),url(<?php echo base_url();?>assets/images/2.jpg); background-repeat: no-repeat;background-size:cover;">
-    <div class="container py-5 my-5">
-        <div class="row text-center pb-4">
-            <div class="col-md-12">
-                <h2>Regist & Find your Doctor, Hospital in Yemen</h2>
-            </div>
-        </div>
-         <div class="container">
-        <br/>
-            <div class="row justify-content-center">
-                            <div class="col-12 col-md-10 col-lg-8">
-                                <form class="card card-sm">
-                                    <div class="card-body row no-gutters align-items-center"> 
-                                        <div class="col">
-                                            <input style="border:none;" class="form-control form-control-borderless" type="search" placeholder="Search by Hospital, Clinic, Doctor, Speciality, or Keywords">
-                                        </div>
-                                        <div class="col-auto">
-                                            <button class="btn" type="submit" style="color:#545454;">Search<i class="fa fa-search"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-            </div>
-         </div>   
-    
-    </div>
-</section>
+<?php 
+$slider=APPPATH.'views/slider.php';
+include($slider);?>
+
 <!-- services -->
 <!-- Team -->
 <section id="team" class="pb-5">

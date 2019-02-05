@@ -21,19 +21,13 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a href="<?php echo base_url();?>" class="nav-link">Home</a>						
-					</li>
-					<li class="nav-item">
-						<a href="<?php echo base_url();?>" class="nav-link">About</a>						
-					</li>					
+				<ul class="navbar-nav ml-auto">										
 					<li class="nav-item dropdown">
-					    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Our Services</a>
+					    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Specialities</a>
 					    <div class="dropdown-menu nav-item-link">
-					      <a class="dropdown-item" href="#">Service 1</a>
-					      <a class="dropdown-item" href="#">Service 1</a>
-					      <a class="dropdown-item" href="#">Service 1</a>					      					      
+					      <a class="dropdown-item" href="#">Speciality 1</a>
+					      <a class="dropdown-item" href="#">Speciality 1</a>
+					      <a class="dropdown-item" href="#">Speciality 1</a>					      					      
 					    </div>
 					</li>
 					<li class="nav-item dropdown">
@@ -41,7 +35,6 @@
 					    <div class="dropdown-menu nav-item-link">
 					      <a class="dropdown-item" href="#">Clinics</a>
 					      <a class="dropdown-item" href="#">Hospitals</a>
-					      <a class="dropdown-item" href="#">Specialities</a>
 					      <a class="dropdown-item" href="#">Doctors</a>					      					      
 					    </div>
 					</li>
@@ -53,8 +46,8 @@
 						<a href="<?php echo base_url();?>" class="nav-link">Register Doctor</a>						
 					</li>
 					<li class="nav-item">
-						<a href="<?php echo base_url();?>" class="nav-link">Contact</a>						
-					</li>
+						<a href="<?php echo base_url();?>" class="nav-link">About</a>						
+					</li>					
 				</ul>
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
