@@ -175,3 +175,6 @@ include($slider);?>
    
 </div>
 <!-- ------------------------------- -->
+<?php 
+$slider=APPPATH.'views/included_sections/counts.php';
+include($slider);?>

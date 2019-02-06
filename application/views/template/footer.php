@@ -96,5 +96,14 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<!-- Bootstrap JS -->
 		<script src="<?php echo base_url();?>assets/css/bootstrap/js/bootstrap.min.js"></script>
+		<!-- Counter JS -->
+		<script src="<?php echo base_url();?>assets/js/jquery.counterup.min.js"></script>
+		<script src="<?php echo base_url();?>assets/js/jquery.waypoints.min.js"></script>
+		<script>
+        jQuery('.statistic-counter').counterUp({
+                delay: 10,
+                time: 2000
+            }); 
+        </script>
 	</body>
 </html>
