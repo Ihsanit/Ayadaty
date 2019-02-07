@@ -7,10 +7,10 @@
   <div class="carousel-inner justify-content-center">
     <div class="carousel-item active justify-content-center">
 
-      <img class="d-block w-100" src="<?php echo base_url();?>assets/images/2.jpg?>/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+      <img class="d-block w-100" src="<?php echo base_url();?>assets/images/2.jpg?>/1000x500?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
       
-      <div class="carousel-caption d-none d-md-block">
-      <h5>Aydadaty offers Specialities, Doctors in One Place</h5>
+      <div class="carousel-caption  d-md-block"><!-- d-none -->
+      <h5>نسهل لك الوصول لافضل الاطباء في اليمن</h5>
       <div class="row justify-content-center">
                     <div class="col-md-12">
                         <div class="card">
@@ -20,25 +20,25 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-12">                       
                                             <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                <option>Select Spceiality..</option>
-                                                <option>Speciality 1</option>
-                                                <option>Speciality 2</option>
-                                                <option>Speciality 3</option>
+                                                <option>اختر التخصص..</option>
+                                                <option>اسنان</option>
+                                                <option>جلدية</option>
+                                                <option>اطفال</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">
                                             <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                <option>Select Governorate..</option>
-                                                <option>Sana'a</option>
-                                                <option>Aden</option>
-                                                <option>Taiz</option>
+                                                <option>اختر المحافظة..</option>
+                                                <option>صنعاء</option>
+                                                <option>عدن</option>
+                                                <option>تعز</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">                            
-                                            <input type="text" class="form-control search-slt" placeholder="Enter Doctor Name">
+                                            <input type="text" class="form-control search-slt" placeholder="اسم الطبيب">
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">
-                                            <button type="button" class="btn btn-primary wrn-btn btn-block" style="border:none;">Search <i class="fa fa-search" style="color:#fff;"></i></button>
+                                            <button type="button" class="btn btn-primary wrn-btn btn-block" style="border:none;">بحث <i class="fa fa-search" style="color:#fff;"></i></button>
                                         </div>
                                     </div>
                                 
@@ -50,9 +50,9 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url();?>assets/images/1.jpg?>/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
-      <div class="carousel-caption d-none d-md-block">
-      <h5>Aydadaty offers Specialities, Doctors in One Place</h5>
+      <img class="d-block w-100" src="<?php echo base_url();?>assets/images/1.jpg?>/1000x500?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+      <div class="carousel-caption d-md-block">
+      <h5>مختلف الاطباء في معظم التخصصات تجدهم في مكان واحد</h5>
         <div class="row justify-content-center">
                     <div class="col-md-12">
                         <div class="card">
@@ -62,25 +62,25 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-12">                       
                                             <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                <option>Select Spceiality..</option>
-                                                <option>Speciality 1</option>
-                                                <option>Speciality 2</option>
-                                                <option>Speciality 3</option>
+                                                <option>اختر التخصص..</option>
+                                                <option>اسنان</option>
+                                                <option>جلدية</option>
+                                                <option>اطفال</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">
                                             <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                <option>Select Governorate..</option>
-                                                <option>Sana'a</option>
-                                                <option>Aden</option>
-                                                <option>Taiz</option>
+                                                <option>اختر المحافظة..</option>
+                                                <option>صنعاء</option>
+                                                <option>عدن</option>
+                                                <option>تعز</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">                            
-                                            <input type="text" class="form-control search-slt" placeholder="Enter Doctor Name">
+                                            <input type="text" class="form-control search-slt" placeholder="اسم الطبيب">
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">
-                                            <button type="button" class="btn btn-primary wrn-btn btn-block" style="border:none;">Search <i class="fa fa-search" style="color:#fff;"></i></button>
+                                            <button type="button" class="btn btn-primary wrn-btn btn-block" style="border:none;">بحث <i class="fa fa-search" style="color:#fff;"></i></button>
                                         </div>
                                     </div>
                                 
@@ -92,9 +92,9 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url();?>assets/images/1.jpg?>/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+      <img class="d-block w-100" src="<?php echo base_url();?>assets/images/1.jpg?>/1000x500?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
       
-      <div class="carousel-caption d-none d-md-block">
+      <div class="carousel-caption d-md-block">
       <h5>Aydadaty offers Specialities, Doctors in One Place</h5>
         <div class="row justify-content-center">
                     <div class="col-md-12">
@@ -105,25 +105,25 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-12">                       
                                             <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                <option>Select Spceiality..</option>
-                                                <option>Speciality 1</option>
-                                                <option>Speciality 2</option>
-                                                <option>Speciality 3</option>
+                                                <option>اختر التخصص..</option>
+                                                <option>اسنان</option>
+                                                <option>جلدية</option>
+                                                <option>اطفال</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">
                                             <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                <option>Select Governorate..</option>
-                                                <option>Sana'a</option>
-                                                <option>Aden</option>
-                                                <option>Taiz</option>
+                                                <option>اختر المحافظة..</option>
+                                                <option>صنعاء</option>
+                                                <option>عدن</option>
+                                                <option>تعز</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">                            
-                                            <input type="text" class="form-control search-slt" placeholder="Enter Doctor Name">
+                                            <input type="text" class="form-control search-slt" placeholder="اسم الطبيب">
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">
-                                            <button type="button" class="btn btn-primary wrn-btn btn-block" style="border:none;">Search <i class="fa fa-search" style="color:#fff;"></i></button>
+                                            <button type="button" class="btn btn-primary wrn-btn btn-block" style="border:none;">بحث <i class="fa fa-search" style="color:#fff;"></i></button>
                                         </div>
                                     </div>
                                 

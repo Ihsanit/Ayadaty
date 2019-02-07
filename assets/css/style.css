@@ -1,7 +1,12 @@
 /**-------------------------navbar style-----------------------*/
 body
 {
-	font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif;
+	/*font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif;*/
+    font-weight: 400;
+    font-style: normal;
+    /*font-family: 'Tajawal', sans-serif;*/
+    font-family: 'Changa', sans-serif;
+
 }
 .navbar
 {
@@ -156,6 +161,13 @@ section .section-title {
 .backside .card .card-title {
     color: #13bfb1 !important;
 }
+
+.card-img-top {
+    width: 100%;
+    min-height: 160px;
+    height: auto;
+    max-height: 160px;
+    }
 /*----------------------best clinics-------------*/
 .clinic-icon
 {
@@ -181,15 +193,43 @@ section .section-title {
 	margin-bottom: 15px;
 }
 /*----------------------slider-------------*/
-.carousel-inner img {width: 100%; max-height:500px;}
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    min-height: 500px;
+}
+.carousel-inner img 
+{
+    width: 100%;
+    min-height: 500px;
+    max-height: 500px;
+}
 .carousel-caption {color:#000;top:20%; bottom: auto; text-align:left;}
 .carousel-caption h5 {
     color: #fff;
     margin-bottom: 100px;
     text-align: right;
 }
+@media screen or(max-width: 425px){
+.carousel-inner {    
+    min-height: 500px;
+}
+.carousel-caption {top:5%; }
+.carousel-inner img 
+{
+    width: 100%;
+    min-height: 700px;
+    max-height: 700px;
+}
+}
+.carousel-indicators
+{
+    bottom: 5px;
+}
 /************ Services **************/
 img {width:100%;}
+
 
 /*------------------counts----------------*/
 .counter {
@@ -293,7 +333,7 @@ footer p { font-size:13px; color:#545454; padding-bottom:0px; margin-bottom:8px;
 .foote_bottom_ul_amrc li { display:inline;}
 .foote_bottom_ul_amrc li a { color:#CCC; margin:0 12px;}
 
-.social_footer_ul { display:table; margin:15px auto 0 auto; list-style-type:none;  }
+.social_footer_ul { display:table; margin:10px auto 5px auto; list-style-type:none;  }
 .social_footer_ul li { padding-left:20px; padding-top:10px; float:left; }
 .social_footer_ul li a { color:#CCC; border:1px solid #CCC; padding:8px;border-radius:50%;}
 .social_footer_ul li i {  width:20px; height:20px; text-align:center;}

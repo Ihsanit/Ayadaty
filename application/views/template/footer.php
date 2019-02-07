@@ -6,62 +6,62 @@
 					<h5 class="headin5_amrc col_white_amrc pt2">Ayadaty</h5>
 					<!--headin5_amrc-->
 					<ul class="footer_ul_amrc">
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Ayadaty Team</a></li>
-						<li><a href="#">Laws & Conditions</a></li>			
-						<li><a href="#">Privacy</a></li>
-						<li><a href="#">Contact Us</a></li>
+						<li><a href="#">من نحن</a></li>
+						<li><a href="#">فريق عيادني</a></li>
+						<li><a href="#">القوانين والشروط</a></li>			
+						<li><a href="#">اتفاقية الخصوصية</a></li>
+						<li><a href="#">تواصل معنا</a></li>
 					</ul>			
 					<p><i class="fa fa-phone"></i>  +91-9999878398  </p>
-					<p><i class="fa fa fa-envelope"></i> info@example.com  </p>
+					<p><i class="fa fa fa-envelope"></i> ihsan@ihsanit.com  </p>
 
 				</div>
 
 
 			<div class=" col-sm-4 col-md  col-12 col">
-				<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+				<h5 class="headin5_amrc col_white_amrc pt2">روابط سريعة</h5>
 				<!--headin5_amrc-->
 				<ul class="footer_ul_amrc">
-					<li><a href="#">Register Hospital</a></li>
-					<li><a href="#">Register Hospital</a></li>
-					<li><a href="#">Register Hospital</a></li>			
-					<li><a href="#">Register Hospital</a></li>
-					<li><a href="#">Register Hospital</a></li>
-					<li><a href="#">Register Hospital</a></li>
-					<li><a href="#">Register Hospital</a></li>
+					<li><a href="#">التخصصات</a></li>
+					<li><a href="#">المستشفيات</a></li>
+					<li><a href="#">عيادات</a></li>			
+					<li><a href="#">اطباء</a></li>
+					<li><a href="#">تسجيل مستشفى</a></li>
+					<li><a href="#">تسجيل طبيب</a></li>
+					<li><a href="#">تسجيل دخول</a></li>
 				</ul>	
 				<!--footer_ul_amrc ends here-->
 			</div>
 
 
 			<div class=" col-sm-4 col-md  col-12 col">
-				<h5 class="headin5_amrc col_white_amrc pt2">Spcialities</h5>
+				<h5 class="headin5_amrc col_white_amrc pt2">التخصصات</h5>
 				<!--headin5_amrc-->
 				<ul class="footer_ul_amrc">
-					<li><a href="#">Speciality 1</a></li>
-					<li><a href="#">Speciality 1</a></li>
-					<li><a href="#">Speciality 1</a></li>			
-					<li><a href="#">Speciality 1</a></li>
-					<li><a href="#">Speciality 1</a></li>
-					<li><a href="#">Speciality 1</a></li>
-					<li><a href="#">Speciality 1</a></li>
+					<li><a href="#">اسنان</a></li>
+					<li><a href="#">جلدية</a></li>
+					<li><a href="#">اطفال</a></li>			
+					<li><a href="#">باطينة</a></li>
+					<li><a href="#">عيون</a></li>
+					<li><a href="#">عظام</a></li>
+					<li><a href="#">باطينة</a></li>
 				</ul>	
 				<!--footer_ul_amrc ends here-->
 			</div>
 
 
 			<div class=" col-sm-4 col-md  col-12 col">
-				<h5 class="headin5_amrc col_white_amrc pt2">Governates</h5>
+				<h5 class="headin5_amrc col_white_amrc pt2">المحافظات</h5>
 				<!--headin5_amrc ends here-->
 
 				<ul class="footer_ul_amrc">
-						<li><a href="#">Governate 1</a></li>
-						<li><a href="#">Governate 1</a></li>
-						<li><a href="#">Governate 1</a></li>			
-						<li><a href="#">Governate 1</a></li>
-						<li><a href="#">Governate 1</a></li>									
-						<li><a href="#">Governate 1</a></li>
-						<li><a href="#">Governate 1</a></li>
+						<li><a href="#">صنعاء</a></li>
+						<li><a href="#">عدن</a></li>
+						<li><a href="#">تعز</a></li>			
+						<li><a href="#">حضرموت</a></li>
+						<li><a href="#">ذمار</a></li>									
+						<li><a href="#">عمران</a></li>
+						<li><a href="#">اب</a></li>
 				</ul>	
 				<!--footer_ul2_amrc ends here-->
 			</div>
@@ -70,12 +70,7 @@
 
 
 			<div style="background-color:#545454; padding:10px 0px;">
-			<ul class="foote_bottom_ul_amrc">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Services</a></li>
-			<li><a href="#">Contact</a></li>
-			</ul>
+			
 			<!--foote_bottom_ul_amrc ends here-->
 			<p class="text-center" style="color:#CCC;">Copyright @2019 | Developed With by <a href="#" style="color:#13bfb1;">Ihsan IT</a></p>
 
