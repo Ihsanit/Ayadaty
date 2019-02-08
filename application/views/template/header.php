@@ -50,7 +50,7 @@
 						<a href="<?php echo base_url();?>" class="nav-link">تسجيل مستشفى</a>						
 					</li>
 					<li class="nav-item">
-						<a href="<?php echo base_url();?>" class="nav-link">تسجيل طبيب</a>						
+						<a href="<?php echo base_url('registerdoctor');?>" class="nav-link">تسجيل طبيب</a>						
 					</li>
 					<li class="nav-item">
 						<a href="<?php echo base_url();?>" class="nav-link">من نحن</a>						

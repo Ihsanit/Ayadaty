@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*--------------------------Customizing routing rules----------------------*/
 
+$route['registerdoctor']='doctor_c/register_doctor';
 $route['default_controller'] = 'home_c/index';
 $route['(:any)']='home_c/index/$1';
 

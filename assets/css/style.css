@@ -343,4 +343,57 @@ footer p { font-size:13px; color:#545454; padding-bottom:0px; margin-bottom:8px;
   height: 150vh;
 }*/
 
+/*-------------------end style of header, home, footer pages-----------------------------*/
+/*-----------------------style of Register Doctor-------------------------------*/
 
+nav > .nav.nav-tabs{
+
+  border: none;
+    color:#fff;
+    background:#545454;
+    border-radius:0;
+
+}
+nav > div a.nav-item.nav-link, 
+nav > div a.nav-item.nav-link.active 
+{
+    border-left: 1px #13bfb1 solid;
+    border-top: 1px #13bfb1 solid;
+    padding: 18px 25px;
+    color: #545454;
+    background: #fff;
+    border-radius: 0;
+}
+nav > div a.nav-item.nav-link.active:after
+ {
+  content: "";
+  position: relative;
+  bottom: -60px;
+  left: -10%;
+  border: 15px solid transparent;
+  border-top-color: #13bfb1 ;
+}
+.tab-content{
+  background: #fdfdfd;
+    line-height: 25px;
+    border: 1px solid #ddd;
+    border-top:5px solid #13BFB1;
+    border-bottom:5px solid #13BFB1;
+    padding:30px 25px;
+}
+
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus
+{
+  border: none;
+    background: #13bfb1;
+    color:#fff;
+    border-radius:0;
+    transition:background 0.20s linear;
+}
+input[type=text],input[type=number], input[type=password], select
+{
+    font-size: 1rem;
+    border:1px #13bfb1 solid;
+
+}
