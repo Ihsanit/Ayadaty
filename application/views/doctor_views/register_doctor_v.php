@@ -137,9 +137,6 @@
                         <div class="row">
                           <div class="col-sm-3"><!--left col-->
                             <div class="text-center">
-                                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                                <h6>Upload personal photo...</h6>
-                                <input type="file" class="text-center center-block file-upload">
                             </div></hr><br>
                               
                           </div><!--/col-3-->
@@ -147,90 +144,53 @@
                             <div class="tab-content">
                                     <form class="form" action="##" method="post" id="registrationForm">
                                       <div class="form-group col-xs-6"> 
-                                        <label for="last_name">الاسم ثلاثيا مع اللقب*</label>
-                                        <input type="text" class="form-control" name="d_name" placeholder="ادخل اسم الطبيب ثلاثيا مع اللقب" title="ادخل اسم الطبيب ثلاثيا مع اللقب" autofocus required>
-                                      </div>
-                                      <div class="form-group col-xs-6"> 
-                                        <label for="last_name">البريد الالكتروني*</label>
-                                        <input type="text" class="form-control" name="d_email" placeholder="you@email.com" title="ادخل عنوان البريد الاكتروني" autofocus required>
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-lg-6 col-md-12">
-                                          <label>رقم التلفون*</label>
-                                          <input type="number" class="form-control" name='d_phone' placeholder="رقم التلفون" title="ادخل رقم التلفون" autofocus required>
-                                        </div>
-                                        <div class="form-group col-lg-6 col-md-12">
-                                          <label>النوع*</label>
-                                            <select class="form-control" name='d_gender'autofocus required>
-                                              <option selected>اختر النوع..</option>
-                                              <option value='1'>ذكر</option>
-                                              <option value='0'>أُنثى</option>
-                                            </select>
-                                        </div>            
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-lg-6 col-md-12">
-                                          <label>تاريخ الميلاد</label>
-                                          <input type="date" class="form-control" name='d_birth_date' placeholder="تاريخ الميلاد" title="اختر تاريخ الميلاد" autofocus>
-                                        </div>
-                                        <div class="form-group col-lg-6 col-md-12">
-                                          <label>الجنسية*</label>
-                                            <select class="form-control" name='d_nationality' title="اختر الجنسية"autofocus required>
-                                              <option selected>اختر الجنسية..</option>
-                                              <option value='1'>اليمن</option>
-                                              <option value='0'>مصر</option>
-                                            </select>
-                                        </div>            
-                                      </div>                                   
-                                      <div class="form-row">
-                                        <div class="form-group col-lg-6 col-md-12">
-                                          <label>عنوان الدولة*</label>
-                                            <select class="form-control" name='d_address_country' title="اختر الدولة"autofocus required>
-                                              <option selected>اختر الدولة..</option>
-                                              <option value='1'>اليمن</option>
-                                              <option value='0'>مصر</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-lg-6 col-md-12">
-                                          <label>عنوان المدينة*</label>
-                                            <select class="form-control" name='d_address_city' title="اختر المدينة"autofocus required>
-                                              <option selected>اختر المدينة..</option>
-                                              <option value='1'>صنعاء</option>
-                                              <option value='0'>عدن</option>
-                                            </select>
-                                        </div>            
-                                      </div>
-                                      <div class="form-group col-xs-6"> 
-                                          <label>عنوان الشارع</label>
-                                          <input type="text" class="form-control" name='d_address_street' placeholder="ادخل الشارع" title="ادخل الشارع" autofocus>
-                                      </div>
-                                      <div class="form-group col-xs-6"> 
-                                          <label>عنوان صفحة الفيسبوك</label>
-                                          <input type="text" class="form-control" name='d_facebook' placeholder="ادخل رابط صفحة الفيسبوك" title="ادخل رابط صفحة الفيسبوك" autofocus>
-                                      </div>
-                                      <div class="form-group col-xs-6"> 
-                                          <label>عنوان صفحة تويتر</label>
-                                          <input type="text" class="form-control" name='d_twitter' placeholder="ادخل رابط صفحة تويتر" title="ادخل رابط صفحة تويتر" autofocus>
-                                      </div>
-                                      <div class="form-group col-xs-6">
-                                          <label>التخصص الطبي*</label>
-                                            <select class="form-control" name='d_spceiality' title="اختر التخصص الطبي"autofocus required>
-                                              <option selected>اختر التخصص الطبي..</option>
-                                              <option value='1'>اسنان</option>
-                                              <option value='0'>جلدية</option>
+                                        <label>المؤهل*</label>
+                                            <select class="form-control" name='d_qualification'autofocus required>
+                                              <option selected>اختر المؤهل..</option>
+                                              <option value='1'>PhD</option>
+                                              <option value='0'>ماجستير</option>
                                             </select>
                                       </div>
                                       <div class="form-group col-xs-6"> 
-                                          <label>كلمة المرور*</label>
-                                          <input type="password" class="form-control" name="d_password" placeholder="ادخل كلمة المرور" title="ادخل كلمة المرور">
+                                        <label>جهة الدراسة*</label>
+                                            <select class="form-control" name='d_university'autofocus required>
+                                              <option selected>اختر جهة الدراسة..</option>
+                                              <option value='1'>جامعة صنعاء</option>
+                                              <option value='0'>جامعة عدن</option>
+                                            </select>
                                       </div>
-                                      <div class="form-group col-xs-6">
-                                          <label>تأكيد كلمة المرور*</label>
-                                          <input type="password" class="form-control" name="d_password_c" placeholder="ادخل تأكيد كلمة المرور" title="ادخل تأكيد كلمة المرور">
+                                       <div class="form-group col-xs-6"> 
+                                        <label>التخصص*</label>
+                                            <select class="form-control" name='d_speciality'autofocus required>
+                                              <option selected>اختر التخصص..</option>
+                                              <option value='1'>طب عام</option>
+                                              <option value='0'>طب اطفال</option>
+                                            </select>
                                       </div>                                      
+                                      <div class="form-row">
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label>من*</label>
+                                          <input type="date" class="form-control" name='d_start_education' title="ادخل بداية الدراسة" autofocus required>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label>إلى*</label>
+                                          <input type="date" class="form-control" name='d_end_education' title="ادخل نهاية الدراسة" autofocus required>
+                                        </div>                                                    
+                                      </div>
+                                      <div class="form-row">
+                                        <div class="form-group col-lg-6 col-md-12"> 
+                                          <label>المعدل*</label>
+                                          <input type="number" class="form-control" name='d_average' title="ادخل المعدل الدراسي" autofocus required>
+                                        </div>                                      
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label>شهادة التخرج*</label>
+                                          <input type="file" class="form-control" name='d_certificate' title="ارفع شهادة الدراسة" autofocus required>
+                                        </div>                                                    
+                                      </div>                        
                                       <div class="form-group col-xs-12">
                                         <br>
                                         <button class="btn" type="submit" style="color:#fff;">حفظ</button>
+                                        <button class="btn" type="submit" style="color:#fff;">اضافة مؤهل اخر</button>
                                         <button class="btn" type="button" style="color:#fff;">التالي</button>
                                       </div>
                                   </form>                                
@@ -241,7 +201,60 @@
                       </div>
                     </div>
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                      Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                      <hr>
+                       <div class="container bootstrap snippet">
+                        <div class="row">
+                          <div class="col-sm-12"><h5>بيانات الخبرات</h5></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-3"><!--left col-->
+                            <div class="text-center">
+                            </div></hr><br>
+                              
+                          </div><!--/col-3-->
+                          <div class="col-sm-9">
+                            <div class="tab-content">
+                                    <form class="form" action="##" method="post" id="registrationForm">
+                                      <div class="form-group col-xs-6"> 
+                                        <label>المسمى الوظيفي*</label>
+                                        <input type="text" class="form-control" name="d_prev_job" placeholder="ادخل المسمى الوظيفي" title="ادخل المسمى الوظيفي" autofocus required>
+                                      </div>
+                                      <div class="form-group col-xs-6"> 
+                                        <label>جهة العمل*</label>
+                                        <input type="text" class="form-control" name="d_prev_company" placeholder="ادخل اسم جهة العمل" title="ادخل اسم جهة العمل" autofocus required>
+                                      </div>
+                                      <div class="form-row">
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label>من*</label>
+                                          <input type="date" class="form-control" name='d_start_education' title="ادخل بداية الدراسة" autofocus required>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label>إلى*</label>
+                                          <input type="date" class="form-control" name='d_end_education' title="ادخل نهاية الدراسة" autofocus required>
+                                        </div>                                                    
+                                      </div>
+                                      <div class="form-group col-xs-6"> 
+                                        <label>ملخص عن بعض مهام عملك السابق</label>
+                                        <textarea class="form-control" name="d_detail_job" placeholder="ادخل ابرز مهام عملك" title="ادخل ابز مهام عملك" autofocus  rows="3" cols="10"></textarea>
+                                      </div>
+                                      <div class="form-row">                       
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label>شهادة الخبرة ان وجد*</label>
+                                          <input type="file" class="form-control" name='d_experinece_file' title="ارفع شهادة الدراسة" autofocus required>
+                                        </div>                                                    
+                                      </div>
+                                      <div class="form-group col-xs-12">
+                                        <br>
+                                        <button class="btn" type="submit" style="color:#fff;">حفظ</button>
+                                        <button class="btn" type="submit" style="color:#fff;">اضافة خبرة</button>
+                                        <button class="btn" type="button" style="color:#fff;">التالي</button>
+                                      </div>
+                                  </form>                                
+                                <hr>
+                            </div><!-- /tab-content -->
+                          </div><!--/col-9-->
+                        </div><!--/row-->
+                      </div>
                     </div>
                     <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
                       Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
