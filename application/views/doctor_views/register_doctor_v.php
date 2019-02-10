@@ -118,7 +118,7 @@
                                       <div class="form-group col-xs-12">
                                         <br>
                                         <button class="btn" type="submit" style="color:#fff;">حفظ</button>
-                                        <button class="btn" type="button" style="color:#fff;">التالي</button>
+                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">التالي</a>
                                       </div>
                                   </form>                                
                                 <hr>
@@ -132,7 +132,7 @@
                        <hr>
                        <div class="container bootstrap snippet">
                         <div class="row">
-                          <div class="col-sm-12"><h5>بيانات الطبيب الشخصية</h5></div>
+                          <div class="col-sm-12"><h5>بيانات الطبيب التعليمية</h5></div>
                         </div>
                         <div class="row">
                           <div class="col-sm-3"><!--left col-->
@@ -191,7 +191,7 @@
                                         <br>
                                         <button class="btn" type="submit" style="color:#fff;">حفظ</button>
                                         <button class="btn" type="submit" style="color:#fff;">اضافة مؤهل اخر</button>
-                                        <button class="btn" type="button" style="color:#fff;">التالي</button>
+                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">التالي</a>
                                       </div>
                                   </form>                                
                                 <hr>
@@ -247,7 +247,9 @@
                                         <br>
                                         <button class="btn" type="submit" style="color:#fff;">حفظ</button>
                                         <button class="btn" type="submit" style="color:#fff;">اضافة خبرة</button>
-                                        <button class="btn" type="button" style="color:#fff;">التالي</button>
+                                        <a class="btn nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">التالي</a>
+
+
                                       </div>
                                   </form>                                
                                 <hr>
@@ -257,7 +259,101 @@
                       </div>
                     </div>
                     <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                      Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                      <hr>
+                       <div class="container bootstrap snippet">
+                        <div class="row">
+                          <div class="col-sm-12"><h5>بيانات العمل الحالي</h5></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-3"><!--left col-->
+                            <div class="text-center">
+                            </div></hr><br>
+                              
+                          </div><!--/col-3-->
+                          <div class="col-sm-9">
+                            <div class="tab-content">
+                                    <form class="form" action="##" method="post" id="registrationForm">
+                                      <div class="form-group col-xs-6"> 
+                                        <label>العمل الحالي*</label>
+                                            <select class="form-control" name='d_current_job'autofocus required>
+                                              <option selected>اختر العمل الحالي..</option>
+                                              <option value='1'>عام</option>
+                                              <option value='0'>باطنية</option>
+                                            </select>
+                                      </div>
+                                      <div class="form-group col-xs-6"> 
+                                        <label>جهة العمل*</label>
+                                        <input type="text" class="form-control" name="d_current_hospital" placeholder="ادخل جهة العمل الحالي" title="ادخل جهة العمل الحالي" autofocus required>
+                                      </div>
+                                      <div class="form-row">
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label>عنوان العمل*</label>
+                                            <select class="form-control" name='d_address_country_job' title="اختر الدولة"autofocus required>
+                                              <option selected>اختر الدولة..</option>
+                                              <option value='1'>اليمن</option>
+                                              <option value='0'>مصر</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label style="visibility: hidden;">عنوان العمل*</label>
+                                            <select class="form-control" name='d_address_city_job' title="اختر المدينة"autofocus required>
+                                              <option selected>اختر المدينة..</option>
+                                              <option value='1'>صنعاء</option>
+                                              <option value='0'>عدن</option>
+                                            </select>
+                                        </div>            
+                                      </div>
+                                      <div class="form-row">
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label>ايام العمل*</label>
+                                            <select class="form-control" name='d_start_day_job' title="اختر بداية الدوام"autofocus required>
+                                              <option selected>اختر بداية الدوام..</option>
+                                              <option value='1'>السبت</option>
+                                              <option value='0'>الاحد</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label style="visibility: hidden;">نهاية فترة الدوام</label>
+                                            <select class="form-control" name='d_end_day_job' title="اختر بداية الدوام"autofocus required>
+                                              <option selected>اختر نهاية الدوام..</option>
+                                              <option value='1'>السبت</option>
+                                              <option value='0'>الاحد</option>
+                                            </select>
+                                        </div>            
+                                      </div>
+                                      <div class="form-row">
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label>اوقات العمل*</label>
+                                            <select class="form-control" name='d_start_time_job' title="اختر بداية فترة الدوام"autofocus required>
+                                              <option selected>اختر بداية فترة الدوام..</option>
+                                              <option value='1'>8:00AM</option>
+                                              <option value='0'>9:00AM</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-12">
+                                          <label style="visibility: hidden;">نهاية فترة الدوام</label>
+                                            <select class="form-control" name='d_end_time_job' title="اختر نهاية فترة الدوام"autofocus required>
+                                              <option selected>اختر نهاية فترة الدوام..</option>
+                                              <option value='1'>8:00AM</option>
+                                              <option value='0'>9:00AM</option>
+                                            </select>
+                                        </div>           
+                                      </div>
+                                      <div class="form-group col-xs-6"> 
+                                        <label>ملخص عن عملك الحالي</label>
+                                        <textarea class="form-control" name="d_detail_current_job" placeholder="ادخل ابرز مهام عملك" title="ادخل ابز مهام عملك" autofocus  rows="3" cols="10"></textarea>
+                                      </div>                     
+                                      <div class="form-group col-xs-12">
+                                        <br>
+                                        <button class="btn" type="submit" style="color:#fff;">حفظ</button>
+                                        <button class="btn" type="submit" style="color:#fff;">اضافة عمل اخر</button>
+                                      </div>
+                                  </form>                                
+                                <hr>
+                            </div><!-- /tab-content -->
+                          </div><!--/col-9-->
+                        </div><!--/row-->
+                      </div>
                     </div>
                   </div>
                 
