@@ -42,7 +42,7 @@
 					    <div class="dropdown-menu nav-item-link">
 					      <a class="dropdown-item" href="#">عيادات</a>
 					      <a class="dropdown-item" href="#">مستشفيات</a>
-					      <a class="dropdown-item" href="#">اطباء</a>					      					      
+					      <a class="dropdown-item" href="<?php echo base_url('showdoctors');?>">اطباء</a>					      					      
 					    </div>
 					</li>
 					

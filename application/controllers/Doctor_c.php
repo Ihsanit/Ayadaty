@@ -22,5 +22,28 @@ class Doctor_c extends CI_Controller
 		$this->load->view('template/footer');
 
 	}//end function index($page='home')
+	public function show_doctors($page='doctors_v')
+	{
+		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
+			show_404();
+		endif;
+		
+		$this->load->view('template/header');
+		$this->load->view('doctor_views/'.$page);
+		$this->load->view('template/footer');
+
+	}//end function index($page='home')
+
+	public function show_doctor_detail($page='doctor_detail')
+	{
+		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
+			show_404();
+		endif;
+		
+		$this->load->view('template/header');
+		$this->load->view('doctor_views/'.$page);
+		$this->load->view('template/footer');
+
+	}//end function index($page='home')
 }
 ?>
