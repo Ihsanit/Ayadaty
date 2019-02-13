@@ -1,7 +1,7 @@
 <div class="col-lg-3 col-md-6">
          <div class="card" style="border-radius:unset;">
             <div class="card-img-top text-center" style="background-color: rgba(204, 204, 204, 0.3);">
-                <a href="">
+                <a href="<?php echo base_url('doctordetail');?>">
                     <img class="doctor-img" src="<?php echo base_url();?>assets/images/doctors/personal/doctor.png?>" alt="Card image cap" >
                 </a>
             </div>

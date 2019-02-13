@@ -431,3 +431,57 @@ input[type=text],input[type=number], input[type=password], select
     border-color: #fff;
 }
 /*----------------------doctor detail----------------------*/
+.evalution-dtl
+{
+    margin-top:1rem;
+    /*border-top: 1px solid rgba(0,0,0,0.125);*/
+    padding-top:1rem;
+
+}
+.evalution-do
+{
+    margin-bottom:1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+}
+.doctor-i-connection
+{
+    background-color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    padding: 5px;
+}
+.doctor-connection
+{
+    color:#fff!important; 
+   /* margin-right:5px;*/
+    font-size: large;
+}
+/*-------------------------------*/
+
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:3px solid #13bfb1;
+    color: #545454;
+}
+
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}

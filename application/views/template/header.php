@@ -10,7 +10,7 @@
 	<title>Ayadaty</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap/css/bootstrap_rtl.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap/css/bootstrap-rtl.css">
 	<!-- Fontawesome Style -->
 	<link rel="stylesheet" href="<?php  echo base_url();?>assets/css/fontawesome/css/all.min.css">
 	<!-- My Style -->
