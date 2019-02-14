@@ -18,7 +18,7 @@
                     </a>
                 </div>
                 <div class="clinic-icon" >
-                    <a href="#" >
+                    <a href="<?php echo base_url('hospitaldetail');?>" >
                          <i class="fas fa-hospital fa-md"></i> 
                          <span class="text-muted" style="color:#13bfb1 !important;">مستشفى الوسام</span>
                     </a>

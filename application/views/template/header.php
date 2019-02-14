@@ -41,7 +41,7 @@
 					    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">خدمات طبية</a>
 					    <div class="dropdown-menu nav-item-link">
 					      <a class="dropdown-item" href="#">عيادات</a>
-					      <a class="dropdown-item" href="#">مستشفيات</a>
+					      <a class="dropdown-item" href="<?php echo base_url('showhospitals');?>">مستشفيات</a>
 					      <a class="dropdown-item" href="<?php echo base_url('showdoctors');?>">اطباء</a>					      					      
 					    </div>
 					</li>

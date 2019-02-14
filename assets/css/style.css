@@ -485,3 +485,19 @@ input[type=text],input[type=number], input[type=password], select
     font-weight: 600;
     color: #0062cc;
 }
+/*--------------------hospitals---------------*/
+.hospital-row
+{
+    background-color: #fff;
+    text-shadow: 0 0 black;
+    padding-top: 1rem;
+    margin-bottom: 2rem;
+}
+@media screen or(max-width: 768px){
+.hospital-row {  
+    padding-bottom: 1rem;
+}
+.hospital-row > a:hover
+{
+    text-decoration: none;
+}

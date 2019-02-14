@@ -23,7 +23,7 @@
 				<!--headin5_amrc-->
 				<ul class="footer_ul_amrc">
 					<li><a href="#">التخصصات</a></li>
-					<li><a href="#">المستشفيات</a></li>
+					<li><a href="<?php echo base_url('showhospitals');?>"المستشفيات</a></li>
 					<li><a href="#">عيادات</a></li>			
 					<li><a href="<?php echo base_url('showdoctors');?>">اطباء</a></li>
 					<li><a href="#">تسجيل مستشفى</a></li>
