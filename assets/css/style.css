@@ -206,15 +206,21 @@ section .section-title {
     min-height: 500px;
     max-height: 500px;
 }
+
 .carousel-caption {color:#000;top:20%; bottom: auto; text-align:left;}
 .carousel-caption h5 {
     color: #fff;
     margin-bottom: 100px;
     text-align: right;
 }
+.search-field
+{
+    margin-bottom: 0rem;
+}
 @media screen or(max-width: 425px){
 .carousel-inner {    
     min-height: 500px;
+
 }
 .carousel-caption {top:5%; }
 .carousel-inner img 
@@ -222,6 +228,10 @@ section .section-title {
     width: 100%;
     min-height: 700px;
     max-height: 700px;
+}
+.search-field
+{
+    margin-bottom: 0.5rem;
 }
 }
 .carousel-indicators
@@ -392,7 +402,7 @@ nav > div a.nav-item.nav-link:focus
     border-radius:0;
     transition:background 0.20s linear;
 }
-input[type=text],input[type=number], input[type=password], select
+input[type=text],input[type=number], input[type=password], input[type=email], select
 {
     font-size: 1rem;
     border:1px #13bfb1 solid;

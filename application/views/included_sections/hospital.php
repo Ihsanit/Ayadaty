@@ -2,13 +2,13 @@
 	<div class="col-md-3">
 		<div style="margin-bottom:1rem;">
 			<div class="tab-pane active" id="pic-1">
-				<a href="#">
+				<a href="<?php echo base_url('hospitaldetail');?>">
 					<img class="card-img-top" src="<?php echo base_url();?>assets/images/h1.jpg?>"/></div>
 				</a>
 		</div>		
 	</div>
 	<div class="col-md-9">
-		<a href="#" style="color:#000;"><h4 class="product-title">مستشفى الوسام الطبي</h4></a>
+		<a href="<?php echo base_url('hospitaldetail');?>" style="color:#000;"><h4 class="product-title">مستشفى الوسام الطبي</h4></a>
 		<div class="clinic-icon">
 	        <i class="fas fa-map-marker-alt fa-md"></i> 
 	        <span class="text-muted">اليمن- صنعاء - حدة - شارع 555</span>

@@ -34,12 +34,12 @@
                             <div class="tab-content">
                                     <form class="form" action="##" method="post" id="registrationForm">
                                       <div class="form-group col-xs-6"> 
-                                        <label for="last_name">الاسم ثلاثيا مع اللقب*</label>
+                                        <label>الاسم ثلاثيا مع اللقب*</label>
                                         <input type="text" class="form-control" name="d_name" placeholder="ادخل اسم الطبيب ثلاثيا مع اللقب" title="ادخل اسم الطبيب ثلاثيا مع اللقب" autofocus required>
                                       </div>
                                       <div class="form-group col-xs-6"> 
-                                        <label for="last_name">البريد الالكتروني*</label>
-                                        <input type="text" class="form-control" name="d_email" placeholder="you@email.com" title="ادخل عنوان البريد الاكتروني" autofocus required>
+                                        <label>البريد الالكتروني*</label>
+                                        <input type="email" class="form-control" name="d_email" placeholder="you@email.com" title="ادخل عنوان البريد الاكتروني" autofocus required>
                                       </div>
                                       <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12">

@@ -56,7 +56,7 @@
 
       <!-- -------------------------------------------------------- -->
 <?php $hospital=APPPATH.'views/included_sections/hospital.php'; ?>
-<div class="container-fluid" style="background-color:rgba(204, 204, 204, 0.2);"> 
+<div class="container-fluid" style="background-color:#eee;"> 
 	<div class="container" style="padding-top:1rem;">    
 	    <?php           
 	            include($hospital);
