@@ -51,6 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 /*--------------------------Customizing routing rules----------------------*/
+$route['login']='user_c/login';
+$route['signup']='user_c/signup';
 $route['registerhospital']='hospital_c/register_hospital';
 $route['hospitaldetail']='hospital_c/show_hospital_detail';
 $route['showhospitals']='hospital_c/show_hospitals';

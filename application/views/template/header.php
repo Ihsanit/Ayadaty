@@ -58,13 +58,13 @@
 				</ul>
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a href="<?php echo base_url();?>" class="nav-link">انشاء حساب</a>						
+						<a href="<?php echo base_url('signup');?>" class="nav-link">انشاء حساب</a>						
 					</li>
 					<li class="nav-item">
 						<span class="nav-link">|</span>					
 					</li>
 					<li class="nav-item">
-						<a href="<?php echo base_url();?>" class="nav-link">تسجيل دخول</a>						
+						<a href="<?php echo base_url('login');?>" class="nav-link">تسجيل دخول</a>						
 					</li>
 				</ul>
 			</div>
