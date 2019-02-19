@@ -1,9 +1,9 @@
-<div class="container">
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-</div>
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
+<?php 
+$bar=APPPATH.'views/included_sections/navigation_bar.php';
+include($bar);?>
 <div class="container d-md-block" style="margin-bottom: 2rem;"><!-- d-none -->
       <h6>ابحث عن دكتور</h6>
       <div class="row justify-content-center">

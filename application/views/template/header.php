@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="<?php  echo base_url();?>assets/css/fontawesome/css/all.min.css">
 	<!-- My Style -->
 	<link rel="stylesheet" type="text/css" href="<?php  echo base_url();?>assets/css/style.css">
+	
 	<!-- fonts -->
 	<!-- <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet"> -->
 	<link href="https://fonts.googleapis.com/css?family=Changa" rel="stylesheet">

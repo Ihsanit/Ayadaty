@@ -1,7 +1,9 @@
-<div class="container">
-<br/>
-<br/><br/>
-</div>
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
+<?php 
+$bar=APPPATH.'views/included_sections/navigation_bar.php';
+include($bar);?>
 <div class="container">
   <div class="row" style="display:block;">
     <div class="col-xs-12">

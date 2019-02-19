@@ -59,6 +59,7 @@ $route['showhospitals']='hospital_c/show_hospitals';
 $route['showdoctors']='doctor_c/show_doctors';
 $route['doctordetail']='doctor_c/show_doctor_detail';
 $route['registerdoctor']='doctor_c/register_doctor';
+$route['dashboard']='admin_user_c/index';
 $route['default_controller'] = 'home_c/index';
 $route['(:any)']='home_c/index/$1';
 

@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+<?php 
+$bar=APPPATH.'views/included_sections/navigation_bar.php';
+include($bar);?>
 <section class="search-banner text-white py-5" id="search-banner" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),url(<?php echo base_url();?>assets/images/h1.jpg); background-repeat: no-repeat;background-size:cover;">
     <div class="container py-5 my-5">
         <div class="row text-center pb-4">
