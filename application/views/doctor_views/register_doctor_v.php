@@ -73,7 +73,7 @@ include($bar);?>
                                       </div>                                   
                                       <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12">
-                                          <label>عنوان الدولة*</label>
+                                          <label>العنوان*</label>
                                             <select class="form-control" name='d_address_country' title="اختر الدولة"autofocus required>
                                               <option selected>اختر الدولة..</option>
                                               <option value='1'>اليمن</option>
@@ -81,7 +81,7 @@ include($bar);?>
                                             </select>
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
-                                          <label>عنوان المدينة*</label>
+                                          <label style="visibility: hidden;">عنوان المدينة*</label>
                                             <select class="form-control" name='d_address_city' title="اختر المدينة"autofocus required>
                                               <option selected>اختر المدينة..</option>
                                               <option value='1'>صنعاء</option>
@@ -90,8 +90,7 @@ include($bar);?>
                                         </div>            
                                       </div>
                                       <div class="form-group col-xs-6"> 
-                                          <label>عنوان الشارع</label>
-                                          <input type="text" class="form-control" name='d_address_street' placeholder="ادخل الشارع" title="ادخل الشارع" autofocus>
+                                        <input type="text" class="form-control" name='d_address_street' placeholder="ادخل الشارع" title="ادخل الشارع" autofocus>
                                       </div>
                                       <div class="form-group col-xs-6"> 
                                           <label>عنوان صفحة الفيسبوك</label>
