@@ -1,5 +1,5 @@
-<select name="nationality" class="form-control" title="الجنسية" title="اختر الدولة"autofocus required>
-	<option value="" selected disabled>اختر الدولة..</option>
+<select name="nationality" class="form-control" title="الجنسية" title="اختر الجنسية"autofocus required>
+	<option value="" selected disabled>اختر الجنسية..</option>
                                 <option value="533">ARUBA - أروبا                 </option>
                                 <option value="230">ETHIOPIA - اثيوبيا               </option>
                                 <option value="31">AZERBAIJAN - اذريبيجان             </option>

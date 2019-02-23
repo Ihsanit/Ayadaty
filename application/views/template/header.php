@@ -38,17 +38,8 @@
 					      <a class="dropdown-item" href="#">اطفال</a>					      					      
 					    </div>
 					</li>
-					<li class="nav-item dropdown">
-					    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">خدمات طبية</a>
-					    <div class="dropdown-menu nav-item-link">
-					      <a class="dropdown-item" href="#">عيادات</a>
-					      <a class="dropdown-item" href="<?php echo base_url('showhospitals');?>">مستشفيات</a>
-					      <a class="dropdown-item" href="<?php echo base_url('showdoctors');?>">اطباء</a>					      					      
-					    </div>
-					</li>
-					
 					<li class="nav-item">
-						<a href="<?php echo base_url('registerhospital');?>" class="nav-link">تسجيل مستشفى</a>						
+						<a href="<?php echo base_url('showdoctors');?>" class="nav-link">اطباء</a>				
 					</li>
 					<li class="nav-item">
 						<a href="<?php echo base_url('registerdoctor');?>" class="nav-link">تسجيل طبيب</a>						

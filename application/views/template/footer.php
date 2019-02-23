@@ -22,11 +22,8 @@
 				<h5 class="headin5_amrc col_white_amrc pt2">روابط سريعة</h5>
 				<!--headin5_amrc-->
 				<ul class="footer_ul_amrc">
-					<li><a href="#">التخصصات</a></li>
-					<li><a href="<?php echo base_url('showhospitals');?>">مستشفيات</a></li>
-					<li><a href="#">عيادات</a></li>			
+					<li><a href="#">التخصصات</a></li>		
 					<li><a href="<?php echo base_url('showdoctors');?>">اطباء</a></li>
-					<li><a href="<?php echo base_url('registerhospital');?>">تسجيل مستشفى</a></li>
 					<li><a href="<?php echo base_url('registerdoctor');?>">تسجيل طبيب</a></li>
 					<li><a href="#">تسجيل دخول</a></li>
 				</ul>	

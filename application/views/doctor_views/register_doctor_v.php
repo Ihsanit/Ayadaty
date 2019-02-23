@@ -5,6 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $bar=APPPATH.'views/included_sections/navigation_bar.php';
 include($bar);?>
  <div class="container">
+ <?php
+    if($this->session->flashdata('doctor_registered')):?>
+        <p class="alert alert-success"><?php echo $this->session->flashdata('doctor_registered');?></p>
+      <?php endif;?>
               <div class="row" style="display:block;">
                 <div class="col-xs-12 ">
                   <nav>
@@ -23,18 +27,20 @@ include($bar);?>
                         <div class="row">
                           <div class="col-sm-12"><h5>بيانات الطبيب الشخصية</h5></div>
                         </div>
-                        <div class="row">
+                        <?php echo validation_errors();?>
+                        <div class="row">                         
                           <div class="col-sm-3"><!--left col-->
                             <div class="text-center">
                                 <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
                                 <h6>Upload personal photo...</h6>
-                                <input type="file" class="text-center center-block file-upload">
+                                <form class="form" action="<?php echo base_url('registerdoctor');?>"  method="post" enctype="multipart/form-data">
+                                  <input type="file" name="d_img" class="text-center center-block file-upload">
                             </div></hr><br>
                               
                           </div><!--/col-3-->
                           <div class="col-sm-9">
                             <div class="tab-content">
-                                    <form class="form" action="##" method="post" id="registrationForm">
+                                   
                                       <div class="form-group col-xs-6"> 
                                         <label>الاسم ثلاثيا مع اللقب*</label>
                                         <input type="text" class="form-control" name="d_name" placeholder="ادخل اسم الطبيب ثلاثيا مع اللقب" title="ادخل اسم الطبيب ثلاثيا مع اللقب" autofocus required>
@@ -46,12 +52,12 @@ include($bar);?>
                                       <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>رقم التلفون*</label>
-                                          <input type="number" class="form-control" name='d_phone' placeholder="رقم التلفون" title="ادخل رقم التلفون" autofocus required>
+                                          <input type="tel" class="form-control" name='d_phone' placeholder="رقم التلفون" title="xxx-xxx-xxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}$" autofocus required>
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>النوع*</label>
                                             <select class="form-control" name='d_gender'autofocus required>
-                                              <option selected>اختر النوع..</option>
+                                              <option selected disabled>اختر النوع..</option>
                                               <option value='1'>ذكر</option>
                                               <option value='0'>أُنثى</option>
                                             </select>
@@ -64,46 +70,41 @@ include($bar);?>
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>الجنسية*</label>
-                                            <select class="form-control" name='d_nationality' title="اختر الجنسية"autofocus required>
-                                              <option selected>اختر الجنسية..</option>
-                                              <option value='1'>اليمن</option>
-                                              <option value='0'>مصر</option>
-                                            </select>
+                                          <?php 
+                                          $nationality=APPPATH.'views/included_sections/nationalities.php';
+                                          include($nationality);?>
                                         </div>            
                                       </div>                                   
                                       <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>العنوان*</label>
-                                            <select class="form-control" name='d_address_country' title="اختر الدولة"autofocus required>
-                                              <option selected>اختر الدولة..</option>
+                                            <select class="form-control" name='d_country_address' title="اختر الدولة"autofocus required>
+                                              <option selected disabled>اختر الدولة..</option>
                                               <option value='1'>اليمن</option>
-                                              <option value='0'>مصر</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label style="visibility: hidden;">عنوان المدينة*</label>
-                                            <select class="form-control" name='d_address_city' title="اختر المدينة"autofocus required>
-                                              <option selected>اختر المدينة..</option>
-                                              <option value='1'>صنعاء</option>
-                                              <option value='0'>عدن</option>
-                                            </select>
+                                          <?php 
+                                          $city=APPPATH.'views/included_sections/cities.php';
+                                          include($city);?>
                                         </div>            
                                       </div>
                                       <div class="form-group col-xs-6"> 
-                                        <input type="text" class="form-control" name='d_address_street' placeholder="ادخل الشارع" title="ادخل الشارع" autofocus>
+                                        <input type="text" class="form-control" name='d_street_address' placeholder="ادخل الشارع" pattern="^[A-Za-z0-9_ء-ي']{5,200}+$" title="ادخل الشارع" autofocus>
                                       </div>
                                       <div class="form-group col-xs-6"> 
                                           <label>عنوان صفحة الفيسبوك</label>
-                                          <input type="text" class="form-control" name='d_facebook' placeholder="ادخل رابط صفحة الفيسبوك" title="ادخل رابط صفحة الفيسبوك" autofocus>
+                                          <input type="url" class="form-control" name='d_facebook_link' placeholder="ادخل رابط صفحة الفيسبوك" title="ادخل رابط صفحة الفيسبوك" autofocus>
                                       </div>
                                       <div class="form-group col-xs-6"> 
                                           <label>عنوان صفحة تويتر</label>
-                                          <input type="text" class="form-control" name='d_twitter' placeholder="ادخل رابط صفحة تويتر" title="ادخل رابط صفحة تويتر" autofocus>
+                                          <input type="url" class="form-control" name='d_twitter_link' placeholder="ادخل رابط صفحة تويتر" title="ادخل رابط صفحة تويتر" autofocus>
                                       </div>
                                       <div class="form-group col-xs-6">
                                           <label>التخصص الطبي*</label>
-                                            <select class="form-control" name='d_spceiality' title="اختر التخصص الطبي"autofocus required>
-                                              <option selected>اختر التخصص الطبي..</option>
+                                            <select class="form-control" name='d_speciality' title="اختر التخصص الطبي"autofocus required>
+                                              <option selected disabled>اختر التخصص الطبي..</option>
                                               <option value='1'>اسنان</option>
                                               <option value='0'>جلدية</option>
                                             </select>
@@ -118,7 +119,7 @@ include($bar);?>
                                       </div>                                      
                                       <div class="form-group col-xs-12">
                                         <br>
-                                        <button class="btn" type="submit" style="color:#fff;">حفظ</button>
+                                        <button class="btn" type="submit" style="color:#fff;" value="send">حفظ</button>
                                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">التالي</a>
                                       </div>
                                   </form>                                

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2019 at 09:54 PM
+-- Generation Time: Feb 23, 2019 at 05:51 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -33,7 +33,6 @@ CREATE TABLE `doctor` (
   `d_name` varchar(150) NOT NULL,
   `d_email` varchar(50) NOT NULL,
   `d_phone` int(14) NOT NULL,
-  `d_address` varchar(50) NOT NULL,
   `d_gender` tinyint(1) NOT NULL,
   `d_birth_date` timestamp NULL DEFAULT NULL,
   `d_nationality` int(12) NOT NULL,
@@ -45,6 +44,14 @@ CREATE TABLE `doctor` (
   `d_personal_img` varchar(50) DEFAULT NULL,
   `d_specialty_id` int(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`d_id`, `d_name`, `d_email`, `d_phone`, `d_gender`, `d_birth_date`, `d_nationality`, `d_country_address`, `d_city_address`, `d_street_address`, `d_facebook_link`, `d_twitter_link`, `d_personal_img`, `d_specialty_id`) VALUES
+(3, 'Rabab Mojahed Mansour Shalan', 'rabab@gmail.com', 555222555, 0, '1999-05-04 21:00:00', 886, 1, 1, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'red1.png', 1),
+(4, 'Rabab Mojahed Mansour Shalan', 'rabab2@gmail.com', 222, 0, '2005-11-20 21:00:00', 524, 1, 1, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'noimg.png', 0);
 
 -- --------------------------------------------------------
 
@@ -268,7 +275,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -303,12 +310,6 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `doctor`
---
-ALTER TABLE `doctor`
-  ADD CONSTRAINT `d_specialty_id_fk` FOREIGN KEY (`d_specialty_id`) REFERENCES `specialty` (`specialty_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `service`
