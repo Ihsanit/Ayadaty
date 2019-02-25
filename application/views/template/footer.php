@@ -91,6 +91,8 @@
 		<!-- Counter JS -->
 		<script src="<?php echo base_url();?>assets/js/jquery.counterup.min.js"></script>
 		<script src="<?php echo base_url();?>assets/js/jquery.waypoints.min.js"></script>
+		<!-- My jquery script -->
+		<script src="<?php echo base_url();?>assets/js/my_jquery_script.js"></script>
 		<script>
         jQuery('.statistic-counter').counterUp({
                 delay: 10,

@@ -31,10 +31,10 @@ include($bar);?>
                         <div class="row">                         
                           <div class="col-sm-3"><!--left col-->
                             <div class="text-center">
-                                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                                <img id="uploaded_img" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
                                 <h6>Upload personal photo...</h6>
-                                <form class="form" action="<?php echo base_url('registerdoctor');?>"  method="post" enctype="multipart/form-data">
-                                  <input type="file" name="d_img" class="text-center center-block file-upload">
+                                <form class="form" id="d_personal_form" action="<?php echo base_url('registerdoctor');?>"  method="post" enctype="multipart/form-data">
+                                  <input type="file" id="d_img" name="d_img" class="text-center center-block file-upload">
                             </div></hr><br>
                               
                           </div><!--/col-3-->
@@ -43,16 +43,19 @@ include($bar);?>
                                    
                                       <div class="form-group col-xs-6"> 
                                         <label>الاسم ثلاثيا مع اللقب*</label>
-                                        <input type="text" class="form-control" name="d_name" placeholder="ادخل اسم الطبيب ثلاثيا مع اللقب" title="ادخل اسم الطبيب ثلاثيا مع اللقب" autofocus required>
+                                        <input type="text" id="d_name" class="form-control" name="d_name" placeholder="ادخل اسم الطبيب ثلاثيا مع اللقب" title="ادخل اسم الطبيب ثلاثيا مع اللقب" autofocus required>
+                                        <span class="error-msg" id="d_name_error_msg"></span>
                                       </div>
                                       <div class="form-group col-xs-6"> 
                                         <label>البريد الالكتروني*</label>
-                                        <input type="email" class="form-control" name="d_email" placeholder="you@email.com" title="ادخل عنوان البريد الاكتروني" autofocus required>
+                                        <input type="email" id="d_email" class="form-control" name="d_email" placeholder="you@email.com" title="ادخل عنوان البريد الاكتروني" autofocus required>
+                                        <span class="error-msg" id="d_email_error_msg"></span>
                                       </div>
                                       <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>رقم التلفون*</label>
-                                          <input type="tel" class="form-control" name='d_phone' placeholder="رقم التلفون" title="xxx-xxx-xxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}$" autofocus required>
+                                          <input type="tel" id="d_phone" class="form-control" name='d_phone' placeholder="رقم التلفون" title="ادخل رقم الموبايل" autofocus required>
+                                          <span class="error-msg" id="d_phone_error_msg"></span>
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>النوع*</label>
@@ -91,15 +94,18 @@ include($bar);?>
                                         </div>            
                                       </div>
                                       <div class="form-group col-xs-6"> 
-                                        <input type="text" class="form-control" name='d_street_address' placeholder="ادخل الشارع" pattern="^[A-Za-z0-9_ء-ي']{5,200}+$" title="ادخل الشارع" autofocus>
+                                        <input type="text" id="d_street_address" class="form-control" name='d_street_address' placeholder="ادخل الشارع"  title="ادخل الشارع" autofocus><!-- pattern="^[A-Za-z0-9_ء-ي'\s]{5,200}+$" -->
+                                        <span class="error-msg" id="d_street_error_msg"></span>
                                       </div>
                                       <div class="form-group col-xs-6"> 
                                           <label>عنوان صفحة الفيسبوك</label>
-                                          <input type="url" class="form-control" name='d_facebook_link' placeholder="ادخل رابط صفحة الفيسبوك" title="ادخل رابط صفحة الفيسبوك" autofocus>
+                                          <input type="url" id="d_facebook_link" class="form-control" name='d_facebook_link' placeholder="ادخل رابط صفحة الفيسبوك" title="ادخل رابط صفحة الفيسبوك" autofocus>
+                                          <span class="error-msg" id="d_facebook_error_msg"></span>
                                       </div>
                                       <div class="form-group col-xs-6"> 
                                           <label>عنوان صفحة تويتر</label>
-                                          <input type="url" class="form-control" name='d_twitter_link' placeholder="ادخل رابط صفحة تويتر" title="ادخل رابط صفحة تويتر" autofocus>
+                                          <input type="url" id="d_twitter_link" class="form-control" name='d_twitter_link' placeholder="ادخل رابط صفحة تويتر" title="ادخل رابط صفحة تويتر" autofocus>
+                                          <span class="error-msg" id="d_twitter_error_msg"></span>
                                       </div>
                                       <div class="form-group col-xs-6">
                                           <label>التخصص الطبي*</label>
@@ -111,15 +117,17 @@ include($bar);?>
                                       </div>
                                       <div class="form-group col-xs-6"> 
                                           <label>كلمة المرور*</label>
-                                          <input type="password" class="form-control" name="d_password" placeholder="ادخل كلمة المرور" title="ادخل كلمة المرور">
+                                          <input type="password" id="d_password" class="form-control" name="d_password" placeholder="ادخل كلمة المرور" title="ادخل كلمة المرور">
+                                          <span class="" id="d_password_error_msg"></span>
                                       </div>
                                       <div class="form-group col-xs-6">
                                           <label>تأكيد كلمة المرور*</label>
-                                          <input type="password" class="form-control" name="d_password_c" placeholder="ادخل تأكيد كلمة المرور" title="ادخل تأكيد كلمة المرور">
+                                          <input type="password" id="d_password_c" class="form-control" name="d_password_c" placeholder="ادخل تأكيد كلمة المرور" title="ادخل تأكيد كلمة المرور">
+                                          <span class="" id="d_password_c_error_msg"></span>
                                       </div>                                      
                                       <div class="form-group col-xs-12">
                                         <br>
-                                        <button class="btn" type="submit" style="color:#fff;" value="send">حفظ</button>
+                                        <button class="btn" type="submit" id="d_send_personal_data"style="color:#fff;" value="send">حفظ</button>
                                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">التالي</a>
                                       </div>
                                   </form>                                
@@ -144,7 +152,7 @@ include($bar);?>
                           </div><!--/col-3-->
                           <div class="col-sm-9">
                             <div class="tab-content">
-                                    <form class="form" action="##" method="post" id="registrationForm">
+                                    <form class="form" action="#" method="post" id="registrationForm2">
                                       <div class="form-group col-xs-6"> 
                                         <label>المؤهل*</label>
                                             <select class="form-control" name='d_qualification'autofocus required>
@@ -216,7 +224,7 @@ include($bar);?>
                           </div><!--/col-3-->
                           <div class="col-sm-9">
                             <div class="tab-content">
-                                    <form class="form" action="##" method="post" id="registrationForm">
+                                    <form class="form" action="#" method="post" id="registrationForm3">
                                       <div class="form-group col-xs-6"> 
                                         <label>المسمى الوظيفي*</label>
                                         <input type="text" class="form-control" name="d_prev_job" placeholder="ادخل المسمى الوظيفي" title="ادخل المسمى الوظيفي" autofocus required>
@@ -274,7 +282,7 @@ include($bar);?>
                           </div><!--/col-3-->
                           <div class="col-sm-9">
                             <div class="tab-content">
-                                    <form class="form" action="##" method="post" id="registrationForm">
+                                    <form class="form" action="#" method="post" id="registrationForm1">
                                       <div class="form-group col-xs-6"> 
                                         <label>العمل الحالي*</label>
                                             <select class="form-control" name='d_current_job'autofocus required>

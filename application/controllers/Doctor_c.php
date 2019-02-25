@@ -17,12 +17,14 @@ class Doctor_c extends CI_Controller
 
 	public function register_doctor($page='register_doctor_v')
 	{
+		try
+		{
 		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
 			show_404();
 		endif;
 
 		$this->form_validation->set_rules('d_name','اسم الطبيب','trim|required');
-		$this->form_validation->set_rules('d_email','البريد الالكتروني','trim|required|callback_check_email_exists');
+		$this->form_validation->set_rules('d_email','البريد الالكتروني','trim|required|valid_email|callback_check_email_exists');
 		/*$this->form_validation->set_rules('h_email','البريد الالكتروني','required|callback_check_email_exists');*/
 		$this->form_validation->set_rules('d_phone','رقم التلفون','trim|required');
 		$this->form_validation->set_rules('d_gender','نوع الطبيب','trim|required');
@@ -44,48 +46,34 @@ class Doctor_c extends CI_Controller
 		}
 		else
 		{
-			//------------------upload image of doctor  -------------------
-			$config=array(
-				'upload_path'=>'./assets/images/doctors/personal/',
-				'allowed_types'=>'jpeg|jpg|png|gif',
-				'max_size'=>2048,
-				'max_width'=>500,
-				'max_height'=>500,
-				'remove_spaces'=>TRUE,
-				);
-			$this->load->library('upload',$config);
-			if(!$this->upload->do_upload('d_img'))
-			{
-				$errors=array(
-					'error'	=>	$this->upload->display_errors()
-					);
-				$doctor_img='noimg.png';
-			}
-			else
-			{
-				$data=array('upload_data'	=>	$this->upload->data());
-				$doctor_img=$_FILES['d_img']['name'];
-			}//end if
+			$doctor_img=$this->upload_profile();
 			$data=array(
-			'd_name'				=>$this->input->post('d_name'),
-			'd_email'				=>$this->input->post('d_email'),
-			'd_phone'				=>$this->input->post('d_phone'),
-			'd_gender'				=>$this->input->post('d_gender'),
-			'd_birth_date'			=>$this->input->post('d_birth_date'),
-			'd_nationality'			=>$this->input->post('nationality'),
-			'd_country_address'		=>$this->input->post('d_country_address'),
-			'd_city_address'		=>$this->input->post('city'),	
-			'd_street_address'		=>$this->input->post('d_street_address'),	
-			'd_facebook_link'		=>$this->input->post('d_facebook_link'),
-			'd_twitter_link'		=>$this->input->post('d_twitter_link'),
+			'd_name'				=>$this->security->xss_clean($this->input->post('d_name')),
+			'd_email'				=>$this->security->xss_clean($this->input->post('d_email')),
+			'd_phone'				=>preg_replace("/[^0-9]/","",$this->security->xss_clean($this->input->post('d_phone'))),
+			'd_gender'				=>$this->security->xss_clean($this->input->post('d_gender')),
+			'd_birth_date'			=>$this->security->xss_clean($this->input->post('d_birth_date')),
+			'd_nationality'			=>$this->security->xss_clean($this->input->post('nationality')),
+			'd_country_address'		=>$this->security->xss_clean($this->input->post('d_country_address')),
+			'd_city_address'		=>$this->security->xss_clean($this->input->post('city')),	
+			'd_street_address'		=>$this->security->xss_clean($this->input->post('d_street_address')),	
+			'd_facebook_link'		=>$this->security->xss_clean($this->input->post('d_facebook_link')),
+			'd_twitter_link'		=>$this->security->xss_clean($this->input->post('d_twitter_link')),
 			'd_personal_img'		=>$doctor_img,
-			'd_specialty_id'		=>$this->input->post('d_speciality'),					
+			'd_specialty_id'		=>$this->security->xss_clean($this->input->post('d_speciality')),	
+			'd_password'			=>$this->security->xss_clean(md5($this->input->post('d_password')))	
 			);
 			$this->docotr_obj->insert_doctor($data);
 			$this->session->set_flashdata('doctor_registered','تمت اضافة بيانات الطبيب الشخصية بنجاح');
 			redirect('doctor_c/register_doctor');
 			//die('Continue');
-		}
+		}//end if
+	}//end try
+	catch(Exception $err)
+    {
+        log_message("error", $err->getMessage());
+        return show_error($err->getMessage());
+    }//end catch
 
 
 	}//end function index($page='home')
@@ -126,5 +114,51 @@ class Doctor_c extends CI_Controller
 		}//end if
 
 	}//end check_email_exists function
+
+	public function upload_profile()
+	{
+		if(isset($_FILES['d_img']['name']))
+		{
+			//------------------upload image of doctor  -------------------
+			$config=array(
+				'upload_path'=>'./assets/images/doctors/personal/',
+				'allowed_types'=>'jpeg|jpg|png|gif',
+				'max_size'=>2048,
+				'max_width'=>500,
+				'max_height'=>500,
+				'remove_spaces'=>TRUE,
+				);
+			$this->load->library('upload',$config);
+			if(!$this->upload->do_upload('d_img'))
+			{
+				$errors=array(
+					'error'	=>	$this->upload->display_errors()
+					);
+				$doctor_img='noimg.png';
+				return $doctor_img;
+			}
+			else
+			{
+				$data=array('upload_data'	=>	$this->upload->data());
+				/*-------------------resize image------------------------*/
+				/*$config=array(
+					'image_library'=>'gd2',
+					'source_image'=>'./assets/images/doctors/personal/'.$data['file_name'],
+					'create_thumb'=>FALSE,
+					'maintain_ratio'=>FALSE,
+					'quality'=>'60%',
+					'width'=>200,
+					'height'=>200,
+					'new_image'=>'./assets/images/doctors/personal/'.$data['file_name']
+					);
+				$this->load->library('image_lib',$config);
+				$this->image_lib->resize();
+*/
+				$doctor_img=$_FILES['d_img']['name'];
+				return $doctor_img;
+			}//end if
+		}
+
+	}//end method upload_profile()
 }
 ?>
