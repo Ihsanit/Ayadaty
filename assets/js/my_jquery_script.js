@@ -101,7 +101,7 @@ $(document).ready(function(){
 /*--------------------------check_d_phone()-------------------------*/
 		function check_d_phone()
 		{
-			var pattern=/(77|73|71|70)\d{7}/;
+			/*var pattern=/(77|73|71|70)\d{7}/;
 			var phone =$("#d_phone").val();
 			if(pattern.test(phone) && phone !=='')
 			{
@@ -114,7 +114,7 @@ $(document).ready(function(){
 				$("#d_phone_error_msg").show();
 				$("#d_phone").css("border","1px solid #F90A0A");
 				error_d_phone=true;
-			}
+			}*/
 		}//check_d_phone()
 /*--------------------------check_d_street()-------------------------*/
 		function check_d_street()
@@ -138,8 +138,9 @@ $(document).ready(function(){
 /*--------------------------check_d_facebook -------------------------*/
 		function check_d_facebook()
 		{
-			/*var pattern=/^[A-Za-z0-9-_ء-ي'\s]{5,200}$/;
-			var d_facebook=$("#d_facebook_link").val();
+			var pattern=/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+/*			/(http(s)?:\\)?([\w-]+\.)+[\w-]+[.com|.in|.org]+(\[\?%&=]*)?/;
+*/			var d_facebook=$("#d_facebook_link").val();
 			if(pattern.test(d_facebook) && d_facebook !=='')
 				{
 					$("#d_facebook_error_msg").hide();
@@ -147,18 +148,19 @@ $(document).ready(function(){
 				}
 				else
 				{
-					$("#d_facebook_error_msg").html('يجب ادخال عنوان الشارع يحتوي حروف او ارقام');
+					$("#d_facebook_error_msg").html('يجب ادخال رابط صفحتك في الفيسبوك');
 					$("#d_facebook_error_msg").show();
 					$("#d_facebook_link").css("border","1px solid #F90A0A");
 					error_d_facebook=true;
 
-				}*/
+				}
 		}//end check_d_facebook()
 /*--------------------------check_d_twitter -------------------------*/
 		function check_d_twitter()
 		{
-			/*var pattern=/^[A-Za-z0-9-_ء-ي'\s]{5,200}$/;
-			var d_twitter=$("#d_twitter_link").val();
+			var pattern=/(http(s)?:\\)?([\w-]+\.)+[\w-]+[.com|.in|.org]+(\[\?%&=]*)?/;
+/*			/^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+*/			var d_twitter=$("#d_twitter_link").val();
 			if(pattern.test(d_twitter) && d_twitter !=='')
 				{
 					$("#d_twitter_error_msg").hide();
@@ -171,7 +173,7 @@ $(document).ready(function(){
 					$("#d_twitter_link").css("border","1px solid #F90A0A");
 					error_d_twitter=true;
 
-				}*/
+				}
 		}//end check_d_twitter()
 /*--------------------------check_d_password-------------------------*/
 		function check_d_password()
@@ -238,29 +240,33 @@ $(document).ready(function(){
 	});//end 
 
 });//end general function
-	/*-------------------doctor profile image-----------------*/
-	/*$('#d_personal_form').on('submit',function(e){
-		e.preventDefault();
-		if($('#d_img').val()=='')
-			{
-				alert('يرجى اختيار صورة البروفايل');
-			}
-			else
-			{
-				$.ajax({
-					url:"<?php echo base_url();?>doctor_c/ajax_upload_profile",
-					method:"POST",
-					data:new FormData(this),
-					contentType:false,
-					cashe:false,
-					processData:false,
-					success:function(data)
-					{
-						$('uploaded_img').html(data);
-					}
-				});
-			}
-		});*/
+/*------------------birth date of doctor---------------------*/
+/*var maxDate= new Date();
+$("#d_birth_date").datepicker({
+	showAnim:"drop",
+	numberOfMonth:1,
+	maxDate:maxDate,
+	dateFormat:dd/mm/yyyy
+});*/
+
+/*-------------------doctor profile image-----------------*/
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#uploaded_img').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#d_img").change(function () {
+        readURL(this);
+    });
+    /*-----------------birth date of doctor------------------*/
+	document.getElementById('d_birth_date').max = new Date().toISOString().split("T")[0];
 	
 });
 

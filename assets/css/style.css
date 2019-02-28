@@ -413,6 +413,10 @@ input[type=text],input[type=number], input[type=password], input[type=email], se
     color:#F90A0A;
     font-size:0.8rem;
   }
+ .flag-container
+ {
+    direction:ltr;
+ }
 /*---------------------Display doctors-----------------------------*/
 .lbl-doctor 
 {

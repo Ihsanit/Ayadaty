@@ -9,6 +9,10 @@ include($bar);?>
     if($this->session->flashdata('doctor_registered')):?>
         <p class="alert alert-success"><?php echo $this->session->flashdata('doctor_registered');?></p>
       <?php endif;?>
+      <?php
+    if($this->session->flashdata('user_loggedin')):?>
+        <p class="alert alert-success"><?php echo $this->session->flashdata('user_loggedin');?></p>
+      <?php endif;?>
               <div class="row" style="display:block;">
                 <div class="col-xs-12 ">
                   <nav>
@@ -27,13 +31,14 @@ include($bar);?>
                         <div class="row">
                           <div class="col-sm-12"><h5>بيانات الطبيب الشخصية</h5></div>
                         </div>
-                        <?php echo validation_errors();?>
+                        <?php echo validation_errors();?>                       
                         <div class="row">                         
                           <div class="col-sm-3"><!--left col-->
                             <div class="text-center">
                                 <img id="uploaded_img" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
                                 <h6>Upload personal photo...</h6>
-                                <form class="form" id="d_personal_form" action="<?php echo base_url('registerdoctor');?>"  method="post" enctype="multipart/form-data">
+                                <form  class="form" id="d_personal_form" action="<?php echo base_url('registerdoctor');?>"  method="post" enctype="multipart/form-data">
+                                  
                                   <input type="file" id="d_img" name="d_img" class="text-center center-block file-upload">
                             </div></hr><br>
                               
@@ -43,7 +48,7 @@ include($bar);?>
                                    
                                       <div class="form-group col-xs-6"> 
                                         <label>الاسم ثلاثيا مع اللقب*</label>
-                                        <input type="text" id="d_name" class="form-control" name="d_name" placeholder="ادخل اسم الطبيب ثلاثيا مع اللقب" title="ادخل اسم الطبيب ثلاثيا مع اللقب" autofocus required>
+                                        <input type="text" id="d_name"  class="form-control" name="d_name" placeholder="ادخل اسم الطبيب ثلاثيا مع اللقب" title="ادخل اسم الطبيب ثلاثيا مع اللقب" autofocus required>
                                         <span class="error-msg" id="d_name_error_msg"></span>
                                       </div>
                                       <div class="form-group col-xs-6"> 
@@ -54,8 +59,12 @@ include($bar);?>
                                       <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>رقم التلفون*</label>
-                                          <input type="tel" id="d_phone" class="form-control" name='d_phone' placeholder="رقم التلفون" title="ادخل رقم الموبايل" autofocus required>
+                                          <input type="tel" id="d_phone" class="form-control" style="    direction: ltr;text-align: right;">
                                           <span class="error-msg" id="d_phone_error_msg"></span>
+                                          <input type="hidden" id="phone" name="d_phone">
+                                          <!-- <input type="tel" id="d_phone" class="form-control" name='d_phone' placeholder="رقم التلفون" title="ادخل رقم الموبايل" autofocus required>
+                                          <span class="error-msg" id="d_phone_error_msg"></span>
+                                         -->
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>النوع*</label>
@@ -69,7 +78,7 @@ include($bar);?>
                                       <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>تاريخ الميلاد</label>
-                                          <input type="date" class="form-control" name='d_birth_date' placeholder="تاريخ الميلاد" title="اختر تاريخ الميلاد" autofocus>
+                                          <input type="date" id="d_birth_date" min='1899-01-01' class="form-control" name='d_birth_date' placeholder="تاريخ الميلاد" title="اختر تاريخ الميلاد" autofocus>
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>الجنسية*</label>
@@ -94,7 +103,7 @@ include($bar);?>
                                         </div>            
                                       </div>
                                       <div class="form-group col-xs-6"> 
-                                        <input type="text" id="d_street_address" class="form-control" name='d_street_address' placeholder="ادخل الشارع"  title="ادخل الشارع" autofocus><!-- pattern="^[A-Za-z0-9_ء-ي'\s]{5,200}+$" -->
+                                        <input type="text" id="d_street_address" class="form-control" name='d_street_address' placeholder="ادخل الشارع"  title="ادخل الشارع" autofocus ><!-- pattern="^[A-Za-z0-9_ء-ي'\s]{5,200}+$" -->
                                         <span class="error-msg" id="d_street_error_msg"></span>
                                       </div>
                                       <div class="form-group col-xs-6"> 

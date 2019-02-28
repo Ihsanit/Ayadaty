@@ -11,6 +11,16 @@ class Doctor_m extends CI_Model
 	{
 		 $this->db->insert('doctor',$data);
 	}//end register_hospital_db function
+	public function get_docotr($doctor_choosen=FALSE)
+	{
+		if($doctor_choosen===FALSE)
+		{
+			
+		}
+		$doctor=array('d_email'=>$doctor_choosen); 
+		$query=$this->db->get_where('doctor',$doctor);
+		return $query->row_array();
+	}
 	public function check_email_exists_db($email)
 	{
 		$query=$this->db->get_where('doctor',array('d_email'=>$email));

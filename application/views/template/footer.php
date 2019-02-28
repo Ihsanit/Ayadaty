@@ -84,6 +84,8 @@
 
 		<!-- jQuery  JS-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- jQuery-ui Js -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 		<!-- Popper JS -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<!-- Bootstrap JS -->
@@ -91,6 +93,8 @@
 		<!-- Counter JS -->
 		<script src="<?php echo base_url();?>assets/js/jquery.counterup.min.js"></script>
 		<script src="<?php echo base_url();?>assets/js/jquery.waypoints.min.js"></script>
+		<!-- IntrTelInput plugin -->
+		<script src="<?php echo base_url();?>assets/js/intlTelInput.js"></script>
 		<!-- My jquery script -->
 		<script src="<?php echo base_url();?>assets/js/my_jquery_script.js"></script>
 		<script>
@@ -98,6 +102,66 @@
                 delay: 10,
                 time: 2000
             }); 
+        </script>
+        <script>
+        	/*-----------------phone of doctor------------------*/
+		var input = document.querySelector("#d_phone");
+		var output = document.querySelector("#d_phone_error_msg");
+		var iti=intlTelInput(input, {
+			  allowDropdown: true,
+      // autoHideDialCode: false,
+      //autoPlaceholder: "off",
+      // dropdownContainer: "body",
+      // excludeCountries: ["us"],
+      // formatOnDisplay: false,
+      /*geoIpLookup: function(callback) {
+        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+          var countryCode = (resp && resp.country) ? resp.country : "";
+          callback(countryCode);
+        });
+      },*/
+      // hiddenInput: "full_number",
+     		initialCountry: "auto",
+       		nationalMode: true,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+       		//placeholderNumberType: "MOBILE",
+       		preferredCountries: ['ye'],
+       	//separateDialCode: true,
+    	utilsScript: "assets/js/utils.js?"
+		});
+
+		/*var handleChange = function() {
+  var text = (iti.isValidNumber()) ? "International: " + iti.getNumber() : "Please enter a number below";
+  var textNode = document.createTextNode(text);
+  output.innerHTML = "";
+  output.appendChild(textNode);
+};
+*/
+// listen to "keyup", but also "change" to update when the user selects a country
+/*input.addEventListener('change', handleChange);
+input.addEventListener('keyup', handleChange);*/
+//var d_phone = iti.getNumber(intlTelInputUtils.numberFormat.E164);
+$(document).ready(function(){
+	$("#d_send_personal_data").click(function(){
+		$.ajax({
+			type:'POST',
+			url:"<?php echo base_url();?>doctor_c/create_phone",
+			data:{d_phone:iti.getNumber()},
+			datType:'json',
+			success: function(data)
+			{
+            alert(iti.getNumber());/*
+            alert(data);*/
+            alert('true data ...');
+        
+			},
+			error: function(){
+				alert('something went wrong...');
+			} 
+
+		});
+	});
+});
         </script>
 	</body>
 </html>

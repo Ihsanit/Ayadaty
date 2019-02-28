@@ -12,6 +12,7 @@ class Doctor_c extends CI_Controller
 		$this->load->model('Doctor_m','docotr_obj');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form','url','html'));
+		$this->load->model('User_m','user_obj');
 
 	}//end _construct function
 
@@ -23,10 +24,14 @@ class Doctor_c extends CI_Controller
 			show_404();
 		endif;
 
+		if($this->session->userdata('logged_in')):
+			$logged_email=$this->session->userdata('u_email');
+			//$this->display_doctor_data($logged_email);
+		endif;
+
 		$this->form_validation->set_rules('d_name','اسم الطبيب','trim|required');
 		$this->form_validation->set_rules('d_email','البريد الالكتروني','trim|required|valid_email|callback_check_email_exists');
-		/*$this->form_validation->set_rules('h_email','البريد الالكتروني','required|callback_check_email_exists');*/
-		$this->form_validation->set_rules('d_phone','رقم التلفون','trim|required');
+		/*$this->form_validation->set_rules('d_phone','رقم التلفون','trim|required');*/
 		$this->form_validation->set_rules('d_gender','نوع الطبيب','trim|required');
 		$this->form_validation->set_rules('d_birth_date','تاريخ ميلاد الطبيب','trim|required');
 		$this->form_validation->set_rules('nationality','جنسية الطبيب','trim|required');
@@ -45,12 +50,17 @@ class Doctor_c extends CI_Controller
 			$this->load->view('template/footer');
 		}
 		else
-		{
+		{//preg_replace("/[^0-9]/","",$this->security->xss_clean($this->input->post('d_phone')))
+			$phone=$this->create_phone();
+			$name=$this->security->xss_clean($this->input->post('d_name'));
+			$email=$this->security->xss_clean($this->input->post('d_email'));
+			$password=$this->security->xss_clean(md5($this->input->post('d_password')));
+
 			$doctor_img=$this->upload_profile();
 			$data=array(
-			'd_name'				=>$this->security->xss_clean($this->input->post('d_name')),
-			'd_email'				=>$this->security->xss_clean($this->input->post('d_email')),
-			'd_phone'				=>preg_replace("/[^0-9]/","",$this->security->xss_clean($this->input->post('d_phone'))),
+			'd_name'				=>$name,
+			'd_email'				=>$email,
+			'd_phone'				=>$phone,
 			'd_gender'				=>$this->security->xss_clean($this->input->post('d_gender')),
 			'd_birth_date'			=>$this->security->xss_clean($this->input->post('d_birth_date')),
 			'd_nationality'			=>$this->security->xss_clean($this->input->post('nationality')),
@@ -61,12 +71,24 @@ class Doctor_c extends CI_Controller
 			'd_twitter_link'		=>$this->security->xss_clean($this->input->post('d_twitter_link')),
 			'd_personal_img'		=>$doctor_img,
 			'd_specialty_id'		=>$this->security->xss_clean($this->input->post('d_speciality')),	
-			'd_password'			=>$this->security->xss_clean(md5($this->input->post('d_password')))	
+			'd_password'			=>$password	
 			);
 			$this->docotr_obj->insert_doctor($data);
-			$this->session->set_flashdata('doctor_registered','تمت اضافة بيانات الطبيب الشخصية بنجاح');
-			redirect('doctor_c/register_doctor');
+
+			$userdata=array(
+			'u_username'				=>$name,			
+			'u_password'				=>$password,
+			'u_email'					=>$email
+			);
+
+			
+			$this->user_obj->insert_user($userdata);
+			$this->session->set_flashdata('doctor_registered','تمت اضافة بيانات الطبيب الشخصية بنجاح فيكمكن تسجيل دخول تكلميل بقية بيانتك' );?>
+			<p class="text-center" style="margin-bottom:-0.5rem;"><a href="<?php echo base_url('login')?>">سجل دخول</a> </p> 
+			<?php //redirect('doctor_c/register_doctor');
+			//echo $phone;
 			//die('Continue');
+
 		}//end if
 	}//end try
 	catch(Exception $err)
@@ -160,5 +182,45 @@ class Doctor_c extends CI_Controller
 		}
 
 	}//end method upload_profile()
+	public function create_phone(){
+		$phone=$this->input->post('d_phone');
+		return $phone;
+	}
+
+	public function display_doctor_data($doctor_chosen=NULL){
+		$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
+		if(empty($data['doctor'])){
+			show_404();
+		}//end if
+		$this->load->view('template/header');
+		$this->load->view('doctor_views/register_doctor_v',$data);
+		$this->load->view('template/footer');
+
+	}//end display
+	public function edit_doctor($d_email){
+		//-----------------check login 
+		if(!$this->session->userdata('logged_in')):
+			redirect('user_c/login');
+		endif;	
+		$data['doctor']=$this->doctor_obj->get_doctor($d_email);
+		if(empty($data['doctor']))
+		{
+			show_404();
+		}//end if	
+
+		if($this->form_validation->run()===FALSE)
+		{
+			$this->load->view('template/header');
+			$this->load->view('doctor_views/register_doctor_v',$data);
+			$this->load->view('template/footer');
+		}//end if
+		else
+		{
+			//$this->services_m->insert_services();
+			redirect('doctor_c/register_doctor');
+			//redirect('services_c/index');
+		}	
+
+	}//end create_service function
 }
 ?>
