@@ -15,13 +15,41 @@ class User_c extends CI_Controller
 
 	public function signup($page='signup')
 	{
-		if(!file_exists(APPPATH.'/views/'.$page.'.php')):
-			show_404();
-		endif;
-		
-		$this->load->view('template/header');
-		$this->load->view($page);
-		$this->load->view('template/footer');
+		try
+		{
+			if(!file_exists(APPPATH.'/views/'.$page.'.php')):
+				show_404();
+			endif;
+			$this->form_validation->set_rules('u_username','Username','trim|required');
+			$this->form_validation->set_rules('u_email','Email','trim|required|callback_check_email_exists');
+			$this->form_validation->set_rules('u_password','Password','trim|required');
+			$this->form_validation->set_rules('u_cpassword','Confirm Password','trim|required|matches[u_password]');
+			if($this->form_validation->run()===FALSE)
+			{
+			
+				$this->load->view('template/header');
+				$this->load->view($page);
+				$this->load->view('template/footer');
+			}
+			else
+			{
+				$enc_password=$this->security->xss_clean($this->input->post('u_password'));
+				$data=array(
+							'u_username'	=>$this->security->xss_clean($this->input->post('u_username')),
+							'u_email'		=>$this->security->xss_clean($this->input->post('u_email')),
+							'u_password'	=>$enc_password			
+							);
+				$this->user_obj->insert_user($data);
+				$this->session->set_flashdata('user_registered','سجلت حساب بنحاح');
+				redirect('doctor_c/show_doctors');
+				die('Continue');
+			}//end if check
+		}//end try
+		catch(Exception $err)
+	    {
+	        log_message("error", $err->getMessage());
+	        return show_error($err->getMessage());
+	    }//end catch
 
 	}//end function signup($page='signup')
 
@@ -63,6 +91,17 @@ class User_c extends CI_Controller
 		}//end if
 
 	}//end function index($page='home')
+	public function logout()
+	{
+		//unset session of user 
+		$this->session->unset_userdata('u_id');
+		$this->session->unset_userdata('u_email');
+		$this->session->unset_userdata('logged_in');
+
+		//set a message
+		$this->session->set_flashdata('user_loggedout','تم تسجلي الخروج');
+		redirect('user_c/login');
+	}//end logout function
 
 	public function check_email_exists_login($email)
 	{
@@ -81,6 +120,19 @@ class User_c extends CI_Controller
 	{
 		$query=$this->form_validation->set_message('check_password_exists_login','البريد الالكتروني او كلمة المرور ليس صحيح.');
 		if($this->user_obj->check_password_exists_login_db($password))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}//end if
+
+	}//end check_email_exists function
+	public function check_email_exists($email)
+	{
+		$query=$this->form_validation->set_message('check_email_exists','الايميل الحالي مستخدم،يرجى ادخال ايميل اخر.');
+		if($this->user_obj->check_email_exists_db($email))
 		{
 			return true;
 		}

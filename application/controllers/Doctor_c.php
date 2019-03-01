@@ -9,12 +9,12 @@ class Doctor_c extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();		
-		$this->load->model('Doctor_m','docotr_obj');
+		$this->load->model('Doctor_m','doctor_obj');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form','url','html'));
 		$this->load->model('User_m','user_obj');
-
 	}//end _construct function
+
 
 	public function register_doctor($page='register_doctor_v')
 	{
@@ -24,10 +24,12 @@ class Doctor_c extends CI_Controller
 			show_404();
 		endif;
 
+		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
+
 		if($this->session->userdata('logged_in')):
 			$logged_email=$this->session->userdata('u_email');
-			//$this->display_doctor_data($logged_email);
-		endif;
+			$this->display_doctor_data($logged_email);
+		else:		
 
 		$this->form_validation->set_rules('d_name','اسم الطبيب','trim|required');
 		$this->form_validation->set_rules('d_email','البريد الالكتروني','trim|required|valid_email|callback_check_email_exists');
@@ -45,8 +47,8 @@ class Doctor_c extends CI_Controller
 		if($this->form_validation->run()===FALSE)
 		{
 			
-			$this->load->view('template/header');
-			$this->load->view('doctor_views/'.$page);
+			$this->load->view('template/header',$specialty_data);
+			$this->load->view('doctor_views/'.$page,$specialty_data);
 			$this->load->view('template/footer');
 		}
 		else
@@ -54,7 +56,7 @@ class Doctor_c extends CI_Controller
 			$phone=$this->create_phone();
 			$name=$this->security->xss_clean($this->input->post('d_name'));
 			$email=$this->security->xss_clean($this->input->post('d_email'));
-			$password=$this->security->xss_clean(md5($this->input->post('d_password')));
+			$password=$this->security->xss_clean($this->input->post('d_password'));
 
 			$doctor_img=$this->upload_profile();
 			$data=array(
@@ -73,7 +75,7 @@ class Doctor_c extends CI_Controller
 			'd_specialty_id'		=>$this->security->xss_clean($this->input->post('d_speciality')),	
 			'd_password'			=>$password	
 			);
-			$this->docotr_obj->insert_doctor($data);
+			$this->doctor_obj->insert_doctor($data);
 
 			$userdata=array(
 			'u_username'				=>$name,			
@@ -90,6 +92,7 @@ class Doctor_c extends CI_Controller
 			//die('Continue');
 
 		}//end if
+		endif;
 	}//end try
 	catch(Exception $err)
     {
@@ -104,8 +107,8 @@ class Doctor_c extends CI_Controller
 		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
 			show_404();
 		endif;
-		
-		$this->load->view('template/header');
+		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
+		$this->load->view('template/header',$specialty_data);
 		$this->load->view('doctor_views/'.$page);
 		$this->load->view('template/footer');
 
@@ -116,8 +119,8 @@ class Doctor_c extends CI_Controller
 		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
 			show_404();
 		endif;
-		
-		$this->load->view('template/header');
+		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
+		$this->load->view('template/header',$specialty_data);
 		$this->load->view('doctor_views/'.$page);
 		$this->load->view('template/footer');
 
@@ -126,7 +129,7 @@ class Doctor_c extends CI_Controller
 	public function check_email_exists($email)
 	{
 		$query=$this->form_validation->set_message('check_email_exists','الايميل الحالي مستخدم،يرجى ادخال ايميل اخر.');
-		if($this->docotr_obj->check_email_exists_db($email))
+		if($this->doctor_obj->check_email_exists_db($email))
 		{
 			return true;
 		}
@@ -192,8 +195,9 @@ class Doctor_c extends CI_Controller
 		if(empty($data['doctor'])){
 			show_404();
 		}//end if
-		$this->load->view('template/header');
-		$this->load->view('doctor_views/register_doctor_v',$data);
+		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
+		$this->load->view('template/header',$specialty_data);
+		$this->load->view('doctor_views/register_doctor_v',$data,$specialty_data);
 		$this->load->view('template/footer');
 
 	}//end display
@@ -207,10 +211,10 @@ class Doctor_c extends CI_Controller
 		{
 			show_404();
 		}//end if	
-
+		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
 		if($this->form_validation->run()===FALSE)
 		{
-			$this->load->view('template/header');
+			$this->load->view('template/header',$specialty_data);
 			$this->load->view('doctor_views/register_doctor_v',$data);
 			$this->load->view('template/footer');
 		}//end if

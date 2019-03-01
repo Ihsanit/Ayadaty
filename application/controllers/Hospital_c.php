@@ -8,6 +8,7 @@ class Hospital_c extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Hospital_m');
+		$this->load->model('Doctor_m','doctor_obj');
 		$this->load->library('form_validation');
 		$this->load->helper('form');
 	}//end _construct function
@@ -28,10 +29,10 @@ class Hospital_c extends CI_Controller
 		$this->form_validation->set_rules('h_detail','خلفية عن المستشفى','required');
 		/*$this->form_validation->set_rules('h_img','صورة للمستشفى','required');
 		$this->form_validation->set_rules('h_license_img','صورة ترخيص المستشفى','required');*/
-
+		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
 		if($this->form_validation->run()===FALSE)
 		{
-			$this->load->view('template/header');
+			$this->load->view('template/header',$specialty_data);
 			$this->load->view('hospital_views/'.$page);
 			$this->load->view('template/footer');
 		}
@@ -76,8 +77,8 @@ class Hospital_c extends CI_Controller
 		if(!file_exists(APPPATH.'/views/hospital_views/'.$page.'.php')):
 			show_404();
 		endif;
-		
-		$this->load->view('template/header');
+		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
+		$this->load->view('template/header',$specialty_data);
 		$this->load->view('hospital_views/'.$page);
 		$this->load->view('template/footer');
 
@@ -88,8 +89,8 @@ class Hospital_c extends CI_Controller
 		if(!file_exists(APPPATH.'/views/hospital_views/'.$page.'.php')):
 			show_404();
 		endif;
-		
-		$this->load->view('template/header');
+		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
+		$this->load->view('template/header',$specialty_data);
 		$this->load->view('hospital_views/'.$page);
 		$this->load->view('template/footer');
 

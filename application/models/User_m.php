@@ -10,6 +10,7 @@ class User_m extends CI_Model
 	{
 		return $this->db->insert('user',$data);
 	}
+	
 	public function login_user_db($email,$password){
 		$this->db->where('u_email',$email);
 		$this->db->where('u_password',$password);

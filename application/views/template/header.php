@@ -43,9 +43,11 @@
 					<li class="nav-item dropdown">
 					    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">التخصصات</a>
 					    <div class="dropdown-menu nav-item-link">
-					      <a class="dropdown-item" href="#">اسنان</a>
-					      <a class="dropdown-item" href="#">جلدية</a>
-					      <a class="dropdown-item" href="#">اطفال</a>					      					      
+					    <?php if(count($specialties)):?>
+                            <?php foreach ($specialties as $specialty):?>
+                                <a class="dropdown-item" href="#"><?php echo $specialty['specialty_name'];?></a>
+                            <?php endforeach;?>
+                        <?php endif;?>		      					      
 					    </div>
 					</li>
 					<li class="nav-item">
@@ -59,15 +61,22 @@
 					</li>					
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a href="<?php echo base_url('signup');?>" class="nav-link">انشاء حساب</a>						
-					</li>
-					<li class="nav-item">
-						<span class="nav-link">|</span>					
-					</li>
-					<li class="nav-item">
-						<a href="<?php echo base_url('login');?>" class="nav-link">تسجيل دخول</a>						
-					</li>
+					<?php if(!$this->session->userdata('logged_in')):?>
+						<li class="nav-item">
+							<a href="<?php echo base_url('signup');?>" class="nav-link">انشاء حساب</a>						
+						</li>					
+						<li class="nav-item">
+							<span class="nav-link">|</span>					
+						</li>
+						<li class="nav-item">
+							<a href="<?php echo base_url('login');?>" class="nav-link">تسجيل دخول</a>						
+						</li>
+					<?php endif;?>
+					<?php if($this->session->userdata('logged_in')):?>
+						<li class="nav-item">
+							<a href="<?php echo base_url('logout');?>" class="nav-link">تسجيل خروج</a>						
+						</li>
+					<?php endif;?>
 				</ul>
 			</div>
 		</div>	

@@ -52,9 +52,11 @@
                                         <div class="col-lg-4 col-md-3 col-sm-12 search-field">                       
                                             <select class="form-control search-slt" id="exampleFormControlSelect1">
                                                 <option>اختر التخصص..</option>
-                                                <option>اسنان</option>
-                                                <option>جلدية</option>
-                                                <option>اطفال</option>
+                                                <?php if(count($specialties)):?>
+                                                  <?php foreach ($specialties as $specialty):?>
+                                                    <option><?php echo $specialty['specialty_name'];?></option>
+                                                  <?php endforeach;?>
+                                                <?php endif;?>
                                             </select>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12 search-field">

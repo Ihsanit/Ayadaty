@@ -35,13 +35,11 @@
 				<h5 class="headin5_amrc col_white_amrc pt2">التخصصات</h5>
 				<!--headin5_amrc-->
 				<ul class="footer_ul_amrc">
-					<li><a href="#">اسنان</a></li>
-					<li><a href="#">جلدية</a></li>
-					<li><a href="#">اطفال</a></li>			
-					<li><a href="#">باطينة</a></li>
-					<li><a href="#">عيون</a></li>
-					<li><a href="#">عظام</a></li>
-					<li><a href="#">باطينة</a></li>
+					<?php if(count($specialties)):?>
+                        <?php foreach ($specialties as $specialty):?>
+                        	<li><a href="#"><?php echo $specialty['specialty_name'];?></a></li>
+                        <?php endforeach;?>
+                    <?php endif;?>
 				</ul>	
 				<!--footer_ul_amrc ends here-->
 			</div>

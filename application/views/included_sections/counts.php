@@ -6,7 +6,7 @@
 	        <div class="col">
 			    <div class="single_counter p-y-2 m-t-1">
                     <i class="fa fa-stethoscope m-b-1 fa-2x"></i>
-                    <h2 class="statistic-counter">100</h2>
+                    <h2 class="statistic-counter"> <?php echo count($specialties);?></h2>
                     <p>تخصص</p>
                 </div>
 	        </div>

@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="tab-content" style="background-color:#f8f9fa !important; width:400px; border-radius: 10px; margin:auto;">
                             <h4 class="card-title mt-3 text-center" style="margin-bottom: 2rem;">انشاء حساب</h4>
-                            <form>
+                            <form action="<?php echo base_url('signup')?>" method="post">
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-user"></i></span>
@@ -27,13 +27,13 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                     </div>
-                                    <input class="form-control" placeholder="كلمة المرور" type="password" style="border-top-left-radius: 3px; border-bottom-left-radius: 3px;">
+                                    <input class="form-control" name="u_password" placeholder="كلمة المرور" type="password" style="border-top-left-radius: 3px; border-bottom-left-radius: 3px;">
                                 </div>
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                     </div>
-                                    <input class="form-control" placeholder="تأكيد كلمة المرور" type="password" style="border-top-left-radius: 3px; border-bottom-left-radius: 3px;">
+                                    <input class="form-control" name="u_cpassword" placeholder="تأكيد كلمة المرور" type="password" style="border-top-left-radius: 3px; border-bottom-left-radius: 3px;">
                                 </div>                                      
                                 <div class="form-group" >
                                     <button type="submit" class="btn btn-primary btn-block" style=" background: #a64bf4; background: -webkit-linear-gradient(right,  #00dbde, #13bfb1);">ارسال</button>
