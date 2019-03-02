@@ -6,7 +6,8 @@
       <?php
     if($this->session->flashdata('user_loggedin')):?>
         <p class="alert alert-success"><?php echo $this->session->flashdata('user_loggedin');?></p>
-      <?php endif;?>     
+      <?php endif;?>
+           
               <div class="row" style="display:block;">
                 <div class="col-xs-12 ">
                   <nav>
@@ -64,8 +65,8 @@
                                           <label>النوع*</label>
                                             <select class="form-control" name='d_gender'autofocus required>
                                               <option selected disabled>اختر النوع..</option>
-                                              <option value='1'>ذكر</option>
-                                              <option value='0'>أُنثى</option>
+                                              <option value='1' <?php echo set_select('d_gender','1');?>>ذكر</option>
+                                              <option value='0' <?php echo set_select('d_gender','0');?>>أُنثى</option>
                                             </select>
                                         </div>            
                                       </div>
@@ -76,9 +77,14 @@
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>الجنسية*</label>
-                                          <?php 
-                                          $nationality=APPPATH.'views/included_sections/nationalities.php';
-                                          include($nationality);?>
+                                          <select name="nationality" class="form-control" style="direction:ltr;" title="الجنسية" title="اختر الجنسية"autofocus required>
+                                            <option value="" selected disabled>اختر الجنسية..</option>
+                                            <?php if(count($countries)):?>
+                                                <?php foreach ($countries as $country):?>                                                 
+                                                  <option value=<?php echo $country['country_id'];?><?php echo set_select('nationality',$country['country_id']);?>><?php echo $country['country_name'];?></option>
+                                                <?php endforeach;?>
+                                              <?php endif;?>
+                                          </select>
                                         </div>            
                                       </div>                                   
                                       <div class="form-row">
@@ -86,14 +92,19 @@
                                           <label>العنوان*</label>
                                             <select class="form-control" name='d_country_address' title="اختر الدولة"autofocus required>
                                               <option selected disabled>اختر الدولة..</option>
-                                              <option value='1'>اليمن</option>
+                                              <option value='1' <?php echo set_select('d_country_address','1');?>>اليمن</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label style="visibility: hidden;">عنوان المدينة*</label>
-                                          <?php 
-                                          $city=APPPATH.'views/included_sections/cities.php';
-                                          include($city);?>
+                                          	<select name="city" class="form-control" title="ألمدينة" title="اختر المدينة"autofocus required>
+												<option value="" selected disabled>اختر المدينة..</option>
+												<?php if(count($cities)):?>
+                                                <?php foreach ($cities as $city):?>                                                 
+                                                  <option value=<?php echo $city['city_id'];?><?php echo set_select('city',$city['city_id']);?>><?php echo $city['city_name'];?></option>
+                                                <?php endforeach;?>
+                                              <?php endif;?>
+											</select>
                                         </div>            
                                       </div>
                                       <div class="form-group col-xs-6"> 
@@ -116,7 +127,7 @@
                                               <option selected disabled>اختر التخصص الطبي..</option>
                                               <?php if(count($specialties)):?>
                                                 <?php foreach ($specialties as $specialty):?>
-                                                  <option value=<?php echo $specialty['specialty_id'];?><?php echo set_select('specialty_id',$specialty['specialty_id']);?>><?php echo $specialty['specialty_name'];?></option>
+                                                  <option value=<?php echo $specialty['specialty_id'];?><?php echo set_select('d_speciality',$specialty['specialty_id']);?>><?php echo $specialty['specialty_name'];?></option>
                                                 <?php endforeach;?>
                                               <?php endif;?>
                                             </select>

@@ -1,5 +1,6 @@
 <?php if($this->session->userdata('logged_in')):?>
 	<select name="city" class="form-control" title="ألمدينة" title="اختر المدينة"autofocus required>
+		<option value="" selected disabled>اختر المدينة..</option>
 	<?php switch ($doctor['d_city_address']):
 	case 1:?>	
 		<option value="<?php echo $doctor['d_city_address'];?>" selected>صنعاء             </option>

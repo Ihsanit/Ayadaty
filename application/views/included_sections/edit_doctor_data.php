@@ -63,9 +63,14 @@
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>النوع*</label>
                                             <select class="form-control" name='d_gender'autofocus required>
-                                              <option selected disabled>اختر النوع..</option>
-                                              <option value='1'>ذكر</option>
-                                              <option value='0'>أُنثى</option>
+                                              <option disabled>اختر النوع..</option>
+                                              <?php if($doctor['d_gender']===1): ?>
+                                                <option value='1' <?php echo set_select('d_gender','1');?> selected>ذكر</option>
+                                                <option value='0' <?php echo set_select('d_gender','0');?>>أُنثى</option>
+                                              <?php else:?>
+                                                <option value='1' <?php echo set_select('d_gender','1');?>>ذكر</option>
+                                                <option value='0' <?php echo set_select('d_gender','0');?> selected>أُنثى</option> 
+                                              <?php endif;?>                                             
                                             </select>
                                         </div>            
                                       </div>
@@ -76,9 +81,18 @@
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>الجنسية*</label>
-                                          <?php 
-                                          $nationality=APPPATH.'views/included_sections/nationalities.php';
-                                          include($nationality);?>
+                                          <select name="nationality" class="form-control" title="الجنسية" style="direction:ltr;" title="اختر الجنسية"autofocus required>
+                                            <option value="" selected disabled>اختر الجنسية..</option>
+                                            <?php if(count($countries)):?>
+                                                <?php foreach ($countries as $country):?>
+                                                  <?php if($doctor['d_nationality']===$country['country_id']):?>
+                                                    <option value=<?php echo $country['country_id'];?><?php echo set_select('nationality',$country['country_id']);?> selected><?php echo $country['country_name'];?></option>
+                                                  <?php else:?>
+                                                  <option value=<?php echo $country['country_id'];?><?php echo set_select('nationality',$country['country_id']);?>><?php echo $country['country_name'];?></option>
+                                                  <?php endif;?>
+                                               <?php endforeach;?>
+                                              <?php endif;?>
+                                          </select>
                                         </div>            
                                       </div>                                   
                                       <div class="form-row">
@@ -91,9 +105,18 @@
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label style="visibility: hidden;">عنوان المدينة*</label>
-                                          <?php 
-                                          $city=APPPATH.'views/included_sections/cities.php';
-                                          include($city);?>
+                                            <select name="city" class="form-control" title="ألمدينة" title="اختر المدينة"autofocus required>
+                                              <option value="" selected disabled>اختر المدينة..</option>
+                                                <?php if(count($cities)):?>
+                                                <?php foreach ($cities as $city):?>
+                                                  <?php if($doctor['d_city_address']===$city['city_id']):?>
+                                                    <option value=<?php echo $city['city_id'];?><?php echo set_select('city',$city['city_id']);?> selected><?php echo $city['city_name'];?></option>
+                                                  <?php else:?>
+                                                  <option value=<?php echo $city['city_id'];?><?php echo set_select('city',$city['city_id']);?>><?php echo $city['city_name'];?></option>
+                                                  <?php endif;?>
+                                               <?php endforeach;?>
+                                              <?php endif;?>
+                                            </select>
                                         </div>            
                                       </div>
                                       <div class="form-group col-xs-6"> 
@@ -113,11 +136,15 @@
                                       <div class="form-group col-xs-6">
                                           <label>التخصص الطبي*</label>
                                             <select class="form-control" name='d_speciality' title="اختر التخصص الطبي"autofocus required>
-                                              <option selected disabled>اختر التخصص الطبي..</option>
+                                              <option disabled>اختر التخصص الطبي..</option>
                                               <?php if(count($specialties)):?>
                                                 <?php foreach ($specialties as $specialty):?>
-                                                  <option value=<?php echo $specialty['specialty_id'];?><?php echo set_select('specialty_id',$specialty['specialty_id']);?>><?php echo $specialty['specialty_name'];?></option>
-                                                <?php endforeach;?>
+                                                  <?php if($doctor['d_specialty_id']===$specialty['specialty_id']):?>
+                                                    <option value=<?php echo $specialty['specialty_id'];?><?php echo set_select('d_speciality',$specialty['specialty_id']);?> selected><?php echo $specialty['specialty_name'];?></option>
+                                                  <?php else:?>
+                                                  <option value=<?php echo $specialty['specialty_id'];?><?php echo set_select('d_speciality',$specialty['specialty_id']);?>><?php echo $specialty['specialty_name'];?></option>
+                                                  <?php endif;?>
+                                               <?php endforeach;?>
                                               <?php endif;?>
                                             </select>
                                       </div>

@@ -13,6 +13,7 @@ class Doctor_c extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->helper(array('form','url','html'));
 		$this->load->model('User_m','user_obj');
+		$this->load->model('Country_m','country_obj');
 	}//end _construct function
 
 
@@ -24,12 +25,15 @@ class Doctor_c extends CI_Controller
 			show_404();
 		endif;
 
-		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
+		$data['specialties']=$this->doctor_obj->get_specialties();
+		
 
 		if($this->session->userdata('logged_in')):
 			$logged_email=$this->session->userdata('u_email');
 			$this->display_doctor_data($logged_email);
 		else:		
+		$data['countries']=$this->country_obj->get_countries();
+		$data['cities']=$this->country_obj->get_cities();
 
 		$this->form_validation->set_rules('d_name','اسم الطبيب','trim|required');
 		$this->form_validation->set_rules('d_email','البريد الالكتروني','trim|required|valid_email|callback_check_email_exists');
@@ -47,8 +51,8 @@ class Doctor_c extends CI_Controller
 		if($this->form_validation->run()===FALSE)
 		{
 			
-			$this->load->view('template/header',$specialty_data);
-			$this->load->view('doctor_views/'.$page,$specialty_data);
+			$this->load->view('template/header',$data);
+			$this->load->view('doctor_views/'.$page,$data);
 			$this->load->view('template/footer');
 		}
 		else
@@ -107,8 +111,8 @@ class Doctor_c extends CI_Controller
 		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
 			show_404();
 		endif;
-		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
-		$this->load->view('template/header',$specialty_data);
+		$data['specialties']=$this->doctor_obj->get_specialties();
+		$this->load->view('template/header',$data);
 		$this->load->view('doctor_views/'.$page);
 		$this->load->view('template/footer');
 
@@ -195,9 +199,12 @@ class Doctor_c extends CI_Controller
 		if(empty($data['doctor'])){
 			show_404();
 		}//end if
-		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
-		$this->load->view('template/header',$specialty_data);
-		$this->load->view('doctor_views/register_doctor_v',$data,$specialty_data);
+		$data['specialties']=$this->doctor_obj->get_specialties();
+		$data['countries']=$this->country_obj->get_countries();
+		$data['cities']=$this->country_obj->get_cities();
+		/*print_r($country_data);*/
+		$this->load->view('template/header',$data);
+		$this->load->view('doctor_views/register_doctor_v',$data);
 		$this->load->view('template/footer');
 
 	}//end display
@@ -211,10 +218,10 @@ class Doctor_c extends CI_Controller
 		{
 			show_404();
 		}//end if	
-		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
+		$data['specialties']=$this->doctor_obj->get_specialties();
 		if($this->form_validation->run()===FALSE)
 		{
-			$this->load->view('template/header',$specialty_data);
+			$this->load->view('template/header',$data);
 			$this->load->view('doctor_views/register_doctor_v',$data);
 			$this->load->view('template/footer');
 		}//end if
@@ -226,5 +233,7 @@ class Doctor_c extends CI_Controller
 		}	
 
 	}//end create_service function
+
+	
 }
 ?>
