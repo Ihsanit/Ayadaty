@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2019 at 04:32 PM
+-- Generation Time: Mar 03, 2019 at 09:00 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -344,8 +344,9 @@ CREATE TABLE `doctor` (
 INSERT INTO `doctor` (`d_id`, `d_name`, `d_email`, `d_phone`, `d_gender`, `d_birth_date`, `d_nationality`, `d_country_address`, `d_city_address`, `d_street_address`, `d_facebook_link`, `d_twitter_link`, `d_personal_img`, `d_specialty_id`, `d_password`) VALUES
 (1, 'Mohammed Ali', 'mohammed@gmil.com', '', 0, '1999-01-19 21:00:00', 243, 1, 1, 'ش تونس', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar5.png', 4, 'mohammed'),
 (2, 'Rabab Mojahed Mansour Shalan', 'aisha@gmail.com', '', 0, '1993-02-04 21:00:00', 243, 1, 1, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar5.png', 3, 'rabab'),
-(3, 'رباب مجاهد منصور شعلان', 'rabab2019@gmail.com', '', 0, '1993-11-09 21:00:00', 243, 1, 1, 'الروضة - صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar2.png', 2, 'rabab'),
-(4, 'روان فتحي المنصوري', 'rawan2019@gmail.com', '', 0, '1993-08-21 21:00:00', 243, 1, 3, 'الصافية - صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar3.png', 4, 'rawan');
+(3, 'رباب مجاهد شعلان', 'rabab2019@gmail.com', '', 0, '1999-02-01 21:00:00', 101, 1, 1, 'الروضة - صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar3.png', 2, 'rabab'),
+(4, 'روان فتحي المنصوري', 'rawan2019@gmail.com', '', 0, '1993-08-21 21:00:00', 243, 1, 3, 'الصافية - صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar3.png', 4, 'rawan'),
+(5, 'Rana Najeeb', 'rana1@gmail.com', '', 0, '2000-02-04 21:00:00', 243, 1, 5, 'المكلا', 'https://www.facebook.com/', 'https://www.facebook.com/', 'dr.png', 4, 'rana1');
 
 -- --------------------------------------------------------
 
@@ -531,8 +532,9 @@ INSERT INTO `user` (`u_id`, `u_username`, `u_password`, `u_email`, `u_privilage`
 (2, 'Rabab Mojahed Mansour Shalan', 'rabab', 'aisha@gmail.com', NULL, '2019-03-01 16:45:14'),
 (3, 'Rawan', 'rawan', 'rawan@gmail.com', NULL, '2019-03-01 18:20:00'),
 (4, 'Rabab', 'rabab', 'rabab@gmail.com', NULL, '2019-03-01 18:21:59'),
-(5, 'رباب مجاهد منصور شعلان', 'rabab', 'rabab2019@gmail.com', NULL, '2019-03-01 19:50:45'),
-(6, 'روان فتحي المنصوري', 'rawan', 'rawan2019@gmail.com', NULL, '2019-03-01 20:29:58');
+(5, 'رباب مجاهد شعلان', 'rabab', 'rabab2019@gmail.com', NULL, '2019-03-01 19:50:45'),
+(6, 'روان فتحي المنصوري', 'rawan', 'rawan2019@gmail.com', NULL, '2019-03-01 20:29:58'),
+(7, 'Rana Ahmed', 'rana1', 'rana@gmail.com', NULL, '2019-03-03 18:10:47');
 
 --
 -- Indexes for dumped tables
@@ -612,13 +614,13 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `country`
 --
 ALTER TABLE `country`
-  MODIFY `country_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
+  MODIFY `country_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
 
 --
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -648,7 +650,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

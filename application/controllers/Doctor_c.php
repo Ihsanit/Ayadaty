@@ -28,26 +28,15 @@ class Doctor_c extends CI_Controller
 		$data['specialties']=$this->doctor_obj->get_specialties();
 		
 
-		if($this->session->userdata('logged_in')):
+		/*if($this->session->userdata('logged_in')):
 			$logged_email=$this->session->userdata('u_email');
 			$this->display_doctor_data($logged_email);
-		else:		
+		else:		*/
 		$data['countries']=$this->country_obj->get_countries();
 		$data['cities']=$this->country_obj->get_cities();
 
-		$this->form_validation->set_rules('d_name','اسم الطبيب','trim|required');
-		$this->form_validation->set_rules('d_email','البريد الالكتروني','trim|required|valid_email|callback_check_email_exists');
-		/*$this->form_validation->set_rules('d_phone','رقم التلفون','trim|required');*/
-		$this->form_validation->set_rules('d_gender','نوع الطبيب','trim|required');
-		$this->form_validation->set_rules('d_birth_date','تاريخ ميلاد الطبيب','trim|required');
-		$this->form_validation->set_rules('nationality','جنسية الطبيب','trim|required');
-		$this->form_validation->set_rules('d_country_address','عنوان دولة الطبيب','required');
-		$this->form_validation->set_rules('city','عنوان مدينة الطبيب','trim|required');
-		$this->form_validation->set_rules('d_street_address','عنوان شارع الطبيب','trim|required');
-		$this->form_validation->set_rules('d_speciality','تخصص الطبيب','trim|required');
-		$this->form_validation->set_rules('d_password','كلمة المرور','trim|required');
-		$this->form_validation->set_rules('d_password_c','تأكيد كلمة المرور','trim|matches[d_password]|required');
-
+		$this->check_validation_inputs();
+		
 		if($this->form_validation->run()===FALSE)
 		{
 			
@@ -62,23 +51,7 @@ class Doctor_c extends CI_Controller
 			$email=$this->security->xss_clean($this->input->post('d_email'));
 			$password=$this->security->xss_clean($this->input->post('d_password'));
 
-			$doctor_img=$this->upload_profile();
-			$data=array(
-			'd_name'				=>$name,
-			'd_email'				=>$email,
-			'd_phone'				=>$phone,
-			'd_gender'				=>$this->security->xss_clean($this->input->post('d_gender')),
-			'd_birth_date'			=>$this->security->xss_clean($this->input->post('d_birth_date')),
-			'd_nationality'			=>$this->security->xss_clean($this->input->post('nationality')),
-			'd_country_address'		=>$this->security->xss_clean($this->input->post('d_country_address')),
-			'd_city_address'		=>$this->security->xss_clean($this->input->post('city')),	
-			'd_street_address'		=>$this->security->xss_clean($this->input->post('d_street_address')),	
-			'd_facebook_link'		=>$this->security->xss_clean($this->input->post('d_facebook_link')),
-			'd_twitter_link'		=>$this->security->xss_clean($this->input->post('d_twitter_link')),
-			'd_personal_img'		=>$doctor_img,
-			'd_specialty_id'		=>$this->security->xss_clean($this->input->post('d_speciality')),	
-			'd_password'			=>$password	
-			);
+			$data=$this->full_doctor_data($phone,$name,$email,$password);
 			$this->doctor_obj->insert_doctor($data);
 
 			$userdata=array(
@@ -86,7 +59,6 @@ class Doctor_c extends CI_Controller
 			'u_password'				=>$password,
 			'u_email'					=>$email
 			);
-
 			
 			$this->user_obj->insert_user($userdata);
 			$this->session->set_flashdata('doctor_registered','تمت اضافة بيانات الطبيب الشخصية بنجاح فيكمكن تسجيل دخول تكلميل بقية بيانتك' );?>
@@ -96,7 +68,7 @@ class Doctor_c extends CI_Controller
 			//die('Continue');
 
 		}//end if
-		endif;
+		/*endif;*/
 	}//end try
 	catch(Exception $err)
     {
@@ -143,6 +115,48 @@ class Doctor_c extends CI_Controller
 		}//end if
 
 	}//end check_email_exists function
+	public function check_validation_inputs()
+	{
+		$this->form_validation->set_rules('d_name','اسم الطبيب','trim|required');
+		if ($this->session->userdata('logged_in')):
+		$this->form_validation->set_rules('d_email','البريد الالكتروني','trim|required|valid_email');
+		else:
+		$this->form_validation->set_rules('d_email','البريد الالكتروني','trim|required|valid_email|callback_check_email_exists');
+		endif;
+		/*$this->form_validation->set_rules('d_phone','رقم التلفون','trim|required');*/
+		$this->form_validation->set_rules('d_gender','نوع الطبيب','trim|required');
+		$this->form_validation->set_rules('d_birth_date','تاريخ ميلاد الطبيب','trim|required');
+		$this->form_validation->set_rules('nationality','جنسية الطبيب','trim|required');
+		$this->form_validation->set_rules('d_country_address','عنوان دولة الطبيب','required');
+		$this->form_validation->set_rules('city','عنوان مدينة الطبيب','trim|required');
+		$this->form_validation->set_rules('d_street_address','عنوان شارع الطبيب','trim|required');
+		$this->form_validation->set_rules('d_speciality','تخصص الطبيب','trim|required');
+		$this->form_validation->set_rules('d_password','كلمة المرور','trim|required');
+		$this->form_validation->set_rules('d_password_c','تأكيد كلمة المرور','trim|matches[d_password]|required');
+	}
+	public function full_doctor_data($phone,$name,$email,$password)
+	{
+
+		$doctor_img=$this->upload_profile();
+		$data=array(
+			'd_name'				=>$name,
+			'd_email'				=>$email,
+			'd_phone'				=>$phone,
+			'd_gender'				=>$this->security->xss_clean($this->input->post('d_gender')),
+			'd_birth_date'			=>$this->security->xss_clean($this->input->post('d_birth_date')),
+			'd_nationality'			=>$this->security->xss_clean($this->input->post('nationality')),
+			'd_country_address'		=>$this->security->xss_clean($this->input->post('d_country_address')),
+			'd_city_address'		=>$this->security->xss_clean($this->input->post('city')),	
+			'd_street_address'		=>$this->security->xss_clean($this->input->post('d_street_address')),	
+			'd_facebook_link'		=>$this->security->xss_clean($this->input->post('d_facebook_link')),
+			'd_twitter_link'		=>$this->security->xss_clean($this->input->post('d_twitter_link')),
+			'd_personal_img'		=>$doctor_img,
+			'd_specialty_id'		=>$this->security->xss_clean($this->input->post('d_speciality')),	
+			'd_password'			=>$password	
+			);		
+		
+		return $data;
+	}
 
 	public function upload_profile()
 	{
@@ -194,8 +208,15 @@ class Doctor_c extends CI_Controller
 		return $phone;
 	}
 
-	public function display_doctor_data($doctor_chosen=NULL){
-		$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
+	public function edit_doctor($page='edit_doctor_v')
+	{
+		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
+			show_404();
+		endif;
+		if($this->session->userdata('logged_in')):
+			$doctor_chosen=$this->session->userdata('u_email');
+			$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
+		endif;
 		if(empty($data['doctor'])){
 			show_404();
 		}//end if
@@ -204,35 +225,75 @@ class Doctor_c extends CI_Controller
 		$data['cities']=$this->country_obj->get_cities();
 		/*print_r($country_data);*/
 		$this->load->view('template/header',$data);
-		$this->load->view('doctor_views/register_doctor_v',$data);
+		$this->load->view('doctor_views/edit_doctor_v',$data);
 		$this->load->view('template/footer');
 
 	}//end display
-	public function edit_doctor($d_email){
-		//-----------------check login 
-		if(!$this->session->userdata('logged_in')):
-			redirect('user_c/login');
-		endif;	
-		$data['doctor']=$this->doctor_obj->get_doctor($d_email);
-		if(empty($data['doctor']))
+	
+	public function update_doctor($page='edit_doctor_v')
+	{
+		try
 		{
+		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
 			show_404();
-		}//end if	
-		$data['specialties']=$this->doctor_obj->get_specialties();
+		endif;
+
+		$data['specialties']=$this->doctor_obj->get_specialties();		
+
+		
+			$logged_email=$this->session->userdata('u_email');
+			$doctor=$this->doctor_obj->get_doctor($logged_email);
+			$data['doctor']=$this->doctor_obj->get_doctor($logged_email);
+		
+		$data['countries']=$this->country_obj->get_countries();
+		$data['cities']=$this->country_obj->get_cities();
+		$this->check_validation_inputs();
+		
 		if($this->form_validation->run()===FALSE)
 		{
+			
 			$this->load->view('template/header',$data);
-			$this->load->view('doctor_views/register_doctor_v',$data);
+			$this->load->view('doctor_views/'.$page,$data);
 			$this->load->view('template/footer');
-		}//end if
+		}
 		else
-		{
-			//$this->services_m->insert_services();
-			redirect('doctor_c/register_doctor');
-			//redirect('services_c/index');
-		}	
+		{//preg_replace("/[^0-9]/","",$this->security->xss_clean($this->input->post('d_phone')))
+			$phone=$this->create_phone();
+			$name=$this->security->xss_clean($this->input->post('d_name'));
+			$email=$this->security->xss_clean($this->input->post('d_email'));
+			$password=$this->security->xss_clean($this->input->post('d_password'));
 
-	}//end create_service function
+			$data=$this->full_doctor_data($phone,$name,$email,$password);
+			$this->doctor_obj->update_doctor($doctor['d_id'],$data);
+
+			$userdata=array(
+			'u_username'				=>$name,			
+			'u_password'				=>$password,
+			'u_email'					=>$email
+			);
+			
+			
+			$this->user_obj->update_user($this->session->userdata('u_id'),$userdata);			
+			$this->session->set_flashdata('doctor_edited','تم تعديل بياناتك الشخصية بنجاح' );
+			redirect(base_url('editdoctor'));?>
+
+			<?php //redirect('doctor_c/register_doctor');
+			//echo $phone;
+			//die('Continue');
+
+		}//end if
+	}//end try
+	catch(Exception $err)
+    {
+        log_message("error", $err->getMessage());
+        return show_error($err->getMessage());
+    }//end catch
+
+		
+			
+		
+	}//end update_service function
+
 
 	
 }

@@ -52,6 +52,7 @@ class User_c extends CI_Controller
 	    }//end catch
 
 	}//end function signup($page='signup')
+	
 
 	public function login($page='login')
 	{

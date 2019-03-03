@@ -1,7 +1,7 @@
 <div class="container">
  <?php
-    if($this->session->flashdata('doctor_registered')):?>
-        <p class="alert alert-success"><?php echo $this->session->flashdata('doctor_registered');?></p>
+    if($this->session->flashdata('doctor_edited')):?>
+        <p class="alert alert-success"><?php echo $this->session->flashdata('doctor_edited');?></p>
       <?php endif;?>
       <?php
     if($this->session->flashdata('user_loggedin')):?>
@@ -31,7 +31,7 @@
                             <div class="text-center">
                                 <img id="uploaded_img" src="<?php echo base_url();?>assets/images/doctors/personal/<?php echo $doctor['d_personal_img'];?>" class="avatar img-circle img-thumbnail" alt="avatar">
                                 <h6>Upload personal photo...</h6>
-                                <form  class="form" id="d_personal_form" action="<?php echo base_url('registerdoctor');?>"  method="post" enctype="multipart/form-data">
+                                <form  class="form" id="d_personal_form" action="<?php echo base_url('updatedoctor');?>"  method="post" enctype="multipart/form-data">
                                   
                                   <input type="file" id="d_img" name="d_img" class="text-center center-block file-upload">
                             </div></hr><br>

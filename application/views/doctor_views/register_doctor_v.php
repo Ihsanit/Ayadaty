@@ -10,8 +10,9 @@ if(!$this->session->userdata('logged_in')):
   include($doctor_v);
   endif;
 if($this->session->userdata('logged_in')):
-  $doctor_v=APPPATH.'views/included_sections/edit_doctor_data.php';
-  include($doctor_v);
+  redirect(base_url('editdoctor'));
+  //$doctor_v=APPPATH.'views/included_sections/edit_doctor_data.php';
+  //include($doctor_v);
 endif;
 ?>
 
