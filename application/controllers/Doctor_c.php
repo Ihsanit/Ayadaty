@@ -26,12 +26,6 @@ class Doctor_c extends CI_Controller
 		endif;
 
 		$data['specialties']=$this->doctor_obj->get_specialties();
-		
-
-		/*if($this->session->userdata('logged_in')):
-			$logged_email=$this->session->userdata('u_email');
-			$this->display_doctor_data($logged_email);
-		else:		*/
 		$data['countries']=$this->country_obj->get_countries();
 		$data['cities']=$this->country_obj->get_cities();
 
@@ -46,12 +40,13 @@ class Doctor_c extends CI_Controller
 		}
 		else
 		{//preg_replace("/[^0-9]/","",$this->security->xss_clean($this->input->post('d_phone')))
-			$phone=$this->create_phone();
+			$phone=$this->security->xss_clean($this->input->post('d_mobile'));
 			$name=$this->security->xss_clean($this->input->post('d_name'));
 			$email=$this->security->xss_clean($this->input->post('d_email'));
 			$password=$this->security->xss_clean($this->input->post('d_password'));
+			$doctor_img=$this->upload_profile();
 
-			$data=$this->full_doctor_data($phone,$name,$email,$password);
+			$data=$this->full_doctor_data($phone,$name,$email,$password,$doctor_img);
 			$this->doctor_obj->insert_doctor($data);
 
 			$userdata=array(
@@ -63,7 +58,8 @@ class Doctor_c extends CI_Controller
 			$this->user_obj->insert_user($userdata);
 			$this->session->set_flashdata('doctor_registered','تمت اضافة بيانات الطبيب الشخصية بنجاح فيكمكن تسجيل دخول تكلميل بقية بيانتك' );?>
 			<p class="text-center" style="margin-bottom:-0.5rem;"><a href="<?php echo base_url('login')?>">سجل دخول</a> </p> 
-			<?php //redirect('doctor_c/register_doctor');
+			<?php
+			//redirect('doctor_c/register_doctor');
 			//echo $phone;
 			//die('Continue');
 
@@ -123,7 +119,7 @@ class Doctor_c extends CI_Controller
 		else:
 		$this->form_validation->set_rules('d_email','البريد الالكتروني','trim|required|valid_email|callback_check_email_exists');
 		endif;
-		/*$this->form_validation->set_rules('d_phone','رقم التلفون','trim|required');*/
+		$this->form_validation->set_rules('d_mobile','رقم التلفون','trim|required');
 		$this->form_validation->set_rules('d_gender','نوع الطبيب','trim|required');
 		$this->form_validation->set_rules('d_birth_date','تاريخ ميلاد الطبيب','trim|required');
 		$this->form_validation->set_rules('nationality','جنسية الطبيب','trim|required');
@@ -134,10 +130,10 @@ class Doctor_c extends CI_Controller
 		$this->form_validation->set_rules('d_password','كلمة المرور','trim|required');
 		$this->form_validation->set_rules('d_password_c','تأكيد كلمة المرور','trim|matches[d_password]|required');
 	}
-	public function full_doctor_data($phone,$name,$email,$password)
+	public function full_doctor_data($phone,$name,$email,$password,$doctor_img)
 	{
 
-		$doctor_img=$this->upload_profile();
+		
 		$data=array(
 			'd_name'				=>$name,
 			'd_email'				=>$email,
@@ -203,10 +199,7 @@ class Doctor_c extends CI_Controller
 		}
 
 	}//end method upload_profile()
-	public function create_phone(){
-		$phone=$this->input->post('d_phone');
-		return $phone;
-	}
+	
 
 	public function edit_doctor($page='edit_doctor_v')
 	{
@@ -237,16 +230,18 @@ class Doctor_c extends CI_Controller
 		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
 			show_404();
 		endif;
-
 		$data['specialties']=$this->doctor_obj->get_specialties();		
-
-		
-			$logged_email=$this->session->userdata('u_email');
-			$doctor=$this->doctor_obj->get_doctor($logged_email);
-			$data['doctor']=$this->doctor_obj->get_doctor($logged_email);
-		
 		$data['countries']=$this->country_obj->get_countries();
 		$data['cities']=$this->country_obj->get_cities();
+		$logged_email=$this->session->userdata('u_email');
+		$doctor=$this->doctor_obj->get_doctor($logged_email);
+		/*------------------------insure image---------------*/
+		$doctor_img;
+		if($_FILES['d_img']['name']!=""):
+			$doctor_img=$this->upload_profile();
+		else:
+			$doctor_img=$this->input->post('old_d_img');
+		endif;
 		$this->check_validation_inputs();
 		
 		if($this->form_validation->run()===FALSE)
@@ -257,15 +252,15 @@ class Doctor_c extends CI_Controller
 			$this->load->view('template/footer');
 		}
 		else
-		{//preg_replace("/[^0-9]/","",$this->security->xss_clean($this->input->post('d_phone')))
-			$phone=$this->create_phone();
+		{
+			$phone=$this->security->xss_clean($this->input->post('d_mobile'));
 			$name=$this->security->xss_clean($this->input->post('d_name'));
 			$email=$this->security->xss_clean($this->input->post('d_email'));
 			$password=$this->security->xss_clean($this->input->post('d_password'));
+			$id=$this->security->xss_clean($this->input->post('d_id'));
 
-			$data=$this->full_doctor_data($phone,$name,$email,$password);
-			$this->doctor_obj->update_doctor($doctor['d_id'],$data);
-
+			$data=$this->full_doctor_data($phone,$name,$email,$password,$doctor_img);
+			$this->doctor_obj->update_doctor($id,$data);
 			$userdata=array(
 			'u_username'				=>$name,			
 			'u_password'				=>$password,
@@ -276,7 +271,6 @@ class Doctor_c extends CI_Controller
 			$this->user_obj->update_user($this->session->userdata('u_id'),$userdata);			
 			$this->session->set_flashdata('doctor_edited','تم تعديل بياناتك الشخصية بنجاح' );
 			redirect(base_url('editdoctor'));?>
-
 			<?php //redirect('doctor_c/register_doctor');
 			//echo $phone;
 			//die('Continue');

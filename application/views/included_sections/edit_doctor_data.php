@@ -31,9 +31,10 @@
                             <div class="text-center">
                                 <img id="uploaded_img" src="<?php echo base_url();?>assets/images/doctors/personal/<?php echo $doctor['d_personal_img'];?>" class="avatar img-circle img-thumbnail" alt="avatar">
                                 <h6>Upload personal photo...</h6>
-                                <form  class="form" id="d_personal_form" action="<?php echo base_url('updatedoctor');?>"  method="post" enctype="multipart/form-data">
-                                  
+                                <form  class="form" id="d_personal_form_update" name="d_personal_form_update" action="<?php echo base_url('updatedoctor');?>" method="post" enctype="multipart/form-data"> <!--   -->
+                                  <input type="hidden" id="d_id" name="d_id" value="<?php echo $doctor['d_id'];?>">
                                   <input type="file" id="d_img" name="d_img" class="text-center center-block file-upload">
+                                  <input type="hidden" id="old_d_img" name="old_d_img" value="<?php echo $doctor['d_personal_img']?>">
                             </div></hr><br>
                               
                           </div><!--/col-3-->
@@ -53,9 +54,9 @@
                                       <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>رقم التلفون*</label>
-                                          <input type="tel" id="d_phone" value="<?php echo $doctor['d_phone'];?>" class="form-control" style="direction: ltr;text-align: right;">
+                                          <input type="tel" id="d_phone" name="d_phone" value="<?php echo $doctor['d_phone'];?>" class="form-control" style="direction: ltr;text-align: right;">
                                           <span class="error-msg" id="d_phone_error_msg"></span>
-                                          <input type="hidden" id="phone" name="d_phone">
+                                          <input type="hidden" id="d_mobile" name="d_mobile" value="">
                                           <!-- <input type="tel" id="d_phone" class="form-control" name='d_phone' placeholder="رقم التلفون" title="ادخل رقم الموبايل" autofocus required>
                                           <span class="error-msg" id="d_phone_error_msg"></span>
                                          -->
@@ -77,7 +78,7 @@
                                       <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>تاريخ الميلاد</label>
-                                          <input type="date" id="d_birth_date" min='1899-01-01' class="form-control" name='d_birth_date' placeholder="تاريخ الميلاد" title="اختر تاريخ الميلاد" autofocus>
+                                          <input type="date" id="d_birth_date" min='1899-01-01' class="form-control" name='d_birth_date' value="<?php echo isset($doctor['d_birth_date']) ? set_value('d_birth_date', date('Y-m-d', strtotime($doctor['d_birth_date']))) : set_value('d_birth_date'); ?>" placeholder="تاريخ الميلاد" title="اختر تاريخ الميلاد" autofocus>
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>الجنسية*</label>
@@ -160,7 +161,7 @@
                                       </div>                                      
                                       <div class="form-group col-xs-12">
                                         <br>
-                                        <button class="btn" type="submit" id="d_send_personal_data"style="color:#fff;" value="send">حفظ</button>
+                                        <button class="btn" type="submit" id="d_personal_data_update" style="color:#fff;" value="send">حفظ</button>
                                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">التالي</a>
                                       </div>
                                   </form>                                
