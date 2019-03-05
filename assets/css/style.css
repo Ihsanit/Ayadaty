@@ -417,6 +417,21 @@ input[type=text],input[type=number], input[type=password], input[type=email], se
  {
     direction:ltr;
  }
+ .required
+ {
+    color:red;
+ }
+ .phone-style
+ {
+    direction: ltr;
+    text-align: right;
+}
+.next-tab
+{
+    display: inline-block;
+    background-color: #13bfb1;
+    color: #fff;
+}
 /*---------------------Display doctors-----------------------------*/
 .lbl-doctor 
 {

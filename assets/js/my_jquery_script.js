@@ -101,7 +101,7 @@ $(document).ready(function(){
 /*--------------------------check_d_phone()-------------------------*/
 		function check_d_phone()
 		{
-			/*var pattern=/(77|73|71|70)\d{7}/;
+			/*var pattern=/^\d{14}/;
 			var phone =$("#d_phone").val();
 			if(pattern.test(phone) && phone !=='')
 			{

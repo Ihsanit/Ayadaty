@@ -13,7 +13,7 @@ class User_m extends CI_Model
 	public function update_user($id, $data)
 	{
 		$this->db->where('u_id',$id);
-		$this->db->update('user',$data);
+		return $this->db->update('user',$data);
 	}
 	
 	public function login_user_db($email,$password){

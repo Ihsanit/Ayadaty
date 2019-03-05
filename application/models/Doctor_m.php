@@ -9,14 +9,13 @@ class Doctor_m extends CI_Model
 
 	public function insert_doctor($data)
 	{
-		 $this->db->insert('doctor',$data);
+		 return $this->db->insert('doctor',$data);
 	}//end register_hospital_db function
 
 	public function update_doctor($id,$data)
 	{
 		$this->db->where('d_id',$id);
-		/*$this->db->where('d_email',$email);*/
-		$this->db->update('doctor',$data);
+		return $this->db->update('doctor',$data);
 	}
 	public function get_doctor($doctor_choosen=FALSE)
 	{

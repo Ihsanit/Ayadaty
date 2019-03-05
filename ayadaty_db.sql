@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2019 at 07:43 PM
+-- Generation Time: Mar 05, 2019 at 10:17 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -337,6 +337,21 @@ CREATE TABLE `doctor` (
   `d_password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`d_id`, `d_name`, `d_email`, `d_phone`, `d_gender`, `d_birth_date`, `d_nationality`, `d_country_address`, `d_city_address`, `d_street_address`, `d_facebook_link`, `d_twitter_link`, `d_personal_img`, `d_specialty_id`, `d_password`) VALUES
+(1, 'رباب شعلان', 'rabab2022@gmail.com', '+967772073737', 0, '1993-11-09 21:00:00', 243, 1, 1, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'noimg.png', 3, 'rabab'),
+(2, 'عائشة راشد', 'aisha@gmail.com', '+967774639279', 0, '1993-09-30 21:00:00', 243, 1, 1, 'ش تونس', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar3.png', 1, 'aisha'),
+(3, 'روان فتحي المنصوري', 'rawan@gmail.com', '777', 0, '1993-01-01 21:00:00', 243, 1, 2, 'الصافية - صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar2.png', 1, 'rawan'),
+(4, 'علي محمد', 'ali@gmail.com', '+967715222444', 1, '2000-01-01 21:00:00', 243, 1, 1, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar5.png', 1, 'ali12'),
+(5, 'مرام محسن الحسيني', 'maram@gmail.com', '+967772050500', 0, '1992-12-31 21:00:00', 239, 1, 3, 'ش تونس', 'https://www.facebook.com/', 'https://www.facebook.com/', 'user4-128x128.jpg', 1, 'maram'),
+(6, 'ندى محمد', 'nada@gmail.com', '+967777000999', 0, '2000-05-04 21:00:00', 5, 1, 8, 'شارع صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar3.png', 3, 'nada1'),
+(7, 'Mazen Mohammed', 'mazen@gmail.com', '+967733555666', 1, '1991-12-31 21:00:00', 228, 1, 1, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar.png', 2, 'mazen'),
+(8, 'Rami Ali', 'rami@yahoo.com', '+967777888999', 1, '1997-12-31 21:00:00', 3, 1, 2, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar5.png', 3, 'rami1'),
+(9, 'Jehan Nasser', 'jehan@gmail.com', '+967733444555', 0, '2000-01-01 21:00:00', 243, 1, 6, 'ش تونس', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar04.png', 4, 'jehan');
+
 -- --------------------------------------------------------
 
 --
@@ -513,6 +528,21 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`u_id`, `u_username`, `u_password`, `u_email`, `u_privilage`, `u_registered_date`) VALUES
+(1, 'رباب شعلان', 'rabab', 'rabab2022@gmail.com', NULL, '2019-03-05 15:57:39'),
+(2, 'عائشة راشد', 'aisha', 'aisha@gmail.com', NULL, '2019-03-05 16:03:51'),
+(3, 'روان فتحي المنصوري', 'rawan', 'rawan@gmail.com', NULL, '2019-03-05 16:08:04'),
+(4, 'علي محمد', 'ali12', 'ali@gmail.com', NULL, '2019-03-05 16:17:50'),
+(5, 'مرام محسن الحسيني', 'maram', 'maram@gmail.com', NULL, '2019-03-05 16:33:00'),
+(6, 'ندى محمد', 'nada1', 'nada@gmail.com', NULL, '2019-03-05 18:20:47'),
+(7, 'Mazen Mohammed', 'mazen', 'mazen@gmail.com', NULL, '2019-03-05 20:41:08'),
+(8, 'Rami Ali', 'rami1', 'rami@yahoo.com', NULL, '2019-03-05 20:44:00'),
+(9, 'Jehan Nasser', 'jehan', 'jehan@gmail.com', NULL, '2019-03-05 20:57:03');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -596,7 +626,7 @@ ALTER TABLE `country`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -626,7 +656,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

@@ -102,101 +102,89 @@
             }); 
         </script>
         <script>
-        	/*-----------------phone of doctor------------------*/
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|process  phone number field of doctor personal data form
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
 		var input = document.querySelector("#d_phone");
 		var output = document.querySelector("#d_phone_error_msg");
 		var iti=intlTelInput(input, {
-			  allowDropdown: true,
-      // autoHideDialCode: false,
-      //autoPlaceholder: "off",
-      // dropdownContainer: "body",
-      // excludeCountries: ["us"],
-      // formatOnDisplay: false,
-      /*geoIpLookup: function(callback) {
-        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-          var countryCode = (resp && resp.country) ? resp.country : "";
-          callback(countryCode);
-        });
-      },*/
-      // hiddenInput: "full_number",
+			allowDropdown: true,
+		    geoIpLookup: function(callback) {
+		        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+		          var countryCode = (resp && resp.country) ? resp.country : "";
+		          callback(countryCode);
+		        });
+		    },
      		initialCountry: "auto",
        		nationalMode: true,
-      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-       		//placeholderNumberType: "MOBILE",
        		preferredCountries: ['ye'],
-       	//separateDialCode: true,
-    	utilsScript: "assets/js/utils.js?"
+    		utilsScript: "assets/js/utils.js?"
 		});
 
-		var handleChange = function() {
-  var text = (iti.isValidNumber()) ? "International: " + iti.getNumber() : "Please enter a number below";
-  var textNode = document.createTextNode(text);
-  output.innerHTML = "";
-  output.appendChild(textNode);
-};
-
-// listen to "keyup", but also "change" to update when the user selects a country
-input.addEventListener('change', handleChange);
-input.addEventListener('keyup', handleChange);
-//var d_phone = iti.getNumber(intlTelInputUtils.numberFormat.E164);
-
-$(document).ready(function(){	
-	$("#d_personal_data_submit").click(function(){
+		var check_d_phone = function() {
+			var error_d_phone=false;
+			if(iti.isValidNumber()) 
+			{
+				$("#d_phone_error_msg").hide();
+				$("#d_phone").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_phone_error_msg").html("يرجى ادخال رقم تلفون صحيح");
+				$("#d_phone_error_msg").show();
+				$("#d_phone").css("border","1px solid #F90A0A");
+				error_d_phone=true;
+			}
+		};		
+		input.addEventListener('focusout',check_d_phone);
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|send doctor personal data using ajax to controller
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+$(document).ready(function(){
+		
+	$("#d_personal_data_submit").submit(function(){
 		var mobile =iti.getNumber();
-		$('#d_mobile').val(mobile);	
-		alert($('#d_mobile').val());		
+		$('#d_mobile').val(mobile);		
 		var doctor_data=$("#d_personal_form").serialize();
 		$.ajax({
             type:'POST',
             url:"<?php echo base_url('registerdoctor');?>",
             data:doctor_data,            
 		   dataType: 'json',
-		   contentType: false,/*"application/json; charset=utf-8"*/
+		   contentType: false,
 		   processData: false,
             success: function(data)
             {
-            	alert("تمت اضافة بياناتك بنجاح يمكنك تسجيل الدخول");
-            	 
+            	alert("تمت اضافة بياناتك بنجاح يمكنك تسجيل الدخول");            	 
             },
             error: function(){
                 alert('something went wrong...');
             } 
         });        
 	});
-	/*-----------------------update--------------*/
-	$("#d_personal_data_update").click(function(){
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|update phone of doctor during update personal data process 
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	$("#d_phone").focusout(function(){
 		var mobile =iti.getNumber();
-		$('#d_mobile').val(mobile);	
-		//alert($('#d_mobile').val());
-
-		/*var doctor_data=$("#d_personal_form_update").serialize();
-		$.ajax({
-            type:'POST',
-            url:'<?php echo base_url();?>doctor_c/update_doctor',
-            data:doctor_data,            
-		   dataType: 'json',
-		   contentType: false,
-		   processData: false,
-            success: function(data)
-            {
-            alert("تمت اضافة بياناتك بنجاح");        
-            },
-            error: function(){
-                alert('something went wrong...');
-            } 
-        });*/
-        
-	});
-
-});
-
-/*$(document).ready(function(){	
-	$("#d_phone").onKeyup(function(){
-		var mobile =iti.getNumber();
-		$('#d_mobile').val(mobile);
-
-	});
-});*/
+		var old_mobile=$('#old_d_mobile').val();
+		if(mobile!=null)
+		{
+			$('#d_mobile').val(mobile);
+		}
+		else
+		{
+			$('#d_mobile').val(old_mobile);
+		}//end if        
+	});//end  $("#d_phone").focusout()    
+	
+});//end ready()
         </script>
 	</body>
 </html>
