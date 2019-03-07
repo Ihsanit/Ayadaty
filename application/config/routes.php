@@ -59,6 +59,7 @@ $route['hospitaldetail']='hospital_c/show_hospital_detail';
 $route['showhospitals']='hospital_c/show_hospitals';
 $route['showdoctors']='doctor_c/show_doctors';
 $route['doctordetail']='doctor_c/show_doctor_detail';
+$route['addqualification']='doctor_c/add_qualification_data';
 $route['updatedoctor']='doctor_c/update_doctor';
 $route['editdoctor']='doctor_c/edit_doctor';
 $route['registerdoctor']='doctor_c/register_doctor';

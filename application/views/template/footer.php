@@ -184,6 +184,30 @@ $(document).ready(function(){
 		}//end if        
 	});//end  $("#d_phone").focusout()    
 	
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|add education doctor data
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	$("#d_qualification_data_submit").submit(function(){
+		var d_qualification_data=$("#d_qualification_form").serialize();
+		
+		$.ajax({
+            type:'POST',
+            url:"<?php echo base_url('addqualification');?>",
+            data:d_qualification_data,            
+		   dataType: 'json',
+		   contentType: false,
+		   processData: false,
+            success: function(data)
+            {
+            	alert("تمت اضافة بياناتك بنجاح يمكنك تسجيل الدخول");            	 
+            },
+            error: function(){
+                alert('something went wrong...');
+            } 
+        });        
+	});
 });//end ready()
         </script>
 	</body>

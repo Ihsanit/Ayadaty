@@ -154,6 +154,10 @@ class Doctor_c extends CI_Controller
 		$data['specialties']=$this->doctor_obj->get_specialties();
 		$data['countries']=$this->country_obj->get_countries();
 		$data['cities']=$this->country_obj->get_cities();
+		$data['qualification_types']=$this->doctor_obj->get_qualification_types();
+		$data['education_specialties']=$this->doctor_obj->get_education_specialties();
+		$data['universities']=$this->doctor_obj->get_universities();
+		$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
 
 		$this->load->view('template/header',$data);
 		$this->load->view('doctor_views/edit_doctor_v',$data);
@@ -247,6 +251,105 @@ class Doctor_c extends CI_Controller
 	    }#end catch			
 		
 	}#end function update_doctor()
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|add_education_data() function to add qualifications' data of doctor   		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+public function add_qualification_data($page='edit_doctor_v')
+	{
+		try
+		{
+
+			if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
+				show_404();
+			endif;
+			if($this->session->userdata('logged_in')):
+				$doctor_chosen=$this->session->userdata('u_email');
+				$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
+
+
+				
+				/*
+				|=========================================================================================================
+				|#call check_qualification_vald_inputs() function to validate input fields of doctor qualification data form		
+				|=========================================================================================================
+				*/			
+
+				$this->check_qualification_vald_inputs();	
+
+				if($this->form_validation->run()===FALSE):			
+					
+					$this->load->view('template/header',$data);
+					$this->load->view('doctor_views/'.$page,$data);
+					$this->load->view('template/footer');
+
+				else:
+					/*
+					|=========================================================================================================
+					|#call upload_file() function to process file		
+					|=========================================================================================================
+					*/	
+					$q_certificate=$this->upload_file();
+					/*
+					|=========================================================================================================
+					|#call full_qualification_data() function to full an array has sturcture of qualification table with form input fields data 		
+					|=========================================================================================================
+					*/
+					$data=$this->full_qualification_data($q_certificate);
+					/*
+					|=========================================================================================================
+					|#send doctor's data to doctor model => insert_doctor() function 
+					|=========================================================================================================
+					*/
+					$q_data=$this->doctor_obj->insert_qualification($data);
+					/*
+					|=========================================================================================================
+					|# Sure of inserting data in successful manner, show a feedback for user with 'Data are saved successful'
+					|=========================================================================================================
+					*/
+					if($q_data):
+						$this->session->set_flashdata('qualification_added','تمت اضافة بيانات المؤهل بنجاح' );			
+						redirect('doctor_c/edit_doctor');
+					//die('ok');
+					endif;#end if insert successful 
+				endif;#end if validation successful
+			endif;#end if logged in user 
+		}#end try
+		catch(Exception $err)
+	    {
+	        log_message("error", $err->getMessage());
+	        return show_error($err->getMessage());
+	    }#end catch)
+
+	}#end function add_education_data() 
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|edit_education_data() function to edit educational doctor data  		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	public function edit_education_data($page='edit_doctor_v')
+	{
+		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
+			show_404();
+		endif;
+		if($this->session->userdata('logged_in')):
+			$doctor_chosen=$this->session->userdata('u_email');
+			$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
+		endif;
+		if(empty($data['doctor'])):
+			show_404();
+		endif;
+
+		$data['specialties']=$this->doctor_obj->get_specialties();
+		$data['countries']=$this->country_obj->get_countries();
+		$data['cities']=$this->country_obj->get_cities();
+
+		$this->load->view('template/header',$data);
+		$this->load->view('doctor_views/edit_doctor_v',$data);
+		$this->load->view('template/footer');
+
+	}#end function edit_doctor()
 
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
@@ -348,6 +451,74 @@ class Doctor_c extends CI_Controller
 		endif;#end if file found
 
 	}#end function upload_profile()
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|check_qualification_vald_inputs() function to check validating of qualification form input fields	
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	public function check_qualification_vald_inputs()
+	{
+		$this->form_validation->set_rules('d_qualification_type','ا،وع الملؤهل','trim|required');
+		$this->form_validation->set_rules('d_university','اسم الجامعة','trim|required');
+		$this->form_validation->set_rules('d_education_specialty','التخصص الدراسي','trim|required');
+		$this->form_validation->set_rules('d_q_start_date','بداية الفترة الدراسية','trim|required');
+		$this->form_validation->set_rules('d_q_graduate_date','سنة التخرج','trim|required');
+		$this->form_validation->set_rules('d_q_gpa','المعدل','trim|required');
+		$this->form_validation->set_rules('d_q_id','المعدل','trim|required');
+	}
+
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|full_qualification_data() function to full an array has sturcture of qualification table with form input fields data 		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	public function full_qualification_data($q_certificate)
+	{
+		$data=array(
+			'q_start_date'		=>$this->security->xss_clean($this->input->post('d_q_start_date')),
+			'q_graduate_date'	=>$this->security->xss_clean($this->input->post('d_q_graduate_date')),
+			'q_gpa'				=>$this->security->xss_clean($this->input->post('d_q_gpa')),
+			'q_certificate'		=>$q_certificate,
+			'q_q_t_id'			=>$this->security->xss_clean($this->input->post('d_qualification_type')),
+			'q_e_s_id'			=>$this->security->xss_clean($this->input->post('d_education_specialty')),
+			'q_u_id'			=>$this->security->xss_clean($this->input->post('d_university')),
+			'q_d_id'			=>$this->security->xss_clean($this->input->post('d_q_id'))				
+			);		
+		return $data;
+	}#end function full_qualification_data()
+	/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|upload_profile() function to upload image 		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	public function upload_file()
+	{
+		if(isset($_FILES['d_q_certificate']['name'])):		
+			$config=array(
+				'upload_path'=>"./assets/images/doctors/certificates/",
+				'allowed_types'=>'jpeg|jpg|png|gif|pdf',
+				'max_size'=>2048,
+				'max_width'=>500,
+				'max_height'=>500,
+				'remove_spaces'=>TRUE,
+				);
+			$this->load->library('upload',$config);
+			if(!$this->upload->do_upload('d_q_certificate')):
+				$errors=array(
+					'error'	=>	$this->upload->display_errors()
+					);
+				$final_file='noimg.png';
+				return $final_file;
+			
+			else:
+
+				$data=array('upload_data'	=>	$this->upload->data());				
+				$final_file=$_FILES['d_q_certificate']['name'];
+				return $final_file;
+			endif;#end if file successful uploaded
+		endif;#end if file found
+
+	}#end function upload_file()
 
 }#end Doctor_c class
 ?>

@@ -17,6 +17,10 @@ class Doctor_m extends CI_Model
 		$this->db->where('d_id',$id);
 		return $this->db->update('doctor',$data);
 	}
+	public function insert_qualification($data)
+	{
+		 return $this->db->insert('qualification',$data);
+	}//end insert_qualification function
 	public function get_doctor($doctor_choosen=FALSE)
 	{
 		if($doctor_choosen===FALSE)
@@ -45,6 +49,21 @@ class Doctor_m extends CI_Model
 		$query= $this->db->get('specialty');
 		return $query->result_array();
 	}//end function get_specialties
+	public function get_universities()
+	{
+		$query= $this->db->get('university');
+		return $query->result_array();
+	}//end function get_universities
+	public function get_qualification_types()
+	{
+		$query= $this->db->get('qualification_type');
+		return $query->result_array();
+	}//end function get_qualification_types
+	public function get_education_specialties()
+	{
+		$query= $this->db->get('education_specialty');
+		return $query->result_array();
+	}//end function get_education_specialties
 	
 }
 ?>
