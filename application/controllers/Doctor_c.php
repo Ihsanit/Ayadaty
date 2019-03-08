@@ -157,6 +157,8 @@ class Doctor_c extends CI_Controller
 		$data['qualification_types']=$this->doctor_obj->get_qualification_types();
 		$data['education_specialties']=$this->doctor_obj->get_education_specialties();
 		$data['universities']=$this->doctor_obj->get_universities();
+		$data['days']=$this->doctor_obj->get_days();
+		$data['periods']=$this->doctor_obj->get_periods();
 		$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
 
 		$this->load->view('template/header',$data);
@@ -266,16 +268,12 @@ public function add_qualification_data($page='edit_doctor_v')
 			endif;
 			if($this->session->userdata('logged_in')):
 				$doctor_chosen=$this->session->userdata('u_email');
-				$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
-
-
-				
+				$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);				
 				/*
 				|=========================================================================================================
 				|#call check_qualification_vald_inputs() function to validate input fields of doctor qualification data form		
 				|=========================================================================================================
-				*/			
-
+				*/
 				$this->check_qualification_vald_inputs();	
 
 				if($this->form_validation->run()===FALSE):			
@@ -322,7 +320,140 @@ public function add_qualification_data($page='edit_doctor_v')
 	        return show_error($err->getMessage());
 	    }#end catch)
 
-	}#end function add_education_data() 
+	}#end function add_education_data()
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|add_experience_data() function to add experiences' data of doctor   		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+public function add_experience_data($page='edit_doctor_v')
+	{
+		try
+		{
+
+			if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
+				show_404();
+			endif;
+			if($this->session->userdata('logged_in')):
+				$doctor_chosen=$this->session->userdata('u_email');
+				$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);				
+				/*
+				|=========================================================================================================
+				|#call check_experience_vald_inputs() function to validate input fields of doctor experience data form		
+				|=========================================================================================================
+				*/
+				$this->check_experience_vald_inputs();	
+
+				if($this->form_validation->run()===FALSE):			
+					
+					$this->load->view('template/header',$data);
+					$this->load->view('doctor_views/'.$page,$data);
+					$this->load->view('template/footer');
+
+				else:
+					/*
+					|=========================================================================================================
+					|#call upload_experience_file() function to process file		
+					|=========================================================================================================
+					*/	
+					$e_certificate=$this->upload_experience_file();
+					/*
+					|=========================================================================================================
+					|#call full_experience_data() function to full an array has sturcture of experience table with form input fields data 		
+					|=========================================================================================================
+					*/
+					$data=$this->full_experience_data($e_certificate);
+					/*
+					|=========================================================================================================
+					|#send doctor's experience data to doctor model => insert_experience() function 
+					|=========================================================================================================
+					*/
+					$e_data=$this->doctor_obj->insert_experience($data);
+					/*
+					|=========================================================================================================
+					|# Sure of inserting data in successful manner, show a feedback for user with 'Data are saved successful'
+					|=========================================================================================================
+					*/
+					if($e_data):
+						$this->session->set_flashdata('experience_added','تمت اضافة بيانات الخبرة بنجاح' );			
+						redirect('doctor_c/edit_doctor');
+					//die('ok');
+					endif;#end if insert successful 
+				endif;#end if validation successful
+			endif;#end if logged in user 
+		}#end try
+		catch(Exception $err)
+	    {
+	        log_message("error", $err->getMessage());
+	        return show_error($err->getMessage());
+	    }#end catch)
+
+	}#end function add_education_data()
+
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|add_experience_data() function to add experiences' data of doctor   		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+public function add_clinic_data($page='edit_doctor_v')
+	{
+		try
+		{
+
+			if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
+				show_404();
+			endif;
+			if($this->session->userdata('logged_in')):
+				$doctor_chosen=$this->session->userdata('u_email');
+				$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);				
+				/*
+				|=========================================================================================================
+				|#call check_experience_vald_inputs() function to validate input fields of doctor experience data form		
+				|=========================================================================================================
+				*/
+				$this->check_clinic_vald_inputs();	
+
+				if($this->form_validation->run()===FALSE):			
+					
+					$this->load->view('template/header',$data);
+					$this->load->view('doctor_views/'.$page,$data);
+					$this->load->view('template/footer');
+
+				else:
+					
+					/*
+					|=========================================================================================================
+					|#call full_experience_data() function to full an array has sturcture of experience table with form input fields data 		
+					|=========================================================================================================
+					*/
+					$data=$this->full_clinic_data();
+					/*
+					|=========================================================================================================
+					|#send doctor's experience data to doctor model => insert_experience() function 
+					|=========================================================================================================
+					*/
+					$c_data=$this->doctor_obj->insert_clinic($data);
+					/*
+					|=========================================================================================================
+					|# Sure of inserting data in successful manner, show a feedback for user with 'Data are saved successful'
+					|=========================================================================================================
+					*/
+					if($c_data):
+						$this->session->set_flashdata('clinic_added','تمت اضافة بيانات العيادة بنجاح' );			
+						redirect('doctor_c/edit_doctor');
+					//die('ok');
+					endif;#end if insert successful 
+				endif;#end if validation successful
+			endif;#end if logged in user 
+		}#end try
+		catch(Exception $err)
+	    {
+	        log_message("error", $err->getMessage());
+	        return show_error($err->getMessage());
+	    }#end catch)
+
+	}#end function add_clinic_data()
+
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
 |edit_education_data() function to edit educational doctor data  		
@@ -486,7 +617,88 @@ public function add_qualification_data($page='edit_doctor_v')
 			);		
 		return $data;
 	}#end function full_qualification_data()
-	/*
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|check_experience_vald_inputs() function to check validating of experience form input fields	
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	public function check_experience_vald_inputs()
+	{
+		$this->form_validation->set_rules('d_e_job_name','المسمى الوظيفي','trim|required');
+		$this->form_validation->set_rules('d_e_clinic_name','اسم جهة العمل','trim|required');
+		$this->form_validation->set_rules('d_e_place_address','عنوان جهة العمل','trim|required');
+		$this->form_validation->set_rules('d_e_start_date','بداية تاريخ العمل','trim|required');
+		$this->form_validation->set_rules('d_e_end_date','نهاية تاريخ العمل','trim|required');
+		$this->form_validation->set_rules('d_e_job_summary','ملخص العمل','trim');
+		$this->form_validation->set_rules('d_e_id','رقم الطبيب','trim|required');
+	}
+
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|full_experience_data() function to full an array has sturcture of qualification table with form input fields data 		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	public function full_experience_data($e_certificate)
+	{
+		
+		$data=array(
+			'e_job_name'		=>$this->security->xss_clean($this->input->post('d_e_job_name')),
+			'e_clinic_name'		=>$this->security->xss_clean($this->input->post('d_e_clinic_name')),
+			'e_place_address'	=>$this->security->xss_clean($this->input->post('d_e_place_address')),
+			'e_start_date'		=>$this->security->xss_clean($this->input->post('d_e_start_date')),
+			'e_end_date'		=>$this->security->xss_clean($this->input->post('d_e_end_date')),
+			'e_job_summary'		=>$this->security->xss_clean($this->input->post('d_e_job_summary')),
+			'e_certificate'		=>$e_certificate,
+			'e_d_id'			=>$this->security->xss_clean($this->input->post('d_e_id'))				
+			);		
+		return $data;
+	}#end function full_experience_data()
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|check_qualification_vald_inputs() function to check validating of qualification form input fields	
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	public function check_clinic_vald_inputs()
+	{
+		$this->form_validation->set_rules('d_c_job_name','المسمى الوظيفي','trim|required');
+		$this->form_validation->set_rules('d_c_name','اسم العيادة','trim|required');
+		$this->form_validation->set_rules('d_c_place_name','اسم العمارة او الشقة','trim');		
+		$this->form_validation->set_rules('d_c_country_address','عنوان دولة العيادة','trim|required');
+		$this->form_validation->set_rules('d_c_city_address','عنوان مدينة العيادة','trim|required');
+		$this->form_validation->set_rules('d_c_street_address','عنوان شارع العيادة','trim|required');
+		$this->form_validation->set_rules('d_c_day_start','اول ايام الدوام','trim|required');
+		$this->form_validation->set_rules('d_c_day_end','اخر ايام الدوام التخرج','trim|required');
+		$this->form_validation->set_rules('d_c_period_start','بداية فترة الدوام','trim|required');
+		$this->form_validation->set_rules('d_c_period_end','نهاية فترة الدوام','trim|required');
+		$this->form_validation->set_rules('d_c_summary','ملخص عن العيادة او العمل','trim');
+		$this->form_validation->set_rules('d_c_d_id','رقم الطبيب','trim|required');
+	}
+
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|full_qualification_data() function to full an array has sturcture of qualification table with form input fields data 		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	public function full_clinic_data()
+	{
+		$data=array(
+			'c_job_name'			=>$this->security->xss_clean($this->input->post('d_c_job_name')),
+			'c_name'				=>$this->security->xss_clean($this->input->post('d_c_name')),
+			'c_place_name'			=>$this->security->xss_clean($this->input->post('d_c_place_name')),
+			'c_country_address'		=>$this->security->xss_clean($this->input->post('d_c_country_address')),
+			'c_city_address'		=>$this->security->xss_clean($this->input->post('d_c_city_address')),
+			'c_street_address'		=>$this->security->xss_clean($this->input->post('d_c_street_address')),
+			'c_day_start'			=>$this->security->xss_clean($this->input->post('d_c_day_start')),
+			'c_day_end'				=>$this->security->xss_clean($this->input->post('d_c_day_end')),
+			'c_period_start'		=>$this->security->xss_clean($this->input->post('d_c_period_start')),
+			'c_period_end'			=>$this->security->xss_clean($this->input->post('d_c_period_end')),
+			'c_summary'				=>$this->security->xss_clean($this->input->post('d_c_summary')),
+			'c_d_id'				=>$this->security->xss_clean($this->input->post('d_c_d_id'))				
+			);		
+		return $data;
+	}#end function full_qualification_data()
+
+/*
 |-------------------------------------------------------------------------------------------------------------------------------------
 |upload_profile() function to upload image 		
 |-------------------------------------------------------------------------------------------------------------------------------------
@@ -495,7 +707,7 @@ public function add_qualification_data($page='edit_doctor_v')
 	{
 		if(isset($_FILES['d_q_certificate']['name'])):		
 			$config=array(
-				'upload_path'=>"./assets/images/doctors/certificates/",
+				'upload_path'=>"./assets/images/doctors/qualification/",
 				'allowed_types'=>'jpeg|jpg|png|gif|pdf',
 				'max_size'=>2048,
 				'max_width'=>500,
@@ -514,6 +726,36 @@ public function add_qualification_data($page='edit_doctor_v')
 
 				$data=array('upload_data'	=>	$this->upload->data());				
 				$final_file=$_FILES['d_q_certificate']['name'];
+				return $final_file;
+			endif;#end if file successful uploaded
+		endif;#end if file found
+
+	}#end function upload_file()
+
+	public function upload_experience_file()
+	{
+		
+		if(isset($_FILES['d_e_certificate']['name'])):		
+			$config=array(
+				'upload_path'=>"./assets/images/doctors/experience/",
+				'allowed_types'=>'jpeg|jpg|png|gif|pdf',
+				'max_size'=>2048,
+				'max_width'=>500,
+				'max_height'=>500,
+				'remove_spaces'=>TRUE,
+				);
+			$this->load->library('upload',$config);
+			if(!$this->upload->do_upload('d_e_certificate')):
+				$errors=array(
+					'error'	=>	$this->upload->display_errors()
+					);
+				$final_file='noimg.png';
+				return $final_file;
+			
+			else:
+
+				$data=array('upload_data'	=>	$this->upload->data());				
+				$final_file=$_FILES['d_e_certificate']['name'];
 				return $final_file;
 			endif;#end if file successful uploaded
 		endif;#end if file found

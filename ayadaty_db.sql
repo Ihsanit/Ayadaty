@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2019 at 10:17 PM
+-- Generation Time: Mar 08, 2019 at 09:17 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -47,6 +47,36 @@ INSERT INTO `city` (`city_id`, `city_name`, `c_country_id`) VALUES
 (6, 'المهرة', 243),
 (7, 'عمران', 243),
 (8, 'اب', 243);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clinic`
+--
+
+CREATE TABLE `clinic` (
+  `c_id` int(12) NOT NULL,
+  `c_job_name` varchar(200) NOT NULL,
+  `c_name` varchar(500) NOT NULL,
+  `c_place_name` varchar(200) DEFAULT NULL,
+  `c_country_address` int(12) NOT NULL,
+  `c_city_address` int(12) NOT NULL,
+  `c_street_address` varchar(200) NOT NULL,
+  `c_day_start` int(2) NOT NULL,
+  `c_day_end` int(2) NOT NULL,
+  `c_period_start` varchar(50) NOT NULL,
+  `c_period_end` varchar(50) NOT NULL,
+  `c_summary` text,
+  `c_d_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `clinic`
+--
+
+INSERT INTO `clinic` (`c_id`, `c_job_name`, `c_name`, `c_place_name`, `c_country_address`, `c_city_address`, `c_street_address`, `c_day_start`, `c_day_end`, `c_period_start`, `c_period_end`, `c_summary`, `c_d_id`) VALUES
+(1, 'اخصائي عيون', 'احداق لطب العيون', 'المعقلي - الدور الرابع - شقة 2', 1, 1, 'صخر', 1, 6, '2', '6', 'lkl;ak ;l;ka kl;akl; k', 10),
+(2, 'اخصائي عيون1', 'احداق لطب العيون1', 'المعقلي - الدور الرابع - شقة 1', 1, 1, 'صخر1', 1, 6, '2', '6', 'احداق لطب وجراحة العيون', 10);
 
 -- --------------------------------------------------------
 
@@ -316,6 +346,30 @@ INSERT INTO `country` (`country_id`, `country_shortname`, `country_name`, `count
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `day`
+--
+
+CREATE TABLE `day` (
+  `day_id` int(11) NOT NULL,
+  `day_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `day`
+--
+
+INSERT INTO `day` (`day_id`, `day_name`) VALUES
+(1, 'السبت'),
+(2, 'الأحد'),
+(3, 'الاثنين'),
+(4, 'الثلاثاء'),
+(5, 'الأربعاء'),
+(6, 'الخميس'),
+(7, 'الجمعة');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctor`
 --
 
@@ -350,24 +404,8 @@ INSERT INTO `doctor` (`d_id`, `d_name`, `d_email`, `d_phone`, `d_gender`, `d_bir
 (6, 'ندى محمد', 'nada@gmail.com', '+967777000999', 0, '2000-05-04 21:00:00', 5, 1, 8, 'شارع صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar3.png', 3, 'nada1'),
 (7, 'Mazen Mohammed', 'mazen@gmail.com', '+967733555666', 1, '1991-12-31 21:00:00', 228, 1, 1, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar.png', 2, 'mazen'),
 (8, 'Rami Ali', 'rami@yahoo.com', '+967777888999', 1, '1997-12-31 21:00:00', 3, 1, 2, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar5.png', 3, 'rami1'),
-(9, 'Jehan Nasser', 'jehan@gmail.com', '+967733444555', 0, '2000-01-01 21:00:00', 243, 1, 6, 'ش تونس', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar04.png', 4, 'jehan');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `doctor_experience`
---
-
-CREATE TABLE `doctor_experience` (
-  `e_id` int(12) NOT NULL,
-  `e_job_name` varchar(200) NOT NULL,
-  `e_place_name` varchar(200) NOT NULL,
-  `e_start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `e_end_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `e_job_summary` text,
-  `e_certificate` varchar(200) NOT NULL,
-  `e_d_id` int(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(9, 'Jehan Nasser', 'jehan@gmail.com', '+967733444555', 0, '2000-01-01 21:00:00', 243, 1, 6, 'ش تونس', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar04.png', 4, 'jehan'),
+(10, 'روان فتحي المنصوري', 'rawan2020@gmail.com', '+967771010102', 0, '1993-08-30 21:00:00', 132, 1, 1, 'كوالامبور', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar21.png', 2, 'rawan');
 
 -- --------------------------------------------------------
 
@@ -383,40 +421,25 @@ CREATE TABLE `doctor_hospiatl` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doctor_job`
+-- Table structure for table `education_specialty`
 --
 
-CREATE TABLE `doctor_job` (
-  `j_id` int(12) NOT NULL,
-  `j_name` int(12) NOT NULL,
-  `j_place_name` varchar(200) NOT NULL,
-  `j_country_address` int(12) NOT NULL,
-  `j_city_address` int(12) NOT NULL,
-  `j_day_start` int(2) NOT NULL,
-  `j_day_last` int(2) NOT NULL,
-  `j_period_start` varchar(50) NOT NULL,
-  `j_period_end` varchar(50) NOT NULL,
-  `j_summary` text,
-  `j_d_id` int(11) NOT NULL
+CREATE TABLE `education_specialty` (
+  `e_s_id` int(12) NOT NULL,
+  `e_s_name` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `doctor_qualification`
+-- Dumping data for table `education_specialty`
 --
 
-CREATE TABLE `doctor_qualification` (
-  `q_id` int(12) NOT NULL,
-  `q_name` int(12) NOT NULL,
-  `q_university` int(12) NOT NULL,
-  `q_specialty` int(12) NOT NULL,
-  `q_start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `q_graduate_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `q_gpa` float NOT NULL,
-  `q_certificate` varchar(200) NOT NULL,
-  `q_d_id` int(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `education_specialty` (`e_s_id`, `e_s_name`) VALUES
+(1, 'طب عام'),
+(2, 'المخ والأعصاب'),
+(3, 'اسنان'),
+(4, 'جلدية'),
+(5, 'الروماتيزم والمفاصل'),
+(6, 'طب عيون');
 
 -- --------------------------------------------------------
 
@@ -433,6 +456,34 @@ CREATE TABLE `employee` (
   `emp_salary` float NOT NULL,
   `emp_employ_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `experience`
+--
+
+CREATE TABLE `experience` (
+  `e_id` int(12) NOT NULL,
+  `e_job_name` varchar(200) NOT NULL,
+  `e_clinic_name` varchar(200) NOT NULL,
+  `e_place_address` varchar(200) NOT NULL,
+  `e_start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `e_end_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `e_job_summary` text,
+  `e_certificate` varchar(50) DEFAULT NULL,
+  `e_d_id` int(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `experience`
+--
+
+INSERT INTO `experience` (`e_id`, `e_job_name`, `e_clinic_name`, `e_place_address`, `e_start_date`, `e_end_date`, `e_job_summary`, `e_certificate`, `e_d_id`) VALUES
+(1, 'استشاري اسنان', 'عيادة الطارق', 'صنعاء - شار المطار', '2000-05-04 21:00:00', '2008-02-07 21:00:00', 'klkl ;;; ;;;a oiuoiu kjlkja klj', NULL, 10),
+(2, 'استشاري اسنان2', 'عيادة الطارق2', 'صنعاء - شار المطار2', '2010-12-31 21:00:00', '2015-02-04 21:00:00', 'jj kkkkkk lllllllll iiiiiiiiiiiiiiii kljaj kl', NULL, 10),
+(3, 'استشاري اسنان3', 'عيادة الطارق3', 'صنعاء - شار المطار3', '2018-05-07 21:00:00', '2019-02-01 21:00:00', 'jkj llj lljklja kjklja kjllaj lk', 'red1.png', 10),
+(4, 'اخصائي جلدية', 'مستشفى الوسام التخصصي', 'صنعاء - شارع حدة', '2017-02-01 21:00:00', '2019-01-01 21:00:00', 'اخصائي جلدية وامراض معدية', 'blue1.png', 10);
 
 -- --------------------------------------------------------
 
@@ -465,6 +516,83 @@ CREATE TABLE `hospital_specialty` (
   `hs_h_id` int(12) NOT NULL,
   `hs_sp_id` int(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `period`
+--
+
+CREATE TABLE `period` (
+  `period_id` int(12) NOT NULL,
+  `period_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `period`
+--
+
+INSERT INTO `period` (`period_id`, `period_name`) VALUES
+(1, '08:00صباحا'),
+(2, '09:00صباحا'),
+(3, '10:00صباحا'),
+(4, '11:00صباحا'),
+(5, '12:00مساء'),
+(6, '1:00مساء');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `qualification`
+--
+
+CREATE TABLE `qualification` (
+  `q_id` int(12) NOT NULL,
+  `q_start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `q_graduate_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `q_gpa` int(3) NOT NULL,
+  `q_certificate` varchar(200) NOT NULL,
+  `q_q_t_id` int(12) NOT NULL,
+  `q_e_s_id` int(12) NOT NULL,
+  `q_u_id` int(12) NOT NULL,
+  `q_d_id` int(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `qualification`
+--
+
+INSERT INTO `qualification` (`q_id`, `q_start_date`, `q_graduate_date`, `q_gpa`, `q_certificate`, `q_q_t_id`, `q_e_s_id`, `q_u_id`, `q_d_id`) VALUES
+(5, '1999-12-31 21:00:00', '2005-02-01 21:00:00', 40, 'blue1.png', 4, 4, 2, 10),
+(6, '2009-01-31 21:00:00', '2012-01-31 21:00:00', 85, 'blue1.png', 2, 5, 1, 10),
+(7, '2005-01-31 21:00:00', '2012-01-31 21:00:00', 50, 'blue1.png', 2, 6, 1, 10),
+(8, '1999-12-31 21:00:00', '2001-12-31 21:00:00', 100, 'blue1.png', 6, 5, 2, 10),
+(9, '1999-12-31 21:00:00', '2001-12-31 21:00:00', 100, 'blue1.png', 6, 5, 2, 10),
+(10, '2019-03-07 21:00:00', '2019-03-14 21:00:00', 85, 'red1.png', 7, 3, 4, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `qualification_type`
+--
+
+CREATE TABLE `qualification_type` (
+  `q_t_id` int(12) NOT NULL,
+  `q_t_name` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `qualification_type`
+--
+
+INSERT INTO `qualification_type` (`q_t_id`, `q_t_name`) VALUES
+(1, 'دبلوم'),
+(2, 'بكالوريوس'),
+(3, 'ليسانس'),
+(4, 'بورد'),
+(5, 'زمالة'),
+(6, 'ماجستير'),
+(7, 'دكتوراه');
 
 -- --------------------------------------------------------
 
@@ -515,6 +643,27 @@ INSERT INTO `specialty` (`specialty_id`, `specialty_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `university`
+--
+
+CREATE TABLE `university` (
+  `un_id` int(12) NOT NULL,
+  `un_name` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `university`
+--
+
+INSERT INTO `university` (`un_id`, `un_name`) VALUES
+(1, 'جامعة صنعاء'),
+(2, 'جامعة عدن'),
+(3, 'العلوم والتكنولوجيا'),
+(4, 'دار السلام');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -540,7 +689,8 @@ INSERT INTO `user` (`u_id`, `u_username`, `u_password`, `u_email`, `u_privilage`
 (6, 'ندى محمد', 'nada1', 'nada@gmail.com', NULL, '2019-03-05 18:20:47'),
 (7, 'Mazen Mohammed', 'mazen', 'mazen@gmail.com', NULL, '2019-03-05 20:41:08'),
 (8, 'Rami Ali', 'rami1', 'rami@yahoo.com', NULL, '2019-03-05 20:44:00'),
-(9, 'Jehan Nasser', 'jehan', 'jehan@gmail.com', NULL, '2019-03-05 20:57:03');
+(9, 'Jehan Nasser', 'jehan', 'jehan@gmail.com', NULL, '2019-03-05 20:57:03'),
+(10, 'روان فتحي المنصوري', 'rawan', 'rawan2020@gmail.com', NULL, '2019-03-06 12:01:01');
 
 --
 -- Indexes for dumped tables
@@ -554,10 +704,22 @@ ALTER TABLE `city`
   ADD KEY `c_country_id_fk` (`c_country_id`);
 
 --
+-- Indexes for table `clinic`
+--
+ALTER TABLE `clinic`
+  ADD PRIMARY KEY (`c_id`);
+
+--
 -- Indexes for table `country`
 --
 ALTER TABLE `country`
   ADD PRIMARY KEY (`country_id`);
+
+--
+-- Indexes for table `day`
+--
+ALTER TABLE `day`
+  ADD PRIMARY KEY (`day_id`);
 
 --
 -- Indexes for table `doctor`
@@ -570,16 +732,51 @@ ALTER TABLE `doctor`
   ADD KEY `city_id_fk` (`d_city_address`);
 
 --
+-- Indexes for table `education_specialty`
+--
+ALTER TABLE `education_specialty`
+  ADD PRIMARY KEY (`e_s_id`);
+
+--
 -- Indexes for table `employee`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`emp_id`);
 
 --
+-- Indexes for table `experience`
+--
+ALTER TABLE `experience`
+  ADD PRIMARY KEY (`e_id`),
+  ADD KEY `e_d_id_fk` (`e_d_id`);
+
+--
 -- Indexes for table `hospital`
 --
 ALTER TABLE `hospital`
   ADD PRIMARY KEY (`h_id`);
+
+--
+-- Indexes for table `period`
+--
+ALTER TABLE `period`
+  ADD PRIMARY KEY (`period_id`);
+
+--
+-- Indexes for table `qualification`
+--
+ALTER TABLE `qualification`
+  ADD PRIMARY KEY (`q_id`),
+  ADD KEY `q_e_s_id_fk` (`q_e_s_id`),
+  ADD KEY `q_u_id_fk` (`q_u_id`),
+  ADD KEY `q_q_t_id_fk` (`q_q_t_id`),
+  ADD KEY `q_d_id_fk` (`q_d_id`);
+
+--
+-- Indexes for table `qualification_type`
+--
+ALTER TABLE `qualification_type`
+  ADD PRIMARY KEY (`q_t_id`);
 
 --
 -- Indexes for table `service`
@@ -601,6 +798,12 @@ ALTER TABLE `specialty`
   ADD PRIMARY KEY (`specialty_id`);
 
 --
+-- Indexes for table `university`
+--
+ALTER TABLE `university`
+  ADD PRIMARY KEY (`un_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -617,16 +820,34 @@ ALTER TABLE `city`
   MODIFY `city_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `clinic`
+--
+ALTER TABLE `clinic`
+  MODIFY `c_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `country`
 --
 ALTER TABLE `country`
   MODIFY `country_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
 
 --
+-- AUTO_INCREMENT for table `day`
+--
+ALTER TABLE `day`
+  MODIFY `day_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `education_specialty`
+--
+ALTER TABLE `education_specialty`
+  MODIFY `e_s_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -635,10 +856,34 @@ ALTER TABLE `employee`
   MODIFY `emp_id` int(12) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `experience`
+--
+ALTER TABLE `experience`
+  MODIFY `e_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `hospital`
 --
 ALTER TABLE `hospital`
   MODIFY `h_id` int(12) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `period`
+--
+ALTER TABLE `period`
+  MODIFY `period_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `qualification`
+--
+ALTER TABLE `qualification`
+  MODIFY `q_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `qualification_type`
+--
+ALTER TABLE `qualification_type`
+  MODIFY `q_t_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `service`
@@ -651,6 +896,12 @@ ALTER TABLE `service`
 --
 ALTER TABLE `slider`
   MODIFY `slide_id` int(12) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `university`
+--
+ALTER TABLE `university`
+  MODIFY `un_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -675,6 +926,21 @@ ALTER TABLE `doctor`
   ADD CONSTRAINT `city_id_fk` FOREIGN KEY (`d_city_address`) REFERENCES `city` (`city_id`),
   ADD CONSTRAINT `d_nationality_country_fk` FOREIGN KEY (`d_nationality`) REFERENCES `country` (`country_id`),
   ADD CONSTRAINT `doctor_ibfk_1` FOREIGN KEY (`d_specialty_id`) REFERENCES `specialty` (`specialty_id`);
+
+--
+-- Constraints for table `experience`
+--
+ALTER TABLE `experience`
+  ADD CONSTRAINT `e_d_id_fk` FOREIGN KEY (`e_d_id`) REFERENCES `doctor` (`d_id`);
+
+--
+-- Constraints for table `qualification`
+--
+ALTER TABLE `qualification`
+  ADD CONSTRAINT `q_d_id_fk` FOREIGN KEY (`q_d_id`) REFERENCES `doctor` (`d_id`),
+  ADD CONSTRAINT `q_e_s_id_fk` FOREIGN KEY (`q_e_s_id`) REFERENCES `education_specialty` (`e_s_id`),
+  ADD CONSTRAINT `q_q_t_id_fk` FOREIGN KEY (`q_q_t_id`) REFERENCES `qualification_type` (`q_t_id`),
+  ADD CONSTRAINT `q_u_id_fk` FOREIGN KEY (`q_u_id`) REFERENCES `university` (`un_id`);
 
 --
 -- Constraints for table `service`

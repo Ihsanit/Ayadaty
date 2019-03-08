@@ -208,6 +208,32 @@ $(document).ready(function(){
             } 
         });        
 	});
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|add experience doctor data
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	$("#d_experience_data_submit").submit(function(){
+		var d_experience_data=$("#d_experience_form").serialize();	
+		alert($('#e_d_id').val());	
+		$.ajax({
+            type:'POST',
+            url:"<?php echo base_url('addexperience');?>",
+            data:d_experience_data,            
+		   dataType: 'json',
+		   contentType: false,
+		   processData: false,
+            success: function(data)
+            {
+            	alert("تمت اضافة بياناتك بنجاح يمكنك تسجيل الدخول");            	 
+            },
+            error: function(){
+                alert('something went wrong...');
+            } 
+        });        
+	});
+
+
 });//end ready()
         </script>
 	</body>
