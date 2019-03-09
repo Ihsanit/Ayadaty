@@ -107,6 +107,7 @@
 |process  phone number field of doctor personal data form
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
+
 		var input = document.querySelector("#d_phone");
 		var output = document.querySelector("#d_phone_error_msg");
 		var iti=intlTelInput(input, {

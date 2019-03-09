@@ -10,9 +10,9 @@
       <nav>
         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-personal-data" role="tab" aria-controls="nav-personal-data" aria-selected="true">البيانات الشخصية</a>
-          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">البيانات التعليمية</a>
-          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">الخبرات</a>
-          <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">بيانات العيادات</a>
+          <a class="nav-item nav-link" id="nav-profile-tab"  href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">البيانات التعليمية</a>
+          <a class="nav-item nav-link" id="nav-contact-tab"  href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">الخبرات</a>
+          <a class="nav-item nav-link" id="nav-about-tab"  href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">بيانات العيادات</a>
         </div><!-- /div nav -->
       </nav><!-- /nav -->
 
@@ -54,17 +54,19 @@
                       </div>
                       <div class="form-group col-lg-6 col-md-12">
                         <label>النوع<span class="required"> *</span></label>
-                        <select class="form-control" name='d_gender' title="النوع" autofocus required>
-                          <option selected disabled>اختر النوع..</option>
+                        <select class="form-control" name='d_gender' id='d_gender' title="النوع" autofocus required>
+                          <option value='' selected disabled>اختر النوع..</option>
                           <option value='1' <?php echo set_select('d_gender','1');?>>ذكر</option>
                           <option value='0' <?php echo set_select('d_gender','0');?>>أُنثى</option>
                         </select>
+                        <span class="error-msg" id="d_gender_error_msg"></span>
                       </div>            
                     </div>
                     <div class="form-row">
                       <div class="form-group col-lg-6 col-md-12">
                         <label>تاريخ الميلاد<span class="required"> *</span></label>
-                        <input type="date" id="d_birth_date" min='1899-01-01' class="form-control" name='d_birth_date' value="<?php echo set_value('d_birth_date'); ?>" placeholder="تاريخ الميلاد" title="تاريخ الميلاد" autofocus>
+                        <input  type="date" id="d_birth_date" min='1899-01-01' class="form-control" name='d_birth_date' value="<?php echo set_value('d_birth_date'); ?>" placeholder="تاريخ الميلاد" title="تاريخ الميلاد" autofocus>
+                        <span class="error-msg" id="d_birth_date_error_msg"></span>
                       </div>
                       <div class="form-group col-lg-6 col-md-12">
                         <label>الجنسية<span class="required"> *</span></label>
@@ -76,15 +78,17 @@
                             <?php endforeach;?>
                           <?php endif;?>
                         </select>
+                        <span class="error-msg" id="d_nationality_error_msg"></span>
                       </div>            
                     </div>                                   
                     <div class="form-row">
                       <div class="form-group col-lg-6 col-md-12">
                         <label>العنوان<span class="required"> *</span></label>
                         <select class="form-control" name='d_country_address' id="d_country_address" title="عنوان الدولة"autofocus required>
-                          <option selected disabled>اختر الدولة..</option>
+                          <option value="" selected disabled>اختر الدولة..</option>
                           <option value='1' <?php echo set_select('d_country_address','1');?>>اليمن</option>
                         </select>
+                        <span class="error-msg" id="d_country_error_msg"></span>
                       </div>
                       <div class="form-group col-lg-6 col-md-12">
                         <label style="visibility: hidden;">عنوان المدينة<span class="required"> *</span></label>
@@ -96,6 +100,7 @@
                             <?php endforeach;?>
                           <?php endif;?>
 											  </select>
+                        <span class="error-msg" id="d_city_error_msg"></span>
                       </div>            
                     </div>
                     <div class="form-group col-xs-6"> 
@@ -114,14 +119,15 @@
                     </div>
                     <div class="form-group col-xs-6">
                       <label>التخصص الطبي<span class="required"> *</span></label>
-                      <select class="form-control" name='d_speciality' title="التخصص الطبي"autofocus required>
-                        <option selected disabled>اختر التخصص الطبي..</option>
+                      <select class="form-control" name='d_speciality' id="d_speciality" title="التخصص الطبي"autofocus required>
+                        <option value="" selected disabled>اختر التخصص الطبي..</option>
                         <?php if(count($specialties)):?>
                           <?php foreach ($specialties as $specialty):?>
                             <option value=<?php echo $specialty['specialty_id'];?><?php echo set_select('d_speciality',$specialty['specialty_id']);?>><?php echo $specialty['specialty_name'];?></option>
                           <?php endforeach;?>
                         <?php endif;?>
                       </select>
+                      <span class="error-msg" id="d_speciality_error_msg"></span>
                     </div>
                     <div class="form-group col-xs-6"> 
                       <label>كلمة المرور<span class="required"> *</span></label>
@@ -136,7 +142,7 @@
                     <div class="form-group col-xs-12">
                       <br>
                       <button class="btn" type="submit" id="d_personal_data_submit" style="color:#fff;" value="send">حفظ</button>
-                      <a class="nav-item nav-link btn btn-sm next-tab" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">التالي</a>
+                      <a class="nav-item nav-link btn btn-sm next-tab" id="nav-profile-tab" data-toggle="tab"  role="tab" aria-controls="nav-profile" aria-selected="false">التالي</a>
                     </div>
                   </div><!-- /tab-content -->
                 </div><!--/col-9-->

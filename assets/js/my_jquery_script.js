@@ -18,20 +18,30 @@ $(document).ready(function(){
 	$(function(){
 		$("#d_name_error_msg").hide();
 		$("#d_email_error_msg").hide();
-		$("#d_phone_error_msg").hide();
+		$("#d_gender_error_msg").hide();
+		$("#d_birth_date_error_msg").hide();
+		$("#d_nationality_error_msg").hide();
+		$("#d_country_error_msg").hide();
+		$("#d_city_error_msg").hide();
 		$("#d_street_error_msg").hide();
 		$("#d_facebook_error_msg").hide();
 		$("#d_twitter_error_msg").hide();
+		$("#d_speciality_error_msg").hide();
 		$("#d_password_error_msg").hide();
 		$("#d_password_c_error_msg").hide();
 		
 
 		var error_d_name=false;
 		var error_d_email=false;
-		var error_d_phone=false;
+		var error_d_birth_date=false;
+		var error_d_gender=false;
+		var error_d_nationality=false;
+		var error_d_country=false;
+		var error_d_city=false;
 		var error_d_street=false;
 		var error_d_facebook=false;
 		var error_d_twitter=false;
+		var error_d_speciality=false;
 		var error_d_password=false;
 		var error_d_password_c=false;
 
@@ -41,10 +51,22 @@ $(document).ready(function(){
 		$("#d_email").focusout(function(){
 			check_d_email();
 		});
-		$("#d_phone").focusout(function(){
-			check_d_phone();
+		$("#d_birth_date").focusout(function(){
+			check_d_birth_date();
 		});
-		$("#d_street").focusout(function(){
+		$("#d_gender").focusout(function(){
+			check_d_gender();
+		});
+		$("#nationality").focusout(function(){
+			check_d_nationality();
+		});
+		$("#d_country_address").focusout(function(){
+			check_d_country();
+		});
+		$("#city").focusout(function(){
+			check_d_city();
+		});
+		$("#d_street_address").focusout(function(){
 			check_d_street();
 		});
 		$("#d_facebook").focusout(function(){
@@ -53,11 +75,52 @@ $(document).ready(function(){
 		$("#d_twitter").focusout(function(){
 			check_d_twitter();
 		});
+		$("#d_speciality").focusout(function(){
+			check_d_speciality();
+		});
 		$("#d_password").focusout(function(){
 			check_d_password();
 		});
 		$("#d_password_c").focusout(function(){
 			check_d_password_c();
+		});
+/*--------------------------check_education_data-------------------*/
+		$("#d_q_type_error_msg").hide();
+		$("#d_university_error_msg").hide();
+		$("#d_education_specialty_error_msg").hide();
+		$("#d_q_start_date_error_msg").hide();
+		$("#d_q_graduate_date_error_msg").hide();
+		$("#d_q_gpa_error_msg").hide();
+		$("#d_q_certificate_error_msg").hide();
+
+		var error_d_q_type=false;
+		var error_d_q_university=false;
+		var error_d_q_education_specialty=false;
+		var error_d_q_start_date=false;
+		var error_d_q_graduate_date=false;
+		var error_d_q_gpa=false;
+		var error_d_q_certificate=false;
+
+		$("#d_qualification_type").focusout(function(){
+			check_d_qualification_type();
+		});
+		$("#d_university").focusout(function(){
+			check_d_university();
+		});
+		$("#d_education_specialty").focusout(function(){
+			check_d_education_specialty();
+		});
+		$("#d_q_start_date").focusout(function(){
+			check_d_q_start_date();
+		});
+		$("#d_q_graduate_date").focusout(function(){
+			check_d_q_graduate_date();
+		});
+		$("#d_q_gpa").focusout(function(){
+			check_d_q_gpa();
+		});
+		$("#d_q_certificate").focusout(function(){
+			check_d_q_certificate();
 		});
 /*--------------------------check_d_name()-------------------------*/
 		
@@ -98,24 +161,92 @@ $(document).ready(function(){
 				}//end if
 
 		}//end check_d_email()
-/*--------------------------check_d_phone()-------------------------*/
-		function check_d_phone()
-		{
-			/*var pattern=/^\d{14}/;
-			var phone =$("#d_phone").val();
-			if(pattern.test(phone) && phone !=='')
+/*--------------------------check_d_birth_date()-------------------------*/
+		function check_d_birth_date()
+		{			
+			var d_birth_date =$("#d_birth_date").val();
+			if(d_birth_date!=='')
 			{
-				$("#d_phone_error_msg").hide();
-				$("#d_phone").css("border","1px solid #34F458");
+				$("#d_birth_date_error_msg").hide();
+				$("#d_birth_date").css("border","1px solid #34F458");
 			}
 			else
 			{
-				$("#d_phone_error_msg").html("يرجى ادخال رقم تلفون صحيح");
-				$("#d_phone_error_msg").show();
-				$("#d_phone").css("border","1px solid #F90A0A");
-				error_d_phone=true;
-			}*/
-		}//check_d_phone()
+				$("#d_birth_date_error_msg").html("يرجى ادخال تاريخ الميلاد");
+				$("#d_birth_date_error_msg").show();
+				$("#d_birth_date").css("border","1px solid #F90A0A");
+				error_d_birth_date=true;
+			}
+		}//check_d_birth_date()
+/*--------------------------check_d_gender()-------------------------*/
+		function check_d_gender()
+		{			
+			var d_gender =$("#d_gender").val();
+			if(d_gender!==null)
+			{
+				$("#d_gender_error_msg").hide();
+				$("#d_gender").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_gender_error_msg").html("يرجى اختيار النوع");
+				$("#d_gender_error_msg").show();
+				$("#d_gender").css("border","1px solid #F90A0A");
+				error_d_gender=true;
+			}
+		}//check_d_gender()
+/*--------------------------check_d_nationality()-------------------------*/
+		function check_d_nationality()
+		{			
+			var d_nationality =$("#nationality").val();
+			if(d_nationality!==null)
+			{
+				$("#d_nationality_error_msg").hide();
+				$("#nationality").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_nationality_error_msg").html("يرجى اختيار الجنسية");
+				$("#d_nationality_error_msg").show();
+				$("#nationality").css("border","1px solid #F90A0A");
+				error_d_nationality=true;
+			}
+		}//check_d_nationality()
+/*--------------------------check_d_country()-------------------------*/
+		function check_d_country()
+		{			
+			var d_country =$("#d_country_address").val();
+			if(d_country!==null)
+			{
+				$("#d_country_error_msg").hide();
+				$("#d_country_address").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_country_error_msg").html("يرجى اختيار عنوان الدولة");
+				$("#d_country_error_msg").show();
+				$("#d_country_address").css("border","1px solid #F90A0A");
+				error_d_nationality=true;
+			}
+		}//check_d_country()
+/*--------------------------check_d_city()-------------------------*/
+		function check_d_city()
+		{			
+			var d_city =$("#city").val();
+			if(d_city!==null)
+			{
+				$("#d_city_error_msg").hide();
+				$("#city").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_city_error_msg").html("يرجى اختيار عنوان المدينة");
+				$("#d_city_error_msg").show();
+				$("#city").css("border","1px solid #F90A0A");
+				error_d_city=true;
+			}
+		}//check_d_city()
+
 /*--------------------------check_d_street()-------------------------*/
 		function check_d_street()
 		{
@@ -175,6 +306,23 @@ $(document).ready(function(){
 
 				}
 		}//end check_d_twitter()
+/*--------------------------check_d_specialty()-------------------------*/
+		function check_d_speciality()
+		{			
+			var d_speciality =$("#d_speciality").val();
+			if(d_speciality!==null)
+			{
+				$("#d_speciality_error_msg").hide();
+				$("#d_speciality").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_speciality_error_msg").html("يرجى اختيار التخصص الطبي");
+				$("#d_speciality_error_msg").show();
+				$("#d_speciality").css("border","1px solid #F90A0A");
+				error_d_speciality=true;
+			}
+		}//check_d_speciality()
 /*--------------------------check_d_password-------------------------*/
 		function check_d_password()
 		{
@@ -198,7 +346,7 @@ $(document).ready(function(){
 		{
 			var password=$("#d_password").val();
 			var password_c=$("#d_password_c").val();
-			if(password!==password_c)
+			if(password!==password_c || password_c=="")
 			{
 				$("#d_password_c_error_msg").html("كلمات المرور غير متطابقة");
 				$("#d_password_c_error_msg").show();
@@ -211,28 +359,189 @@ $(document).ready(function(){
 				$("#d_password_c").css("border","1px solid #34F458");
 			}//end if password!==password_c
 		}//end check_d_password_c()
+/*----------------------------------------educational doctor data methods--------------------------*/
+/*--------------------------check_d_qualification_type()-------------------------*/
+		function check_d_qualification_type()
+		{			
+			var d_qualification_type =$("#d_qualification_type").val();
+			if(d_qualification_type!==null)
+			{
+				$("#d_q_type_error_msg").hide();
+				$("#d_qualification_type").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_q_type_error_msg").html("يرجى اختيار نوع المؤهل");
+				$("#d_q_type_error_msg").show();
+				$("#d_qualification_type").css("border","1px solid #F90A0A");
+				error_d_q_type=true;
+			}
+		}//check_d_qualification_type()
+/*--------------------------check_d_university()-------------------------*/
+		function check_d_university()
+		{			
+			var d_university =$("#d_university").val();
+			if(d_university!==null)
+			{
+				$("#d_university_error_msg").hide();
+				$("#d_university").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_university_error_msg").html("يرجى اختيار جهة الدراسة");
+				$("#d_university_error_msg").show();
+				$("#d_university").css("border","1px solid #F90A0A");
+				error_d_q_university=true;
+			}
+		}//check_d_university()
+/*--------------------------check_d_education_specialty()-------------------------*/
+		function check_d_education_specialty()
+		{			
+			var d_education_specialty =$("#d_education_specialty").val();
+			if(d_education_specialty!==null)
+			{
+				$("#d_education_specialty_error_msg").hide();
+				$("#d_education_specialty").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_education_specialty_error_msg").html("يرجى اختيار التخصص الدراسي");
+				$("#d_education_specialty_error_msg").show();
+				$("#d_education_specialty").css("border","1px solid #F90A0A");
+				error_d_education_specialty=true;
+			}
+		}//check_d_education_specialty()
+/*--------------------------check_d_q_start_date()-------------------------*/
+		function check_d_q_start_date()
+		{			
+			var d_q_start_date =$("#d_q_start_date").val();
+			if(d_q_start_date!=='')
+			{
+				$("#d_q_start_date_error_msg").hide();
+				$("#d_q_start_date").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_q_start_date_error_msg").html("يرجى اختيار بداية فترة الدراسة");
+				$("#d_q_start_date_error_msg").show();
+				$("#d_q_start_date").css("border","1px solid #F90A0A");
+				error_d_q_start_date=true;
+			}
+		}//check_d_q_start_date()
+/*--------------------------check_d_q_graduate_date()-------------------------*/
+		function check_d_q_graduate_date()
+		{			
+			var d_q_graduate_date =$("#d_q_graduate_date").val();
+			if(d_q_graduate_date!=='')
+			{
+				$("#d_q_graduate_date_error_msg").hide();
+				$("#d_q_graduate_date").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_q_graduate_date_error_msg").html("يرجى اختيار فترة التخرج الدراسي");
+				$("#d_q_graduate_date_error_msg").show();
+				$("#d_q_graduate_date").css("border","1px solid #F90A0A");
+				error_d_q_graduate_date=true;
+			}
+		}//check_d_q_graduate_date()
+/*--------------------------check_d_q_gpa()-------------------------*/
+		function check_d_q_gpa()
+		{			
+			var d_q_gpa =$("#d_q_gpa").val();
+			if(d_q_gpa!=='' )
+			{
+				$("#d_q_gpa_error_msg").hide();
+				$("#d_q_gpa").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_q_gpa_error_msg").html("يرجى ادخال المعدل الدراسي بين 0 و 100");
+				$("#d_q_gpa_error_msg").show();
+				$("#d_q_gpa").css("border","1px solid #F90A0A");
+				error_d_q_gpa=true;
+			}
+		}//check_d_q_gpa()
+/*--------------------------heck_d_q_certificate-------------------------*/
+		function check_d_q_certificate()
+		{			
+			var d_q_certificate =$("#d_q_certificate").val();
+			if(d_q_certificate!==null)
+			{
+				$("#d_q_certificate_error_msg").hide();
+				$("#d_q_certificate").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_q_certificate_error_msg").html("يرجى ارفاق صورة للمؤهل");
+				$("#d_q_certificate_error_msg").show();
+				$("#d_q_certificate").css("border","1px solid #F90A0A");
+				error_d_q_gpa=true;
+			}
+		}//heck_d_q_certificate
+
 
 	$("#d_personal_form").submit(function(){
 		error_d_name=false;
 		error_d_email=false;
-		error_d_phone=false;
+		error_d_birth_date=false;
+		error_d_gender=false;
+		error_d_nationality=false;
+		error_d_country=false;
+		error_d_city=false;
 		error_d_street=false;
 		error_d_facebook=false;
 		error_d_twitter=false;
+		error_d_speciality=false;
 		error_d_password=false;
 		error_d_password_c=false;
 
 		check_d_name();
 		check_d_email();
-		check_d_phone();
+		check_d_birth_date();
+		check_d_gender();
+		check_d_nationality();
+		check_d_country();
+		check_d_city();
 		check_d_street();
 		check_d_facebook();
 		check_d_twitter();
+		check_d_specialty();
 		check_d_password();
 		check_d_password_c();
-		if(!error_d_name===false && !error_d_name===false && !error_d_email===false && !error_d_phone===false
-		&& !error_d_street===false && !error_d_facebook===false && !error_d_twitter===false && !error_d_password===false
-		&& !error_d_password_c===false)
+		if(!error_d_name===false && !error_d_name===false && !error_d_email===false && !error_d_phone===false && 
+		!error_d_gender===false && !error_d_birth_date===false	&& !error_d_street===false && 
+		!error_d_nationality===false && !error_d_country===false && !error_d_city===false && !error_d_facebook===false && !error_d_twitter===false && 
+		!error_d_speciality===false && !error_d_password===false && !error_d_password_c===false)
+		{
+			alert('يرجى تعبئة البيانات بشكل صحيح');
+			return false;
+		}
+	});//end 
+/*----------------------------------------submit education data--------------------------*/
+$("#d_qualification_form").submit(function(){
+
+		 error_d_q_type=false;
+		 error_d_q_university=false;
+		 error_d_q_education_specialty=false;
+		 error_d_q_start_date=false;
+		 error_d_q_graduate_date=false;
+		 error_d_q_gpa=false;
+		 error_d_q_certificate=false;
+
+		
+		check_d_qualification_type();
+		check_d_university();
+		check_d_education_specialty();
+		check_d_q_start_date();
+		check_d_q_graduate_date();
+		check_d_q_gpa();
+		check_d_q_certificate();
+		
+
+		if(!error_d_q_type===false && !error_d_q_university===false && !error_d_q_education_specialty===false &&
+		!error_d_q_start_date===false && !error_d_q_graduate_date===false	&& !error_d_q_gpa===false && 
+		!error_d_q_certificate)
 		{
 			alert('يرجى تعبئة البيانات بشكل صحيح');
 			return false;
@@ -267,7 +576,34 @@ $("#d_birth_date").datepicker({
     });
     /*-----------------birth date of doctor------------------*/
 	document.getElementById('d_birth_date').max = new Date().toISOString().split("T")[0];
+
 	
+	/*------------------------from to date--------------------*/
+	$(function(){
+		$("#d_q_start_date").datepicker({
+			dateFormat:'dd/mm/yy',
+			maxDate:0,
+			onSelect:function(selectdate){
+				var dt=new Date(selectdate);
+				dt.setDate(dt.getDate()+1)
+				$("#d_q_graduate_date").datepicker("option","minDate",dt);
+				}
+
+		});
+
+		$("#d_q_graduate_date").datepicker({
+			dateFormat:'dd/mm/yy',		
+			onSelect:function(selectdate){
+				var dt=new Date(selectdate);
+				dt.setDate(dt.getDate()-1)
+				$("#d_q_start_date").datepicker("option","maxDate",dt);
+
+			}
+		});
+	});
+	
+
+
 });
 
 	

@@ -63,8 +63,8 @@
                       </div>
                       <div class="form-group col-lg-6 col-md-12">
                         <label>النوع<span class="required"> *</span></label>
-                        <select class="form-control" name='d_gender' title="النوع" autofocus required>
-                          <option selected disabled>اختر النوع..</option>
+                        <select class="form-control" name='d_gender' id="d_gender" title="النوع" autofocus required>
+                          <option value="" selected disabled>اختر النوع..</option>
                           <?php if($doctor['d_gender']===1): ?>
                             <option value='1' <?php echo set_select('d_gender','1');?> selected>ذكر</option>
                             <option value='0' <?php echo set_select('d_gender','0');?>>أُنثى</option>
@@ -73,12 +73,14 @@
                             <option value='0' <?php echo set_select('d_gender','0');?> selected>أُنثى</option> 
                           <?php endif;?> 
                         </select>
+                        <span class="error-msg" id="d_gender_error_msg"></span>
                       </div>            
                     </div>
                     <div class="form-row">
                       <div class="form-group col-lg-6 col-md-12">
                         <label>تاريخ الميلاد<span class="required"> *</span></label>
-                        <input type="date" id="d_birth_date" min='1899-01-01' class="form-control" name='d_birth_date' value="<?php echo isset($doctor['d_birth_date']) ? set_value('d_birth_date', date('Y-m-d', strtotime($doctor['d_birth_date']))) : set_value('d_birth_date'); ?>" placeholder="تاريخ الميلاد" title="تاريخ الميلاد" autofocus>
+                        <input  type="date" id="d_birth_date" min='1899-01-01' class="form-control" name='d_birth_date' value="<?php echo isset($doctor['d_birth_date']) ? set_value('d_birth_date', date('Y-m-d', strtotime($doctor['d_birth_date']))) : set_value('d_birth_date'); ?>" placeholder="تاريخ الميلاد" title="تاريخ الميلاد" autofocus>
+                        <span class="error-msg" id="d_birth_date_error_msg"></span>
                       </div>
                       <div class="form-group col-lg-6 col-md-12">
                         <label>الجنسية<span class="required"> *</span></label>
@@ -94,15 +96,17 @@
                             <?php endforeach;?>
                           <?php endif;?>
                         </select>
+                        <span class="error-msg" id="d_nationality_error_msg"></span>
                       </div>            
                     </div>                                   
                     <div class="form-row">
                       <div class="form-group col-lg-6 col-md-12">
                         <label>العنوان<span class="required"> *</span></label>
                         <select class="form-control" name='d_country_address' id="d_country_address" title="عنوان الدولة"autofocus required>
-                          <option selected disabled>اختر الدولة..</option>
+                          <option value="" selected disabled>اختر الدولة..</option>
                           <option value="<?php echo $doctor['d_country_address'];?>" selected>اليمن</option>
                         </select>
+                        <span class="error-msg" id="d_country_error_msg"></span>
                       </div>
                       <div class="form-group col-lg-6 col-md-12">
                         <label style="visibility: hidden;">عنوان المدينة<span class="required"> *</span></label>
@@ -118,6 +122,7 @@
                             <?php endforeach;?>
                           <?php endif;?>
                         </select>
+                        <span class="error-msg" id="d_city_error_msg"></span>
                       </div>            
                     </div>
                     <div class="form-group col-xs-6"> 
@@ -137,7 +142,7 @@
                     <div class="form-group col-xs-6">
                       <label>التخصص الطبي<span class="required"> *</span></label>
                       <select class="form-control" name='d_speciality' title="التخصص الطبي"autofocus required>
-                        <option selected disabled>اختر التخصص الطبي..</option>
+                        <option value="" selected disabled>اختر التخصص الطبي..</option>
                         <?php if(count($specialties)):?>
                           <?php foreach ($specialties as $specialty):?>
                             <?php if($doctor['d_specialty_id']===$specialty['specialty_id']):?>
@@ -148,6 +153,7 @@
                           <?php endforeach;?>
                         <?php endif;?>
                       </select>
+                      <span class="error-msg" id="d_speciality_error_msg"></span>
                     </div>
                     <div class="form-group col-xs-6"> 
                       <label>كلمة المرور<span class="required"> *</span></label>
@@ -191,54 +197,61 @@
                                       <div class="form-group col-xs-6"> 
                                         <label>نوع المؤهل<span class="required"> *</span></label>
                                             <select class="form-control" id="d_qualification_type" name='d_qualification_type'autofocus required>
-                                              <option disabled selected>اختر نوع المؤهل..</option>
+                                              <option value="" disabled selected>اختر نوع المؤهل..</option>
                                              <?php if(count($qualification_types)):?>
                             <?php foreach ($qualification_types as $q_type):?>
                              <option value=<?php echo $q_type['q_t_id'];?><?php echo set_select('d_qualification_type',$q_type['q_t_id']);?>><?php echo $q_type['q_t_name'];?></option>
                             <?php endforeach;?>
                           <?php endif;?>
                                             </select>
+                                            <span class="error-msg" id="d_q_type_error_msg"></span>
                                       </div>
                                       <div class="form-group col-xs-6"> 
                                         <label>جهة الدراسة<span class="required"> *</span></label>
                                             <select class="form-control" id="d_university" name='d_university'autofocus required>
-                                              <option selected disabled>اختر جهة الدراسة..</option>
+                                              <option value="" selected disabled>اختر جهة الدراسة..</option>
                                               <?php if(count($universities)):?>
                             <?php foreach ($universities as $university):?>
                              <option value=<?php echo $university['un_id'];?><?php echo set_select('d_university',$university['un_id']);?>><?php echo $university['un_name'];?></option>
                             <?php endforeach;?>
                           <?php endif;?>
                                             </select>
+                                            <span class="error-msg" id="d_university_error_msg"></span>
                                       </div>
                                        <div class="form-group col-xs-6"> 
                                         <label>التخصص<span class="required"> *</span></label>
                                             <select class="form-control" id="d_education_specialty" name='d_education_specialty'autofocus required>
-                                              <option selected disabled>اختر التخصص الدراسي..</option>
+                                              <option value="" selected disabled>اختر التخصص الدراسي..</option>
                                               <?php if(count($education_specialties)):?>
                             <?php foreach ($education_specialties as $educ_specialty):?>
                              <option value=<?php echo $educ_specialty['e_s_id'];?><?php echo set_select('d_education_specialty',$educ_specialty['e_s_id']);?>><?php echo $educ_specialty['e_s_name'];?></option>
                             <?php endforeach;?>
                           <?php endif;?>
                                             </select>
+                                            <span class="error-msg" id="d_education_specialty_error_msg"></span>
                                       </div>                                      
                                       <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>من<span class="required"> *</span></label>
-                                          <input type="date" name="d_q_start_date" id="d_q_start_date" class="form-control" min='1899-01-01' value="<?php echo set_value('d_q_start_date'); ?>" title="ادخل بداية الدراسة" autofocus required>
+                                          <input style="direction:ltr;" name="d_q_start_date" id="d_q_start_date" class="form-control" min='1899-01-01' value="<?php echo set_value('d_q_start_date'); ?>" title="ادخل بداية الدراسة" autofocus required>
+                                          <span class="error-msg" id="d_q_start_date_error_msg"></span>
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>إلى<span class="required"> *</span></label>
-                                          <input type="date" name="d_q_graduate_date" id="d_q_graduate_date" value="<?php echo set_value('d_q_graduate_date'); ?>" class="form-control"  title="ادخل نهاية الدراسة" autofocus required>
+                                          <input  style="direction:ltr;" name="d_q_graduate_date" id="d_q_graduate_date" value="<?php echo set_value('d_q_graduate_date'); ?>" class="form-control"  title="ادخل نهاية الدراسة" autofocus required>
+                                          <span class="error-msg" id="d_q_graduate_date_error_msg"></span>
                                         </div>                                                    
                                       </div>
                                       <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12"> 
                                           <label>المعدل<span class="required"> *</span></label>
                                           <input type="number" class="form-control" id='d_q_gpa' name='d_q_gpa' min='1' max='100' value="<?php echo set_value('d_q_gpa'); ?>" title="ادخل المعدل الدراسي" autofocus required>
+                                          <span class="error-msg" id="d_q_gpa_error_msg"></span>
                                         </div>                                      
                                         <div class="form-group col-lg-6 col-md-12">
                                           <label>شهادة التخرج<span class="required"> *</span></label>
                                           <input type="file" class="form-control" id="d_q_certificate" name='d_q_certificate' title="ارفع شهادة الدراسة" autofocus required>
+                                          <span class="error-msg" id="d_q_certificate_error_msg"></span>
                                         </div>                                                    
                                       </div>                        
                                       <div class="form-group col-xs-12">
