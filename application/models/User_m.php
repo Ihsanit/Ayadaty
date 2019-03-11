@@ -30,6 +30,7 @@ class User_m extends CI_Model
 	}//end register_user_db function
 	public function check_email_exists_db($email)
 	{
+/*		$this->db->where_not_in('users_groups_data.group_id', $group_id)*/	
 		$query=$this->db->get_where('user',array('u_email'=>$email));
 		if(empty($query->row_array()))
 		{

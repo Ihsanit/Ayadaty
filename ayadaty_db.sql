@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2019 at 09:17 PM
+-- Generation Time: Mar 11, 2019 at 08:44 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -69,14 +69,6 @@ CREATE TABLE `clinic` (
   `c_summary` text,
   `c_d_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `clinic`
---
-
-INSERT INTO `clinic` (`c_id`, `c_job_name`, `c_name`, `c_place_name`, `c_country_address`, `c_city_address`, `c_street_address`, `c_day_start`, `c_day_end`, `c_period_start`, `c_period_end`, `c_summary`, `c_d_id`) VALUES
-(1, 'اخصائي عيون', 'احداق لطب العيون', 'المعقلي - الدور الرابع - شقة 2', 1, 1, 'صخر', 1, 6, '2', '6', 'lkl;ak ;l;ka kl;akl; k', 10),
-(2, 'اخصائي عيون1', 'احداق لطب العيون1', 'المعقلي - الدور الرابع - شقة 1', 1, 1, 'صخر1', 1, 6, '2', '6', 'احداق لطب وجراحة العيون', 10);
 
 -- --------------------------------------------------------
 
@@ -396,16 +388,7 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`d_id`, `d_name`, `d_email`, `d_phone`, `d_gender`, `d_birth_date`, `d_nationality`, `d_country_address`, `d_city_address`, `d_street_address`, `d_facebook_link`, `d_twitter_link`, `d_personal_img`, `d_specialty_id`, `d_password`) VALUES
-(1, 'رباب شعلان', 'rabab2022@gmail.com', '+967772073737', 0, '1993-11-09 21:00:00', 243, 1, 1, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'noimg.png', 3, 'rabab'),
-(2, 'عائشة راشد', 'aisha@gmail.com', '+967774639279', 0, '1993-09-30 21:00:00', 243, 1, 1, 'ش تونس', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar3.png', 1, 'aisha'),
-(3, 'روان فتحي المنصوري', 'rawan@gmail.com', '777', 0, '1993-01-01 21:00:00', 243, 1, 2, 'الصافية - صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar2.png', 1, 'rawan'),
-(4, 'علي محمد', 'ali@gmail.com', '+967715222444', 1, '2000-01-01 21:00:00', 243, 1, 1, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar5.png', 1, 'ali12'),
-(5, 'مرام محسن الحسيني', 'maram@gmail.com', '+967772050500', 0, '1992-12-31 21:00:00', 239, 1, 3, 'ش تونس', 'https://www.facebook.com/', 'https://www.facebook.com/', 'user4-128x128.jpg', 1, 'maram'),
-(6, 'ندى محمد', 'nada@gmail.com', '+967777000999', 0, '2000-05-04 21:00:00', 5, 1, 8, 'شارع صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar3.png', 3, 'nada1'),
-(7, 'Mazen Mohammed', 'mazen@gmail.com', '+967733555666', 1, '1991-12-31 21:00:00', 228, 1, 1, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar.png', 2, 'mazen'),
-(8, 'Rami Ali', 'rami@yahoo.com', '+967777888999', 1, '1997-12-31 21:00:00', 3, 1, 2, 'الروضة', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar5.png', 3, 'rami1'),
-(9, 'Jehan Nasser', 'jehan@gmail.com', '+967733444555', 0, '2000-01-01 21:00:00', 243, 1, 6, 'ش تونس', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar04.png', 4, 'jehan'),
-(10, 'روان فتحي المنصوري', 'rawan2020@gmail.com', '+967771010102', 0, '1993-08-30 21:00:00', 132, 1, 1, 'كوالامبور', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar21.png', 2, 'rawan');
+(1, 'Hamzah', 'hamzah@gmail.com', '+967777888999', 1, '1988-02-19 21:00:00', 54, 1, 5, 'شارع الستين الشمالي', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar.png', 3, 'hamzah');
 
 -- --------------------------------------------------------
 
@@ -474,16 +457,6 @@ CREATE TABLE `experience` (
   `e_certificate` varchar(50) DEFAULT NULL,
   `e_d_id` int(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `experience`
---
-
-INSERT INTO `experience` (`e_id`, `e_job_name`, `e_clinic_name`, `e_place_address`, `e_start_date`, `e_end_date`, `e_job_summary`, `e_certificate`, `e_d_id`) VALUES
-(1, 'استشاري اسنان', 'عيادة الطارق', 'صنعاء - شار المطار', '2000-05-04 21:00:00', '2008-02-07 21:00:00', 'klkl ;;; ;;;a oiuoiu kjlkja klj', NULL, 10),
-(2, 'استشاري اسنان2', 'عيادة الطارق2', 'صنعاء - شار المطار2', '2010-12-31 21:00:00', '2015-02-04 21:00:00', 'jj kkkkkk lllllllll iiiiiiiiiiiiiiii kljaj kl', NULL, 10),
-(3, 'استشاري اسنان3', 'عيادة الطارق3', 'صنعاء - شار المطار3', '2018-05-07 21:00:00', '2019-02-01 21:00:00', 'jkj llj lljklja kjklja kjllaj lk', 'red1.png', 10),
-(4, 'اخصائي جلدية', 'مستشفى الوسام التخصصي', 'صنعاء - شارع حدة', '2017-02-01 21:00:00', '2019-01-01 21:00:00', 'اخصائي جلدية وامراض معدية', 'blue1.png', 10);
 
 -- --------------------------------------------------------
 
@@ -563,12 +536,9 @@ CREATE TABLE `qualification` (
 --
 
 INSERT INTO `qualification` (`q_id`, `q_start_date`, `q_graduate_date`, `q_gpa`, `q_certificate`, `q_q_t_id`, `q_e_s_id`, `q_u_id`, `q_d_id`) VALUES
-(5, '1999-12-31 21:00:00', '2005-02-01 21:00:00', 40, 'blue1.png', 4, 4, 2, 10),
-(6, '2009-01-31 21:00:00', '2012-01-31 21:00:00', 85, 'blue1.png', 2, 5, 1, 10),
-(7, '2005-01-31 21:00:00', '2012-01-31 21:00:00', 50, 'blue1.png', 2, 6, 1, 10),
-(8, '1999-12-31 21:00:00', '2001-12-31 21:00:00', 100, 'blue1.png', 6, 5, 2, 10),
-(9, '1999-12-31 21:00:00', '2001-12-31 21:00:00', 100, 'blue1.png', 6, 5, 2, 10),
-(10, '2019-03-07 21:00:00', '2019-03-14 21:00:00', 85, 'red1.png', 7, 3, 4, 10);
+(1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 89, 'red1.png', 6, 2, 3, 1),
+(2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 90, 'blue1.png', 2, 1, 2, 1),
+(3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 85, 'red1.png', 4, 5, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -681,16 +651,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`u_id`, `u_username`, `u_password`, `u_email`, `u_privilage`, `u_registered_date`) VALUES
-(1, 'رباب شعلان', 'rabab', 'rabab2022@gmail.com', NULL, '2019-03-05 15:57:39'),
-(2, 'عائشة راشد', 'aisha', 'aisha@gmail.com', NULL, '2019-03-05 16:03:51'),
-(3, 'روان فتحي المنصوري', 'rawan', 'rawan@gmail.com', NULL, '2019-03-05 16:08:04'),
-(4, 'علي محمد', 'ali12', 'ali@gmail.com', NULL, '2019-03-05 16:17:50'),
-(5, 'مرام محسن الحسيني', 'maram', 'maram@gmail.com', NULL, '2019-03-05 16:33:00'),
-(6, 'ندى محمد', 'nada1', 'nada@gmail.com', NULL, '2019-03-05 18:20:47'),
-(7, 'Mazen Mohammed', 'mazen', 'mazen@gmail.com', NULL, '2019-03-05 20:41:08'),
-(8, 'Rami Ali', 'rami1', 'rami@yahoo.com', NULL, '2019-03-05 20:44:00'),
-(9, 'Jehan Nasser', 'jehan', 'jehan@gmail.com', NULL, '2019-03-05 20:57:03'),
-(10, 'روان فتحي المنصوري', 'rawan', 'rawan2020@gmail.com', NULL, '2019-03-06 12:01:01');
+(1, 'Hamzah', 'hamzah', 'hamzah@gmail.com', NULL, '2019-03-11 16:30:16');
 
 --
 -- Indexes for dumped tables
@@ -823,7 +784,7 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `clinic`
 --
 ALTER TABLE `clinic`
-  MODIFY `c_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `c_id` int(12) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -841,7 +802,7 @@ ALTER TABLE `day`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `education_specialty`
@@ -859,7 +820,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `experience`
 --
 ALTER TABLE `experience`
-  MODIFY `e_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `e_id` int(12) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hospital`
@@ -877,7 +838,7 @@ ALTER TABLE `period`
 -- AUTO_INCREMENT for table `qualification`
 --
 ALTER TABLE `qualification`
-  MODIFY `q_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `q_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `qualification_type`
@@ -907,7 +868,7 @@ ALTER TABLE `university`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

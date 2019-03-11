@@ -37,14 +37,13 @@
                   <div class="tab-content">               
                     <div class="form-group col-xs-6"> 
                       <label>الاسم ثلاثيا مع اللقب<span class="required"> *</span></label>
-                      <input type="text" id="d_name" value="<?php echo set_value('d_name');?>" class="form-control" name="d_name" placeholder="ادخل اسم الطبيب ثلاثيا مع اللقب" title="اسم الطبيب ثلاثيا مع اللقب" autofocus required>
+                      <input type="text" id="d_name" value="<?php echo set_value('d_name'); $username= $this->session->userdata('u_username'); if(!empty($username)): echo $username; endif;?>" class="form-control" name="d_name" placeholder="ادخل اسم الطبيب ثلاثيا مع اللقب" title="اسم الطبيب ثلاثيا مع اللقب" autofocus required>
                       <span class="error-msg" id="d_name_error_msg"></span>
                     </div>
-                    <div class="form-group col-xs-6"> 
+                    <div class="form-group col-xs-6">                     
                       <label>البريد الالكتروني<span class="required"> *</span></label>
-                      <input type="email" id="d_email" value="<?php echo set_value('d_email');?>" class="form-control" name="d_email" placeholder="yourname@email.com" title="عنوان البريد الاكتروني" autofocus required>
+                      <input type="email" id="d_email" value="<?php echo set_value('d_email'); $loggin_email= $this->session->userdata('u_email'); if(!empty($loggin_email)): echo $loggin_email; endif;?>" class="form-control" name="d_email" placeholder="yourname@email.com" title="عنوان البريد الاكتروني" autofocus required>
                       <span class="error-msg" id="d_email_error_msg"></span>
-                    </div>
                     <div class="form-row">
                       <div class="form-group col-lg-6 col-md-12">
                         <label>رقم التلفون<span class="required"> *</span></label>
@@ -131,12 +130,12 @@
                     </div>
                     <div class="form-group col-xs-6"> 
                       <label>كلمة المرور<span class="required"> *</span></label>
-                      <input type="password" id="d_password" value="<?php echo set_value('d_password');?>" class="form-control" name="d_password" placeholder="ادخل كلمة المرور" title="كلمة المرور">
+                      <input type="password" id="d_password" value="<?php echo set_value('d_password'); $password= $this->session->userdata('u_password'); if(!empty($password)): echo $password; endif;?>" class="form-control" name="d_password" placeholder="ادخل كلمة المرور" title="كلمة المرور">
                       <span class="error-msg" id="d_password_error_msg"></span>
                     </div>
                     <div class="form-group col-xs-6">
                       <label>تأكيد كلمة المرور<span class="required"> *</span></label>
-                      <input type="password" id="d_password_c" value="<?php echo set_value('d_password_c');?>" class="form-control" name="d_password_c" placeholder="ادخل تأكيد كلمة المرور" title="تأكيد كلمة المرور">
+                      <input type="password" id="d_password_c" value="<?php echo set_value('d_password_c'); $password_c= $this->session->userdata('u_password'); if(!empty($password_c)): echo $password_c; endif;?>" class="form-control" name="d_password_c" placeholder="ادخل تأكيد كلمة المرور" title="تأكيد كلمة المرور">
                       <span class="error-msg" id="d_password_c_error_msg"></span>
                     </div>                                      
                     <div class="form-group col-xs-12">

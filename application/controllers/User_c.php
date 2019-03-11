@@ -8,10 +8,11 @@ class User_c extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('User_m','user_obj');
-		$this->load->library('form_validation');
+		$this->load->model('Doctor_m','doctor_obj');
+		$this->load->library(array('form_validation','Doctor_User_lib'));
 		$this->load->helper(array('form','url','html'));
 		
-	}//end _construct function
+	}#end _construct function
 
 	public function signup($page='signup')
 	{
@@ -24,6 +25,7 @@ class User_c extends CI_Controller
 			$this->form_validation->set_rules('u_email','Email','trim|required|callback_check_email_exists');
 			$this->form_validation->set_rules('u_password','Password','trim|required');
 			$this->form_validation->set_rules('u_cpassword','Confirm Password','trim|required|matches[u_password]');
+			
 			if($this->form_validation->run()===FALSE)
 			{
 			
@@ -33,16 +35,26 @@ class User_c extends CI_Controller
 			}
 			else
 			{
+				$u_email=$this->security->xss_clean($this->input->post('u_email'));
 				$enc_password=$this->security->xss_clean($this->input->post('u_password'));
 				$data=array(
 							'u_username'	=>$this->security->xss_clean($this->input->post('u_username')),
-							'u_email'		=>$this->security->xss_clean($this->input->post('u_email')),
+							'u_email'		=>$u_email,
 							'u_password'	=>$enc_password			
 							);
-				$this->user_obj->insert_user($data);
-				$this->session->set_flashdata('user_registered','سجلت حساب بنحاح');
-				redirect('doctor_c/show_doctors');
-				die('Continue');
+				$u_data=$this->user_obj->insert_user($data);
+				if($u_data):
+					$this->session->set_flashdata('user_registered','سجلت حساب بنحاح');
+					//get user id 
+					$is_doctor=$this->doctor_user_lib->get_doctor($u_email);
+					$is_session_created=$this->doctor_user_lib->create_session($u_email,$enc_password,$is_doctor);
+					if($is_session_created):
+						redirect('doctor_c/show_doctors');
+					endif;
+				else:
+					redirect('user_c/signup');
+				endif;
+				//die('Continue');
 			}//end if check
 		}//end try
 		catch(Exception $err)
@@ -56,6 +68,7 @@ class User_c extends CI_Controller
 
 	public function login($page='login')
 	{
+
 		if(!file_exists(APPPATH.'/views/'.$page.'.php')):
 			show_404();
 		endif;
@@ -72,16 +85,9 @@ class User_c extends CI_Controller
 			$u_email=$this->security->xss_clean($this->input->post('u_email'));
 			$u_password=$this->security->xss_clean($this->input->post('u_password'));
 			//get user id 
-			$user_record=$this->user_obj->login_user_db($u_email,$u_password);
-			if($user_record):
-				//create a session
-				$user_data=array(
-					'u_id'=>$user_record->u_id,
-					'u_email'=>$u_email,
-					'logged_in'=>true
-					);					
-				$this->session->set_userdata($user_data);
-				//set message
+			$is_doctor=$this->doctor_user_lib->get_doctor($u_email);
+			$is_session_created=$this->doctor_user_lib->create_session($u_email,$u_password,$is_doctor);
+			if($is_session_created):				
 				$this->session->set_flashdata('user_loggedin','تم تسجيل دخول ينجاح يمكنك اكمال او تعديل بياناتك');
 				redirect('doctor_c/register_doctor');
 			else:
@@ -94,11 +100,7 @@ class User_c extends CI_Controller
 	}//end function index($page='home')
 	public function logout()
 	{
-		//unset session of user 
-		$this->session->unset_userdata('u_id');
-		$this->session->unset_userdata('u_email');
-		$this->session->unset_userdata('logged_in');
-
+		$this->doctor_user_lib->destroy_session();
 		//set a message
 		$this->session->set_flashdata('user_loggedout','تم تسجلي الخروج');
 		redirect('user_c/login');
@@ -143,5 +145,8 @@ class User_c extends CI_Controller
 		}//end if
 
 	}//end check_email_exists function
+
+	
+	
 	
 }//end User_c class

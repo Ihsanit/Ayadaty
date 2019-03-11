@@ -41,6 +41,24 @@ class Doctor_m extends CI_Model
 		$query=$this->db->get_where('doctor',$doctor);
 		return $query->row_array();
 	}
+	public function get_qualifications($doctor_choosen=FALSE)
+	{
+		if($doctor_choosen===FALSE)
+		{
+			
+		}
+
+		$doctor=array('d_email'=>$doctor_choosen); 
+		$query_doctor=$this->db->get_where('doctor',$doctor);
+		$query_doctor1=$query_doctor->row_array();
+		$d_id=$query_doctor1['d_id'];
+
+		//$this->db->join('doctor','doctor.d_id=qualification.q_d_id');
+		$this->db->join('qualification_type','qualification_type.q_t_id=qualification.q_q_t_id');
+		$query=$this->db->get_where('qualification',array('q_d_id'=>$d_id));
+		return $query->result_array();
+
+	}
 	public function check_email_exists_db($email)
 	{
 		$query=$this->db->get_where('doctor',array('d_email'=>$email));

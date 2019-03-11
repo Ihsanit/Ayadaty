@@ -16,7 +16,7 @@
       <nav>
         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-personal-data" role="tab" aria-controls="nav-personal-data" aria-selected="true">البيانات الشخصية</a>
-          <a class="nav-item nav-link " id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">البيانات التعليمية</a>
+          <a class="nav-item nav-link " id="nav-profile-tab" data-toggle="tab" href="#nav-educational-data" role="tab" aria-controls="nav-profile" aria-selected="false">البيانات التعليمية</a>
           <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">الخبرات</a>
           <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">بيانات العيادات</a>
         </div><!-- /div nav -->
@@ -177,96 +177,96 @@
           </div><!-- /container snippet -->
         </div><!-- /nav-personal-data -->
 
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                       <hr>
-                       <div class="container bootstrap snippet">
-                        <div class="row">
-                          <div class="col-sm-12"><h5>بيانات الطبيب التعليمية</h5></div>
-                        </div>
-                        <div class="row">
-                          <div class="col-sm-3"><!--left col-->
-                            <div class="text-center">
-                            </div></hr><br>
-                              
-                          </div><!--/col-3-->
-                          <div class="col-sm-9">
-                            <div class="tab-content">
-                            <?php echo validation_errors();?>
-                                    <form class="form" id="d_qualification_form" name="d_qualification_form" action="<?php echo base_url('addqualification');?>" method="post" enctype="multipart/form-data">
-                                      <input type="hidden" id="d_q_id" name="d_q_id" value="<?php echo $doctor['d_id'];?>">
-                                      <div class="form-group col-xs-6"> 
-                                        <label>نوع المؤهل<span class="required"> *</span></label>
-                                            <select class="form-control" id="d_qualification_type" name='d_qualification_type'autofocus required>
-                                              <option value="" disabled selected>اختر نوع المؤهل..</option>
-                                             <?php if(count($qualification_types)):?>
-                            <?php foreach ($qualification_types as $q_type):?>
-                             <option value=<?php echo $q_type['q_t_id'];?><?php echo set_select('d_qualification_type',$q_type['q_t_id']);?>><?php echo $q_type['q_t_name'];?></option>
-                            <?php endforeach;?>
-                          <?php endif;?>
-                                            </select>
-                                            <span class="error-msg" id="d_q_type_error_msg"></span>
-                                      </div>
-                                      <div class="form-group col-xs-6"> 
-                                        <label>جهة الدراسة<span class="required"> *</span></label>
-                                            <select class="form-control" id="d_university" name='d_university'autofocus required>
-                                              <option value="" selected disabled>اختر جهة الدراسة..</option>
-                                              <?php if(count($universities)):?>
-                            <?php foreach ($universities as $university):?>
-                             <option value=<?php echo $university['un_id'];?><?php echo set_select('d_university',$university['un_id']);?>><?php echo $university['un_name'];?></option>
-                            <?php endforeach;?>
-                          <?php endif;?>
-                                            </select>
-                                            <span class="error-msg" id="d_university_error_msg"></span>
-                                      </div>
-                                       <div class="form-group col-xs-6"> 
-                                        <label>التخصص<span class="required"> *</span></label>
-                                            <select class="form-control" id="d_education_specialty" name='d_education_specialty'autofocus required>
-                                              <option value="" selected disabled>اختر التخصص الدراسي..</option>
-                                              <?php if(count($education_specialties)):?>
-                            <?php foreach ($education_specialties as $educ_specialty):?>
-                             <option value=<?php echo $educ_specialty['e_s_id'];?><?php echo set_select('d_education_specialty',$educ_specialty['e_s_id']);?>><?php echo $educ_specialty['e_s_name'];?></option>
-                            <?php endforeach;?>
-                          <?php endif;?>
-                                            </select>
-                                            <span class="error-msg" id="d_education_specialty_error_msg"></span>
-                                      </div>                                      
-                                      <div class="form-row">
-                                        <div class="form-group col-lg-6 col-md-12">
-                                          <label>من<span class="required"> *</span></label>
-                                          <input style="direction:ltr;" name="d_q_start_date" id="d_q_start_date" class="form-control" min='1899-01-01' value="<?php echo set_value('d_q_start_date'); ?>" title="ادخل بداية الدراسة" autofocus required>
-                                          <span class="error-msg" id="d_q_start_date_error_msg"></span>
-                                        </div>
-                                        <div class="form-group col-lg-6 col-md-12">
-                                          <label>إلى<span class="required"> *</span></label>
-                                          <input  style="direction:ltr;" name="d_q_graduate_date" id="d_q_graduate_date" value="<?php echo set_value('d_q_graduate_date'); ?>" class="form-control"  title="ادخل نهاية الدراسة" autofocus required>
-                                          <span class="error-msg" id="d_q_graduate_date_error_msg"></span>
-                                        </div>                                                    
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-lg-6 col-md-12"> 
-                                          <label>المعدل<span class="required"> *</span></label>
-                                          <input type="number" class="form-control" id='d_q_gpa' name='d_q_gpa' min='1' max='100' value="<?php echo set_value('d_q_gpa'); ?>" title="ادخل المعدل الدراسي" autofocus required>
-                                          <span class="error-msg" id="d_q_gpa_error_msg"></span>
-                                        </div>                                      
-                                        <div class="form-group col-lg-6 col-md-12">
-                                          <label>شهادة التخرج<span class="required"> *</span></label>
-                                          <input type="file" class="form-control" id="d_q_certificate" name='d_q_certificate' title="ارفع شهادة الدراسة" autofocus required>
-                                          <span class="error-msg" id="d_q_certificate_error_msg"></span>
-                                        </div>                                                    
-                                      </div>                        
-                                      <div class="form-group col-xs-12">
-                                        <br>
-                                        <button class="btn" type="submit" value="d_qualification_data_submit" id="d_qualification_data_submit" style="color:#fff;">حفظ</button>
-                                        <button class="btn" type="submit" style="color:#fff;">اضافة مؤهل اخر</button>
-                                        <a class="nav-item nav-link btn btn-sm next-tab" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">التالي</a>
-                                      </div>
-                                  </form>                                
-                                <hr>
-                            </div><!-- /tab-content -->
-                          </div><!--/col-9-->
-                        </div><!--/row-->
-                      </div>
+        <div class="tab-pane fade" id="nav-educational-data" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <hr>
+          <?php print_r($qualifications);?>
+
+          <div class="container bootstrap snippet" id="other_qualification">
+            <div class="row">
+              <div class="col-sm-12">
+                <h5>بيانات الطبيب التعليمية</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3"><!--left col-->
+              </div><!--/col-3-->
+              <div class="col-sm-9">
+                <div class="tab-content">
+                  <?php echo validation_errors();?>
+                  <form class="form" id="d_qualification_form" name="d_qualification_form" action="<?php echo base_url('addqualification');?>" method="post" enctype="multipart/form-data">
+                    <input type="hidden" id="d_q_id" name="d_q_id" value="<?php echo $doctor['d_id'];?>">
+                    <div class="form-group col-xs-6"> 
+                      <label>نوع المؤهل<span class="required"> *</span></label>
+                      <select class="form-control" id="d_qualification_type" name='d_qualification_type'autofocus required>
+                        <option value="" disabled selected>اختر نوع المؤهل..</option>
+                        <?php if(count($qualification_types)):?>
+                          <?php foreach ($qualification_types as $q_type):?>
+                            <option value=<?php echo $q_type['q_t_id'];?><?php echo set_select('d_qualification_type',$q_type['q_t_id']);?>><?php echo $q_type['q_t_name'];?></option>
+                          <?php endforeach;?>
+                        <?php endif;?>
+                      </select>
+                      <span class="error-msg" id="d_q_type_error_msg"></span>
                     </div>
+                    <div class="form-group col-xs-6"> 
+                      <label>جهة الدراسة<span class="required"> *</span></label>
+                      <select class="form-control" id="d_university" name='d_university'autofocus required>
+                        <option value="" selected disabled>اختر جهة الدراسة..</option>
+                        <?php if(count($universities)):?>
+                          <?php foreach ($universities as $university):?>
+                            <option value=<?php echo $university['un_id'];?><?php echo set_select('d_university',$university['un_id']);?>><?php echo $university['un_name'];?></option>
+                          <?php endforeach;?>
+                        <?php endif;?>
+                      </select>
+                      <span class="error-msg" id="d_university_error_msg"></span>
+                    </div>
+                    <div class="form-group col-xs-6"> 
+                      <label>التخصص<span class="required"> *</span></label>
+                      <select class="form-control" id="d_education_specialty" name='d_education_specialty'autofocus required>
+                        <option value="" selected disabled>اختر التخصص الدراسي..</option>
+                        <?php if(count($education_specialties)):?>
+                          <?php foreach ($education_specialties as $educ_specialty):?>
+                            <option value=<?php echo $educ_specialty['e_s_id'];?><?php echo set_select('d_education_specialty',$educ_specialty['e_s_id']);?>><?php echo $educ_specialty['e_s_name'];?></option>
+                          <?php endforeach;?>
+                        <?php endif;?>
+                      </select>
+                      <span class="error-msg" id="d_education_specialty_error_msg"></span>
+                    </div>                                      
+                    <div class="form-row">
+                      <div class="form-group col-lg-6 col-md-12">
+                        <label>من<span class="required"> *</span></label>
+                        <input style="direction:ltr;" name="d_q_start_date" id="d_q_start_date" class="form-control" min='1899-01-01' value="<?php echo set_value('d_q_start_date'); ?>" title="ادخل بداية الدراسة" autofocus required>
+                        <span class="error-msg" id="d_q_start_date_error_msg"></span>
+                      </div>
+                      <div class="form-group col-lg-6 col-md-12">
+                        <label>إلى<span class="required"> *</span></label>
+                        <input  style="direction:ltr;" name="d_q_graduate_date" id="d_q_graduate_date" value="<?php echo set_value('d_q_graduate_date'); ?>" class="form-control"  title="ادخل نهاية الدراسة" autofocus required>
+                        <span class="error-msg" id="d_q_graduate_date_error_msg"></span>
+                      </div>                                                    
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-lg-6 col-md-12"> 
+                        <label>المعدل<span class="required"> *</span></label>
+                        <input type="number" class="form-control" id='d_q_gpa' name='d_q_gpa' min='1' max='100' value="<?php echo set_value('d_q_gpa'); ?>" title="ادخل المعدل الدراسي" autofocus required>
+                        <span class="error-msg" id="d_q_gpa_error_msg"></span>
+                      </div>                                      
+                      <div class="form-group col-lg-6 col-md-12">
+                        <label>شهادة التخرج<span class="required"> *</span></label>
+                        <input type="file" class="form-control" id="d_q_certificate" name='d_q_certificate' title="ارفع شهادة الدراسة" autofocus required>
+                        <span class="error-msg" id="d_q_certificate_error_msg"></span>
+                      </div>                                                    
+                    </div>                        
+                    <div class="form-group col-xs-12">
+                      <br>
+                      <button class="btn" type="submit" value="d_qualification_data_submit" id="d_qualification_data_submit" style="color:#fff;">حفظ</button>
+                      <button class="btn" type="button" style="color:#fff;" id="edit_qualification">اضافة مؤهل اخر</button>
+                      <a class="nav-item nav-link btn btn-sm next-tab" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">التالي</a>
+                    </div>
+                  </form><!-- /form -->  
+                </div><!-- /tab-content -->
+              </div><!--/col-9-->
+            </div><!--/row-->
+          </div><!-- /container -->
+        </div><!-- /nav-educational-data -->
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                       <hr>
                        <div class="container bootstrap snippet">
@@ -319,7 +319,7 @@
                                       <div class="form-group col-xs-12">
                                         <br>                                        
                                         <button class="btn" type="submit" value="d_experience_data_submit" id="d_experience_data_submit" style="color:#fff;">حفظ</button>
-                                        <button class="btn" type="submit" style="color:#fff;">اضافة خبرة</button>
+                                        <button class="btn" type="button" style="color:#fff;">اضافة خبرة</button>
                                         <a class="nav-item nav-link btn btn-sm next-tab" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">التالي</a>
 
 

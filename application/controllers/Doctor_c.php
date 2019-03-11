@@ -13,7 +13,7 @@ class Doctor_c extends CI_Controller
 		$this->load->model('Doctor_m','doctor_obj');
 		$this->load->model('User_m','user_obj');
 		$this->load->model('Country_m','country_obj');
-		$this->load->library('form_validation');
+		$this->load->library(array('form_validation','Doctor_User_lib'));
 		$this->load->helper(array('form','url','html'));		
 	}#end _construct function
 /*
@@ -78,8 +78,12 @@ class Doctor_c extends CI_Controller
 				'u_username'				=>$name,			
 				'u_password'				=>$password,
 				'u_email'					=>$email
-				);				
-				$u_data=$this->user_obj->insert_user($userdata);
+				);	
+				if(!$this->session->userdata('logged_in')):			
+					$u_data=$this->user_obj->insert_user($userdata);
+				else:
+					$u_data=$this->user_obj->update_user($this->session->userdata('u_id'),$userdata);
+				endif;
 				/*
 				|=========================================================================================================
 				|# Sure of inserting data in successful manner, show a feedback for user with 'Data are saved successful'
@@ -87,7 +91,12 @@ class Doctor_c extends CI_Controller
 				*/
 				if($d_data && $u_data):
 					$this->session->set_flashdata('doctor_registered','تمت اضافة بيانات الطبيب الشخصية بنجاح فيكمكن تسجيل دخول تكلميل بقية بيانتك' );			
-					redirect('user_c/login');
+					$is_doctor=true;
+					$is_session_created=$this->doctor_user_lib->create_session($email,$password,$is_doctor);
+					$this->doctor_user_lib->destroy_session();
+					if($is_session_created):
+						redirect('login');
+					endif;
 				endif;#end if insert successful 
 			endif;#end if run successfully
 		}#end try
@@ -160,10 +169,12 @@ class Doctor_c extends CI_Controller
 		$data['days']=$this->doctor_obj->get_days();
 		$data['periods']=$this->doctor_obj->get_periods();
 		$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
+		$data['qualifications']=$this->doctor_obj->get_qualifications($doctor_chosen);
 
 		$this->load->view('template/header',$data);
 		$this->load->view('doctor_views/edit_doctor_v',$data);
 		$this->load->view('template/footer');
+
 
 	}#end function edit_doctor()
 /*
@@ -761,6 +772,8 @@ public function add_clinic_data($page='edit_doctor_v')
 		endif;#end if file found
 
 	}#end function upload_file()
+
+	
 
 }#end Doctor_c class
 ?>

@@ -53,7 +53,7 @@
 					<li class="nav-item">
 						<a href="<?php echo base_url('showdoctors');?>" class="nav-link">اطباء</a>				
 					</li>
-					<?php if($this->session->userdata('logged_in')):?>
+					<?php if($this->session->userdata('is_doctor') && $this->session->userdata('logged_in') ):?>
 					<li class="nav-item">
 						<a href="<?php echo base_url('editdoctor');?>" class="nav-link">تسجيل طبيب</a>						
 					</li>
