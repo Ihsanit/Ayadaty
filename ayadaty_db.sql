@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2019 at 08:44 PM
+-- Generation Time: Mar 12, 2019 at 10:09 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -388,7 +388,11 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`d_id`, `d_name`, `d_email`, `d_phone`, `d_gender`, `d_birth_date`, `d_nationality`, `d_country_address`, `d_city_address`, `d_street_address`, `d_facebook_link`, `d_twitter_link`, `d_personal_img`, `d_specialty_id`, `d_password`) VALUES
-(1, 'Hamzah', 'hamzah@gmail.com', '+967777888999', 1, '1988-02-19 21:00:00', 54, 1, 5, 'شارع الستين الشمالي', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar.png', 3, 'hamzah');
+(1, 'Hamzah', 'hamzah@gmail.com', '+967777888999', 1, '1988-02-19 21:00:00', 54, 1, 5, 'شارع الستين الشمالي', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar.png', 3, 'hamzah'),
+(2, 'امين ردمان', 'ameen@gmail.com', '+967777999666', 1, '1983-02-14 21:00:00', 243, 1, 1, 'التحرير', 'https://www.facebook.com/', 'https://www.facebook.com/', 'user8-128x128.jpg', 4, 'ameen'),
+(3, 'ليلى الربيعي', 'lila@gmail.com', '+967777722665', 0, '1984-01-31 21:00:00', 243, 1, 5, 'المكلا', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar2.png', 3, 'lila1'),
+(4, 'محمد ناصر الخزان', 'mohammed@gmail.com', '+967712233366', 1, '1972-02-03 21:00:00', 243, 1, 1, 'المطار', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar5.png', 2, 'mohammed'),
+(5, 'ضياء العزي', 'dea@gmail.com', '+967739638528', 1, '1981-02-04 21:00:00', 191, 1, 8, 'شارع صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar04.png', 1, 'dea12');
 
 -- --------------------------------------------------------
 
@@ -527,7 +531,7 @@ CREATE TABLE `qualification` (
   `q_certificate` varchar(200) NOT NULL,
   `q_q_t_id` int(12) NOT NULL,
   `q_e_s_id` int(12) NOT NULL,
-  `q_u_id` int(12) NOT NULL,
+  `q_un_id` int(12) NOT NULL,
   `q_d_id` int(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -535,10 +539,16 @@ CREATE TABLE `qualification` (
 -- Dumping data for table `qualification`
 --
 
-INSERT INTO `qualification` (`q_id`, `q_start_date`, `q_graduate_date`, `q_gpa`, `q_certificate`, `q_q_t_id`, `q_e_s_id`, `q_u_id`, `q_d_id`) VALUES
+INSERT INTO `qualification` (`q_id`, `q_start_date`, `q_graduate_date`, `q_gpa`, `q_certificate`, `q_q_t_id`, `q_e_s_id`, `q_un_id`, `q_d_id`) VALUES
 (1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 89, 'red1.png', 6, 2, 3, 1),
 (2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 90, 'blue1.png', 2, 1, 2, 1),
-(3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 85, 'red1.png', 4, 5, 1, 1);
+(3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 85, 'red1.png', 4, 5, 1, 1),
+(4, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 82, 'red1.png', 7, 6, 4, 2),
+(5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 96, 'blue1.png', 3, 1, 1, 2),
+(6, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 84, 'blue1.png', 1, 3, 2, 2),
+(7, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 85, 'blue1.png', 6, 1, 1, 3),
+(8, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 85, 'red1.png', 7, 2, 2, 3),
+(9, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 99, 'red1.png', 4, 4, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -651,7 +661,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`u_id`, `u_username`, `u_password`, `u_email`, `u_privilage`, `u_registered_date`) VALUES
-(1, 'Hamzah', 'hamzah', 'hamzah@gmail.com', NULL, '2019-03-11 16:30:16');
+(1, 'Hamzah', 'hamzah', 'hamzah@gmail.com', NULL, '2019-03-11 16:30:16'),
+(2, 'امين ردمان', 'ameen', 'ameen@gmail.com', NULL, '2019-03-12 13:28:54'),
+(3, 'ليلى الربيعي', 'lila1', 'lila@gmail.com', NULL, '2019-03-12 13:33:53'),
+(4, 'محمد ناصر الخزان', 'mohammed', 'mohammed@gmail.com', NULL, '2019-03-12 13:40:42'),
+(5, 'ضياء العزي', 'dea12', 'dea@gmail.com', NULL, '2019-03-12 14:46:48');
 
 --
 -- Indexes for dumped tables
@@ -729,7 +743,7 @@ ALTER TABLE `period`
 ALTER TABLE `qualification`
   ADD PRIMARY KEY (`q_id`),
   ADD KEY `q_e_s_id_fk` (`q_e_s_id`),
-  ADD KEY `q_u_id_fk` (`q_u_id`),
+  ADD KEY `q_u_id_fk` (`q_un_id`),
   ADD KEY `q_q_t_id_fk` (`q_q_t_id`),
   ADD KEY `q_d_id_fk` (`q_d_id`);
 
@@ -802,7 +816,7 @@ ALTER TABLE `day`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `education_specialty`
@@ -838,7 +852,7 @@ ALTER TABLE `period`
 -- AUTO_INCREMENT for table `qualification`
 --
 ALTER TABLE `qualification`
-  MODIFY `q_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `q_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `qualification_type`
@@ -868,7 +882,7 @@ ALTER TABLE `university`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -901,7 +915,7 @@ ALTER TABLE `qualification`
   ADD CONSTRAINT `q_d_id_fk` FOREIGN KEY (`q_d_id`) REFERENCES `doctor` (`d_id`),
   ADD CONSTRAINT `q_e_s_id_fk` FOREIGN KEY (`q_e_s_id`) REFERENCES `education_specialty` (`e_s_id`),
   ADD CONSTRAINT `q_q_t_id_fk` FOREIGN KEY (`q_q_t_id`) REFERENCES `qualification_type` (`q_t_id`),
-  ADD CONSTRAINT `q_u_id_fk` FOREIGN KEY (`q_u_id`) REFERENCES `university` (`un_id`);
+  ADD CONSTRAINT `q_u_id_fk` FOREIGN KEY (`q_un_id`) REFERENCES `university` (`un_id`);
 
 --
 -- Constraints for table `service`

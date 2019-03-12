@@ -120,8 +120,12 @@ class Doctor_c extends CI_Controller
 		endif;
 
 		$data['specialties']=$this->doctor_obj->get_specialties();
+		$data['doctors']=$this->doctor_obj->get_doctor(FALSE);
+		//print_r($data['doctors']);
+
+
 		$this->load->view('template/header',$data);
-		$this->load->view('doctor_views/'.$page);
+		$this->load->view('doctor_views/'.$page,$data);
 		$this->load->view('template/footer');
 
 	}//end function index($page='home')
@@ -154,7 +158,7 @@ class Doctor_c extends CI_Controller
 		endif;
 		if($this->session->userdata('logged_in')):
 			$doctor_chosen=$this->session->userdata('u_email');
-			$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
+			$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);			
 		endif;
 		if(empty($data['doctor'])):
 			show_404();
@@ -170,6 +174,7 @@ class Doctor_c extends CI_Controller
 		$data['periods']=$this->doctor_obj->get_periods();
 		$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
 		$data['qualifications']=$this->doctor_obj->get_qualifications($doctor_chosen);
+		//print_r($data['qualifications']);
 
 		$this->load->view('template/header',$data);
 		$this->load->view('doctor_views/edit_doctor_v',$data);
@@ -623,7 +628,7 @@ public function add_clinic_data($page='edit_doctor_v')
 			'q_certificate'		=>$q_certificate,
 			'q_q_t_id'			=>$this->security->xss_clean($this->input->post('d_qualification_type')),
 			'q_e_s_id'			=>$this->security->xss_clean($this->input->post('d_education_specialty')),
-			'q_u_id'			=>$this->security->xss_clean($this->input->post('d_university')),
+			'q_un_id'			=>$this->security->xss_clean($this->input->post('d_university')),
 			'q_d_id'			=>$this->security->xss_clean($this->input->post('d_q_id'))				
 			);		
 		return $data;

@@ -66,13 +66,6 @@ include($bar);?>
             <?php 
                 $doctor=APPPATH.'views/included_sections/doctor.php';
                 include($doctor);
-                include($doctor);
-                include($doctor);
-                include($doctor);
-                include($doctor);
-                include($doctor);
-                include($doctor);
-                include($doctor);
             ?> 
        </div> 
        <div class="container" aria-label="Page navigation example" style="margin-bottom: -2rem;">

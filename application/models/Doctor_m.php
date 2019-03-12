@@ -33,6 +33,17 @@ class Doctor_m extends CI_Model
 	{
 		if($doctor_choosen===FALSE)
 		{
+			$this->db->select('*');
+			$this->db->from('doctor');
+			$this->db->order_by('d_id','ASC');
+			$this->db->join('specialty','specialty.specialty_id=doctor.d_specialty_id');
+			$this->db->join('city','city.city_id=doctor.d_city_address');
+			$doctors=$this->db->get();			
+			return $doctors->result_array();
+			/*foreach ($doctors->result() as $row ) {
+			echo $row->d_id."<br/>";
+			echo $row->specialty_name;			
+				}*/
 			
 		}
 
@@ -47,18 +58,20 @@ class Doctor_m extends CI_Model
 		{
 			
 		}
-
-		$doctor=array('d_email'=>$doctor_choosen); 
-		$query_doctor=$this->db->get_where('doctor',$doctor);
-		$query_doctor1=$query_doctor->row_array();
-		$d_id=$query_doctor1['d_id'];
-
-		//$this->db->join('doctor','doctor.d_id=qualification.q_d_id');
+		$this->db->select('*');
+		$this->db->where('d_email',$doctor_choosen);
+		$this->db->from('doctor');
+		$this->db->join('qualification','qualification.q_d_id=doctor.d_id');
 		$this->db->join('qualification_type','qualification_type.q_t_id=qualification.q_q_t_id');
-		$query=$this->db->get_where('qualification',array('q_d_id'=>$d_id));
-		return $query->result_array();
+		$this->db->join('education_specialty','education_specialty.e_s_id=qualification.q_e_s_id');
+		$this->db->join('university','university.un_id=qualification.q_un_id');
+		$this->db->order_by('q_id','ASC');
+		$query=$this->db->get();
+		echo $query->num_rows();			
+		return $query->result_array();	
 
 	}
+
 	public function check_email_exists_db($email)
 	{
 		$query=$this->db->get_where('doctor',array('d_email'=>$email));
@@ -100,6 +113,8 @@ class Doctor_m extends CI_Model
 		$query= $this->db->get('period');
 		return $query->result_array();
 	}//end function get_specialties
+
+
 	
 }
 ?>
