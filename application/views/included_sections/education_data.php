@@ -13,8 +13,10 @@
 		              <div class="col-sm-9">
 		                <div class="tab-content">
 		                  <?php echo validation_errors();?>
-		                  <form class="form" id="d_qualification_form" name="d_qualification_form" action="<?php echo base_url('addqualification');?>" method="post" enctype="multipart/form-data">
+		                  <form class="form" id="d_qualification_form" name="d_qualification_form" action="<?php echo base_url('updatequalification');?>" method="post" enctype="multipart/form-data">
 		                    <input type="hidden" id="d_q_id" name="d_q_id" value="<?php echo $doctor['d_id'];?>">
+		                    <input type="hidden" id="q_id" name="q_id" value="<?php echo $qualification['q_id'];?>">
+		                    <input type="hidden" id="old_q_certificate" name="old_q_certificate" value="<?php echo $qualification['q_certificate']?>">
 		                    <div class="form-group col-xs-6"> 
 		                      <label>نوع المؤهل<span class="required"> *</span></label>
 		                      <select class="form-control" id="d_qualification_type" name='d_qualification_type'autofocus required>
@@ -83,7 +85,7 @@
 		                      </div>                                      
 		                      <div class="form-group col-lg-6 col-md-12">
 		                        <label>شهادة التخرج<span class="required"> *</span></label>
-		                        <input type="file" class="form-control" id="d_q_certificate" name='d_q_certificate' title="ارفع شهادة الدراسة" autofocus required>
+		                        <input type="file" class="form-control" id="d_q_certificate" name='d_q_certificate' title="ارفع شهادة الدراسة" autofocus>
 		                        <span class="error-msg" id="d_q_certificate_error_msg"></span>
 		                      </div>                                                    
 		                    </div>                        

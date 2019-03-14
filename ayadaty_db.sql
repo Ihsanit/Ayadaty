@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2019 at 10:09 PM
+-- Generation Time: Mar 14, 2019 at 10:46 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -69,6 +69,14 @@ CREATE TABLE `clinic` (
   `c_summary` text,
   `c_d_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `clinic`
+--
+
+INSERT INTO `clinic` (`c_id`, `c_job_name`, `c_name`, `c_place_name`, `c_country_address`, `c_city_address`, `c_street_address`, `c_day_start`, `c_day_end`, `c_period_start`, `c_period_end`, `c_summary`, `c_d_id`) VALUES
+(1, 'اخصائي عيون', 'احداق لطب العيون', 'المعقلي - الدور الرابع - شقة 4', 1, 1, 'صخر', 1, 6, '3', '6', '', 1),
+(2, 'جراح عيون', 'احداق لطب العيون1', 'المعقلي - الدور الرابع - شقة 1', 1, 2, 'صخر1', 4, 6, '5', '6', 'kj jlk klkjlj klj', 1);
 
 -- --------------------------------------------------------
 
@@ -392,7 +400,8 @@ INSERT INTO `doctor` (`d_id`, `d_name`, `d_email`, `d_phone`, `d_gender`, `d_bir
 (2, 'امين ردمان', 'ameen@gmail.com', '+967777999666', 1, '1983-02-14 21:00:00', 243, 1, 1, 'التحرير', 'https://www.facebook.com/', 'https://www.facebook.com/', 'user8-128x128.jpg', 4, 'ameen'),
 (3, 'ليلى الربيعي', 'lila@gmail.com', '+967777722665', 0, '1984-01-31 21:00:00', 243, 1, 5, 'المكلا', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar2.png', 3, 'lila1'),
 (4, 'محمد ناصر الخزان', 'mohammed@gmail.com', '+967712233366', 1, '1972-02-03 21:00:00', 243, 1, 1, 'المطار', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar5.png', 2, 'mohammed'),
-(5, 'ضياء العزي', 'dea@gmail.com', '+967739638528', 1, '1981-02-04 21:00:00', 191, 1, 8, 'شارع صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar04.png', 1, 'dea12');
+(5, 'ضياء العزي', 'dea@gmail.com', '+967739638528', 1, '1981-02-04 21:00:00', 191, 1, 8, 'شارع صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar04.png', 1, 'dea12'),
+(6, 'rehan', 'rehan@gmail.com', '+967772080906', 0, '1985-01-01 21:00:00', 243, 1, 1, 'المطار', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar_2x.png', 3, 'rehan');
 
 -- --------------------------------------------------------
 
@@ -461,6 +470,16 @@ CREATE TABLE `experience` (
   `e_certificate` varchar(50) DEFAULT NULL,
   `e_d_id` int(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `experience`
+--
+
+INSERT INTO `experience` (`e_id`, `e_job_name`, `e_clinic_name`, `e_place_address`, `e_start_date`, `e_end_date`, `e_job_summary`, `e_certificate`, `e_d_id`) VALUES
+(1, 'استشاري اسنان', 'مستشفى الوسام التخصصي', 'صنعاء - شارع حدة', '2010-03-12 21:00:00', '2013-03-16 21:00:00', 'استشاري اسنان لمدة ثلاث سنوات', 'noimg.png', 1),
+(2, 'اخصائي اسنان', 'المستشفى الجمهوري', 'صنعاء - شارع الزبيري', '2014-03-11 21:00:00', '2016-03-18 21:00:00', 'اخصائي طب وجراحة الاسنان', 'red1.png', 1),
+(3, 'طبيب طب عام', 'مستشفى النور', 'شارع المقالح', '2014-02-01 21:00:00', '2016-02-04 21:00:00', 'kjj ljklkja kjlk', '', 6),
+(4, 'رئيس قسم الباطنية', 'مستشفى بيروت', 'صنعاء - شارع حدة', '2017-02-01 21:00:00', '2018-02-04 21:00:00', 'اشراف على قسم الباطنية', '', 1);
 
 -- --------------------------------------------------------
 
@@ -540,15 +559,16 @@ CREATE TABLE `qualification` (
 --
 
 INSERT INTO `qualification` (`q_id`, `q_start_date`, `q_graduate_date`, `q_gpa`, `q_certificate`, `q_q_t_id`, `q_e_s_id`, `q_un_id`, `q_d_id`) VALUES
-(1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 89, 'red1.png', 6, 2, 3, 1),
-(2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 90, 'blue1.png', 2, 1, 2, 1),
-(3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 85, 'red1.png', 4, 5, 1, 1),
+(1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 82, 'red1.png', 7, 4, 4, 1),
+(2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 90, 'blue1.png', 2, 1, 3, 1),
+(3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 85, 'red1.png', 4, 4, 1, 1),
 (4, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 82, 'red1.png', 7, 6, 4, 2),
 (5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 96, 'blue1.png', 3, 1, 1, 2),
 (6, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 84, 'blue1.png', 1, 3, 2, 2),
 (7, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 85, 'blue1.png', 6, 1, 1, 3),
 (8, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 85, 'red1.png', 7, 2, 2, 3),
-(9, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 99, 'red1.png', 4, 4, 4, 3);
+(9, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 99, 'red1.png', 4, 4, 4, 3),
+(10, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 80, 'red1.png', 7, 1, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -665,7 +685,8 @@ INSERT INTO `user` (`u_id`, `u_username`, `u_password`, `u_email`, `u_privilage`
 (2, 'امين ردمان', 'ameen', 'ameen@gmail.com', NULL, '2019-03-12 13:28:54'),
 (3, 'ليلى الربيعي', 'lila1', 'lila@gmail.com', NULL, '2019-03-12 13:33:53'),
 (4, 'محمد ناصر الخزان', 'mohammed', 'mohammed@gmail.com', NULL, '2019-03-12 13:40:42'),
-(5, 'ضياء العزي', 'dea12', 'dea@gmail.com', NULL, '2019-03-12 14:46:48');
+(5, 'ضياء العزي', 'dea12', 'dea@gmail.com', NULL, '2019-03-12 14:46:48'),
+(6, 'rehan', 'rehan', 'rehan@gmail.com', NULL, '2019-03-14 14:38:20');
 
 --
 -- Indexes for dumped tables
@@ -798,7 +819,7 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `clinic`
 --
 ALTER TABLE `clinic`
-  MODIFY `c_id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `c_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -816,7 +837,7 @@ ALTER TABLE `day`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `education_specialty`
@@ -834,7 +855,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `experience`
 --
 ALTER TABLE `experience`
-  MODIFY `e_id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `e_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `hospital`
@@ -852,7 +873,7 @@ ALTER TABLE `period`
 -- AUTO_INCREMENT for table `qualification`
 --
 ALTER TABLE `qualification`
-  MODIFY `q_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `q_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `qualification_type`
@@ -882,7 +903,7 @@ ALTER TABLE `university`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

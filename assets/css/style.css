@@ -308,7 +308,7 @@ img {width:100%;}
 
 /*-------------------------multi-qulalification-----------------------*/
 /* Hide all steps by default: */
-.tab1 {
+.tab1, .tab2, .tab3 {
   display: none;
 }
 #regForm .tab1 input.invalid {

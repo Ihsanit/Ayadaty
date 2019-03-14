@@ -147,7 +147,7 @@
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
 $(document).ready(function(){
-		
+
 	$("#d_personal_data_submit").submit(function(){
 		var mobile =iti.getNumber();
 		$('#d_mobile').val(mobile);		
@@ -235,15 +235,6 @@ $(document).ready(function(){
         });        
 	});
 
-
-
-
-
-	
-
-
-
-
 });//end ready()
 
 
@@ -312,6 +303,283 @@ function fixStepIndicator(n) {
   //... and adds the "active" class on the current step:
   x[n].className += " active";
 }
+</script>
+<script>
+/*multi-experience*/
+var currentTab2 = 0; // Current tab is set to be the first tab (0)
+showTab2(currentTab2); // Display the current tab
+
+function showTab2(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab2");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn2").style.display = "none";
+  } else {
+    document.getElementById("prevBtn2").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn2").innerHTML = "انهاء";
+  } else {
+    document.getElementById("nextBtn2").innerHTML = "&gt;";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator2(n)
+}
+
+function nextPrev2(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab2");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm2()) return false;
+  // Hide the current tab:
+  x[currentTab2].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab2 = currentTab2 + n;
+  // if you have reached the end of the form...
+  if (currentTab2 >= x.length) {
+    // ... the form gets submitted:
+    //document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab2(currentTab2);
+}
+
+function validateForm2() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab2");
+
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step2")[currentTab2].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator2(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step2");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+</script>
+<script>
+/*multi-clinic*/
+var currentTab3 = 0; // Current tab is set to be the first tab (0)
+showTab3(currentTab3); // Display the current tab
+
+function showTab3(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab3");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn3").style.display = "none";
+  } else {
+    document.getElementById("prevBtn3").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn3").innerHTML = "انهاء";
+  } else {
+    document.getElementById("nextBtn3").innerHTML = "&gt;";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator3(n)
+}
+
+function nextPrev3(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab3");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm3()) return false;
+  // Hide the current tab:
+  x[currentTab3].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab3 = currentTab3 + n;
+  // if you have reached the end of the form...
+  if (currentTab3 >= x.length) {
+    // ... the form gets submitted:
+    //document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab3(currentTab3);
+}
+
+function validateForm3() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab3");
+
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step3")[currentTab3].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator3(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step3");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+</script>
+<script>
+	$(document).ready(function(){
+
+		/*--------------------------check_experience_data-------------------*/
+		$("#d_e_job_name_error_msg").hide();
+		$("#d_e_clinic_name_error_msg").hide();
+		$("#d_e_place_address_error_msg").hide();
+		$("#d_e_start_date_error_msg").hide();
+		$("#d_e_end_date_error_msg").hide();
+
+		var error_d_e_job_name=false;
+		var error_d_e_clinic_name=false;
+		var error_d_e_place_address=false;
+		var error_d_e_start_date=false;
+		var error_d_e_end_date=false;
+
+		$("#d_e_job_name").focusout(function(){
+			check_d_e_job_name();
+		});
+		$("#d_e_clinic_name").focusout(function(){
+			check_d_e_clinic_name();
+		});
+		$("#d_e_place_address").focusout(function(){
+			check_d_e_place_address();
+		});
+		$("#d_e_start_date").focusout(function(){
+			check_d_e_start_date();
+		});
+		$("#d_e_end_date").focusout(function(){
+			check_d_e_end_date();
+		});
+
+		/*--------------------------check_d_e_job_name-------------------------*/
+		function check_d_e_job_name()
+		{		
+			var pattern=/^[A-Za-z_ء-ي'\s]{5,200}$/;
+			var d_e_job_name=$("#d_e_job_name").val();
+			if(pattern.test(d_e_job_name) && d_e_job_name !=='')
+				{
+					$("#d_e_job_name_error_msg").hide();
+					$("#d_e_job_name").css("border","1px solid #34F458");
+				}
+			else
+				{
+					$("#d_e_job_name_error_msg").html('المسمى الوظيفي يجب ان يحتوي حروف فقط');
+					$("#d_e_job_name_error_msg").show();
+					$("#d_e_job_name").css("border","1px solid #F90A0A");
+					error_d_e_job_name=true;
+			}
+		}//check_d_e_job_name
+/*--------------------------check_d_e_clinic_name-------------------------*/
+		function check_d_e_clinic_name()
+		{			
+			var pattern=/^[A-Za-z_ء-ي'\s]{5,200}$/;
+			var d_e_clinic_name=$("#d_e_clinic_name").val();
+			if(pattern.test(d_e_clinic_name) && d_e_clinic_name !=='')
+				{
+					$("#d_e_clinic_name_error_msg").hide();
+					$("#d_e_clinic_name").css("border","1px solid #34F458");
+				}
+			else
+				{
+					$("#d_e_clinic_name_error_msg").html('اسم جهة العمل يجب ان يحتوي حروف فقط');
+					$("#d_e_clinic_name_error_msg").show();
+					$("#d_e_clinic_name").css("border","1px solid #F90A0A");
+					error_d_e_clinic_name=true;
+			}
+		}//check_d_e_clinic_name
+/*--------------------------check_d_e_place_address-------------------------*/
+		function check_d_e_place_address()
+		{			
+			var pattern=/^[A-Za-z_ء-ي'\s]{5,200}$/;
+			var d_e_place_address=$("#d_e_place_address").val();
+			if(pattern.test(d_e_place_address) && d_e_place_address !=='')
+				{
+					$("#d_e_place_address_error_msg").hide();
+					$("#d_e_place_address").css("border","1px solid #34F458");
+				}
+			else
+				{
+					$("#d_e_place_address_error_msg").html('عنوان جهة العمل يجب ان يحتوي حروف فقط');
+					$("#d_e_place_address_error_msg").show();
+					$("#d_e_place_address").css("border","1px solid #F90A0A");
+					error_d_e_place_address=true;
+			}
+		}//check_d_e_place_address
+/*--------------------------check_d_e_start_date()-------------------------*/
+		function check_d_e_start_date()
+		{			
+			var d_e_start_date =$("#d_e_start_date").val();
+			if(d_e_start_date!=='')
+			{
+				$("#d_e_start_date_error_msg").hide();
+				$("#d_e_start_date").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_e_start_date_error_msg").html("يرجى اختيار تاريخ بداية مدة العمل");
+				$("#d_e_start_date_error_msg").show();
+				$("#d_e_start_date").css("border","1px solid #F90A0A");
+				error_d_e_start_date=true;
+			}
+		}//check_d_e_start_date()
+/*--------------------------check_d_e_end_date()-------------------------*/
+		function check_d_e_end_date()
+		{			
+			var d_e_end_date =$("#d_e_end_date").val();
+			if(d_e_end_date!=='')
+			{
+				$("#d_e_end_date_error_msg").hide();
+				$("#d_e_end_date").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_e_end_date_error_msg").html("يرجى اختيار تاريخ نهاية مدة العمل");
+				$("#d_e_end_date_error_msg").show();
+				$("#d_e_end_date").css("border","1px solid #F90A0A");
+				error_d_e_end_date=true;
+			}
+		}//check_d_e_start_date()
+
+		/*----------------------------------------submit experience data--------------------------*/
+	$("#d_experience_form").submit(function(){
+
+		error_d_e_job_name=false;
+		error_d_e_clinic_name=false;
+		error_d_e_place_address=false;
+		error_d_e_start_date=false;
+		error_d_e_end_date=false;
+		
+		
+		check_d_e_job_name();
+		check_d_e_clinic_name();
+		check_d_e_place_address();
+		check_d_e_start_date();
+		check_d_e_end_date();
+
+		if(!error_d_e_job_name===false && !error_d_e_clinic_name===false && !error_d_e_place_address===false 
+			&& !check_d_e_start_date===false && !check_d_e_end_date===false)
+		{
+
+			alert('يرجى تعبئة البيانات بشكل صحيح');
+			return false;
+		}
+	});//end  experience form
+	});//end function of check experince data
 </script>
 	</body>
 </html>

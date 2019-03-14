@@ -16,6 +16,7 @@ $(document).ready(function(){
 	});
 	/*------------personla doctor data validation-----------------*/
 	$(function(){
+
 		$("#d_name_error_msg").hide();
 		$("#d_email_error_msg").hide();
 		$("#d_gender_error_msg").hide();
@@ -122,6 +123,8 @@ $(document).ready(function(){
 		$("#d_q_certificate").focusout(function(){
 			check_d_q_certificate();
 		});
+/*--------------------------check_experience_data-------------------*/
+	
 /*--------------------------check_d_name()-------------------------*/
 		
 		function check_d_name()
@@ -481,6 +484,7 @@ $(document).ready(function(){
 		}//heck_d_q_certificate
 
 
+
 	$("#d_personal_form").submit(function(){
 		error_d_name=false;
 		error_d_email=false;
@@ -547,6 +551,8 @@ $("#d_qualification_form").submit(function(){
 			return false;
 		}
 	});//end 
+
+
 
 });//end general function
 /*------------------birth date of doctor---------------------*/
@@ -623,6 +629,7 @@ $("#d_birth_date").datepicker({
             qual--;
         });*/
    // });
+
 });
 
 	

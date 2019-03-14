@@ -164,6 +164,7 @@ class Doctor_c extends CI_Controller
 			show_404();
 		endif;
 
+		//$this->get_data($doctor_chosen);
 		$data['specialties']=$this->doctor_obj->get_specialties();
 		$data['countries']=$this->country_obj->get_countries();
 		$data['cities']=$this->country_obj->get_cities();
@@ -174,7 +175,9 @@ class Doctor_c extends CI_Controller
 		$data['periods']=$this->doctor_obj->get_periods();
 		$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
 		$data['qualifications']=$this->doctor_obj->get_qualifications($doctor_chosen);
-		//print_r($data['qualifications']);
+		$data['experiences']=$this->doctor_obj->get_experiences($doctor_chosen);
+		$data['clinics']=$this->doctor_obj->get_clinics($doctor_chosen);
+		//print_r($data['clinics']);
 
 		$this->load->view('template/header',$data);
 		$this->load->view('doctor_views/edit_doctor_v',$data);
@@ -337,12 +340,73 @@ public function add_qualification_data($page='edit_doctor_v')
 	    }#end catch)
 
 	}#end function add_education_data()
+
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|update_qualification() function to update registered doctor data  		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	
+	public function update_qualification($page='edit_doctor_v')
+	{
+		try
+		{
+			if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
+				show_404();
+			endif;			
+			$logged_email=$this->session->userdata('u_email');
+			$doctor=$this->doctor_obj->get_doctor($logged_email);
+			/*
+			|=========================================================================================================
+			|#insure user upload new certificate or no		
+			|=========================================================================================================
+			*/	
+
+			$q_certificate;
+			if($_FILES['d_q_certificate']['name']!=""):
+				$q_certificate=$this->upload_profile();
+			else:
+				$q_certificate=$this->input->post('old_q_certificate');
+			endif;			
+
+			$this->check_qualification_vald_inputs();
+			
+			if($this->form_validation->run()===FALSE):
+				
+				$this->load->view('template/header',$data);
+				$this->load->view('doctor_views/'.$page,$data);
+				$this->load->view('template/footer');			
+			else:		
+
+				$data=$this->full_qualification_data($q_certificate);
+				/*
+				|=========================================================================================================
+				|#send doctor's data to doctor model => update_doctor() function 
+				|=========================================================================================================
+				*/
+				$id=$this->security->xss_clean($this->input->post('q_id'));
+				$d_data=$this->doctor_obj->update_qualification($id,$data);
+				
+				if($d_data):
+					$this->session->set_flashdata('doctor_edited','تم تعديل بياناتك المؤهل بنجاح' );
+					redirect(base_url('editdoctor'));
+				endif;#end if sure update successfully?>
+				<?php 
+			endif;#end if run successfully 
+		}#end try
+		catch(Exception $err)
+	    {
+	        log_message("error", $err->getMessage());
+	        return show_error($err->getMessage());
+	    }#end catch			
+		
+	}#end function update_qualification()
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
 |add_experience_data() function to add experiences' data of doctor   		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
-public function add_experience_data($page='edit_doctor_v')
+	public function add_experience_data($page='edit_doctor_v')
 	{
 		try
 		{
@@ -408,6 +472,67 @@ public function add_experience_data($page='edit_doctor_v')
 
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
+|update_experience() function to update registered doctor data  		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	
+	public function update_experience($page='edit_doctor_v')
+	{
+		try
+		{
+			if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
+				show_404();
+			endif;			
+			$logged_email=$this->session->userdata('u_email');
+			$doctor=$this->doctor_obj->get_doctor($logged_email);
+			/*
+			|=========================================================================================================
+			|#insure user upload new certificate or no		
+			|=========================================================================================================
+			*/	
+
+			$e_certificate;
+			if($_FILES['d_e_certificate']['name']!=""):
+				$e_certificate=$this->upload_experience_file();
+			else:
+				$e_certificate=$this->input->post('old_e_certificate');
+			endif;			
+
+			$this->check_experience_vald_inputs();
+			
+			if($this->form_validation->run()===FALSE):
+				
+				$this->load->view('template/header',$data);
+				$this->load->view('doctor_views/'.$page,$data);
+				$this->load->view('template/footer');			
+			else:		
+
+				$data=$this->full_experience_data($e_certificate);
+				/*
+				|=========================================================================================================
+				|#send doctor's data to doctor model => update_doctor() function 
+				|=========================================================================================================
+				*/
+				$id=$this->security->xss_clean($this->input->post('e_id'));
+				$d_data=$this->doctor_obj->update_experience($id,$data);
+				
+				if($d_data):
+					$this->session->set_flashdata('doctor_edited','تم تعديل بياناتك الخبرة بنجاح' );
+					redirect(base_url('editdoctor'));
+				endif;#end if sure update successfully?>
+				<?php 
+			endif;#end if run successfully 
+		}#end try
+		catch(Exception $err)
+	    {
+	        log_message("error", $err->getMessage());
+	        return show_error($err->getMessage());
+	    }#end catch			
+		
+	}#end function update_qualification()
+
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
 |add_experience_data() function to add experiences' data of doctor   		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
@@ -469,6 +594,59 @@ public function add_clinic_data($page='edit_doctor_v')
 	    }#end catch)
 
 	}#end function add_clinic_data()
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|update_experience() function to update registered doctor data  		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
+	
+	public function update_clinic($page='edit_doctor_v')
+	{
+		try
+		{
+			if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
+				show_404();
+			endif;			
+			$logged_email=$this->session->userdata('u_email');
+			$doctor=$this->doctor_obj->get_doctor($logged_email);
+			/*
+			|=========================================================================================================
+			|#insure user upload new certificate or no		
+			|=========================================================================================================
+			*/	
+
+			$this->check_clinic_vald_inputs();
+			
+			if($this->form_validation->run()===FALSE):
+				
+				$this->load->view('template/header',$data);
+				$this->load->view('doctor_views/'.$page,$data);
+				$this->load->view('template/footer');			
+			else:		
+
+				$data=$this->full_clinic_data();
+				/*
+				|=========================================================================================================
+				|#send doctor's data to doctor model => update_doctor() function 
+				|=========================================================================================================
+				*/
+				$id=$this->security->xss_clean($this->input->post('c_id'));
+				$d_data=$this->doctor_obj->update_clinic($id,$data);
+				
+				if($d_data):
+					$this->session->set_flashdata('doctor_edited','تم تعديل بياناتك العيادة بنجاح' );
+					redirect(base_url('editdoctor'));
+				endif;#end if sure update successfully?>
+				<?php 
+			endif;#end if run successfully 
+		}#end try
+		catch(Exception $err)
+	    {
+	        log_message("error", $err->getMessage());
+	        return show_error($err->getMessage());
+	    }#end catch			
+		
+	}#end function update_clinic()
 
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
@@ -765,18 +943,30 @@ public function add_clinic_data($page='edit_doctor_v')
 				$errors=array(
 					'error'	=>	$this->upload->display_errors()
 					);
-				$final_file='noimg.png';
-				return $final_file;
-			
+				$final_file='';
+				return $final_file;			
 			else:
-
 				$data=array('upload_data'	=>	$this->upload->data());				
 				$final_file=$_FILES['d_e_certificate']['name'];
 				return $final_file;
 			endif;#end if file successful uploaded
 		endif;#end if file found
-
 	}#end function upload_file()
+
+	public function get_data($doctor_chosen)
+	{
+		$data['specialties']=$this->doctor_obj->get_specialties();
+		$data['countries']=$this->country_obj->get_countries();
+		$data['cities']=$this->country_obj->get_cities();
+		$data['qualification_types']=$this->doctor_obj->get_qualification_types();
+		$data['education_specialties']=$this->doctor_obj->get_education_specialties();
+		$data['universities']=$this->doctor_obj->get_universities();
+		$data['days']=$this->doctor_obj->get_days();
+		$data['periods']=$this->doctor_obj->get_periods();
+		$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
+		$data['qualifications']=$this->doctor_obj->get_qualifications($doctor_chosen);
+
+	}//end function get_data()
 
 	
 
