@@ -239,8 +239,8 @@ $(document).ready(function(){
 
 
 	
-        </script>
-        <script>
+</script>
+<script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
@@ -573,6 +573,277 @@ function fixStepIndicator3(n) {
 
 		if(!error_d_e_job_name===false && !error_d_e_clinic_name===false && !error_d_e_place_address===false 
 			&& !check_d_e_start_date===false && !check_d_e_end_date===false)
+		{
+
+			alert('يرجى تعبئة البيانات بشكل صحيح');
+			return false;
+		}
+	});//end  experience form
+	});//end function of check experince data
+</script>
+<script>
+	$(document).ready(function(){
+
+		/*--------------------------check_clinic_data-------------------*/
+		$("#d_c_job_name_error_msg").hide();
+		$("#d_c_name_error_msg").hide();
+		$("#d_c_country_address_error_msg").hide();
+		$("#d_c_city_address_error_msg").hide();
+		$("#d_c_street_address_error_msg").hide();
+		$("#d_c_place_name_error_msg").hide();
+		$("#d_c_day_start_error_msg").hide();
+		$("#d_c_day_end_error_msg").hide();
+		$("#d_c_period_start_error_msg").hide();
+		$("#d_c_period_end_error_msg").hide();
+
+		var error_d_c_job_name=false;
+		var error_d_c_name=false;
+		var error_d_c_country_address=false;
+		var error_d_c_city_address=false;
+		var error_d_c_street_address=false;
+		var error_d_c_place_name=false;
+		var error_d_c_day_start=false;
+		var error_d_c_day_end=false;
+		var error_d_c_period_start=false;
+		var error_d_c_period_end=false;
+
+		$("#d_c_job_name").focusout(function(){
+			check_d_c_job_name();
+		});
+		$("#d_c_name").focusout(function(){
+			check_d_c_name();
+		});
+		$("#d_c_country_address").focusout(function(){
+			check_d_c_country_address();
+		});
+		$("#d_c_city_address").focusout(function(){
+			check_d_c_city_address();
+		});
+		$("#d_c_street_address").focusout(function(){
+			check_d_c_street_address();
+		});
+		$("#d_c_place_name").focusout(function(){
+			check_d_c_place_name();
+		});
+		$("#d_c_day_start").focusout(function(){
+			check_d_c_day_start();
+		});
+		$("#d_c_day_end").focusout(function(){
+			check_d_c_day_end();
+		});
+		$("#d_c_period_start").focusout(function(){
+			check_d_c_period_start();
+		});
+		$("#d_c_period_end").focusout(function(){
+			check_d_c_period_end();
+		});
+
+		/*--------------------------check_d_c_job_name-------------------------*/
+		function check_d_c_job_name()
+		{		
+			var pattern=/^[A-Za-z_ء-ي'\s]{5,200}$/;
+			var d_c_job_name=$("#d_c_job_name").val();
+			if(pattern.test(d_c_job_name) && d_c_job_name !=='')
+				{
+					$("#d_c_job_name_error_msg").hide();
+					$("#d_c_job_name").css("border","1px solid #34F458");
+				}
+			else
+				{
+					$("#d_c_job_name_error_msg").html('المسمى الوظيفي يجب ان يحتوي حروف فقط');
+					$("#d_c_job_name_error_msg").show();
+					$("#d_c_job_name").css("border","1px solid #F90A0A");
+					error_d_c_job_name=true;
+			}
+		}//check_d_c_job_name
+/*--------------------------check_d_c_name-------------------------*/
+		function check_d_c_name()
+		{			
+			var pattern=/^[A-Za-z_ء-ي'\s]{5,200}$/;
+			var d_c_name=$("#d_c_name").val();
+			if(pattern.test(d_c_name) && d_c_name !=='')
+				{
+					$("#d_c_name_error_msg").hide();
+					$("#d_c_name").css("border","1px solid #34F458");
+				}
+			else
+				{
+					$("#d_c_name_error_msg").html('اسم العيادة او المستشفى يجب ان يحتوي حروف فقط');
+					$("#d_c_name_error_msg").show();
+					$("#d_c_name").css("border","1px solid #F90A0A");
+					error_d_c_name=true;
+			}
+		}//check_d_c_name
+/*--------------------------check_d_c_country_address()-------------------------*/
+		function check_d_c_country_address()
+		{			
+			var d_c_country_address =$("#d_c_country_address").val();
+			if(d_c_country_address!==null)
+			{
+				$("#d_c_country_address_error_msg").hide();
+				$("#d_c_country_address").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_c_country_address_error_msg").html("يرجى اختيار عنوان الدولة");
+				$("#d_c_country_address_error_msg").show();
+				$("#d_c_country_address").css("border","1px solid #F90A0A");
+				error_d_c_country_address=true;
+			}
+		}//check_d_c_country_address()
+/*--------------------------check_d_c_city_address()-------------------------*/
+		function check_d_c_city_address()
+		{			
+			var d_c_city_address =$("#d_c_city_address").val();
+			if(d_c_city_address!==null)
+			{
+				$("#d_c_city_address_error_msg").hide();
+				$("#d_c_city_address").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_c_city_address_error_msg").html("يرجى اختيار عنوان المدينة");
+				$("#d_c_city_address_error_msg").show();
+				$("#d_c_city_address").css("border","1px solid #F90A0A");
+				error_d_c_city_address=true;
+			}
+		}//check_d_c_city_address()
+
+/*--------------------------check_d_c_street_address()-------------------------*/
+		function check_d_c_street_address()
+		{
+			var pattern=/^[A-Za-z_ء-ي'\s]{5,200}$/;
+			var d_c_street_address=$("#d_c_street_address").val();
+			if(pattern.test(d_c_street_address) && d_c_street_address !=='')
+				{
+					$("#d_c_street_address_error_msg").hide();
+					$("#d_c_street_address").css("border","1px solid #34F458");
+				}
+				else
+				{
+					$("#d_c_street_address_error_msg").html('يجب ادخال عنوان الشارع يحتوي حروف او ارقام');
+					$("#d_c_street_address_error_msg").show();
+					$("#d_c_street_address").css("border","1px solid #F90A0A");
+					error_d_c_street_address=true;
+
+				}//end if
+		}//check_d_c_street_address()
+/*--------------------------check_d_c_street_address-------------------------*/
+		function check_d_c_place_name()
+		{			
+			var pattern=/^[A-Za-z_ء-ي'\s]{5,200}$/;
+			var d_c_place_name=$("#d_c_place_name").val();
+			if(pattern.test(d_c_place_name) && d_c_place_name !=='')
+				{
+					$("#d_c_place_name_error_msg").hide();
+					$("#d_c_place_name").css("border","1px solid #34F458");
+				}
+			else
+				{
+					$("#d_c_place_name_error_msg").html('اسم عمارة وشقة العيادة يجب ان يحتوي حروف فقط');
+					$("#d_c_place_name_error_msg").show();
+					$("#d_c_place_name").css("border","1px solid #F90A0A");
+					error_d_e_place_address=true;
+			}
+		}//check_d_c_place_name
+/*--------------------------check_d_c_day_start()-------------------------*/
+		function check_d_c_day_start()
+		{			
+			var d_c_day_start =$("#d_c_day_start").val();
+			if(d_c_day_start!==null)
+			{
+				$("#d_c_day_start_error_msg").hide();
+				$("#d_c_day_start").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_c_day_start_error_msg").html("يرجى اختيار اول ايام الدوام");
+				$("#d_c_day_start_error_msg").show();
+				$("#d_c_day_start").css("border","1px solid #F90A0A");
+				error_d_c_day_start=true;
+			}
+		}//check_d_c_day_start()
+/*--------------------------check_d_c_day_end()-------------------------*/
+		function check_d_c_day_end()
+		{			
+			var d_c_day_end =$("#d_c_day_end").val();
+			if(d_c_day_end!==null)
+			{
+				$("#d_c_day_end_error_msg").hide();
+				$("#d_c_day_end").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_c_day_end_error_msg").html("يرجى اختيار اخر ايام الدوام");
+				$("#d_c_day_end_error_msg").show();
+				$("#d_c_day_end").css("border","1px solid #F90A0A");
+				error_d_c_day_end=true;
+			}
+		}//check_d_c_day_end()
+/*--------------------------check_d_c_period_start()-------------------------*/
+		function check_d_c_period_start()
+		{			
+			var d_c_period_start =$("#d_c_period_start").val();
+			if(d_c_period_start!==null)
+			{
+				$("#d_c_period_start_error_msg").hide();
+				$("#d_c_period_start").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_c_period_start_error_msg").html("يرجى اختيار بداية فترة الدوام");
+				$("#d_c_period_start_error_msg").show();
+				$("#d_c_period_start").css("border","1px solid #F90A0A");
+				error_d_c_period_start=true;
+			}
+		}//check_d_c_period_start()
+/*--------------------------check_d_c_period_end()-------------------------*/
+		function check_d_c_period_end()
+		{			
+			var d_c_period_end =$("#d_c_period_end").val();
+			if(d_c_period_end!==null)
+			{
+				$("#d_c_period_end_error_msg").hide();
+				$("#d_c_period_end").css("border","1px solid #34F458");
+			}
+			else
+			{
+				$("#d_c_period_end_error_msg").html("يرجى اختيار نهاية فترة الدوام");
+				$("#d_c_period_end_error_msg").show();
+				$("#d_c_period_end").css("border","1px solid #F90A0A");
+				error_d_c_period_end=true;
+			}
+		}//check_d_c_period_end()
+
+		/*----------------------------------------submit clinic data--------------------------*/
+	$("#d_clinic_form").submit(function(){
+
+		error_d_c_job_name=false;
+		error_d_c_name=false;
+		error_d_c_country_address=false;
+		error_d_c_city_address=false;
+		error_d_c_street_address=false;
+		error_d_c_place_name=false;
+		error_d_c_day_start=false;
+		error_d_c_day_end=false;
+		error_d_c_period_start=false;
+		error_d_c_period_end=false;
+
+		check_d_c_job_name();
+		check_d_c_name();
+		check_d_c_country_address();
+		check_d_c_city_address();
+		check_d_c_street_address();
+		check_d_c_place_name();
+		check_d_c_day_start();
+		check_d_c_day_end();
+		check_d_c_period_start();
+		check_d_c_period_end();
+		
+		if(!error_d_c_job_name===false && !error_d_c_name===false && !error_d_c_country_address===false 
+			&& !error_d_c_city_address===false && !error_d_c_street_address===false 
+			&& !error_d_c_place_name===false && !error_d_c_day_start===false
+			&& !error_d_c_day_end===false && !error_d_c_period_start===false && !error_d_c_period_end===false)
 		{
 
 			alert('يرجى تعبئة البيانات بشكل صحيح');

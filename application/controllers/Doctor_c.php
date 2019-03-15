@@ -120,7 +120,9 @@ class Doctor_c extends CI_Controller
 		endif;
 
 		$data['specialties']=$this->doctor_obj->get_specialties();
+		$data['cities']=$this->country_obj->get_cities();
 		$data['doctors']=$this->doctor_obj->get_doctor(FALSE);
+
 		//print_r($data['doctors']);
 
 
@@ -128,7 +130,7 @@ class Doctor_c extends CI_Controller
 		$this->load->view('doctor_views/'.$page,$data);
 		$this->load->view('template/footer');
 
-	}//end function index($page='home')
+	}#end function index($page='home')
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
 |show_doctor_detail() function to show detail doctor data		
@@ -145,10 +147,10 @@ class Doctor_c extends CI_Controller
 		$this->load->view('doctor_views/'.$page);
 		$this->load->view('template/footer');
 
-	}//end function index($page='home')
+	}#end function index($page='home')
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
-|edit_doctor() function to edit view registered doctordata  		
+|edit_doctor() function retive registered (personal, education, experience, and clinic) data to edit  		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
 	public function edit_doctor($page='edit_doctor_v')
@@ -164,7 +166,7 @@ class Doctor_c extends CI_Controller
 			show_404();
 		endif;
 
-		//$this->get_data($doctor_chosen);
+		
 		$data['specialties']=$this->doctor_obj->get_specialties();
 		$data['countries']=$this->country_obj->get_countries();
 		$data['cities']=$this->country_obj->get_cities();
@@ -187,7 +189,7 @@ class Doctor_c extends CI_Controller
 	}#end function edit_doctor()
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
-|update_doctor() function to update registered doctor data  		
+|update_doctor() function to update doctor's registered personal data  		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
 	
@@ -232,7 +234,7 @@ class Doctor_c extends CI_Controller
 				else:
 					$phone=$this->security->xss_clean($this->input->post('old_d_mobile'));
 				endif;
-				//$phone=$this->security->xss_clean($this->input->post('d_mobile'));
+				
 				$name=$this->security->xss_clean($this->input->post('d_name'));
 				$email=$this->security->xss_clean($this->input->post('d_email'));
 				$password=$this->security->xss_clean($this->input->post('d_password'));
@@ -274,7 +276,7 @@ class Doctor_c extends CI_Controller
 	}#end function update_doctor()
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
-|add_education_data() function to add qualifications' data of doctor   		
+|add_education_data() function to add doctor's qualification data   		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
 public function add_qualification_data($page='edit_doctor_v')
@@ -304,10 +306,10 @@ public function add_qualification_data($page='edit_doctor_v')
 				else:
 					/*
 					|=========================================================================================================
-					|#call upload_file() function to process file		
+					|#call upload_qualification_file() function to process file		
 					|=========================================================================================================
 					*/	
-					$q_certificate=$this->upload_file();
+					$q_certificate=$this->upload_qualification_file();
 					/*
 					|=========================================================================================================
 					|#call full_qualification_data() function to full an array has sturcture of qualification table with form input fields data 		
@@ -316,7 +318,7 @@ public function add_qualification_data($page='edit_doctor_v')
 					$data=$this->full_qualification_data($q_certificate);
 					/*
 					|=========================================================================================================
-					|#send doctor's data to doctor model => insert_doctor() function 
+					|#send qualificaton's data to doctor model
 					|=========================================================================================================
 					*/
 					$q_data=$this->doctor_obj->insert_qualification($data);
@@ -343,7 +345,7 @@ public function add_qualification_data($page='edit_doctor_v')
 
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
-|update_qualification() function to update registered doctor data  		
+|update_qualification() function to update registered qualification data  		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
 	
@@ -364,7 +366,7 @@ public function add_qualification_data($page='edit_doctor_v')
 
 			$q_certificate;
 			if($_FILES['d_q_certificate']['name']!=""):
-				$q_certificate=$this->upload_profile();
+				$q_certificate=$this->upload_qualification_file();
 			else:
 				$q_certificate=$this->input->post('old_q_certificate');
 			endif;			
@@ -381,7 +383,7 @@ public function add_qualification_data($page='edit_doctor_v')
 				$data=$this->full_qualification_data($q_certificate);
 				/*
 				|=========================================================================================================
-				|#send doctor's data to doctor model => update_doctor() function 
+				|#send qualification's data to doctor model  
 				|=========================================================================================================
 				*/
 				$id=$this->security->xss_clean($this->input->post('q_id'));
@@ -403,7 +405,7 @@ public function add_qualification_data($page='edit_doctor_v')
 	}#end function update_qualification()
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
-|add_experience_data() function to add experiences' data of doctor   		
+|add_experience_data() function to add experiences' data   		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
 	public function add_experience_data($page='edit_doctor_v')
@@ -445,7 +447,7 @@ public function add_qualification_data($page='edit_doctor_v')
 					$data=$this->full_experience_data($e_certificate);
 					/*
 					|=========================================================================================================
-					|#send doctor's experience data to doctor model => insert_experience() function 
+					|#send doctor's experience data to doctor model
 					|=========================================================================================================
 					*/
 					$e_data=$this->doctor_obj->insert_experience($data);
@@ -468,11 +470,11 @@ public function add_qualification_data($page='edit_doctor_v')
 	        return show_error($err->getMessage());
 	    }#end catch)
 
-	}#end function add_education_data()
+	}#end function add_experience_data()
 
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
-|update_experience() function to update registered doctor data  		
+|update_experience() function to update registered experiences' data  		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
 	
@@ -510,7 +512,7 @@ public function add_qualification_data($page='edit_doctor_v')
 				$data=$this->full_experience_data($e_certificate);
 				/*
 				|=========================================================================================================
-				|#send doctor's data to doctor model => update_doctor() function 
+				|#send doctor's data to doctor model 
 				|=========================================================================================================
 				*/
 				$id=$this->security->xss_clean($this->input->post('e_id'));
@@ -529,11 +531,11 @@ public function add_qualification_data($page='edit_doctor_v')
 	        return show_error($err->getMessage());
 	    }#end catch			
 		
-	}#end function update_qualification()
+	}#end function update_expereince()
 
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
-|add_experience_data() function to add experiences' data of doctor   		
+|add_clinic_data() function to add clinics' data 	
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
 public function add_clinic_data($page='edit_doctor_v')
@@ -564,13 +566,13 @@ public function add_clinic_data($page='edit_doctor_v')
 					
 					/*
 					|=========================================================================================================
-					|#call full_experience_data() function to full an array has sturcture of experience table with form input fields data 		
+					|#call full_clinic_data() function to full an array has sturcture of clinic table with form input fields data 		
 					|=========================================================================================================
 					*/
 					$data=$this->full_clinic_data();
 					/*
 					|=========================================================================================================
-					|#send doctor's experience data to doctor model => insert_experience() function 
+					|#send doctor's clinics data to doctor model 
 					|=========================================================================================================
 					*/
 					$c_data=$this->doctor_obj->insert_clinic($data);
@@ -591,12 +593,12 @@ public function add_clinic_data($page='edit_doctor_v')
 	    {
 	        log_message("error", $err->getMessage());
 	        return show_error($err->getMessage());
-	    }#end catch)
+	    }#end catch*)
 
 	}#end function add_clinic_data()
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
-|update_experience() function to update registered doctor data  		
+|update_clinic() function to update registered clinic data  		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
 	
@@ -627,7 +629,7 @@ public function add_clinic_data($page='edit_doctor_v')
 				$data=$this->full_clinic_data();
 				/*
 				|=========================================================================================================
-				|#send doctor's data to doctor model => update_doctor() function 
+				|#send doctor's data to doctor model  
 				|=========================================================================================================
 				*/
 				$id=$this->security->xss_clean($this->input->post('c_id'));
@@ -648,33 +650,6 @@ public function add_clinic_data($page='edit_doctor_v')
 		
 	}#end function update_clinic()
 
-/*
-|-------------------------------------------------------------------------------------------------------------------------------------
-|edit_education_data() function to edit educational doctor data  		
-|-------------------------------------------------------------------------------------------------------------------------------------
-*/
-	public function edit_education_data($page='edit_doctor_v')
-	{
-		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
-			show_404();
-		endif;
-		if($this->session->userdata('logged_in')):
-			$doctor_chosen=$this->session->userdata('u_email');
-			$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
-		endif;
-		if(empty($data['doctor'])):
-			show_404();
-		endif;
-
-		$data['specialties']=$this->doctor_obj->get_specialties();
-		$data['countries']=$this->country_obj->get_countries();
-		$data['cities']=$this->country_obj->get_cities();
-
-		$this->load->view('template/header',$data);
-		$this->load->view('doctor_views/edit_doctor_v',$data);
-		$this->load->view('template/footer');
-
-	}#end function edit_doctor()
 
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
@@ -849,7 +824,7 @@ public function add_clinic_data($page='edit_doctor_v')
 	}#end function full_experience_data()
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
-|check_qualification_vald_inputs() function to check validating of qualification form input fields	
+|check_clinic_vald_inputs() function to check validating of clinic form input fields	
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
 	public function check_clinic_vald_inputs()
@@ -866,11 +841,11 @@ public function add_clinic_data($page='edit_doctor_v')
 		$this->form_validation->set_rules('d_c_period_end','نهاية فترة الدوام','trim|required');
 		$this->form_validation->set_rules('d_c_summary','ملخص عن العيادة او العمل','trim');
 		$this->form_validation->set_rules('d_c_d_id','رقم الطبيب','trim|required');
-	}
+	}#end function check_clinic_vald_inputs()
 
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
-|full_qualification_data() function to full an array has sturcture of qualification table with form input fields data 		
+|full_clinic_data() function to full an array has sturcture of clinic table with form input fields data 		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
 	public function full_clinic_data()
@@ -890,14 +865,14 @@ public function add_clinic_data($page='edit_doctor_v')
 			'c_d_id'				=>$this->security->xss_clean($this->input->post('d_c_d_id'))				
 			);		
 		return $data;
-	}#end function full_qualification_data()
+	}#end function full_clinic_data()
 
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
-|upload_profile() function to upload image 		
+|upload_qualification_file() function to upload qualification certificate 		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
-	public function upload_file()
+	public function upload_qualification_file()
 	{
 		if(isset($_FILES['d_q_certificate']['name'])):		
 			$config=array(
@@ -924,8 +899,12 @@ public function add_clinic_data($page='edit_doctor_v')
 			endif;#end if file successful uploaded
 		endif;#end if file found
 
-	}#end function upload_file()
-
+	}#end function upload_qualification_file()
+/*
+|-------------------------------------------------------------------------------------------------------------------------------------
+|upload_experience_file() function to upload experience certificate 		
+|-------------------------------------------------------------------------------------------------------------------------------------
+*/
 	public function upload_experience_file()
 	{
 		
@@ -951,24 +930,8 @@ public function add_clinic_data($page='edit_doctor_v')
 				return $final_file;
 			endif;#end if file successful uploaded
 		endif;#end if file found
-	}#end function upload_file()
+	}#end function upload_qualification_file()
 
-	public function get_data($doctor_chosen)
-	{
-		$data['specialties']=$this->doctor_obj->get_specialties();
-		$data['countries']=$this->country_obj->get_countries();
-		$data['cities']=$this->country_obj->get_cities();
-		$data['qualification_types']=$this->doctor_obj->get_qualification_types();
-		$data['education_specialties']=$this->doctor_obj->get_education_specialties();
-		$data['universities']=$this->doctor_obj->get_universities();
-		$data['days']=$this->doctor_obj->get_days();
-		$data['periods']=$this->doctor_obj->get_periods();
-		$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
-		$data['qualifications']=$this->doctor_obj->get_qualifications($doctor_chosen);
-
-	}//end function get_data()
-
-	
 
 }#end Doctor_c class
 ?>

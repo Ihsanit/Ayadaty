@@ -18,11 +18,13 @@ include($bar);?>
                                     <div class="row">
                                         <div class="col-lg-2 col-md-4 col-sm-12">
                                             <label class="lbl-doctor">المحافظة</label>
-                                            <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                <option>اختر المحافظة..</option>
-                                                <option>صنعاء</option>
-                                                <option>عدن</option>
-                                                <option>تعز</option>
+                                            <select class="form-control search-slt" id="" name="city">
+                                                <option value="" selected disabled>اختر المحافظة..</option>
+                                                <?php if(count($cities)):?>
+                                                    <?php foreach ($cities as $city):?>                                                 
+                                                        <option value=<?php echo $city['city_id'];?><?php echo set_select('city',$city['city_id']);?>><?php echo $city['city_name'];?></option>
+                                                    <?php endforeach;?>
+                                                <?php endif;?>
                                             </select>
                                         </div>
                                         
@@ -36,11 +38,13 @@ include($bar);?>
                                         </div>
                                         <div class="col-lg-3 col-md-4 col-sm-12">
                                             <label class="lbl-doctor">التخصص</label>                       
-                                            <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                <option>اختر التخصص..</option>
-                                                <option>اسنان</option>
-                                                <option>جلدية</option>
-                                                <option>اطفال</option>
+                                            <select class="form-control search-slt" id="specialty" name="specialty">
+                                                <option value="" selected disabled>اختر التخصص..</option>
+                                                <?php if(count($specialties)):?>
+                                                  <?php foreach ($specialties as $specialty):?>
+                                                    <option value=<?php echo $specialty['specialty_id'];?><?php echo set_select('specialty',$specialty['specialty_id']);?>><?php echo $specialty['specialty_name'];?></option>
+                                                  <?php endforeach;?>
+                                                <?php endif;?>
                                             </select>
                                         </div>
                                         <div class="col-lg-3 col-md-4 col-sm-12"> 

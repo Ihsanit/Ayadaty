@@ -26,7 +26,7 @@
                       <div class="form-group col-xs-6"> 
                         <label>اسم العيادة<span class="required"> *</span></label>
                         <input type="text" class="form-control" name="d_c_name" id="d_c_name" value="<?php echo $clinic['c_name']; ?>" placeholder="ادخل اسم العيادة" title="اسم العيادة" autofocus required>
-                        <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                        <span class="error-msg" id="d_c_name_error_msg"></span>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-lg-6 col-md-12">
@@ -35,12 +35,12 @@
                             <option selected disabled="">اختر الدولة..</option>
                             <option value=" <?php echo $clinic['c_country_address'];?>" selected>اليمن</option>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_country_address_error_msg"></span>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
                           <label style="visibility: hidden;">عنوان العمل*</label>
                           <select class="form-control" name='d_c_city_address' id='d_c_city_address' title="اختر المدينة"autofocus required>
-                            <option selected>اختر المدينة..</option>
+                            <option selected="" disabled="">اختر المدينة..</option>
                             <?php if(count($cities)):?>
                               <?php foreach ($cities as $city):?> 
                               	<?php if($clinic['c_city_address']===$city['city_id']):?>
@@ -51,16 +51,16 @@
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_city_address_error_msg"></span>
                         </div>            
                       </div>
                       <div class="form-group col-xs-6"> 
                         <input type="text" id="d_c_street_address" value="<?php echo $clinic['c_street_address'];?>" class="form-control" name='d_c_street_address' placeholder="ادخل الشارع"  title="عنوان الشارع" autofocus required><!-- pattern="^[A-Za-z0-9_ء-ي'\s]{5,200}+$" -->
-                        <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                        <span class="error-msg" id="d_c_street_address_error_msg"></span>
                       </div>
                       <div class="form-group col-xs-6"> 
                         <input type="text" id="d_c_place_name" value="<?php echo $clinic['c_place_name'];?>" class="form-control" name='d_c_place_name' placeholder="ادخل اسم العمارة - رقم الشقة"  title="العمارة - رقم الشقة" autofocus ><!-- pattern="^[A-Za-z0-9_ء-ي'\s]{5,200}+$" -->
-                        <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                        <span class="error-msg" id="d_c_place_name_error_msg"></span>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-lg-6 col-md-12">
@@ -73,11 +73,11 @@
                                 <option value=<?php echo $day['day_id'];?><?php echo set_select('d_c_day_start',$day['day_id']);?> selected><?php echo $day['day_name'];?></option>
                               	<?php else:?>
                               		<option value=<?php echo $day['day_id'];?><?php echo set_select('d_c_day_start',$day['day_id']);?>><?php echo $day['day_name'];?></option>
-								<?php endif;?>
+								                <?php endif;?>
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_day_start_error_msg"></span>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
                           <label style="visibility: hidden;">نهاية فترة الدوام</label>
@@ -89,11 +89,11 @@
                                   		<option value=<?php echo $day['day_id'];?><?php echo set_select('d_c_day_end',$day['day_id']);?> selected><?php echo $day['day_name'];?></option>
                                 	<?php else:?>
                                 		<option value=<?php echo $day['day_id'];?><?php echo set_select('d_c_day_end',$day['day_id']);?>><?php echo $day['day_name'];?></option>
-									<?php endif;?>
+									               <?php endif;?>
                                 <?php endforeach;?>
                               <?php endif;?>
                             </select>
-                            <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                            <span class="error-msg" id="d_c_day_end_error_msg"></span>
                         </div>            
                       </div>
                       <div class="form-row">
@@ -107,11 +107,11 @@
                                 	<option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_start',$period['period_id']);?> selected><?php echo $period['period_name'];?></option>
                               	<?php else:?>
                               		<option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_start',$period['period_id']);?>><?php echo $period['period_name'];?></option>
-								<?php endif;?>
+								                <?php endif;?>
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_period_start_error_msg"></span>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
                           <label style="visibility: hidden;">نهاية فترة الدوام</label>
@@ -123,11 +123,11 @@
                                 	<option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_end',$period['period_id']);?> selected><?php echo $period['period_name'];?></option>
                               	<?php else:?>
                               		<option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_end',$period['period_id']);?>><?php echo $period['period_name'];?></option>
-								<?php endif;?>
+								                <?php endif;?>
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_period_end_error_msg"></span>
                         </div>           
                       </div>
                       <div class="form-group col-xs-6"> 
@@ -167,7 +167,7 @@
                       <div class="form-group col-xs-6"> 
                         <label>اسم العيادة<span class="required"> *</span></label>
                         <input type="text" class="form-control" name="d_c_name" id="d_c_name" placeholder="ادخل اسم العيادة" title="اسم العيادة" autofocus required>
-                        <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                        <span class="error-msg" id="d_c_name_error_msg"></span>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-lg-6 col-md-12">
@@ -176,28 +176,28 @@
                             <option selected disabled="">اختر الدولة..</option>
                             <option value='1' <?php echo set_select('d_c_country_address','1');?>>اليمن</option>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_country_address_error_msg"></span>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
                           <label style="visibility: hidden;">عنوان العمل*</label>
                           <select class="form-control" name='d_c_city_address' id='d_c_city_address' title="اختر المدينة"autofocus required>
-                            <option selected>اختر المدينة..</option>
+                            <option selected="" disabled="">اختر المدينة..</option>
                             <?php if(count($cities)):?>
                               <?php foreach ($cities as $city):?>                                                 
                                 <option value=<?php echo $city['city_id'];?><?php echo set_select('d_c_city_address',$city['city_id']);?>><?php echo $city['city_name'];?></option>
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_city_address_error_msg"></span>
                         </div>            
                       </div>
                       <div class="form-group col-xs-6"> 
                         <input type="text" id="d_c_street_address" value="<?php echo set_value('d_c_street_address');?>" class="form-control" name='d_c_street_address' placeholder="ادخل الشارع"  title="عنوان الشارع" autofocus required><!-- pattern="^[A-Za-z0-9_ء-ي'\s]{5,200}+$" -->
-                        <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                        <span class="error-msg" id="d_c_street_address_error_msg"></span>
                       </div>
                       <div class="form-group col-xs-6"> 
                         <input type="text" id="d_c_place_name" value="<?php echo set_value('d_c_place_name');?>" class="form-control" name='d_c_place_name' placeholder="ادخل اسم العمارة - رقم الشقة"  title="العمارة - رقم الشقة" autofocus ><!-- pattern="^[A-Za-z0-9_ء-ي'\s]{5,200}+$" -->
-                        <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                        <span class="error-msg" id="d_c_place_name_error_msg"></span>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-lg-6 col-md-12">
@@ -210,11 +210,11 @@
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_day_start_error_msg"></span>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
                           <label style="visibility: hidden;">نهاية فترة الدوام</label>
-                            <select class="form-control" name='d_c_day_end' name='d_c_day_end' title="اختر اخر ايام الدوام"autofocus required>
+                            <select class="form-control" name='d_c_day_end' id='d_c_day_end' title="اختر اخر ايام الدوام"autofocus required>
                               <option selected disabled>اختر نهاية الدوام..</option>
                               <?php if(count($days)):?>
                                 <?php foreach ($days as $day):?>                                                 
@@ -222,7 +222,7 @@
                                 <?php endforeach;?>
                               <?php endif;?>
                             </select>
-                            <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                            <span class="error-msg" id="d_c_day_end_error_msg"></span>
                         </div>            
                       </div>
                       <div class="form-row">
@@ -236,7 +236,7 @@
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_period_start_error_msg"></span>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
                           <label style="visibility: hidden;">نهاية فترة الدوام</label>
@@ -248,7 +248,7 @@
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_period_end_error_msg"></span>
                         </div>           
                       </div>
                       <div class="form-group col-xs-6"> 
@@ -287,37 +287,37 @@
                       <div class="form-group col-xs-6"> 
                         <label>اسم العيادة<span class="required"> *</span></label>
                         <input type="text" class="form-control" name="d_c_name" id="d_c_name" placeholder="ادخل اسم العيادة" title="اسم العيادة" autofocus required>
-                        <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                        <span class="error-msg" id="d_c_name_error_msg"></span>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-lg-6 col-md-12">
                           <label>عنوان العيادة<span class="required"> *</span></label>
                           <select class="form-control" name='d_c_country_address' id='d_c_country_address' title="اختر الدولة"autofocus required>
-                            <option selected disabled="">اختر الدولة..</option>
+                            <option selected="" disabled="">اختر الدولة..</option>
                             <option value='1' <?php echo set_select('d_c_country_address','1');?>>اليمن</option>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_country_address_error_msg"></span>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
                           <label style="visibility: hidden;">عنوان العمل*</label>
                           <select class="form-control" name='d_c_city_address' id='d_c_city_address' title="اختر المدينة"autofocus required>
-                            <option selected>اختر المدينة..</option>
+                            <option selected="" disabled>اختر المدينة..</option>
                             <?php if(count($cities)):?>
                               <?php foreach ($cities as $city):?>                                                 
                                 <option value=<?php echo $city['city_id'];?><?php echo set_select('d_c_city_address',$city['city_id']);?>><?php echo $city['city_name'];?></option>
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_city_address_error_msg"></span>
                         </div>            
                       </div>
                       <div class="form-group col-xs-6"> 
                         <input type="text" id="d_c_street_address" value="<?php echo set_value('d_c_street_address');?>" class="form-control" name='d_c_street_address' placeholder="ادخل الشارع"  title="عنوان الشارع" autofocus required><!-- pattern="^[A-Za-z0-9_ء-ي'\s]{5,200}+$" -->
-                        <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                        <span class="error-msg" id="d_c_street_address_error_msg"></span>
                       </div>
                       <div class="form-group col-xs-6"> 
                         <input type="text" id="d_c_place_name" value="<?php echo set_value('d_c_place_name');?>" class="form-control" name='d_c_place_name' placeholder="ادخل اسم العمارة - رقم الشقة"  title="العمارة - رقم الشقة" autofocus ><!-- pattern="^[A-Za-z0-9_ء-ي'\s]{5,200}+$" -->
-                        <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                        <span class="error-msg" id="d_c_place_name_error_msg"></span>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-lg-6 col-md-12">
@@ -330,11 +330,11 @@
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_day_start_error_msg"></span>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
                           <label style="visibility: hidden;">نهاية فترة الدوام</label>
-                            <select class="form-control" name='d_c_day_end' name='d_c_day_end' title="اختر اخر ايام الدوام"autofocus required>
+                            <select class="form-control" name='d_c_day_end' id='d_c_day_end' title="اختر اخر ايام الدوام"autofocus required>
                               <option selected disabled>اختر نهاية الدوام..</option>
                               <?php if(count($days)):?>
                                 <?php foreach ($days as $day):?>                                                 
@@ -342,7 +342,7 @@
                                 <?php endforeach;?>
                               <?php endif;?>
                             </select>
-                            <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                            <span class="error-msg" id="d_c_day_end_error_msg"></span>
                         </div>            
                       </div>
                       <div class="form-row">
@@ -356,7 +356,7 @@
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_period_start_error_msg"></span>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
                           <label style="visibility: hidden;">نهاية فترة الدوام</label>
@@ -368,7 +368,7 @@
                               <?php endforeach;?>
                             <?php endif;?>
                           </select>
-                          <span class="error-msg" id="d_c_job_name_error_msg"></span>
+                          <span class="error-msg" id="d_c_period_end_error_msg"></span>
                         </div>           
                       </div>
                       <div class="form-group col-xs-6"> 

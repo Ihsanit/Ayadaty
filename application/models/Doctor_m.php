@@ -5,45 +5,52 @@ class Doctor_m extends CI_Model
 	public function __construct()
 	{
 		parent::__construct();
-	}//end __construct function
+	}#end __construct function
 
 	public function insert_doctor($data)
 	{
 		 return $this->db->insert('doctor',$data);
-	}//end register_hospital_db function
+	}#end function insert_doctor()
 
 	public function update_doctor($id,$data)
 	{
 		$this->db->where('d_id',$id);
 		return $this->db->update('doctor',$data);
-	}
+	}#end function update_doctor()
+
 	public function insert_qualification($data)
 	{
 		 return $this->db->insert('qualification',$data);
-	}//end insert_qualification function
+	}#end function insert_qualification()
+
 	public function update_qualification($id,$data)
 	{
 		$this->db->where('q_id',$id);
 		return $this->db->update('qualification',$data);
-	}
+	}#end function update_qualification()
+
 	public function insert_experience($data)
 	{
 		 return $this->db->insert('experience',$data);
-	}//end insert_experience function
+	}#end function insert_experience()
+
 	public function update_experience($id,$data)
 	{
 		$this->db->where('e_id',$id);
 		return $this->db->update('experience',$data);
-	}
+	}#end function update_experience()
+
 	public function insert_clinic($data)
 	{
 		 return $this->db->insert('clinic',$data);
-	}//end insert_experience function
+	}#end function insert_clinic()
+
 	public function update_clinic($id,$data)
 	{
 		$this->db->where('c_id',$id);
 		return $this->db->update('clinic',$data);
-	}
+	}#end function update_clinic()
+
 	public function get_doctor($doctor_choosen=FALSE)
 	{
 		if($doctor_choosen===FALSE)
@@ -54,25 +61,21 @@ class Doctor_m extends CI_Model
 			$this->db->join('specialty','specialty.specialty_id=doctor.d_specialty_id');
 			$this->db->join('city','city.city_id=doctor.d_city_address');
 			$doctors=$this->db->get();			
-			return $doctors->result_array();
-			/*foreach ($doctors->result() as $row ) {
-			echo $row->d_id."<br/>";
-			echo $row->specialty_name;			
-				}*/
-			
-		}
+			return $doctors->result_array();			
+		}#end if
 
 		$doctor=array('d_email'=>$doctor_choosen); 
 		$this->db->join('specialty','specialty.specialty_id=doctor.d_specialty_id');
 		$query=$this->db->get_where('doctor',$doctor);
 		return $query->row_array();
-	}
+	}#end function get_doctor()
+
 	public function get_qualifications($doctor_choosen=FALSE)
 	{
 		if($doctor_choosen===FALSE)
 		{
 			
-		}
+		}#end if
 		$this->db->select('*');
 		$this->db->where('d_email',$doctor_choosen);
 		$this->db->from('doctor');
@@ -84,14 +87,14 @@ class Doctor_m extends CI_Model
 		$query=$this->db->get();
 		//echo $query->num_rows();			
 		return $query->result_array();	
+	}#end function get_qualification()
 
-	}
 	public function get_experiences($doctor_choosen=FALSE)
 	{
 		if($doctor_choosen===FALSE)
 		{
 			
-		}
+		}#end if
 		$this->db->select('*');
 		$this->db->where('d_email',$doctor_choosen);
 		$this->db->from('doctor');
@@ -101,13 +104,14 @@ class Doctor_m extends CI_Model
 		//echo $query->num_rows();			
 		return $query->result_array();	
 
-	}//end get_experiences
+	}#end function get_experiences()
+
 	public function get_clinics($doctor_choosen=FALSE)
 	{
 		if($doctor_choosen===FALSE)
 		{
 			
-		}
+		}#end if
 		$this->db->select('*');
 		$this->db->where('d_email',$doctor_choosen);
 		$this->db->from('doctor');
@@ -117,12 +121,46 @@ class Doctor_m extends CI_Model
 		$this->db->join('period','period.period_id=clinic.c_period_start');
 
 		$this->db->order_by('c_id','ASC');
-		$query=$this->db->get();
-		//echo $query->num_rows();			
+		$query=$this->db->get();			
 		return $query->result_array();	
 
 	}#end function get_clinics()
 
+	public function get_specialties()
+	{
+		$query= $this->db->get('specialty');
+		return $query->result_array();
+	}#end function get_specialties()
+
+	public function get_universities()
+	{
+		$query= $this->db->get('university');
+		return $query->result_array();
+	}#end function get_universities()
+
+	public function get_qualification_types()
+	{
+		$query= $this->db->get('qualification_type');
+		return $query->result_array();
+	}#end function get_qualification_types()
+
+	public function get_education_specialties()
+	{
+		$query= $this->db->get('education_specialty');
+		return $query->result_array();
+	}#end function get_education_specialties()
+
+	public function get_days()
+	{
+		$query= $this->db->get('day');
+		return $query->result_array();
+	}#end function get_days()
+
+	public function get_periods()
+	{
+		$query= $this->db->get('period');
+		return $query->result_array();
+	}#end function get_periods()
 
 	public function check_email_exists_db($email)
 	{
@@ -133,40 +171,7 @@ class Doctor_m extends CI_Model
 		}
 		else{
 			return false;
-		}//end if
-	}//end check_email_exists_db($email) function
-	public function get_specialties()
-	{
-		$query= $this->db->get('specialty');
-		return $query->result_array();
-	}//end function get_specialties
-	public function get_universities()
-	{
-		$query= $this->db->get('university');
-		return $query->result_array();
-	}//end function get_universities
-	public function get_qualification_types()
-	{
-		$query= $this->db->get('qualification_type');
-		return $query->result_array();
-	}//end function get_qualification_types
-	public function get_education_specialties()
-	{
-		$query= $this->db->get('education_specialty');
-		return $query->result_array();
-	}//end function get_education_specialties
-	public function get_days()
-	{
-		$query= $this->db->get('day');
-		return $query->result_array();
-	}//end function get_specialties
-	public function get_periods()
-	{
-		$query= $this->db->get('period');
-		return $query->result_array();
-	}//end function get_specialties
-
-
-	
-}
+		}#end if
+	}#end function check_email_exists_db($email)
+}#end class Doctor_m
 ?>

@@ -4,7 +4,7 @@
 				<div class="container bootstrap snippet tab1">
 		            <div class="row">
 		              <div class="col-sm-12">
-		                <h5 style="display:inline-block;">بيانات الطبيب التعليمية(لديك <?php echo count($qualifications);?> مؤهلات يمكنك تصفحها او تعديلها)</h5><span>المؤهل<?php echo $i;?></span>
+		                <h5 style="display:inline-block;">البيانات التعليمية(لديك <?php echo count($qualifications);?> مؤهلات)</h5><span>المؤهل<?php echo $i;?></span>
 		              </div>
 		            </div>
 		            <div class="row">
@@ -189,7 +189,7 @@
         </div><!-- /container -->
     <?php endif;?>
     <?php if(count($qualifications)<3):?>
-    	<div class="container bootstrap snippet tab1" >
+    	<div class="container bootstrap snippet tab1" id="qualification_plus" >
             <div class="row">
               <div class="col-sm-12">
                 <h5>بيانات الطبيب التعليمية</h5>
