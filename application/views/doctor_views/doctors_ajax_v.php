@@ -74,7 +74,7 @@ include($bar);?>
        </div> 
        <div class="row" id="doctor_data">             
        </div> 
-       <div class="container" aria-label="Page navigation example" style="margin-bottom: -2rem;" id="pagination_link" >
+       <div class="container" aria-label="Page navigation example" style="margin-bottom: -2rem;" id="pagination_link">
           <?php echo $pagination_links; ?>
         </div>  
 

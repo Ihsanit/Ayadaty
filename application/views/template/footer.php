@@ -852,5 +852,13 @@ function fixStepIndicator3(n) {
 	});//end  experience form
 	});//end function of check experince data
 </script>
+
+ <script type="text/javascript">
+    $("body").on("click",".pagination a",function() {
+        var theUrl=$(this).attr('href');
+        $('#doctor_data').load(theUrl);
+        return false;
+    });
+    </script>
 	</body>
 </html>
