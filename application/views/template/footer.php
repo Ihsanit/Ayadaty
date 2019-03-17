@@ -854,7 +854,7 @@ function fixStepIndicator3(n) {
 </script>
 
  <script type="text/javascript">
-    $("body").on("click",".pagination a",function() {
+    $(document).on("click",".pagination a",function() {
         var theUrl=$(this).attr('href');
         $('#doctor_data').load(theUrl);
         return false;

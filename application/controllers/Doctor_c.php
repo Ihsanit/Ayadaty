@@ -113,82 +113,36 @@ class Doctor_c extends CI_Controller
 |show_doctors() function to show data of doctors		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
-	private $limit = 4;
-	public function show_doctors($page='doctors_v')
+	private $limit = 8;
+	public function show_doctors()
 	{
+		$page='doctors_v';
 		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
 			show_404();
 		endif;
 
 		$query = $this->doctor_obj->all($this->limit);
 		$total_rows = $this->doctor_obj->count();
-		
-		$config['base_url']    = base_url('showdoctors');
-		$config['total_rows']  = $total_rows;
-		$config['uri_segment'] = 3;
-		$config['per_page']    = 4;
 
-		$this->load->library('pagination');		
-		$this->pagination->initialize($config);
-		$pagination_links=$this->pagination->create_links();
-		//$this->load->helper('pagination_h');
-		//$pagination_links = pagination($total_rows, $this->limit);
-		
-		$data['specialties']=$this->doctor_obj->get_specialties();
-		$data['cities']=$this->country_obj->get_cities();
-		$data['doctors']=$this->doctor_obj->get_doctor(FALSE);
-
-		//print_r($data['doctors']);
-
-
-		
-		$this->load->view('template/header',$data);
-		//$this->load->view('doctor_views/'.$page,$data);
-		$this->load->view('doctor_views/'.$page,compact('query','pagination_links'));
-		$this->load->view('template/footer');
-
-	}#end function index($page='home')
-
-	public function show_doctors_ajax($page='doctors_ajax_v')
-	{
-		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
-			show_404();
-		endif;
-
-		$query = $this->doctor_obj->all($this->limit);
-		$total_rows = $this->doctor_obj->count();	
-
-		$config['base_url']    = base_url('showdoctorsajax');
-		$config['total_rows']  = $total_rows;
-		$config['uri_segment'] = 3;
-		$config['per_page']    = 4;
-
-		$this->load->library('pagination');		
-		$this->pagination->initialize($config);
-		$pagination_links=$this->pagination->create_links();
-
-		//$this->load->helper('pagination_h');
-		//$pagination_links = pagination($total_rows, $this->limit);
-		
+		$this->load->helper('app');
+		$pagination_links = pagination($total_rows, $this->limit);
 
 		$data['specialties']=$this->doctor_obj->get_specialties();
 		$data['cities']=$this->country_obj->get_cities();
 		$data['doctors']=$this->doctor_obj->get_doctor(FALSE);
-
-		//print_r($data['doctors']);
 
 
 		if(! $this->input->is_ajax_request()):
 			$this->load->view('template/header',$data);
-		endif;
-		//$this->load->view('doctor_views/'.$page,$data);
-		
-		$this->load->view('doctor_views/'.$page,compact('query','pagination_links'));
+			$this->load->view('included_sections/doctor_search_form');
+		endif;		
+		$this->load->view('doctor_views/'.$page,compact('query','pagination_links'),$data);
 		if(! $this->input->is_ajax_request()):
 			$this->load->view('template/footer');
 		endif;
 
-	}#end function index($page='home')
+	}#end function show_doctors()
+	
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
 |show_doctor_detail() function to show detail doctor data		
@@ -989,82 +943,6 @@ public function add_clinic_data($page='edit_doctor_v')
 			endif;#end if file successful uploaded
 		endif;#end if file found
 	}#end function upload_qualification_file()
-
-	public function pagination($row_no=0)
-	{
-		/*$this->load->library("pagination");
-		$row_per_page=4;
-		if($row_no!=0):
-			$row_no=($row_no-1)*$row_per_page;
-			endif;
-		$all_count=$this->doctor_obj->count_all();
-		
-
-		$config['base_url'] = base_url().'doctor_c/pagination';
-        $config['use_page_numbers'] = TRUE;
-        $config['total_rows'] = $allcount;
-        $config['per_page'] = $row_per_page;
- 
-        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination">';
-        $config['full_tag_close']   = '</ul></nav></div>';
-        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-        $config['num_tag_close']    = '</span></li>';
-        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-
- 
-        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['next_tag_close']  = '<span aria-hidden="true"></span></span></li>';
-        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['prev_tag_close']  = '</span></li>';
-        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-        $config['first_tag_close'] = '</span></li>';
-        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['last_tag_close']  = '</span></li>';
- 
-        $this->pagination->initialize($config);
- 		$users_record=$this->doctor_obj->fetch_detail($row_per_page,$row_no);
-
-        $data['pagination'] = $this->pagination->create_links();
-        $data['result'] = $users_record;
-        $data['row'] = $row_no;
- 
-        echo json_encode($data);
-*/
-		/*
-		$config=array();
-		$config["base_url"]="#";
-		$config["total_rows"]=$this->doctor_obj->count_all();
-		$config["per_page"]=8;
-		$config["uri_segment"]=3;
-		$config["use_page_numbers"]=TRUE;
-		$config["full_tag_open"]='<ul class="pagination">';
-		$config["full_tag_close"]='</ul>';
-		$config["first_tag_open"]='<li>';
-		$config["first_tag_close"]='</li>';
-		$config["last_tag_open"]='<li>';
-		$config["last_tag_close"]='</li>';
-		$config["next_link"]='&gt;';
-		$config["next_tag_open"]='<li>';
-		$config["next_tag_close"]='</li>';
-		$config["prev_link"]='&lt;';
-		$config["prev_tag_open"]='<li>';
-		$conifg["prev_tag_close"]='</li>';
-		$config["cur_tag_open"]='<li class="active"><a href="#">';
-		$config["cur_tag_close"]='</a></i>';
-		$config["num_tag_open"]='<li>';
-		$config["num_tag_close"]='</li>';
-		$config["num_links"]=1;
-		$this->pagination->initialize($config);
-		$page=$this->uri->segment(3);
-		$start=($page-1)*$config["per_page"];
-		$output=array(
-			'pagination_link'=>$this->pagination->create_links(),
-			'doctor_data'=>$this->doctor_obj->fetch_detail($conifg["per_page"],$start)
-			);
-		echo json_encode($output);*/
-	}#end function pagenation
-
 
 }#end Doctor_c class
 ?>

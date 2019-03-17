@@ -51,13 +51,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 /*--------------------------Customizing routing rules----------------------*/
+/*$route['pagetry/(:num)']='doctor_c/pagination_try1/$1';*/
 $route['logout']='user_c/logout';
 $route['login']='user_c/login';
 $route['signup']='user_c/signup';
 $route['registerhospital']='hospital_c/register_hospital';
 $route['hospitaldetail']='hospital_c/show_hospital_detail';
 $route['showhospitals']='hospital_c/show_hospitals';
-$route['showdoctorsajax']='doctor_c/show_doctors_ajax';
 $route['showdoctors']='doctor_c/show_doctors';
 $route['doctordetail']='doctor_c/show_doctor_detail';
 $route['showpagination']='doctor_c/pagination/$1';

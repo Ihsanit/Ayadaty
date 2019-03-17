@@ -1,5 +1,6 @@
 <?php $offset = $this->uri->segment(3, 0) + 1; ?>
 <?php foreach ($query->result() as $doctor ): ?>
+    <?php $offset++;?>
 <div class="col-lg-3 col-md-6">
          <div class="card" style="border-radius:unset;">
             <div class="card-img-top text-center" style="background-color: rgba(204, 204, 204, 0.3);">
@@ -16,18 +17,12 @@
                 <div class="clinic-icon">
                     <a href="#">
                         <i class="fas fa-stethoscope fa-md"></i> 
-                        <span class="text-muted" style="color:#13bfb1 !important;"><?php echo $doctor->d_phone;?></span>
+                        <span class="text-muted" style="color:#13bfb1 !important;"><?php echo $doctor->specialty_name;?></span>
                     </a>
-                </div>
-                <div class="clinic-icon" >
-                    <a href="<?php echo base_url('hospitaldetail');?>" >
-                         <i class="fas fa-hospital fa-md"></i> 
-                         <span class="text-muted" style="color:#13bfb1 !important;">مستشفى الوسام</span>
-                    </a>
-                </div>
+                </div>                
                 <div class="clinic-icon">
                      <i class="fas fa-map-marker-alt fa-md"></i> 
-                     <span class="text-muted"><?php echo $doctor->d_id;?></span>
+                     <span class="text-muted"><?php echo $doctor->city_name;?></span>
                 </div>
                 <h6 class="card-title pb-3">
                     <span class="float-right d-inline-flex share">

@@ -61,22 +61,5 @@ include($bar);?>
                                 </form>
                             </div>       
                     </div>
-            </div>        
-      </div>
-
-      <!-- -------------------------------------------------------- -->
-      <div class="container show-doctor">    
-       <div class="row" id="doctor_data"> 
-            <?php 
-                $doctor=APPPATH.'views/included_sections/doctor.php';
-                include($doctor);
-            ?> 
-       </div> 
-       <div class="row" id="doctor_data">             
-       </div> 
-       <div class="container" aria-label="Page navigation example" style="margin-bottom: -2rem;" id="pagination_link">
-          <?php echo $pagination_links; ?>
-        </div>  
-
-    </div>
-   
+      </div>        
+</div>
