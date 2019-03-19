@@ -37,7 +37,8 @@
                 </h6>               
 
                 <br/>
-                <a href="<?php echo base_url('doctordetail');?>" class="btn btn-sm btn-info float-right btn-more doctor-btn"><i style="color:#fff;" class="fas fa-angle-double-left"></i> التفاصيل</a>
+                <?php $id=$doctor->d_id; ?>
+                <a href="<?php echo base_url();?>doctor_c/show_doctor_detail?d_id=<?php echo $id; ?>" class="btn btn-sm btn-info float-right btn-more doctor-btn"><i style="color:#fff;" class="fas fa-angle-double-left"></i> التفاصيل</a>
                
                <a href="#" class="btn btn-sm btn-info float-left btn-more doctor-btn"><i style="color:#fff;" class="fas fa-angle-double-left"></i> حجز موعد</a>
             </div>

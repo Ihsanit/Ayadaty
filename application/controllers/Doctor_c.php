@@ -148,15 +148,22 @@ class Doctor_c extends CI_Controller
 |show_doctor_detail() function to show detail doctor data		
 |-------------------------------------------------------------------------------------------------------------------------------------
 */
-	public function show_doctor_detail($page='doctor_detail')
+	public function show_doctor_detail()
 	{
+
+		$page='doctor_detail';
 		if(!file_exists(APPPATH.'/views/doctor_views/'.$page.'.php')):
 			show_404();
 		endif;
 
-		$specialty_data['specialties']=$this->doctor_obj->get_specialties();
-		$this->load->view('template/header',$specialty_data);
-		$this->load->view('doctor_views/'.$page);
+		$data['specialties']=$this->doctor_obj->get_specialties();
+		$data['d_data']=$this->doctor_obj->get_doctor($_GET['d_id']);		
+		if(empty($data['d_data'])){
+			show_404();
+		}//end if
+		
+		$this->load->view('template/header',$data);
+		$this->load->view('doctor_views/'.$page,$data);
 		$this->load->view('template/footer');
 
 	}#end function index($page='home')

@@ -53,6 +53,7 @@ class Doctor_m extends CI_Model
 
 	public function get_doctor($doctor_choosen=FALSE)
 	{
+
 		if($doctor_choosen===FALSE)
 		{
 			$this->db->select('*');
@@ -64,10 +65,23 @@ class Doctor_m extends CI_Model
 			return $doctors->result_array();			
 		}#end if
 
-		$doctor=array('d_email'=>$doctor_choosen); 
+		/*$doctor=array('d_email'=>$doctor_choosen); 
 		$this->db->join('specialty','specialty.specialty_id=doctor.d_specialty_id');
+
 		$query=$this->db->get_where('doctor',$doctor);
-		return $query->row_array();
+		return $query->row_array();*/
+		
+		$this->db->select('*');
+		$this->db->where('d_id',$doctor_choosen);
+		$this->db->from('doctor');
+		$this->db->join('specialty','specialty.specialty_id=doctor.d_specialty_id');
+		$this->db->join('clinic','clinic.c_d_id=doctor.d_id');
+		$this->db->join('city','city.city_id=clinic.c_city_address');
+		$this->db->join('day','day.day_id=clinic.c_day_start');
+		$this->db->join('period','period.period_id=clinic.c_period_start');
+		$this->db->order_by('c_id','ASC');
+		$query=$this->db->get();
+		return $query->result_array();	
 	}#end function get_doctor()
 
 	public function get_qualifications($doctor_choosen=FALSE)
