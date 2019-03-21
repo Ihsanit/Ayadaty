@@ -65,11 +65,26 @@ class Doctor_m extends CI_Model
 			return $doctors->result_array();			
 		}#end if
 
-		/*$doctor=array('d_email'=>$doctor_choosen); 
+		$doctor=array('d_email'=>$doctor_choosen); 
 		$this->db->join('specialty','specialty.specialty_id=doctor.d_specialty_id');
 
 		$query=$this->db->get_where('doctor',$doctor);
-		return $query->row_array();*/
+		return $query->row_array();
+	}#end function get_doctor()
+
+	public function get_doctor_detail($doctor_choosen=FALSE)
+	{
+
+		if($doctor_choosen===FALSE)
+		{
+			$this->db->select('*');
+			$this->db->from('doctor');
+			$this->db->order_by('d_id','ASC');
+			$this->db->join('specialty','specialty.specialty_id=doctor.d_specialty_id');
+			$this->db->join('city','city.city_id=doctor.d_city_address');
+			$doctors=$this->db->get();			
+			return $doctors->result_array();			
+		}#end if		
 		
 		$this->db->select('*');
 		$this->db->where('d_id',$doctor_choosen);
@@ -82,7 +97,7 @@ class Doctor_m extends CI_Model
 		$this->db->order_by('c_id','ASC');
 		$query=$this->db->get();
 		return $query->result_array();	
-	}#end function get_doctor()
+	}#end function get_doctor_detail()
 
 	public function get_qualifications($doctor_choosen=FALSE)
 	{

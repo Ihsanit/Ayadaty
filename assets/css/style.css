@@ -524,7 +524,7 @@ input[type=text],input[type=number], input[type=password], input[type=email], se
    /* margin-right:5px;*/
     font-size: large;
 }
-/*---------------------------------apointment---------------*/
+/*---------------------------------appointment---------------*/
 .appointment{
     background: #f5f5f5;
     border-bottom: 1px solid #dadada;
@@ -535,7 +535,7 @@ input[type=text],input[type=number], input[type=password], input[type=email], se
 }
 .appointment .day
 {
-   display:inline-block;
+  /*display:inline-block;*/
     margin:7px;   
     font-size: 1rem;
     background-color: #fff;   
@@ -545,6 +545,14 @@ input[type=text],input[type=number], input[type=password], input[type=email], se
     border:1px solid #ccc; 
     border-radius:5px;
     position: relative;
+}
+
+
+#day0, #day1, #day2
+{   display:inline-block ;
+}
+#day3, #day4, #day5, #day6, #day7, #day8,#day9, #day10
+{   display:none ;
 }
 .appointment .day h5
 {
@@ -558,6 +566,7 @@ input[type=text],input[type=number], input[type=password], input[type=email], se
 .appointment span
 {
     line-height:1.8;
+    display: inline-block;
 }
 .appointment .day button
 {
@@ -574,26 +583,33 @@ input[type=text],input[type=number], input[type=password], input[type=email], se
     border-bottom-right-radius: 5px;
 }
 
-.daysarrows a
+.daysarrows button
 {
-    display: inline-block;
-}
-.daysarrows a:hover
-{
-    text-decoration: none;
-}
-.daysarrows .prevday
+    background-color:#f5f5f5!important; 
+    cursor:pointer;
+     border:none;
+ }
+
+ .prevday
 {
 
     position: absolute;
     top: 50%;
     right: 5px;
+
+     background-color:#f5f5f5!important; 
+    cursor:pointer;
+     border:none;
 }
-.daysarrows .nextday
+ .nextday
 {
     position: absolute;
     top: 50%;
     left: 5px;
+
+     background-color:#f5f5f5!important; 
+    cursor:pointer;
+     border:none;
 }
 
 .nextWeek, .prevWeek{

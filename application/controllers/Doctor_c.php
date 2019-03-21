@@ -157,7 +157,7 @@ class Doctor_c extends CI_Controller
 		endif;
 
 		$data['specialties']=$this->doctor_obj->get_specialties();
-		$data['d_data']=$this->doctor_obj->get_doctor($_GET['d_id']);		
+		$data['d_data']=$this->doctor_obj->get_doctor_detail($_GET['d_id']);		
 		if(empty($data['d_data'])){
 			show_404();
 		}//end if

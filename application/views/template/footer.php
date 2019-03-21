@@ -236,10 +236,100 @@ $(document).ready(function(){
 	});
 
 });//end ready()
-
-
-	
 </script>
+<script>
+
+  (function getMonthDays()
+{
+  var today = new Date(), y = today.getFullYear(), m = today.getMonth(), d=today.getDate();
+  
+  var lastDay = new Date(y, m + 1, 0);
+  var days = [];
+    var nextDate = new Date(); 
+
+  var timeDiff = Math.abs(lastDay.getTime() - today.getTime());
+  var diff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  var monthDays='';
+     for(var i=0; i<=diff;i++)
+                      {
+                       nextDate = new Date();
+                        nextDate.setDate(today.getDate() + i);                
+                        days.push(nextDate); 
+                                                var output='';
+                        y = nextDate.getFullYear(), m = nextDate.getMonth(), d=nextDate.getDate();
+                        output=d+"/"+m;
+                        alert(output);
+                        alert(i);
+                        document.getElementById('threedays').insertAdjacentHTML('beforebegin',"<div class='day'  id='day"+i+"'><h5>"+output+"</h5><span>8:00ص</span><span>8:00ص</span><span>8:00ص</span><span>8:00ص</span><span>المزيد..</span><span>المزيد..</span><button type='button'>حجز</button></div><button class='prevday' type='button' id='prevDay' onclick='prevFunDay("+i+") ><i class='fa fa-angle-right fa-2x' ></i></button><button class='nextday' type='button' id='nextDay' onclick='nextFunDay("+i+")' ><i class='fa fa-angle-left fa-2x' ></i></button>");
+                       }
+                    })();
+</script>
+<script>
+
+  (function()
+{
+  var days = document.getElementsByClassName("day");
+  alert(days);
+  document.getElementById('day0').style.display="inline-block";
+  document.getElementById('day1').style.display="inline-block";
+  document.getElementById('day2').style.display="inline-block";
+  for(int i=3;i<days.length; i++)
+  {
+    document.getElementById('day'+i+'').style.display="none";
+  }
+})();
+</script>
+<!-- script of appointment days -->
+<script>
+//--------------------- script of appointment days ----------------------
+var currentDay = 0; // Current tab is set to be the first day (0)
+showDay(currentDay); // Display the current day
+
+function showDay(n) {
+  var x = document.getElementsByClassName("day");
+  if (n == 0 || n==1 || n==2) {
+    document.getElementById("prevDay").style.display="none";
+  } else {
+    document.getElementById("prevDay").style.display="inline-block";
+    document.getElementById("prevDay").innerHTML = "<i class='fa fa-angle-right fa-2x' ></i>";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextDay").style.display="none";
+  } else {
+    document.getElementById("nextDay").innerHTML = "<i class='fa fa-angle-left fa-2x' ></i>";
+  }
+  }
+
+function nextFunDay(n) {
+  var x = document.getElementsByClassName("day"); 
+  /*var parent = document.getElementById("divdays");
+var child = document.getElementById(x[currentDay-3]);
+parent.removeChild(child);*/
+  x[currentDay].style.display="inline-block";
+  currentDay = currentDay + 1;
+  if (currentDay >= x.length) {
+    return false;
+  }
+  
+  showDay(currentDay);
+}
+function prevFunDay(n) {
+  var x = document.getElementsByClassName("day");
+  x[n].style.display="none";
+  currentDay = currentDay - 1;
+  document.getElementById("nextDay").style.display="inline";
+  if (currentDay < 3) {
+    return false;
+  }
+showDay(currentDay);
+  }
+
+
+
+
+
+</script>
+<!-- /script of appointment days -->
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab

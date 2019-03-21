@@ -75,46 +75,15 @@ include($bar);?>
 		                	<!-- ---------------------------------- -->		                		
 		                		<div class="appointment" >
 			                		<p style="text-align:center;">بيانات حجز موعد</p>
-			                		<div style="width: 300px; margin:auto;">
-			                			<div class=" day" >
-			                				<h5>اليوم</h5>
-			                				<span>8:00ص</span>
-			                				<span>8:00ص</span>
-			                				<span>8:00ص</span>
-			                				<span>8:00ص</span>
-			                				<span>المزيد..</span>
-			                				<span>المزيد..</span>
-			                				<button type="button">حجز</button>
-			                			</div>
-			                			<div class=" day" >
-			                				<h5>اليوم</h5>
-			                				<span>8:00ص</span>
-			                				<span>8:00ص</span>
-			                				<span>8:00ص</span>
-			                				<span>8:00ص</span>
-			                				<span>المزيد..</span>
-			                				<span>المزيد..</span>
-			                				<button type="button">حجز</button>
-			                			</div>
-			                			<div class=" day" >
-			                				<h5>اليوم</h5>
-			                				<span>8:00ص</span>
-			                				<span>8:00ص</span>
-			                				<span>8:00ص</span>
-			                				<span>8:00ص</span>
-			                				<span>المزيد..</span>
-			                				<span>المزيد..</span>
-			                				<button type="button">حجز</button>
+			                		<div id"divdays" style="width: 300px; margin:auto;">
+			                			<div id="threedays" style="position:relative;" >
+			                			
 			                			</div>
 			                		</div>
-			                		<div class="daysarrows">
-				                		<a class="prevday" href="#" >
-				                			<i class="fa fa-angle-right fa-2x" ></i>
-				                		</a>
-				                		<a class="nextday" href="#" >
-				                			<i class="fa fa-angle-left fa-2x" ></i>
-				                		</a>
-			                		</div>
+			                		<!--<div class="daysarrows">
+				                		<button class="prevday" type="button" id="prevDay" onclick="prevFunDay()" ><i class="fa fa-angle-right fa-2x" ></i></button>
+              							<button class="nextday" type="button" id="nextDay" onclick="nextFunDay()" ><i class="fa fa-angle-left fa-2x" ></i></button>
+				                	</div>-->
 		                		</div>
                  	<!-- ------------------------------ -->
 		                	</div>                

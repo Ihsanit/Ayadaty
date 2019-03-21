@@ -87,7 +87,10 @@ class User_c extends CI_Controller
 			//get user id 
 			$is_doctor=$this->doctor_user_lib->get_doctor($u_email);
 			$is_session_created=$this->doctor_user_lib->create_session($u_email,$u_password,$is_doctor);
-			if($is_session_created):				
+			if($is_session_created && $is_doctor ===FALSE ):				
+				$this->session->set_flashdata('user_loggedin','تم تسجيل دخول ينجاح يمكنك اكمال او تعديل بياناتك');
+				redirect('doctor_c/register_doctor');
+			elseif($is_session_created && $is_doctor ===TRUE ):				
 				$this->session->set_flashdata('user_loggedin','تم تسجيل دخول ينجاح يمكنك اكمال او تعديل بياناتك');
 				redirect('doctor_c/register_doctor');
 			else:

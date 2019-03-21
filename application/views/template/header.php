@@ -31,7 +31,7 @@
 }
 	</style>
 </head>
-<body>
+<body >
 	<nav class='navbar navbar-expand-lg bg-dark navbar-dark fixed-top'>
 		<div class='container'>
 			<a href="<?php echo base_url();?>" class='navbar-brand'>Ayadaty</a>
