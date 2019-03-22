@@ -72,18 +72,17 @@ include($bar);?>
 		                		<br/>
 		                	</div>
 		                	<div class="col-lg-6">
-		                	<!-- ---------------------------------- -->		                		
-		                		<div class="appointment" >
+		                	<!-- ---------------------------------- -->
+		                	<div class="appointment" >
 			                		<p style="text-align:center;">بيانات حجز موعد</p>
 			                		<div id"divdays" style="width: 300px; margin:auto;">
 			                			<div id="threedays" style="position:relative;" >
-			                			
 			                			</div>
 			                		</div>
-			                		<!--<div class="daysarrows">
-				                		<button class="prevday" type="button" id="prevDay" onclick="prevFunDay()" ><i class="fa fa-angle-right fa-2x" ></i></button>
-              							<button class="nextday" type="button" id="nextDay" onclick="nextFunDay()" ><i class="fa fa-angle-left fa-2x" ></i></button>
-				                	</div>-->
+			                		<div class="daysarrows">
+				                		<button class="prevday" type="button" id="prevDay" onclick="prevFunDay(-1);" ><i class="fa fa-angle-right fa-2x" ></i></button>
+              							<button class="nextday" type="button" id="nextDay" onclick="nextFunDay(1);" ><i class="fa fa-angle-left fa-2x" ></i></button>
+				                	</div>			                		
 		                		</div>
                  	<!-- ------------------------------ -->
 		                	</div>                

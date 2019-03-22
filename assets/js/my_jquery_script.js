@@ -14,19 +14,7 @@ $(document).ready(function(){
 	$("#patient-control").click(function(){
 		$("#patient-tabs").toggle()
 	});
-	/*------------appointment dates--------------------------*/
-	var date = new Date(), y = date.getFullYear(), m = date.getMonth(), d=date.getDate();
-	
-	var currentDay = new Date(y, m, d);
-	var lastDay = new Date(y, m + 1, 0);
-	alert(currentDay);
-	alert(lastDay);
-	/*var output = y + '/' +
-		(m<10 ? '0' : '') + m + '/' +
-		(d<10 ? '0' : '') + d;
-	alert(output);*/
-	
-			                	
+	/*------------appointment dates--------------------------*/			                	
 	/*------------personla doctor data validation-----------------*/
 	$(function(){
 
