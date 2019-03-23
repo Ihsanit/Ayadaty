@@ -185,10 +185,27 @@ class Doctor_m extends CI_Model
 		return $query->result_array();
 	}#end function get_days()
 
-	public function get_periods()
+	public function get_periods($doctor_choosen=FALSE)
 	{
-		$query= $this->db->get('period');
-		return $query->result_array();
+		/*if($doctor_choosen===FALSE)
+		{*/
+			$query= $this->db->get('period');
+			return $query->result_array();
+		/*}
+		$this->db->select('*');
+		$this->db->where('d_id',$doctor_choosen);
+		$this->db->from('doctor');
+		$this->db->join('clinic','clinic.c_d_id=doctor.d_id');
+		$this->db->join('city','city.city_id=clinic.c_city_address');
+		$this->db->join('day','day.day_id=clinic.c_day_start');
+		$this->db->join('period','period.period_id=clinic.c_period_start');
+
+		$this->db->order_by('period_id','ASC');
+		$query=$this->db->get();			
+		return $query->result_array();*/
+
+		//$query= $this->db->get('period');
+		//return $query->result_array();
 	}#end function get_periods()
 
 	public function check_email_exists_db($email)
@@ -223,7 +240,7 @@ class Doctor_m extends CI_Model
 		return $this->db->count_all_results('doctor');		
 	}#end count doctor data
 
-	
+
 	
 }#end class Doctor_m
 ?>

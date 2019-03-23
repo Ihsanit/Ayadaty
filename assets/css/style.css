@@ -554,6 +554,13 @@ input[type=text],input[type=number], input[type=password], input[type=email], se
     padding: unset;
 
 }
+.appointment .day ul li:hover
+{
+    
+    background-color: #13bfb1!important;
+    color: #fff!important;
+    cursor: pointer;
+}
 
 #day0, #day1, #day2
 {   display:inline-block ;
@@ -651,6 +658,7 @@ input[type=text],input[type=number], input[type=password], input[type=email], se
     left: 50%!important;
     margin-left: -181px!important;
 }
+
 
 /*-------------------------------*/
 

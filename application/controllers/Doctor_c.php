@@ -16,6 +16,7 @@ class Doctor_c extends CI_Controller
 		$this->load->library(array('form_validation','Doctor_User_lib'));
 		$this->load->helper(array('form','url','html'));		
 	}#end _construct function
+	
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
 |register_doctor() function to register perosnal data of doctor		
@@ -166,7 +167,28 @@ class Doctor_c extends CI_Controller
 		$this->load->view('doctor_views/'.$page,$data);
 		$this->load->view('template/footer');
 
+
+
+
 	}#end function index($page='home')
+
+	public function show_periods()
+	{
+		$doctor_id=$_POST['d_id'];
+		$times=array();
+		$periods=$this->doctor_obj->get_periods($doctor_id);
+		if(count($periods)>0):
+			foreach ($periods as $period):
+				$times[]=$period;
+			endforeach;			
+		endif;	
+		echo json_encode($times);
+   /* $rates = array();
+    $rates['poor'] = 10; 
+    $rates['fair'] = 20;
+
+    $this->output->set_output(json_encode($rates));*/
+	}
 /*
 |-------------------------------------------------------------------------------------------------------------------------------------
 |edit_doctor() function retive registered (personal, education, experience, and clinic) data to edit  		

@@ -116,11 +116,17 @@
 });
 });*/
 $(document).ready(function(){
-
-  $(this).click(function() {
-    var id=$(this).val();
-  $('.day'+id+' li:hidden').slice(0, 5).slideDown();
+  /*alert($('#d_id').val());*/
+  $('.moreDays').click(function() {
+    var id=0;
+    $('.dayHidden').toggle(1000);
+  /*$('.day'+id+' li:hidden').slice(0, 5).slideDown();*/
 });
+ // alert($('#time').attr('at'));
+ $('#time00').click(function(){
+  alert($('#time00').text());
+ });
+   
 });
 
 
@@ -272,8 +278,9 @@ var diff=0;
       days.push(nextDate); 
       var output='';
       d=nextDate.getDate();
-      output=d+"/"+m;
-      document.getElementById('threedays').insertAdjacentHTML('beforebegin',"<div class='day day"+i+"'  id='day"+i+"'><h5>"+output+"</h5><ul><li>8:00ص</li><li>8:00ص</li><li>8:00ص</li><li>8:00ص</li><li>8:00ص</li><li>8:00ص</li><li>8:00ص</li><li>8:00ص</li></ul><a type='button' id='"+i+"' value='"+i+"'>المزيد..</a><button type='button'>حجز</button></div>");
+      output=m+"/"+d;
+      document.getElementById('threedays').insertAdjacentHTML('beforebegin',"<div class='day day"+i+"'  id='day"+i+"'><h5>"+output+"</h5><ul id='times"+i+"'></ul><a class='moreDays' type='button' id='"+i+"' value='"+i+"'>المزيد..</a><button type='button'>حجز</button></div>");
+    
     }
 })();
 diff=diff+1;
@@ -335,6 +342,33 @@ function prevFunDay(n)
   showDay(currentDay);
 }
 
+$(document).ready(function(){    
+  $.ajax({
+    type:'POST',
+    url:'<?php echo base_url();?>Doctor_c/show_periods',
+    dataType:'JSON',
+    data:{d_id:$("#d_id").val()},
+    success:function(data){ 
+      for(var i=0; i<data.length; i++)
+      {        
+        for(var r=0; r<diff; r++)
+           {
+            if(i>=5)
+            {
+              $("#times"+r).append("<li class='dayHidden' id='time"+r+i+"'>"+data[i]['period_name']+"</li>");
+            }
+            else
+            {
+              $("#times"+r).append("<li id='time"+r+i+"'>"+data[i]['period_name']+"</li>");
+           }//end if
+       }//end for days per month
+      }//end for depends on data from database      
+    },
+    error: function(){
+      alert('Error...');
+    }    
+});
+});//end ajax of periods
 </script>
 <!-- /script of appointment days -->
 <script>
@@ -681,6 +715,7 @@ function fixStepIndicator3(n) {
 <script>
 	$(document).ready(function(){
 
+
 		/*--------------------------check_clinic_data-------------------*/
 		$("#d_c_job_name_error_msg").hide();
 		$("#d_c_name_error_msg").hide();
@@ -948,6 +983,7 @@ function fixStepIndicator3(n) {
 		}
 	});//end  experience form
 	});//end function of check experince data
+    
 </script>
 
  <script type="text/javascript">

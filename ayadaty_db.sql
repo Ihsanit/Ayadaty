@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2019 at 07:57 PM
+-- Generation Time: Mar 23, 2019 at 07:01 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -77,7 +77,8 @@ CREATE TABLE `clinic` (
 INSERT INTO `clinic` (`c_id`, `c_job_name`, `c_name`, `c_place_name`, `c_country_address`, `c_city_address`, `c_street_address`, `c_day_start`, `c_day_end`, `c_period_start`, `c_period_end`, `c_summary`, `c_d_id`) VALUES
 (1, 'اخصائي عيون', 'احداق لطب العيون', 'المعقلي - الدور الرابع - شقة 4', 1, 1, 'صخر', 1, 6, '3', '6', '', 1),
 (2, 'جراح عيون', 'احداق لطب العيون1', 'المعقلي - الدور الرابع - شقة 1', 1, 2, 'صخر1', 4, 6, '5', '6', 'kj jlk klkjlj klj', 1),
-(3, 'استشاري مخ واعصاب', 'الاطباء', 'عمارة الاطباء -الدور الرابع - شقة1', 1, 6, 'الميناء الجنوبي', 2, 5, '2', '6', 'معاينة المصابين وتمرنيهم ..', 7);
+(3, 'استشاري مخ واعصاب', 'الاطباء', 'عمارة الاطباء -الدور الرابع - شقة1', 1, 6, 'الميناء الجنوبي', 2, 5, '2', '6', 'معاينة المصابين وتمرنيهم ..', 7),
+(4, 'اخصائي اسنان', 'عيادة الامل', 'عمارة الجمل - شقة 4', 1, 7, 'خمر', 2, 6, '2', '5', '', 9);
 
 -- --------------------------------------------------------
 
@@ -404,7 +405,9 @@ INSERT INTO `doctor` (`d_id`, `d_name`, `d_email`, `d_phone`, `d_gender`, `d_bir
 (5, 'ضياء العزي', 'dea@gmail.com', '+967739638528', 1, '1981-02-04 21:00:00', 191, 1, 8, 'شارع صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar04.png', 1, 'dea12'),
 (6, 'rehan', 'rehan@gmail.com', '+967772080906', 0, '1985-01-01 21:00:00', 243, 1, 1, 'المطار', 'https://www.facebook.com/', 'https://www.facebook.com/', 'avatar_2x.png', 3, 'rehan'),
 (7, 'ناصر اصيل', 'nasser@gmail.com', '+967716398520', 0, '1988-01-04 21:00:00', 243, 1, 6, 'شارع الستين الشمالي', 'https://www.facebook.com/', 'https://www.facebook.com/', 'user2-160x160.jpg', 3, 'nasser'),
-(8, 'عمر عبدالكافي', 'umer@gmail.com', '+967732126549', 1, '2010-02-07 21:00:00', 243, 1, 8, 'الروضة - صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'red1.png', 1, 'umer1');
+(8, 'عمر عبدالكافي', 'umer@gmail.com', '+967732126549', 1, '2010-02-07 21:00:00', 243, 1, 8, 'الروضة - صنعاء', 'https://www.facebook.com/', 'https://www.facebook.com/', 'red1.png', 1, 'umer1'),
+(9, 'نسرين علي الحميري', 'nasreen@gmail.com', '+967733699555', 0, '1984-08-04 21:00:00', 243, 1, 7, 'خمر - الشارع العام', 'https://www.facebook.com/', 'https://www.facebook.com/', 'blue.JPG', 2, 'nasreen'),
+(10, 'نورا علي الصيني', 'nora@yahoo.com', '+967777444111', 0, '1985-12-03 21:00:00', 243, 1, 1, 'ش تونس', 'https://www.facebook.com/', 'https://www.facebook.com/', 'red1.png', 4, 'nora1');
 
 -- --------------------------------------------------------
 
@@ -482,7 +485,8 @@ INSERT INTO `experience` (`e_id`, `e_job_name`, `e_clinic_name`, `e_place_addres
 (1, 'استشاري اسنان', 'مستشفى الوسام التخصصي', 'صنعاء - شارع حدة', '2010-03-12 21:00:00', '2013-03-16 21:00:00', 'استشاري اسنان لمدة ثلاث سنوات', 'noimg.png', 1),
 (2, 'اخصائي اسنان', 'المستشفى الجمهوري', 'صنعاء - شارع الزبيري', '2014-03-11 21:00:00', '2016-03-18 21:00:00', 'اخصائي طب وجراحة الاسنان', 'red1.png', 1),
 (3, 'طبيب طب عام', 'مستشفى النور', 'شارع المقالح', '2014-02-01 21:00:00', '2016-02-04 21:00:00', 'kjj ljklkja kjlk', '', 6),
-(4, 'رئيس قسم الباطنية', 'مستشفى بيروت', 'صنعاء - شارع حدة', '2017-02-01 21:00:00', '2018-02-04 21:00:00', 'اشراف على قسم الباطنية', '', 1);
+(4, 'رئيس قسم الباطنية', 'مستشفى بيروت', 'صنعاء - شارع حدة', '2017-02-01 21:00:00', '2018-02-04 21:00:00', 'اشراف على قسم الباطنية', '', 1),
+(5, 'استشاري طب عام', 'مستشفى الروس', 'عمران - خمر', '2014-05-04 21:00:00', '2017-02-01 21:00:00', '', '', 9);
 
 -- --------------------------------------------------------
 
@@ -532,12 +536,21 @@ CREATE TABLE `period` (
 --
 
 INSERT INTO `period` (`period_id`, `period_name`) VALUES
-(1, '08:00صباحا'),
-(2, '09:00صباحا'),
-(3, '10:00صباحا'),
-(4, '11:00صباحا'),
-(5, '12:00مساء'),
-(6, '1:00مساء');
+(1, '08:00ص'),
+(2, '09:00ص'),
+(3, '10:00ص'),
+(4, '11:00ص'),
+(5, '12:00م'),
+(6, '01:00م'),
+(7, '02:00م'),
+(8, '03:00م'),
+(9, '04:00م'),
+(10, '05:00م'),
+(11, '06:00م'),
+(12, '07:00م'),
+(13, '08:00م'),
+(14, '09:00م'),
+(15, '10:00م');
 
 -- --------------------------------------------------------
 
@@ -572,7 +585,8 @@ INSERT INTO `qualification` (`q_id`, `q_start_date`, `q_graduate_date`, `q_gpa`,
 (8, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 85, 'red1.png', 7, 2, 2, 3),
 (9, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 99, 'red1.png', 4, 4, 4, 3),
 (10, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 80, 'red1.png', 7, 1, 2, 6),
-(11, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 78, 'red1.png', 6, 2, 3, 7);
+(11, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 78, 'red1.png', 6, 2, 3, 7),
+(12, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 85, 'red1.png', 2, 1, 2, 9);
 
 -- --------------------------------------------------------
 
@@ -692,7 +706,9 @@ INSERT INTO `user` (`u_id`, `u_username`, `u_password`, `u_email`, `u_privilage`
 (5, 'ضياء العزي', 'dea12', 'dea@gmail.com', NULL, '2019-03-12 14:46:48'),
 (6, 'rehan', 'rehan', 'rehan@gmail.com', NULL, '2019-03-14 14:38:20'),
 (7, 'ناصر اصيل', 'nasser', 'nasser@gmail.com', NULL, '2019-03-15 14:06:33'),
-(8, 'عمر عبدالكافي', 'umer1', 'umer@gmail.com', NULL, '2019-03-15 17:05:18');
+(8, 'عمر عبدالكافي', 'umer1', 'umer@gmail.com', NULL, '2019-03-15 17:05:18'),
+(9, 'نسرين علي الحميري', 'nasreen', 'nasreen@gmail.com', NULL, '2019-03-15 19:28:59'),
+(10, 'نورا علي الصيني', 'nora1', 'nora@yahoo.com', NULL, '2019-03-21 11:30:58');
 
 --
 -- Indexes for dumped tables
@@ -825,7 +841,7 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `clinic`
 --
 ALTER TABLE `clinic`
-  MODIFY `c_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `c_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -843,7 +859,7 @@ ALTER TABLE `day`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `d_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `education_specialty`
@@ -861,7 +877,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `experience`
 --
 ALTER TABLE `experience`
-  MODIFY `e_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `e_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `hospital`
@@ -873,13 +889,13 @@ ALTER TABLE `hospital`
 -- AUTO_INCREMENT for table `period`
 --
 ALTER TABLE `period`
-  MODIFY `period_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `period_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `qualification`
 --
 ALTER TABLE `qualification`
-  MODIFY `q_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `q_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `qualification_type`
@@ -909,7 +925,7 @@ ALTER TABLE `university`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `u_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
