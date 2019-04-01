@@ -11,6 +11,7 @@ include($bar);?>
 				<?php if(count($d_data)):?>
 					<?php foreach ($d_data as $doctor ): ?>
 						<input type="hidden" value="<?php echo $doctor['d_id'];?>" id="d_id" name="d_id">
+						<input type="hidden" value="<?php echo $doctor['c_id'];?>" id="c_id" name="c_id">
 						<div class="col-md-3">
 							<div class="tab-content" style="margin-bottom:1rem;">
 							  <div class="tab-pane active" id="pic-1"><img src="<?php echo base_url();?>assets/images/doctors/personal/<?php echo $doctor['d_personal_img']; ?>"/></div>

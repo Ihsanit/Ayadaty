@@ -42,8 +42,25 @@ class Doctor_m extends CI_Model
 
 	public function insert_clinic($data)
 	{
-		 return $this->db->insert('clinic',$data);
+		 $query= $this->db->insert('clinic',$data);
+		 if(!empty($query)):
+		 	$clinic_id =  $this->db->insert_id();
+		 	return  $clinic_id ;
+		 endif;
+		 //return $query;
 	}#end function insert_clinic()
+
+	public function insert_clinic_period($data)
+	{
+		 return $this->db->insert('period',$data);
+	}#end function insert_clinic_period()
+
+	public function update_clinic_period($period_id,$id,$data)
+	{
+		$this->db->where('period_id',$period_id);
+		$this->db->where('period_c_id',$id);
+		return $this->db->update('period',$data);
+	}#end function update_clinic_period()
 
 	public function update_clinic($id,$data)
 	{
@@ -72,7 +89,7 @@ class Doctor_m extends CI_Model
 		return $query->row_array();
 	}#end function get_doctor()
 
-	public function get_doctor_detail($doctor_choosen=FALSE)
+	public function get_doctor_detail($doctor_choosen=FALSE,$clinic_choosen=FALSE)
 	{
 
 		if($doctor_choosen===FALSE)
@@ -89,11 +106,14 @@ class Doctor_m extends CI_Model
 		$this->db->select('*');
 		$this->db->where('d_id',$doctor_choosen);
 		$this->db->from('doctor');
-		$this->db->join('specialty','specialty.specialty_id=doctor.d_specialty_id');
+		$this->db->join('specialty','specialty.specialty_id=doctor.d_specialty_id');	
+
+		if($clinic_choosen!==FALSE)
+			$this->db->where('c_id',$clinic_choosen);
+		
 		$this->db->join('clinic','clinic.c_d_id=doctor.d_id');
 		$this->db->join('city','city.city_id=clinic.c_city_address');
 		$this->db->join('day','day.day_id=clinic.c_day_start');
-		$this->db->join('period','period.period_id=clinic.c_period_start');
 		$this->db->order_by('c_id','ASC');
 		$query=$this->db->get();
 		return $query->result_array();	
@@ -147,7 +167,7 @@ class Doctor_m extends CI_Model
 		$this->db->join('clinic','clinic.c_d_id=doctor.d_id');
 		$this->db->join('city','city.city_id=clinic.c_city_address');
 		$this->db->join('day','day.day_id=clinic.c_day_start');
-		$this->db->join('period','period.period_id=clinic.c_period_start');
+		//$this->db->join('period','period.period_c_id=clinic.c_id');
 
 		$this->db->order_by('c_id','ASC');
 		$query=$this->db->get();			
@@ -187,25 +207,19 @@ class Doctor_m extends CI_Model
 
 	public function get_periods($doctor_choosen=FALSE)
 	{
-		/*if($doctor_choosen===FALSE)
-		{*/
+		if($doctor_choosen===FALSE)
+		{
 			$query= $this->db->get('period');
 			return $query->result_array();
-		/*}
+		}
 		$this->db->select('*');
-		$this->db->where('d_id',$doctor_choosen);
+		$this->db->where('d_email',$doctor_choosen);
 		$this->db->from('doctor');
 		$this->db->join('clinic','clinic.c_d_id=doctor.d_id');
-		$this->db->join('city','city.city_id=clinic.c_city_address');
-		$this->db->join('day','day.day_id=clinic.c_day_start');
-		$this->db->join('period','period.period_id=clinic.c_period_start');
-
-		$this->db->order_by('period_id','ASC');
 		$query=$this->db->get();			
-		return $query->result_array();*/
+		return $query->result_array();	
 
-		//$query= $this->db->get('period');
-		//return $query->result_array();
+
 	}#end function get_periods()
 
 	public function check_email_exists_db($email)

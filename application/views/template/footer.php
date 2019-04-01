@@ -279,7 +279,7 @@ var diff=0;
       var output='';
       d=nextDate.getDate();
       output=m+"/"+d;
-      document.getElementById('threedays').insertAdjacentHTML('beforebegin',"<div class='day day"+i+"'  id='day"+i+"'><h5>"+output+"</h5><ul id='times"+i+"'></ul><a class='moreDays' type='button' id='"+i+"' value='"+i+"'>المزيد..</a><button type='button'>حجز</button></div>");
+      document.getElementById('threedays').insertAdjacentHTML('beforebegin',"<div class='day day"+i+"'  id='day"+i+"'><h5>"+output+"</h5><ul id='times"+i+"'></ul><button type='button'>حجز</button></div>");
     
     }
 })();
@@ -347,7 +347,7 @@ $(document).ready(function(){
     type:'POST',
     url:'<?php echo base_url();?>Doctor_c/show_periods',
     dataType:'JSON',
-    data:{d_id:$("#d_id").val()},
+    data:{d_id:$("#d_id").val(), c_id:$("#c_id").val()},
     success:function(data){ 
       for(var i=0; i<data.length; i++)
       {        
@@ -355,11 +355,12 @@ $(document).ready(function(){
            {
             if(i>=5)
             {
-              $("#times"+r).append("<li class='dayHidden' id='time"+r+i+"'>"+data[i]['period_name']+"</li>");
+               
+              $("#times"+r).append("<li class='dayHidden' id='time"+r+i+"'>"+data[i]['c_period']+"</li>");
             }
             else
             {
-              $("#times"+r).append("<li id='time"+r+i+"'>"+data[i]['period_name']+"</li>");
+              $("#times"+r).append("<li id='time"+r+i+"'>"+data[i]['c_period']+"</li>");
            }//end if
        }//end for days per month
       }//end for depends on data from database      

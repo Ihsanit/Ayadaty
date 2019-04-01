@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2019 at 07:01 PM
+-- Generation Time: Apr 01, 2019 at 10:26 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -64,8 +64,7 @@ CREATE TABLE `clinic` (
   `c_street_address` varchar(200) NOT NULL,
   `c_day_start` int(2) NOT NULL,
   `c_day_end` int(2) NOT NULL,
-  `c_period_start` varchar(50) NOT NULL,
-  `c_period_end` varchar(50) NOT NULL,
+  `c_period` varchar(50) DEFAULT NULL,
   `c_summary` text,
   `c_d_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -74,11 +73,20 @@ CREATE TABLE `clinic` (
 -- Dumping data for table `clinic`
 --
 
-INSERT INTO `clinic` (`c_id`, `c_job_name`, `c_name`, `c_place_name`, `c_country_address`, `c_city_address`, `c_street_address`, `c_day_start`, `c_day_end`, `c_period_start`, `c_period_end`, `c_summary`, `c_d_id`) VALUES
-(1, 'اخصائي عيون', 'احداق لطب العيون', 'المعقلي - الدور الرابع - شقة 4', 1, 1, 'صخر', 1, 6, '3', '6', '', 1),
-(2, 'جراح عيون', 'احداق لطب العيون1', 'المعقلي - الدور الرابع - شقة 1', 1, 2, 'صخر1', 4, 6, '5', '6', 'kj jlk klkjlj klj', 1),
-(3, 'استشاري مخ واعصاب', 'الاطباء', 'عمارة الاطباء -الدور الرابع - شقة1', 1, 6, 'الميناء الجنوبي', 2, 5, '2', '6', 'معاينة المصابين وتمرنيهم ..', 7),
-(4, 'اخصائي اسنان', 'عيادة الامل', 'عمارة الجمل - شقة 4', 1, 7, 'خمر', 2, 6, '2', '5', '', 9);
+INSERT INTO `clinic` (`c_id`, `c_job_name`, `c_name`, `c_place_name`, `c_country_address`, `c_city_address`, `c_street_address`, `c_day_start`, `c_day_end`, `c_period`, `c_summary`, `c_d_id`) VALUES
+(1, 'اخصائي عيون', 'احداق لطب العيون', 'المعقلي - الدور الرابع - شقة 4', 1, 1, 'صخر', 1, 6, NULL, '', 1),
+(2, 'جراح عيون', 'احداق لطب العيون1', 'المعقلي - الدور الرابع - شقة 1', 1, 2, 'صخر1', 4, 6, NULL, 'kj jlk klkjlj klj', 1),
+(3, 'استشاري مخ واعصاب', 'الاطباء', 'عمارة الاطباء -الدور الرابع - شقة1', 1, 6, 'الميناء الجنوبي', 2, 5, NULL, 'معاينة المصابين وتمرنيهم ..', 7),
+(4, 'اخصائي اسنان', 'عيادة الامل', 'عمارة الجمل - شقة 4', 1, 7, 'خمر', 2, 6, 'الصباح,المساء', '', 9),
+(5, 'جراح عيون3', 'الاطباء', 'المعقلي - الدور الرابع - شقة 4', 1, 1, 'صخر', 1, 5, NULL, 'تمت متمنم نتنمت', 1),
+(6, 'اخصائي نساء', 'عيادة ليلى', 'عمارة 10- شقة 10', 1, 1, 'حدة', 1, 5, NULL, 'ليلى للنساء والعقم', 3),
+(7, 'استشاري نساء وتوليد', 'عيادة الربيعي', 'لا اله الا الله - الدور الرابع', 1, 2, 'حزيز', 3, 6, NULL, 'استشاري نساء وتوليد', 3),
+(8, 'استشاري نساء وتوليد', 'عيادة الربيعي', 'لا اله الا الله - الدور الرابع', 1, 2, 'حزيز', 3, 6, NULL, 'استشاري نساء وتوليد', 3),
+(9, 'استشاري عظام', 'مركز ردمان الطبي', 'عمارة ردمان', 1, 1, 'شارع تونس', 1, 6, NULL, 'ردمان الطبي', 2),
+(10, 'استشاري عظام', 'مركز ردمان الطبي', 'مركز ردمان الطبي - الدور الاول', 1, 1, 'شارع تونس', 1, 5, NULL, 'ردمان الطبي للعظام', 2),
+(11, 'اخصائي عظام', 'رمان الطبي', 'عمارة 10- شقة 10', 1, 1, 'شارع تونس', 2, 6, NULL, 'ردمان للعظام', 2),
+(12, 'اخصائي جراحة', 'التعاون الطبي', 'النصر - الدور الرابع - شقة 1', 1, 1, 'المقالح', 1, 5, 'الصباح,المساء', 'اخصائي جراحة عامة', 9),
+(13, 'استشاري جراحة عامة', 'عيادة النور', 'عمارة المصلي', 1, 3, 'الميناء الجنوبي', 2, 5, 'الصباح', 'النور للجراحة العامة', 9);
 
 -- --------------------------------------------------------
 
@@ -523,38 +531,6 @@ CREATE TABLE `hospital_specialty` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `period`
---
-
-CREATE TABLE `period` (
-  `period_id` int(12) NOT NULL,
-  `period_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `period`
---
-
-INSERT INTO `period` (`period_id`, `period_name`) VALUES
-(1, '08:00ص'),
-(2, '09:00ص'),
-(3, '10:00ص'),
-(4, '11:00ص'),
-(5, '12:00م'),
-(6, '01:00م'),
-(7, '02:00م'),
-(8, '03:00م'),
-(9, '04:00م'),
-(10, '05:00م'),
-(11, '06:00م'),
-(12, '07:00م'),
-(13, '08:00م'),
-(14, '09:00م'),
-(15, '10:00م');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `qualification`
 --
 
@@ -775,12 +751,6 @@ ALTER TABLE `hospital`
   ADD PRIMARY KEY (`h_id`);
 
 --
--- Indexes for table `period`
---
-ALTER TABLE `period`
-  ADD PRIMARY KEY (`period_id`);
-
---
 -- Indexes for table `qualification`
 --
 ALTER TABLE `qualification`
@@ -841,7 +811,7 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `clinic`
 --
 ALTER TABLE `clinic`
-  MODIFY `c_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `c_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -884,12 +854,6 @@ ALTER TABLE `experience`
 --
 ALTER TABLE `hospital`
   MODIFY `h_id` int(12) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `period`
---
-ALTER TABLE `period`
-  MODIFY `period_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `qualification`

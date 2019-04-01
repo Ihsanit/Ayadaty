@@ -95,39 +95,25 @@
                             </select>
                             <span class="error-msg" id="d_c_day_end_error_msg"></span>
                         </div>            
-                      </div>
+                      </div> 
+                      <?php $periods=$clinic['c_period'];?>
+                      <?php $final_periods=explode(',',$periods);?> 
                       <div class="form-row">
                         <div class="form-group col-lg-6 col-md-12">
-                          <label>اوقات العمل<span class="required"> *</span></label>
-                          <select class="form-control" name='d_c_period_start' id='d_c_period_start' title="اختر بداية فترة الدوام"autofocus required>
-                            <option selected disabled>اختر بداية فترة الدوام..</option>
-                            <?php if(count($periods)):?>
-                              <?php foreach ($periods as $period):?>
-                              	<?php if($clinic['c_period_start']===$period['period_id']):?>                                                  
-                                	<option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_start',$period['period_id']);?> selected><?php echo $period['period_name'];?></option>
-                              	<?php else:?>
-                              		<option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_start',$period['period_id']);?>><?php echo $period['period_name'];?></option>
-								                <?php endif;?>
-                              <?php endforeach;?>
-                            <?php endif;?>
-                          </select>
-                          <span class="error-msg" id="d_c_period_start_error_msg"></span>
+                        <label style="display:block;">فترات الدوام<span class="required"> *</span></label>
+                          الصباح
+                          <label class="checkbox" >
+                              <input type="checkbox" name="periods[]" id="periods" value="الصباح" <?php if(in_array('الصباح',$final_periods)):echo 'checked'; endif;?>/>
+                              <span class="info"></span>
+                          </label>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
-                          <label style="visibility: hidden;">نهاية فترة الدوام</label>
-                          <select class="form-control" name='d_c_period_end' id='d_c_period_end' title="اختر نهاية فترة الدوام"autofocus required>
-                            <option selected disabled>اختر نهاية فترة الدوام..</option>
-                            <?php if(count($periods)):?>
-                              <?php foreach ($periods as $period):?>
-                              	<?php if($clinic['c_period_end']===$period['period_id']):?>                                                  
-                                	<option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_end',$period['period_id']);?> selected><?php echo $period['period_name'];?></option>
-                              	<?php else:?>
-                              		<option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_end',$period['period_id']);?>><?php echo $period['period_name'];?></option>
-								                <?php endif;?>
-                              <?php endforeach;?>
-                            <?php endif;?>
-                          </select>
-                          <span class="error-msg" id="d_c_period_end_error_msg"></span>
+                        <label style="visibility: hidden; display:block;" >نهاية فترة الدوام</label>
+                          المساء
+                          <label class="checkbox">
+                              <input type="checkbox" name="periods[]" id="periods" value="المساء" <?php if(in_array('المساء',$final_periods)):echo 'checked'; endif;?>/>
+                              <span class="info"></span>
+                          </label>
                         </div>           
                       </div>
                       <div class="form-group col-xs-6"> 
@@ -136,8 +122,8 @@
                       </div>                     
                       <div class="form-group col-xs-12">
                         <br>
-                        <button class="btn" type="submit" value="d_clinic_data_submit" id="d_clinic_data_submit" style="color:#fff;">حفظ</button>
-                        <button class="btn" type="submit" style="color:#fff;">اضافة عمل اخر</button>
+                        <button class="btn" type="submit" value="d_clinic_data_update" id="d_clinic_data_submit" style="color:#fff;">حفظ</button>
+                        
                       </div>
                     </form>  <!-- /form -->                              
                   </div><!-- /tab-content -->
@@ -225,32 +211,26 @@
                             <span class="error-msg" id="d_c_day_end_error_msg"></span>
                         </div>            
                       </div>
+                      <!-- ---------------------------- -->
                       <div class="form-row">
                         <div class="form-group col-lg-6 col-md-12">
-                          <label>اوقات العمل<span class="required"> *</span></label>
-                          <select class="form-control" name='d_c_period_start' id='d_c_period_start' title="اختر بداية فترة الدوام"autofocus required>
-                            <option selected disabled>اختر بداية فترة الدوام..</option>
-                            <?php if(count($periods)):?>
-                              <?php foreach ($periods as $period):?>                                                 
-                                <option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_start',$period['period_id']);?>><?php echo $period['period_name'];?></option>
-                              <?php endforeach;?>
-                            <?php endif;?>
-                          </select>
-                          <span class="error-msg" id="d_c_period_start_error_msg"></span>
+                        <label style="display:block;">فترات الدوام<span class="required"> *</span></label>
+                          الصباح
+                          <label class="checkbox" >
+                              <input type="checkbox" name="periods[]" id="periods" value="الصباح" />
+                              <span class="info"></span>
+                          </label>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
-                          <label style="visibility: hidden;">نهاية فترة الدوام</label>
-                          <select class="form-control" name='d_c_period_end' id='d_c_period_end' title="اختر نهاية فترة الدوام"autofocus required>
-                            <option selected disabled>اختر نهاية فترة الدوام..</option>
-                            <?php if(count($periods)):?>
-                              <?php foreach ($periods as $period):?>                                                 
-                                <option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_end',$period['period_id']);?>><?php echo $period['period_name'];?></option>
-                              <?php endforeach;?>
-                            <?php endif;?>
-                          </select>
-                          <span class="error-msg" id="d_c_period_end_error_msg"></span>
+                        <label style="visibility: hidden; display:block;" >نهاية فترة الدوام</label>
+                          المساء
+                          <label class="checkbox">
+                              <input type="checkbox" name="periods[]" id="periods" value="المساء" />
+                              <span class="info"></span>
+                          </label>
                         </div>           
                       </div>
+                      <!-- ------------------------------------------ -->    
                       <div class="form-group col-xs-6"> 
                         <label>ملخص عن عملك او عيادتك</label>
                         <textarea class="form-control" name="d_c_summary" id="d_c_summary" placeholder="ادخل ملخص عن عملك او يادتك" title="ملخص عن عملك او يادتك" autofocus  rows="3" cols="10"><?php echo set_value('d_c_summary'); ?></textarea>
@@ -258,8 +238,7 @@
                       <div class="form-group col-xs-12">
                         <br>
                         <button class="btn" type="submit" value="d_clinic_data_submit" id="d_clinic_data_submit" style="color:#fff;">حفظ</button>
-                        <button class="btn" type="submit" style="color:#fff;">اضافة عمل اخر</button>
-                      </div>
+                       </div>
                     </form>  <!-- /form -->                              
                   </div><!-- /tab-content -->
                 </div><!--/col-9-->
@@ -345,32 +324,27 @@
                             <span class="error-msg" id="d_c_day_end_error_msg"></span>
                         </div>            
                       </div>
+                      
+                      <!-- ---------------------------- -->
                       <div class="form-row">
                         <div class="form-group col-lg-6 col-md-12">
-                          <label>اوقات العمل<span class="required"> *</span></label>
-                          <select class="form-control" name='d_c_period_start' id='d_c_period_start' title="اختر بداية فترة الدوام"autofocus required>
-                            <option selected disabled>اختر بداية فترة الدوام..</option>
-                            <?php if(count($periods)):?>
-                              <?php foreach ($periods as $period):?>                                                 
-                                <option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_start',$period['period_id']);?>><?php echo $period['period_name'];?></option>
-                              <?php endforeach;?>
-                            <?php endif;?>
-                          </select>
-                          <span class="error-msg" id="d_c_period_start_error_msg"></span>
+                        <label style="display:block;">فترات الدوام<span class="required"> *</span></label>
+                          الصباح
+                          <label class="checkbox" >
+                              <input type="checkbox" name="periods[]" id="periods" value="الصباح" />
+                              <span class="info"></span>
+                          </label>
                         </div>
                         <div class="form-group col-lg-6 col-md-12">
-                          <label style="visibility: hidden;">نهاية فترة الدوام</label>
-                          <select class="form-control" name='d_c_period_end' id='d_c_period_end' title="اختر نهاية فترة الدوام"autofocus required>
-                            <option selected disabled>اختر نهاية فترة الدوام..</option>
-                            <?php if(count($periods)):?>
-                              <?php foreach ($periods as $period):?>                                                 
-                                <option value=<?php echo $period['period_id'];?><?php echo set_select('d_c_period_end',$period['period_id']);?>><?php echo $period['period_name'];?></option>
-                              <?php endforeach;?>
-                            <?php endif;?>
-                          </select>
-                          <span class="error-msg" id="d_c_period_end_error_msg"></span>
+                        <label style="visibility: hidden; display:block;" >نهاية فترة الدوام</label>
+                          المساء
+                          <label class="checkbox">
+                              <input type="checkbox" name="periods[]" id="periods" value="المساء" />
+                              <span class="info"></span>
+                          </label>
                         </div>           
                       </div>
+                      <!-- ------------------------------------------ -->    
                       <div class="form-group col-xs-6"> 
                         <label>ملخص عن عملك او عيادتك</label>
                         <textarea class="form-control" name="d_c_summary" id="d_c_summary" placeholder="ادخل ملخص عن عملك او يادتك" title="ملخص عن عملك او يادتك" autofocus  rows="3" cols="10"><?php echo set_value('d_c_summary'); ?></textarea>
@@ -378,8 +352,7 @@
                       <div class="form-group col-xs-12">
                         <br>
                         <button class="btn" type="submit" value="d_clinic_data_submit" id="d_clinic_data_submit" style="color:#fff;">حفظ</button>
-                        <button class="btn" type="submit" style="color:#fff;">اضافة عمل اخر</button>
-                      </div>
+                       </div>
                     </form>  <!-- /form -->                              
                   </div><!-- /tab-content -->
                 </div><!--/col-9-->

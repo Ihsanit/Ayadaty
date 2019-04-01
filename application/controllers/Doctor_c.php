@@ -175,10 +175,22 @@ class Doctor_c extends CI_Controller
 	public function show_periods()
 	{
 		$doctor_id=$_POST['d_id'];
+		$clinic_id=$_POST['c_id'];
 		$times=array();
-		$periods=$this->doctor_obj->get_periods($doctor_id);
+		$periods=$this->doctor_obj->get_doctor_detail($doctor_id,$clinic_id);
 		if(count($periods)>0):
-			foreach ($periods as $period):
+			/*$periodss=$periods['c_period'];
+            $final_periods=explode(',',$periodss);
+
+			$times=array();
+			if(in_array('الصباح',$final_periods)):
+				$times['morning']='الصباح';
+			endif;
+			if(in_array('المساء',$final_periods)):
+				$times['evening']='المساء';
+			endif;*/
+			
+			foreach ($periods as $period):				
 				$times[]=$period;
 			endforeach;			
 		endif;	
@@ -215,7 +227,7 @@ class Doctor_c extends CI_Controller
 		$data['education_specialties']=$this->doctor_obj->get_education_specialties();
 		$data['universities']=$this->doctor_obj->get_universities();
 		$data['days']=$this->doctor_obj->get_days();
-		$data['periods']=$this->doctor_obj->get_periods();
+		$data['periods']=$this->doctor_obj->get_periods($doctor_chosen);
 		$data['doctor']=$this->doctor_obj->get_doctor($doctor_chosen);
 		$data['qualifications']=$this->doctor_obj->get_qualifications($doctor_chosen);
 		$data['experiences']=$this->doctor_obj->get_experiences($doctor_chosen);
@@ -595,7 +607,7 @@ public function add_clinic_data($page='edit_doctor_v')
 				|#call check_experience_vald_inputs() function to validate input fields of doctor experience data form		
 				|=========================================================================================================
 				*/
-				$this->check_clinic_vald_inputs();	
+				$this->check_clinic_vald_inputs();						
 
 				if($this->form_validation->run()===FALSE):			
 					
@@ -616,13 +628,14 @@ public function add_clinic_data($page='edit_doctor_v')
 					|#send doctor's clinics data to doctor model 
 					|=========================================================================================================
 					*/
-					$c_data=$this->doctor_obj->insert_clinic($data);
+
+					$c_id=$this->doctor_obj->insert_clinic($data);
 					/*
 					|=========================================================================================================
 					|# Sure of inserting data in successful manner, show a feedback for user with 'Data are saved successful'
 					|=========================================================================================================
 					*/
-					if($c_data):
+					if($c_id):						
 						$this->session->set_flashdata('clinic_added','تمت اضافة بيانات العيادة بنجاح' );			
 						redirect('doctor_c/edit_doctor');
 					//die('ok');
@@ -666,7 +679,9 @@ public function add_clinic_data($page='edit_doctor_v')
 				$this->load->view('doctor_views/'.$page,$data);
 				$this->load->view('template/footer');			
 			else:		
-
+				/*$checkbox = $this->input->post('periods');
+				for($i=0;$i<count($checkbox);$i++)
+					 $checkbox[$i];*/	
 				$data=$this->full_clinic_data();
 				/*
 				|=========================================================================================================
@@ -676,7 +691,7 @@ public function add_clinic_data($page='edit_doctor_v')
 				$id=$this->security->xss_clean($this->input->post('c_id'));
 				$d_data=$this->doctor_obj->update_clinic($id,$data);
 				
-				if($d_data):
+				if($d_data):					
 					$this->session->set_flashdata('doctor_edited','تم تعديل بياناتك العيادة بنجاح' );
 					redirect(base_url('editdoctor'));
 				endif;#end if sure update successfully?>
@@ -878,8 +893,6 @@ public function add_clinic_data($page='edit_doctor_v')
 		$this->form_validation->set_rules('d_c_street_address','عنوان شارع العيادة','trim|required');
 		$this->form_validation->set_rules('d_c_day_start','اول ايام الدوام','trim|required');
 		$this->form_validation->set_rules('d_c_day_end','اخر ايام الدوام التخرج','trim|required');
-		$this->form_validation->set_rules('d_c_period_start','بداية فترة الدوام','trim|required');
-		$this->form_validation->set_rules('d_c_period_end','نهاية فترة الدوام','trim|required');
 		$this->form_validation->set_rules('d_c_summary','ملخص عن العيادة او العمل','trim');
 		$this->form_validation->set_rules('d_c_d_id','رقم الطبيب','trim|required');
 	}#end function check_clinic_vald_inputs()
@@ -891,6 +904,8 @@ public function add_clinic_data($page='edit_doctor_v')
 */
 	public function full_clinic_data()
 	{
+		$periods = $this->security->xss_clean($this->input->post('periods')); 
+		$final_periods = implode(',',$periods);
 		$data=array(
 			'c_job_name'			=>$this->security->xss_clean($this->input->post('d_c_job_name')),
 			'c_name'				=>$this->security->xss_clean($this->input->post('d_c_name')),
@@ -900,8 +915,7 @@ public function add_clinic_data($page='edit_doctor_v')
 			'c_street_address'		=>$this->security->xss_clean($this->input->post('d_c_street_address')),
 			'c_day_start'			=>$this->security->xss_clean($this->input->post('d_c_day_start')),
 			'c_day_end'				=>$this->security->xss_clean($this->input->post('d_c_day_end')),
-			'c_period_start'		=>$this->security->xss_clean($this->input->post('d_c_period_start')),
-			'c_period_end'			=>$this->security->xss_clean($this->input->post('d_c_period_end')),
+			'c_period'				=>$final_periods,
 			'c_summary'				=>$this->security->xss_clean($this->input->post('d_c_summary')),
 			'c_d_id'				=>$this->security->xss_clean($this->input->post('d_c_d_id'))				
 			);		
